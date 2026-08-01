@@ -1,0 +1,41 @@
+{
+  "skillProvenance": {
+    "name": "solo-design",
+    "version": "2026.07.22.00.00.00",
+    "version_source": "skill-release-manifest.json",
+    "runtime_skill_dir": "/Users/bagusmukmin/.trae/builtin/design/default/skills/solo-design",
+    "recorded_at": "2026-08-01T00:00:00+07:00"
+  },
+  "operation": "create-image-project",
+  "assetCount": 4,
+  "assets": [
+    {
+      "filename": "tabacoid-logo.svg",
+      "title": "Primary Logo",
+      "deliverableType": "logo lockup",
+      "intendedAspect": "wide lockup",
+      "status": "generated"
+    },
+    {
+      "filename": "tabacoid-icon.svg",
+      "title": "App Icon",
+      "deliverableType": "icon tile",
+      "intendedAspect": "square 1:1",
+      "status": "generated"
+    },
+    {
+      "filename": "tabacoid-favicon.svg",
+      "title": "Favicon",
+      "deliverableType": "favicon",
+      "intendedAspect": "square 1:1",
+      "status": "generated"
+    },
+    {
+      "filename": "tabacoid-web-lockup.svg",
+      "title": "Website Lockup",
+      "deliverableType": "website logo lockup",
+      "intendedAspect": "wide lockup",
+      "status": "generated"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tile" x1="70" y1="42" x2="278" y2="278" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5A4DFF" />
+      <stop offset="0.58" stop-color="#4B3FE3" />
+      <stop offset="1" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="markAccent" x1="214" y1="118" x2="230" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5EEAD4" />
+      <stop offset="1" stop-color="#A7F3D0" />
+    </linearGradient>
+    <filter id="cardShadow" x="0" y="0" width="1200" height="360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+      <feOffset dy="18" />
+      <feGaussianBlur stdDeviation="24" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0588 0 0 0 0 0.0902 0 0 0 0 0.1647 0 0 0 0.10 0" />
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1" />
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape" />
+    </filter>
+  </defs>
+
+  <g filter="url(#cardShadow)">
+    <rect x="24" y="24" width="1152" height="288" rx="40" fill="#F8FAFC" />
+    <rect x="24.75" y="24.75" width="1150.5" height="286.5" rx="39.25" stroke="#CBD5E1" stroke-opacity="0.45" stroke-width="1.5" />
+  </g>
+
+  <rect x="72" y="72" width="192" height="192" rx="56" fill="url(#tile)" />
+  <rect x="80" y="80" width="176" height="176" rx="48" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="2" />
+
+  <path d="M112 130H224" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="3" stroke-linecap="round" />
+  <path d="M112 206H224" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="3" stroke-linecap="round" />
+  <path d="M130 112V224" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="3" stroke-linecap="round" />
+  <path d="M206 112V224" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="3" stroke-linecap="round" />
+
+  <rect x="116" y="116" width="100" height="24" rx="12" fill="#F8FAFC" />
+  <rect x="154" y="116" width="24" height="104" rx="12" fill="#F8FAFC" />
+  <path d="M178 142H198C213.464 142 226 154.536 226 170V194C226 209.464 213.464 222 198 222H178V200H194C201.732 200 208 193.732 208 186V178C208 170.268 201.732 164 194 164H178V142Z" fill="#F8FAFC" />
+  <rect x="203" y="160" width="12" height="54" rx="6" fill="url(#markAccent)" />
+  <circle cx="219" cy="118" r="6" fill="#C4B5FD" opacity="0.85" />
+
+  <text x="322" y="164" fill="#0F172A" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="84" font-weight="700" letter-spacing="-2.6">TabacoID</text>
+  <text x="326" y="214" fill="#475569" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="26" font-weight="500" letter-spacing="3.2">DIGITAL PRODUCT ARCHITECTURE</text>
+  <path d="M326 236H582" stroke="#4B3FE3" stroke-opacity="0.18" stroke-width="3" stroke-linecap="round" />
+</svg>

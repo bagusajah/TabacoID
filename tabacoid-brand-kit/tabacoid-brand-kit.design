@@ -1,0 +1,82 @@
+{
+  "data": [
+    {
+      "id": "image-001",
+      "title": "Primary Logo",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785542400000,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "naturalSize": {
+          "width": 1200,
+          "height": 360
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/tabacoid-logo.svg"
+      }
+    },
+    {
+      "id": "image-002",
+      "title": "App Icon",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785542401000,
+      "canvasData": {
+        "x": 620,
+        "y": 0,
+        "naturalSize": {
+          "width": 512,
+          "height": 512
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/tabacoid-icon.svg"
+      }
+    },
+    {
+      "id": "image-003",
+      "title": "Favicon",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785542402000,
+      "canvasData": {
+        "x": 1240,
+        "y": 0,
+        "naturalSize": {
+          "width": 64,
+          "height": 64
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/tabacoid-favicon.svg"
+      }
+    },
+    {
+      "id": "image-004",
+      "title": "Website Lockup",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1785542403000,
+      "canvasData": {
+        "x": 1860,
+        "y": 0,
+        "naturalSize": {
+          "width": 860,
+          "height": 180
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/tabacoid-web-lockup.svg"
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": true,
+    "deviceType": "freeSize",
+    "projectName": "TabacoID Logo & Icon",
+    "visualEditorEnabled": false
+  }
+}

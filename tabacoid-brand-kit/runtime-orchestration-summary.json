@@ -1,0 +1,65 @@
+{
+  "project": {
+    "resolvedLane": "graphic_bitmap_first",
+    "selectedIntentWorkflowRead": true,
+    "contextRequirementsLoaded": [
+      {
+        "path": "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "shared-runtime/design-artifact-formats/graphic-asset-design-file-format.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      },
+      {
+        "path": "shared-runtime/deterministic-tooling/validate-graphic-asset-design.mjs",
+        "readStatus": "declared",
+        "bodyRead": false
+      },
+      {
+        "path": "delivery-quality/delivery-evidence-contract.md",
+        "readStatus": "loaded",
+        "bodyRead": true
+      }
+    ],
+    "contextReadScope": "graphic-asset-generation",
+    "validationRunDiscipline": "graphic-asset-design-validator",
+    "lowValueCallWatchdog": {
+      "noProgressNextAction": "finish-after-validation"
+    },
+    "graphicStrategyGate": "bitmap-first",
+    "textCriticality": "low",
+    "copyDensity": "short",
+    "bitmapFirstAllowed": true,
+    "layoutStaticRequired": false,
+    "graphicStrategyRoutingReason": "logo and icon request with no editable text requirement",
+    "imageAssets": [
+      {
+        "id": "image-001",
+        "title": "Primary Logo",
+        "imageSrc": "assets/tabacoid-logo.svg"
+      },
+      {
+        "id": "image-002",
+        "title": "App Icon",
+        "imageSrc": "assets/tabacoid-icon.svg"
+      },
+      {
+        "id": "image-003",
+        "title": "Favicon",
+        "imageSrc": "assets/tabacoid-favicon.svg"
+      },
+      {
+        "id": "image-004",
+        "title": "Website Lockup",
+        "imageSrc": "assets/tabacoid-web-lockup.svg"
+      }
+    ],
+    "generatedImageNodeRegistrationEvidence": {
+      "registeredNodeCount": 4,
+      "registeredAssetCount": 4
+    }
+  }
+}
