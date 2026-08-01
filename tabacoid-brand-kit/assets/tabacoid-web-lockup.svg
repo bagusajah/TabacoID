@@ -1,29 +1,27 @@
-<svg width="860" height="180" viewBox="0 0 860 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="760" height="140" viewBox="0 0 760 140" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="tile" x1="20" y1="10" x2="128" y2="136" gradientUnits="userSpaceOnUse">
+    <linearGradient id="tile" x1="16" y1="10" x2="116" y2="118" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#5A4DFF" />
       <stop offset="0.58" stop-color="#4B3FE3" />
       <stop offset="1" stop-color="#111827" />
     </linearGradient>
-    <linearGradient id="accent" x1="96" y1="56" x2="104" y2="121" gradientUnits="userSpaceOnUse">
+    <linearGradient id="accent" x1="86" y1="46" x2="92" y2="103" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#5EEAD4" />
       <stop offset="1" stop-color="#A7F3D0" />
     </linearGradient>
   </defs>
 
-  <rect x="8" y="18" width="124" height="124" rx="34" fill="url(#tile)" />
-  <rect x="13" y="23" width="114" height="114" rx="29" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="2" />
-  <path d="M34 55H106" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round" />
-  <path d="M34 99H106" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="2" stroke-linecap="round" />
-  <path d="M49 34V106" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="2" stroke-linecap="round" />
-  <path d="M93 34V106" stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="2" stroke-linecap="round" />
-  <rect x="37" y="43" width="62" height="16" rx="8" fill="#F8FAFC" />
-  <rect x="60" y="43" width="16" height="67" rx="8" fill="#F8FAFC" />
-  <path d="M76 59H89C98.3888 59 106 66.6112 106 76V91C106 100.389 98.3888 108 89 108H76V94H86C90.9706 94 95 89.9706 95 85V82C95 77.0294 90.9706 73 86 73H76V59Z" fill="#F8FAFC" />
-  <rect x="91" y="70" width="8" height="33" rx="4" fill="url(#accent)" />
-  <circle cx="101" cy="44" r="4" fill="#C4B5FD" opacity="0.85" />
+  <rect x="8" y="20" width="100" height="100" rx="28" fill="url(#tile)" />
+  <rect x="12" y="24" width="92" height="92" rx="24" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="1.5" />
+  <path d="M29 50H87" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="1.8" stroke-linecap="round" />
+  <path d="M29 86H87" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1.8" stroke-linecap="round" />
+  <path d="M41 33V91" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1.8" stroke-linecap="round" />
+  <path d="M77 33V91" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1.8" stroke-linecap="round" />
+  <rect x="31" y="40" width="48" height="13" rx="6.5" fill="#F8FAFC" />
+  <rect x="49" y="40" width="13" height="54" rx="6.5" fill="#F8FAFC" />
+  <path d="M62 53H72C79.732 53 86 59.268 86 67V79C86 86.732 79.732 93 72 93H62V81H69C72.866 81 76 77.866 76 74V72C76 68.134 72.866 65 69 65H62V53Z" fill="#F8FAFC" />
+  <rect x="73" y="62" width="6.5" height="27" rx="3.25" fill="url(#accent)" />
+  <circle cx="81" cy="41" r="3.5" fill="#C4B5FD" opacity="0.85" />
 
-  <text x="168" y="82" fill="#0F172A" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="58" font-weight="700" letter-spacing="-1.8">TabacoID</text>
-  <text x="171" y="117" fill="#475569" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2.8">DIGITAL PRODUCT ARCHITECTURE</text>
-  <path d="M171 132H353" stroke="#4B3FE3" stroke-opacity="0.18" stroke-width="2.5" stroke-linecap="round" />
+  <text x="132" y="83" fill="#0F172A" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="64" font-weight="700" letter-spacing="-2.2">TabacoID</text>
 </svg>

@@ -101,6 +101,42 @@
       rgba(255, 255, 255, 0.92);
   }
 
+  .section-band {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .section-band-muted {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 16%, rgba(244, 245, 247, 0.92) 100%);
+    border-top: 1px solid rgba(15, 23, 42, 0.04);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+  }
+
+  .section-band-soft {
+    background:
+      radial-gradient(circle at top center, rgba(75, 63, 227, 0.06), transparent 34%),
+      linear-gradient(180deg, rgba(252, 252, 253, 0.65), rgba(247, 248, 251, 0.92));
+    border-top: 1px solid rgba(15, 23, 42, 0.04);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+  }
+
+  .proof-ribbon {
+    max-width: 42rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.72);
+    padding: 1rem 1.1rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .case-study-hero {
+    min-height: 16rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
   .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -161,6 +197,13 @@
     transform: translateY(-1px);
     border-color: rgba(75, 63, 227, 0.22);
     box-shadow: var(--shadow-soft);
+  }
+
+  .button-primary:focus-visible,
+  .button-secondary:focus-visible,
+  .nav-pill:focus-visible {
+    outline: 2px solid rgba(75, 63, 227, 0.3);
+    outline-offset: 2px;
   }
 
   .nav-pill {

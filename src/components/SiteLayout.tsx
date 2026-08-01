@@ -22,16 +22,8 @@ export default function SiteLayout() {
     <div className="min-h-screen bg-[var(--canvas)] text-slate-900">
       <header className="sticky top-0 z-50 border-b border-[var(--border-soft)] bg-[rgba(250,250,252,0.88)] backdrop-blur-xl">
         <div className="layout-grid flex items-center justify-between gap-4 py-4">
-          <Link
-            aria-label={brandName}
-            className="flex items-center"
-            to="/"
-          >
-            <img
-              alt={brandName}
-              className="h-9 w-auto sm:h-10"
-              src="/tabacoid-logo.svg"
-            />
+          <Link aria-label={brandName} className="flex items-center" to="/">
+            <img alt={brandName} className="h-9 w-auto sm:h-10" src="/tabacoid-logo.svg" />
           </Link>
 
           <nav className="hidden items-center gap-2 rounded-full border border-[var(--border-soft)] bg-white/90 p-1 shadow-[var(--shadow-soft)] md:flex">
@@ -51,12 +43,9 @@ export default function SiteLayout() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <a
-              className="hidden text-sm font-medium text-slate-600 transition hover:text-slate-950 lg:inline-flex"
-              href={`mailto:${contactEmail}`}
-            >
-              {contactEmail}
-            </a>
+            <Link className="button-primary hidden md:inline-flex" to="/contact">
+              Start a project
+            </Link>
             <button
               aria-expanded={mobileOpen}
               aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -105,12 +94,8 @@ export default function SiteLayout() {
 
       <footer className="border-t border-[var(--border-soft)] bg-white/88">
         <div className="layout-grid grid gap-10 py-12 lg:grid-cols-[1.4fr_1fr_1fr]">
-          <div className="space-y-4">
-            <img
-              alt={brandName}
-              className="h-10 w-auto sm:h-12"
-              src="/tabacoid-logo.svg"
-            />
+          <div className="space-y-5">
+            <img alt={brandName} className="h-10 w-auto sm:h-12" src="/tabacoid-logo.svg" />
             <h2 className="max-w-md text-2xl font-semibold tracking-tight text-slate-950">
               A digital product studio for teams that need sharper interfaces and cleaner launches.
             </h2>
@@ -118,6 +103,14 @@ export default function SiteLayout() {
               We help product and service businesses move from scattered surfaces to coherent,
               production-ready digital experiences.
             </p>
+            <div className="flex flex-wrap gap-3">
+              <Link className="button-primary" to="/contact">
+                Start a project
+              </Link>
+              <a className="button-secondary" href={`mailto:${contactEmail}`}>
+                Email us
+              </a>
+            </div>
           </div>
 
           <div className="space-y-3">
@@ -137,14 +130,14 @@ export default function SiteLayout() {
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
               Contact
             </p>
-            <a
-              className="inline-flex text-sm text-slate-600 transition hover:text-slate-950"
-              href={`mailto:${contactEmail}`}
-            >
+            <a className="inline-flex text-sm text-slate-600 transition hover:text-slate-950" href={`mailto:${contactEmail}`}>
               {contactEmail}
             </a>
             <p className="text-sm leading-7 text-slate-600">
               Available for focused redesigns, launch sprints, and ongoing product studio support.
+            </p>
+            <p className="text-sm leading-7 text-slate-500">
+              Async-first collaboration, structured weekly checkpoints, and direct senior execution.
             </p>
           </div>
         </div>
