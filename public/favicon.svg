@@ -1,0 +1,40 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(22 10) rotate(135) scale(22)">
+      <stop offset="0" stop-color="#FFE56A" />
+      <stop offset="0.22" stop-color="#FF8A6B" />
+      <stop offset="0.45" stop-color="#FF5CC8" />
+      <stop offset="0.65" stop-color="#7B61FF" />
+      <stop offset="0.82" stop-color="#4CCBFF" />
+      <stop offset="1" stop-color="#63FF9A" />
+    </radialGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12 10) rotate(90) scale(10)">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="0.35" />
+    </filter>
+  </defs>
+
+  <circle cx="16" cy="17" r="12" fill="url(#g)" />
+  <circle cx="12" cy="10" r="6.5" fill="url(#shine)" />
+
+  <circle cx="11.2" cy="16.5" r="2.1" fill="#3B1A12" />
+  <circle cx="20.8" cy="16.5" r="2.1" fill="#3B1A12" />
+  <circle cx="10.5" cy="15.8" r="0.6" fill="#FFFFFF" />
+  <circle cx="20.1" cy="15.8" r="0.6" fill="#FFFFFF" />
+  <circle cx="11.9" cy="17.2" r="0.35" fill="#FFFFFF" opacity="0.85" />
+  <circle cx="21.5" cy="17.2" r="0.35" fill="#FFFFFF" opacity="0.85" />
+
+  <circle cx="8.6" cy="19.1" r="1.1" fill="#FF7AA8" opacity="0.75" filter="url(#soft)" />
+  <circle cx="23.4" cy="19.1" r="1.1" fill="#FF7AA8" opacity="0.75" filter="url(#soft)" />
+
+  <path d="M16 21.8c2.35 0 4.05-1.5 4.05-3.3 0-0.35-0.08-0.7-0.22-1.03-0.2-0.45-0.67-0.77-1.17-0.77h-5.33c-0.5 0-0.97 0.32-1.17 0.77-0.14 0.33-0.22 0.68-0.22 1.03 0 1.8 1.7 3.3 4.05 3.3Z" fill="#1A0A0A" />
+  <path d="M16 21.1c1.6 0 2.85-0.98 2.85-2.12 0-0.25-0.06-0.5-0.16-0.74h-5.38c-0.1 0.24-0.16 0.49-0.16 0.74 0 1.14 1.25 2.12 2.85 2.12Z" fill="#FF3A6E" />
+
+  <path d="M6.1 7.4c0.6-1.1 2-1.35 2.8-0.4 0.8-0.95 2.2-0.7 2.8 0.4 0.6 1.15-0.1 2.35-1.2 3.15-0.6 0.45-1.1 0.7-1.6 0.95-0.5-0.25-1-0.5-1.6-0.95-1.1-0.8-1.8-2-1.2-3.15Z" fill="#FF6BA3" />
+
+  <path d="M26.2 8.1l1.1 1.7-1.1 1.7-1.9-1.2-1.9 1.2-1.1-1.7 1.1-1.7 1.9 1.2 1.9-1.2Z" fill="#FFD15A" />
+  <path d="M5.1 12.2l0.7 1.1-0.7 1.1-1.2-0.75-1.2 0.75-0.7-1.1 0.7-1.1 1.2 0.75 1.2-0.75Z" fill="#7FE4FF" />
+</svg>
