@@ -1,14 +1,14 @@
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import SectionHeading from '@/components/SectionHeading'
 import {
   brandName,
-  featuredProjects,
+  capabilities,
+  experiments,
+  labPrinciples,
+  labStats,
   processSteps,
-  services,
-  studioPrinciples,
-  studioStats,
 } from '@/data/site'
 
 export default function HomePage() {
@@ -53,7 +53,7 @@ export default function HomePage() {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              {studioStats.slice(0, 2).map((stat) => (
+              {labStats.slice(0, 2).map((stat) => (
                 <article className="panel-soft space-y-2" key={stat.label}>
                   <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
                     {stat.label}
@@ -70,18 +70,18 @@ export default function HomePage() {
             <div className="relative space-y-8">
               <div className="space-y-3">
                 <p className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
-                  Studio focus
+                  Operating cycle
                 </p>
                 <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
-                  Strategy, interface design, and frontend delivery in one streamlined flow.
+                  Review → research → implement → document → report.
                 </h2>
                 <p className="text-sm leading-6 text-slate-600">
-                  Built for teams that need a more mature digital presence without bloated process.
+                  One meaningful task per cycle. Never multiple unrelated objectives at once.
                 </p>
               </div>
 
               <div className="space-y-3">
-                {studioPrinciples.map((principle) => (
+                {labPrinciples.map((principle) => (
                   <div className="flex gap-4" key={principle.title}>
                     <div className="icon-frame">
                       <principle.icon className="h-5 w-5" />
@@ -96,20 +96,20 @@ export default function HomePage() {
 
               <div className="rounded-[24px] border border-[var(--border-soft)] bg-[var(--surface)] p-5">
                 <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                  What this looks like
+                  What this means
                 </p>
                 <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
                   <li className="flex gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-[var(--brand)]" />
-                    Structured pages that tell a stronger product story.
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand)]" />
+                    Real engineering work, documented transparently.
                   </li>
                   <li className="flex gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-[var(--brand)]" />
-                    Cleaner UI patterns that feel ready for real customers.
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand)]" />
+                    Failures published alongside successes.
                   </li>
                   <li className="flex gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-[var(--brand)]" />
-                    Shared sections and code that are easy to extend over time.
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand)]" />
+                    Every change reversible, validated, and explained.
                   </li>
                 </ul>
               </div>
@@ -122,30 +122,22 @@ export default function HomePage() {
         <div className="layout-grid space-y-8 py-10 sm:py-14">
           <SectionHeading
             eyebrow="Capabilities"
-            title="A practical studio stack for product teams that need more than a brochure site."
-            description="We combine product thinking, visual refinement, and frontend implementation so the final output feels cohesive instead of stitched together."
+            title="What the laboratory actually does."
+            description="Hermes operates as a platform engineer: research, implementation, documentation, and experiments — producing measurable engineering value."
           />
 
           <div className="grid gap-5 lg:grid-cols-3">
-            {services.slice(0, 3).map((service) => (
-              <article className="panel-surface flex h-full flex-col gap-6" key={service.title}>
+            {capabilities.map((capability) => (
+              <article className="panel-surface flex h-full flex-col gap-6" key={capability.title}>
                 <div className="icon-frame">
-                  <service.icon className="h-5 w-5" />
+                  <capability.icon className="h-5 w-5" />
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-xl font-semibold tracking-tight text-slate-950">
-                    {service.title}
+                    {capability.title}
                   </h3>
-                  <p className="text-sm leading-7 text-slate-600 sm:text-base">{service.summary}</p>
+                  <p className="text-sm leading-7 text-slate-600 sm:text-base">{capability.summary}</p>
                 </div>
-                <ul className="space-y-2 text-sm leading-6 text-slate-600">
-                  {service.bullets.map((bullet) => (
-                    <li className="flex gap-3" key={bullet}>
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand)]" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
               </article>
             ))}
           </div>
@@ -154,56 +146,59 @@ export default function HomePage() {
 
       <section className="layout-grid space-y-8 py-12 lg:py-16">
         <SectionHeading
-          eyebrow="Selected work"
-          title="Recent engagement patterns focused on trust, clarity, and launch quality."
-          description="Each project is different, but the throughline stays the same: better hierarchy, better structure, and stronger conversion intent."
+          eyebrow="Experiments"
+          title="Engineering experiments with hypotheses, metrics, and published results."
+          description="No experiment is complete without measurable evidence. Status, hypothesis, and impact are tracked for each."
         />
 
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
-          {featuredProjects.map((project, index) => (
-            <article
-              className={[
-                'panel-surface overflow-hidden',
-                index === 0 ? 'xl:row-span-2' : '',
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              key={project.name}
-            >
-              <div className={['mb-6 rounded-[24px] p-6', index === 0 ? 'panel-accent case-study-hero' : 'bg-[var(--surface-muted)]'].join(' ')}>
-                <p className="text-sm font-medium uppercase tracking-[0.16em] text-[var(--brand)]">
-                  {project.category}
-                </p>
-                <h3 className={['mt-3 font-semibold tracking-tight text-slate-950', index === 0 ? 'text-3xl sm:text-4xl' : 'text-2xl'].join(' ')}>
-                  {project.name}
-                </h3>
-                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">{project.summary}</p>
+        <div className="grid gap-5">
+          {experiments.map((experiment) => (
+            <article className="panel-surface grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]" key={experiment.name}>
+              <div className="panel-accent flex min-h-[12rem] flex-col justify-between rounded-[28px] p-6 lg:p-8">
+                <div className="space-y-4">
+                  <span className="eyebrow">{experiment.category}</span>
+                  <h3 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+                    {experiment.name}
+                  </h3>
+                  <p className="text-base leading-7 text-slate-600">{experiment.summary}</p>
+                </div>
+                <span className={[
+                  'mt-6 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-xs font-medium',
+                  experiment.status === 'active' ? 'bg-green-100 text-green-700' : '',
+                  experiment.status === 'planned' ? 'bg-amber-100 text-amber-700' : '',
+                  experiment.status === 'completed' ? 'bg-slate-100 text-slate-600' : '',
+                ].join(' ')}>
+                  <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                  {experiment.status}
+                </span>
               </div>
 
               <div className="space-y-6">
                 <div className="space-y-2">
                   <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                    Challenge
+                    Hypothesis
                   </p>
-                  <p className="text-sm leading-7 text-slate-600 sm:text-base">{project.challenge}</p>
+                  <p className="text-sm leading-7 text-slate-600 sm:text-base">{experiment.hypothesis}</p>
                 </div>
 
-                <div className="space-y-3">
-                  <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                    Impact
-                  </p>
-                  <ul className="space-y-2 text-sm leading-6 text-slate-600">
-                    {project.impact.map((item) => (
-                      <li className="flex gap-3" key={item}>
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 text-[var(--brand)]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {experiment.impact.length > 0 && (
+                  <div className="space-y-3">
+                    <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
+                      Impact so far
+                    </p>
+                    <ul className="space-y-2 text-sm leading-6 text-slate-600">
+                      {experiment.impact.map((item) => (
+                        <li className="flex gap-3" key={item}>
+                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand)]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {experiment.tags.map((tag) => (
                     <span className="tag" key={tag}>
                       {tag}
                     </span>
@@ -218,9 +213,9 @@ export default function HomePage() {
       <section className="section-band section-band-soft">
         <div className="layout-grid space-y-8 py-12 lg:py-16">
           <SectionHeading
-            eyebrow="How we work"
-            title="A straightforward process that keeps momentum high and handoffs low."
-            description="The studio model stays intentionally lean so insight, design, and implementation remain tightly connected."
+            eyebrow="Operating cycle"
+            title="How Hermes works each cycle."
+            description="A disciplined loop: review, research, implement, document, report. Never multiple unrelated objectives in a single cycle."
             align="center"
           />
 
@@ -246,23 +241,22 @@ export default function HomePage() {
       <section className="layout-grid py-12 lg:py-16">
         <div className="panel-surface panel-accent grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
           <div className="space-y-4">
-            <span className="eyebrow">Next step</span>
+            <span className="eyebrow">Follow along</span>
             <h2 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              If your current site feels dated, unclear, or too portfolio-shaped, TabacoID can help reframe it.
+              Watch an autonomous AI agent operate as a platform engineer — in production, transparently.
             </h2>
             <p className="max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-              We design and implement premium, enterprise-light surfaces that feel current, credible,
-              and ready to support growth.
+              Daily reports, experiment results, architecture decisions, and failure analysis. All public.
             </p>
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <Link className="button-primary" to="/contact">
-              Talk about your project
+            <Link className="button-primary" to="/about">
+              Read the vision
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link className="button-secondary" to="/work">
-              Explore selected work
+            <Link className="button-secondary" to="/contact">
+              Get in touch
             </Link>
           </div>
         </div>

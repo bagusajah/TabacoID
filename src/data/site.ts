@@ -1,19 +1,13 @@
 import {
-  BarChart3,
-  Blocks,
-  CheckCircle2,
-  Clock3,
-  Code2,
-  Compass,
-  LayoutGrid,
-  Mail,
-  PenTool,
-  Rocket,
-  ScanSearch,
+  Activity,
+  BookOpen,
+  Cpu,
+  FlaskConical,
+  GitBranch,
   ShieldCheck,
-  Sparkles,
-  Users2,
-  Workflow,
+  Target,
+  Terminal,
+  TrendingUp,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -28,19 +22,18 @@ export type Stat = {
   detail: string
 }
 
-export type Service = {
+export type Capability = {
   title: string
   summary: string
-  outcome: string
-  bullets: string[]
   icon: LucideIcon
 }
 
-export type Project = {
+export type Experiment = {
   name: string
   category: string
   summary: string
-  challenge: string
+  status: 'active' | 'completed' | 'planned'
+  hypothesis: string
   impact: string[]
   tags: string[]
 }
@@ -64,135 +57,102 @@ export const contactEmail = 'bagusmukmin@tabaco.id'
 
 export const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
-  { label: 'Services', path: '/services' },
-  { label: 'Work', path: '/work' },
+  { label: 'Experiments', path: '/experiments' },
+  { label: 'Reports', path: '/reports' },
   { label: 'About', path: '/about' },
   { label: 'Contact', path: '/contact' },
 ]
 
-export const studioStats: Stat[] = [
+export const labStats: Stat[] = [
   {
-    label: 'End-to-end delivery',
-    value: 'Strategy to launch',
-    detail: 'From framing the opportunity to shipping polished interfaces.',
+    label: 'Days running',
+    value: 'Day 1',
+    detail: 'Engineering laboratory initialized 2026-08-02. Phase 0: foundation reframe.',
   },
   {
-    label: 'Senior execution',
-    value: 'Lean and hands-on',
-    detail: 'Design, product thinking, and frontend implementation stay closely aligned.',
+    label: 'Operating model',
+    value: 'Autonomous + human review',
+    detail: 'Hermes executes one meaningful task per cycle. Human approves every change before deploy.',
   },
   {
-    label: 'Output quality',
-    value: 'Production-ready systems',
-    detail: 'Clean structure, scalable UI patterns, and responsive experiences.',
-  },
-]
-
-export const services: Service[] = [
-  {
-    title: 'Product Strategy',
-    summary: 'Turn business goals into clear product direction, feature priorities, and launch-ready plans.',
-    outcome: 'Sharper scope, faster decisions, stronger product-market positioning.',
-    bullets: ['Product framing workshops', 'Opportunity mapping', 'Roadmap and scope definition'],
-    icon: Compass,
-  },
-  {
-    title: 'Experience Design',
-    summary: 'Design elegant user journeys, interface systems, and storytelling layers for modern digital products.',
-    outcome: 'Interfaces that feel trustworthy, clear, and ready for real customers.',
-    bullets: ['UX flows and wireframes', 'Visual direction and UI systems', 'Responsive page and product design'],
-    icon: PenTool,
-  },
-  {
-    title: 'Frontend Systems',
-    summary: 'Build maintainable React frontends with reusable components and implementation discipline.',
-    outcome: 'High-quality experiences that ship cleanly and scale with less rework.',
-    bullets: ['React architecture', 'Reusable section and component systems', 'Performance-minded responsive implementation'],
-    icon: Code2,
-  },
-  {
-    title: 'Design Systems',
-    summary: 'Create shared tokens, patterns, and content structures that keep teams moving in one direction.',
-    outcome: 'Consistent execution across marketing, product, and growth surfaces.',
-    bullets: ['Token foundations', 'Component patterns', 'Documentation-ready UI conventions'],
-    icon: LayoutGrid,
-  },
-  {
-    title: 'Launch Optimization',
-    summary: 'Shape narrative, conversion touchpoints, and post-launch refinements around real user behavior.',
-    outcome: 'Sharper messaging and better-performing customer journeys.',
-    bullets: ['Conversion review', 'Content hierarchy refinement', 'Iteration planning after release'],
-    icon: BarChart3,
-  },
-  {
-    title: 'Delivery Operations',
-    summary: 'Set up practical working rhythms so stakeholders, design, and engineering stay synchronized.',
-    outcome: 'Less handoff friction and a more dependable path from idea to release.',
-    bullets: ['Weekly delivery rituals', 'Decision logs and priorities', 'Execution visibility for stakeholders'],
-    icon: Workflow,
+    label: 'Current phase',
+    value: 'Phase 0 — Foundation',
+    detail: 'Reframing site from static portfolio to live engineering dashboard.',
   },
 ]
 
-export const featuredProjects: Project[] = [
+export const capabilities: Capability[] = [
   {
-    name: 'Atlas Commerce Suite',
-    category: 'B2B commerce platform',
-    summary: 'Repositioned a fragmented admin experience into a confident platform narrative with a clearer conversion path.',
-    challenge: 'The product had depth, but the market-facing surface felt tactical and difficult to trust at a glance.',
-    impact: ['Unified story across product and marketing', 'Modular UI system for future pages', 'Clearer enterprise buying signals'],
-    tags: ['Positioning', 'Marketing site', 'Design system'],
+    title: 'Autonomous Engineering',
+    summary: 'Hermes researches, plans, implements, validates, and documents engineering work in production — one task per cycle.',
+    icon: Cpu,
   },
   {
-    name: 'Northstar Ops Cloud',
-    category: 'Operations SaaS',
-    summary: 'Designed a launch website and onboarding entry points that translated a complex platform into decisive business value.',
-    challenge: 'Multiple stakeholder priorities created a diluted message and inconsistent interaction quality.',
-    impact: ['Sharper service packaging', 'Reusable product storytelling sections', 'Faster route to launch readiness'],
-    tags: ['UX strategy', 'React implementation', 'Responsive design'],
+    title: 'Transparent Experiments',
+    summary: 'Every experiment states hypothesis, expected cost, metrics, success/failure criteria, and results. Failures are published.',
+    icon: FlaskConical,
   },
   {
-    name: 'Linea Health Portal',
-    category: 'Service and product experience',
-    summary: 'Built a calmer, more credible digital presence with service explanation, product framing, and contact pathways.',
-    challenge: 'The team needed a premium presence without relying on heavy visuals or generic agency tropes.',
-    impact: ['Improved information hierarchy', 'Trust-building proof points', 'Flexible content architecture for growth'],
-    tags: ['Content architecture', 'UI design', 'Frontend system'],
+    title: 'Evidence-Based Decisions',
+    summary: 'Research answers a specific engineering question and ends with: adopt, reject, needs experiment, or needs human review.',
+    icon: TrendingUp,
+  },
+]
+
+export const experiments: Experiment[] = [
+  {
+    name: 'Daily self-improvement pipeline',
+    category: 'AI agent workflow',
+    summary: 'Hermes runs a daily cycle: review objectives, research, select one task, implement, validate, document, report.',
+    status: 'active',
+    hypothesis: 'An autonomous AI agent can produce measurable engineering value operating once per day within GLM Coding Plan limits.',
+    impact: ['Vision doc extracted and committed', 'Hero reframed to lab identity', 'SEO meta tags added', 'Build verified passing'],
+    tags: ['cron', 'GLM Coding Plan', 'Vercel hobby'],
+  },
+  {
+    name: 'Hermes + opencode integration',
+    category: 'Tooling',
+    summary: 'Hermes orchestrates; opencode executes focused coding tasks inside the repo with project-specific instructions.',
+    status: 'planned',
+    hypothesis: 'Pairing an orchestrator agent with a coding-focused agent produces higher quality diffs than a single agent.',
+    impact: [],
+    tags: ['opencode', 'agent orchestration'],
   },
 ]
 
 export const processSteps: Principle[] = [
   {
-    title: 'Audit what matters',
-    description: 'We start by clarifying the offer, audience, and blockers so the work is focused from day one.',
-    icon: ScanSearch,
+    title: 'Review & assess',
+    description: 'Check objectives, unfinished work, and project health (build status, open tasks).',
+    icon: Target,
   },
   {
-    title: 'Shape the system',
-    description: 'We turn direction into reusable sections, messaging structure, and a dependable visual language.',
-    icon: Blocks,
+    title: 'Research & decide',
+    description: 'Answer a specific engineering question. Output: adopt, reject, needs experiment, or human review.',
+    icon: BookOpen,
   },
   {
-    title: 'Ship with precision',
-    description: 'We implement responsive experiences with clean code, clear hierarchy, and launch-ready polish.',
-    icon: Rocket,
+    title: 'Implement & validate',
+    description: 'One task per cycle. Reason, risk, validation, rollback. Build must pass before reporting.',
+    icon: Terminal,
   },
 ]
 
-export const studioPrinciples: Principle[] = [
+export const labPrinciples: Principle[] = [
   {
-    title: 'Clarity over clutter',
-    description: 'Every page is designed to reduce decision friction and help people understand the offer faster.',
-    icon: Sparkles,
+    title: 'Outcomes over activity',
+    description: 'Measured by engineering value, not commit counts, file changes, or the appearance of productivity.',
+    icon: Activity,
   },
   {
-    title: 'Systems over one-offs',
-    description: 'Reusable sections and consistent patterns create a better experience for both teams and visitors.',
+    title: 'Reversible over risky',
+    description: 'Small iterations, reversible changes, evidence-based decisions. No risky architectural changes without review.',
     icon: ShieldCheck,
   },
   {
-    title: 'Senior, lean, direct',
-    description: 'TabacoID works close to the product and avoids unnecessary layers between decisions and delivery.',
-    icon: Users2,
+    title: 'Documented by default',
+    description: 'Every task produces documentation: why, what changed, risks, lessons. Documentation exists for future engineers.',
+    icon: GitBranch,
   },
 ]
 
@@ -200,20 +160,22 @@ export const contactMethods: ContactMethod[] = [
   {
     title: 'Email',
     detail: contactEmail,
-    description: 'Best for new projects, redesigns, retainers, and product collaboration inquiries.',
+    description: 'Questions about the project, collaboration, or engineering review.',
     href: `mailto:${contactEmail}`,
-    icon: Mail,
+    icon: BookOpen,
   },
   {
-    title: 'Engagement model',
-    detail: 'Project-based or retained',
-    description: 'Flexible support for launch sprints, redesigns, and ongoing product studio work.',
-    icon: CheckCircle2,
+    title: 'GitHub',
+    detail: 'github.com/bagusajah',
+    description: 'Source code, experiments, and daily reports.',
+    href: 'https://github.com/bagusajah/TabacoID',
+    icon: GitBranch,
   },
   {
-    title: 'Working cadence',
-    detail: 'Async-first with clear weekly checkpoints',
-    description: 'A structured delivery rhythm that keeps decisions moving without unnecessary meetings.',
-    icon: Clock3,
+    title: 'Live site',
+    detail: 'www.tabaco.id',
+    description: 'Deployed on Vercel hobby tier. Auto-deploys on push to main.',
+    href: 'https://www.tabaco.id',
+    icon: Activity,
   },
 ]
