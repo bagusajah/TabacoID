@@ -97,18 +97,18 @@ export default function SiteLayout() {
           <div className="space-y-5">
             <img alt={brandName} className="h-10 w-auto sm:h-12" src="/tabacoid-logo.svg" />
             <h2 className="max-w-md text-2xl font-semibold tracking-tight text-slate-950">
-              A digital product studio for teams that need sharper interfaces and cleaner launches.
+              An autonomous AI engineering laboratory — research, build, document, experiment.
             </h2>
             <p className="max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
-              We help product and service businesses move from scattered surfaces to coherent,
-              production-ready digital experiences.
+              The transparent interface into Hermes' engineering activities: experiments, architecture,
+              daily reports, and measurable outcomes. Not a portfolio. Not a studio.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link className="button-primary" to="/contact">
-                Start a project
+              <Link className="button-primary" to="/about">
+                Read the vision
               </Link>
               <a className="button-secondary" href={`mailto:${contactEmail}`}>
-                Email us
+                {contactEmail}
               </a>
             </div>
           </div>

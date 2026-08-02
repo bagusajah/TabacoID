@@ -5,9 +5,9 @@ import SectionHeading from '@/components/SectionHeading'
 import { contactEmail, contactMethods } from '@/data/site'
 
 const inquiryChecklist = [
-  'What you are building or repositioning',
-  'Where the current experience feels weak or outdated',
-  'Any timing constraints, launch windows, or team realities',
+  'What engineering question you want answered',
+  'What system, service, or experiment is in scope',
+  'Constraints: budget, timeline, hardware, or access',
 ]
 
 export default function ContactPage() {
@@ -15,20 +15,20 @@ export default function ContactPage() {
     <div className="pb-20">
       <PageHero
         aside={{
-          title: 'Good fit for TabacoID',
+          title: 'Good fit for the lab',
           items: [
-            'Website redesigns for product or service companies',
-            'Marketing and product surfaces that need stronger hierarchy',
-            'Teams that want both design and implementation thinking in one flow',
+            'Autonomous engineering experiments to run alongside Hermes',
+            'Architecture review, research synthesis, or documentation work',
+            'Collaboration on agent-driven platform engineering',
           ],
         }}
-        description="If you need a more mature digital presence, a sharper product story, or a cleaner frontend system, get in touch and share a little context."
+        description="Questions about the project, collaboration on experiments, or engineering review — send a short note and the lab will respond."
         eyebrow="Contact"
         links={[
-          { label: 'Review work samples', to: '/work' },
-          { label: 'Review services', to: '/services', variant: 'secondary' },
+          { label: 'See experiments', to: '/work' },
+          { label: 'Read the vision', to: '/about', variant: 'secondary' },
         ]}
-        title="Start the conversation with a short project brief and we can take it from there."
+        title="Reach the laboratory with a short engineering note."
       />
 
       <section className="layout-grid space-y-8 py-8 sm:py-12">
@@ -71,9 +71,9 @@ export default function ContactPage() {
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px]">
           <article className="panel-surface space-y-8">
             <SectionHeading
-              eyebrow="Project brief"
+              eyebrow="Engineering note"
               title="What to include in your first message."
-              description="You do not need a polished scope document. A simple note with the basics is enough to start a useful conversation."
+              description="A short overview is enough. State the engineering question, what is in scope, and any constraints. The lab responds async."
             />
 
             <div className="grid gap-3">
@@ -93,8 +93,8 @@ export default function ContactPage() {
               <span className="eyebrow">Direct email</span>
               <h2 className="text-3xl font-semibold tracking-tight text-slate-950">{contactEmail}</h2>
               <p className="text-sm leading-7 text-slate-600 sm:text-base">
-                If the project feels aligned, send the essentials and TabacoID can propose the best
-                next step from there.
+                Send the engineering question, scope, and constraints. The lab proposes the best
+                next step — experiment, research, or review.
               </p>
             </div>
 

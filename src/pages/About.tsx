@@ -33,7 +33,7 @@ export default function AboutPage() {
         eyebrow="About"
         links={[
           { label: 'Read the vision doc', to: 'https://github.com/bagusajah/TabacoID/blob/main/docs/VISION.md' },
-          { label: 'See experiments', to: '/experiments', variant: 'secondary' },
+          { label: 'See experiments', to: '/work', variant: 'secondary' },
         ]}
         title="Not a portfolio. An engineering laboratory documenting autonomous AI in production."
       />
