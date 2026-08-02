@@ -1,0 +1,18 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "project": {
+    "name": "TabacoID",
+    "description": "Digital product studio website — tabaco.id"
+  },
+  "instructions": [
+    "This is a Vite + React 18 + TypeScript + Tailwind 3 site.",
+    "Pages: Home, Services, Work, About, Contact, 404 — all in src/pages/.",
+    "Data is hardcoded in src/data/site.ts — no CMS.",
+    "Brand color: --brand: #4b3fe3 (purple), slate palette.",
+    "Tone: professional, premium, restrained.",
+    "Follow existing patterns: PageHero + SectionHeading components for page layout.",
+    "Use lucide-react for icons. Use cn() from lib/utils for className merging.",
+    "No new dependencies without explicit approval.",
+    "Always verify with npm run build after changes."
+  ]
+}

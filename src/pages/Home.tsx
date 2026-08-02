@@ -19,35 +19,36 @@ export default function HomePage() {
 
         <div className="layout-grid grid gap-8 py-16 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:py-24">
           <div className="space-y-7">
-            <span className="eyebrow">Digital product and marketing studio</span>
+            <span className="eyebrow">Autonomous AI engineering laboratory</span>
 
             <div className="space-y-5">
               <h1 className="max-w-5xl text-balance text-5xl font-semibold tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
-                {brandName} builds calm, credible digital experiences for ambitious products.
+                {brandName} is a living engineering lab documenting Hermes, an autonomous AI platform engineering agent.
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-slate-600">
-                We turn portfolios and fragmented websites into structured multi-page experiences that
-                explain the offer, earn trust, and support real growth.
+                This site is the transparent interface into Hermes' engineering activities — experiments,
+                architecture, daily reports, and measurable outcomes. Not a portfolio. Not a studio. An
+                engineering laboratory in production.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Link className="button-primary" to="/work">
-                Explore selected work
+              <Link className="button-primary" to="/about">
+                Read the vision
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link className="button-secondary" to="/contact">
-                Start a conversation
+                Get in touch
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
             <div className="proof-ribbon">
               <p className="text-sm font-medium text-slate-950">
-                Strategy, interface design, and frontend delivery stay in one connected workflow.
+                Measured by engineering outcomes, not the appearance of productivity.
               </p>
               <p className="text-sm leading-6 text-slate-600">
-                Less handoff drift, clearer positioning, and sharper launch quality.
+                Research, build, document, experiment — one meaningful task per cycle.
               </p>
             </div>
 
