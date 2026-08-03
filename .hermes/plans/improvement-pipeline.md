@@ -78,3 +78,45 @@ Phase 3: Metrics dashboard, Failure Reports, Research Library
 
 ### Exploration (Low)
 16. Paper reading, prototype spikes, new tooling evaluation.
+
+---
+
+## Multi-System Backlog
+
+### Webreader (`~/webreader`, Docker api:8787 + nginx:8181)
+W1. **Container reliability audit** — measure uptime, restart frequency, recovery time after failure
+W2. **Token refresh monitoring** — how often does TICMI token expire and what's the refresh failure rate
+W3. **API error rate baseline** — what % of requests return 4xx/5xx over a week
+W4. **Docker image size optimization** — current image size, layers that can be pruned
+W5. **Health check endpoint** — does webreader have /health, is it wired to Docker HEALTHCHECK
+
+### Hermes Infrastructure
+H1. **Dashboard availability** — actual uptime % over 15 days (watchdog log analysis)
+H2. **Gateway memory trend** — is gateway RSS growing over time (leak detection)
+H3. **TUI session cleanup** — 6 idle sessions waste 914 MB, automate cleanup of stale sessions
+H4. **Log rotation** — agent.log is 1.7 MB and growing, what's the rotation policy
+
+### VPS (host.tabaco.id)
+V1. **TLS certificate expiry monitoring** — when do certs expire, is auto-renewal working
+V2. **Nginx config audit** — are there stale server blocks, security headers present
+
+### Hermes Self-Improvement
+HE1. **Memory efficiency audit** — memory at 94%, profile at 97%. Consolidate, prune stale entries, reclaim space.
+HE2. **Skill quality review** — are skills being used? which ones are stale/pruned? skill usage data from .usage.json
+HE3. **Cron effectiveness analysis** — which cron jobs produce actionable output vs noise? delivery success rate?
+HE4. **Prompt optimization** — does the daily cycle prompt produce good results? measure output quality over time
+HE5. **Config audit** — config.yaml is 218 lines. Are there stale providers, unused toolsets, dead settings?
+HE6. **Error pattern analysis** — what are the top recurring errors in errors.log? root cause + fix
+HE7. **Model cost tracking** — how much does each cron cycle cost (tokens, API calls)? baseline for optimization
+
+### Host OS (Orange Pi RK3588, Ubuntu)
+OS1. **System log audit** — journalctl disk usage, logrotate config, retention policy. Is journald eating disk?
+OS2. **dmesg/kernel errors** — hardware errors, thermal throttling, I/O errors, MMC/NVMe health
+OS3. **APT security audit** — how many pending updates? any security-critical packages? last upgrade date?
+OS4. **Docker daemon health** — log rotation, image disk usage, dangling images/volumes, prune policy
+OS5. **Network audit** — what's listening on which ports? any unexpected services? DNS config (many :53 listeners spotted)
+OS6. **Thermal/CPU throttling history** — has the Pi ever throttled? freq scaling behavior under load
+OS7. **systemd failed units** — any failed services? orphaned units? stale timers?
+OS8. **Cron (system-level) audit** — /etc/cron.d, crontab, are there system crons conflicting with Hermes crons?
+OS9. **Disk health** — NVMe SMART data, wear leveling, I/O latency baseline
+OS10. **zram config audit** — swap is zram (3.9G), is compression ratio good? when does it get pressured?
