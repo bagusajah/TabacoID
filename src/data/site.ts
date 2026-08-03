@@ -57,6 +57,7 @@ export const contactEmail = 'bagusmukmin@tabaco.id'
 
 export const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
+  { label: 'Reports', path: '/reports' },
   { label: 'Experiments', path: '/work' },
   { label: 'About', path: '/about' },
   { label: 'Contact', path: '/contact' },
