@@ -35,6 +35,14 @@ All notable changes to tabaco.id engineering laboratory.
 - Validasi: build passing (1650 modules, 4.90s). Lint clean. `index.html` naik 1.06 kB → 1.46 kB (gzip 0.52 → 0.63 kB).
 - File: `index.html`
 
+### 2026-08-03 — Phase 1.1: robots.txt + sitemap.xml
+- **[SEO]** Tambah `public/robots.txt` dan `public/sitemap.xml` — item pertama Phase 1 (Lab Infrastructure). Modal crawlability: search engine sekarang tahu URL mana yang boleh di-crawl dan kapan terakhir diupdate.
+- Alasan: tanpa robots.txt, crawler tidak punya signal allow/disallow dan tidak ada referensi ke sitemap. Tanpa sitemap, penemuan URL (terutama SPA CSR) lambat dan tidak terjamin. Dua file statis ini adalah baseline infrastruktur SEO, bukan optimisasi.
+- Routes di sitemap: `/`, `/work`, `/about`, `/contact` (4 nav items dari `src/data/site.ts`). Route `/services` sengaja tidak dimasukkan — itu orphan route (tidak ada di nav), perlu keputusan content terpisah.
+- Risiko: sangat rendah. Dua file statis di `public/`, Vite copy apa adanya ke `dist/`. Zero runtime cost, zero dependency. Rollback = hapus 2 file.
+- Validasi: build passing (1650 modules, 4.90s). Lint clean. Kedua file terverifikasi ter-copy ke `dist/`.
+- Files: `public/robots.txt`, `public/sitemap.xml`
+
 ### Planned (Phase 0 — Foundation)
 - ~~Rebrand from "digital product studio" to "Hermes Engineering Laboratory"~~ ✓ (hero done, remaining pages next)
 - ~~Remove dead deps (framer-motion, zustand, useTheme)~~ ✓ (Cycle 3)
