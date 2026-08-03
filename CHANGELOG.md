@@ -4,6 +4,14 @@ All notable changes to tabaco.id engineering laboratory.
 
 ## [Unreleased]
 
+### 2026-08-03 — Rate-Limit (429) Audit
+- **[Operations]** Audit z.ai API 429 rate-limit patterns dari log analysis. Tiga subagent paralel dispatched untuk root cause, temporal analysis, dan config audit.
+- **[Finding]** Diagnostic grep artifact terdeteksi: bare `grep "429"` menghasilkan 93.8% false positive (228 hits → 14 real) karena session ID `4295b1` match literal "429". Fix: gunakan `grep -E "RateLimitError|status=429|HTTP 429"`.
+- **[Finding]** Real 429 events: 14 dalam 7 hari, hanya 2 main-loop throttle. Retry success rate 100%, zero user-visible failures, latency overhead ~7s.
+- **[Finding]** Finance crons (IDX Daily Digest 16:00, IDX Insider Alert 18:00 WIB) jalan di z.ai peak hours (13:00-17:00 WIB). Needs Human Review untuk reschedule ke off-peak.
+- **[Decision]** Adopt methodology fix; Reject premature concurrency throttling (0.6% throttle rate tidak justifikasi).
+- Files: `docs/reports/2026-08-03-rate-limit-audit.md` (baru), `CHANGELOG.md`
+
 ### 2026-08-02 — Phase 0 Kickoff
 - **[Reframe]** Aligned codebase with Vision doc — tabaco.id is now an engineering laboratory, not a studio portfolio
   - Files: `docs/VISION.md`, `.hermes/plans/improvement-pipeline.md`, Hermes skill, `src/pages/Home.tsx`, `index.html`
