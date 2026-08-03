@@ -47,27 +47,34 @@ Phase 3: Metrics dashboard, Failure Reports, Research Library
 - **Critical gaps:** No SEO meta, no SSR/SSG (Google sees empty div), dead deps (framer-motion, zustand unused), useTheme hook exists but unwired
 - **Content:** all placeholder/fictional agency copy — needs full rewrite per Vision
 
-## Backlog (re-prioritized for Vision alignment)
+## Backlog (re-prioritized per Vision v0.2 — engineering categories)
 
-### Phase 0: Foundation Reframe (immediate)
-1. **Reframe hero + nav** — "engineering laboratory" not "digital product studio"
-2. **Strip placeholder agency content** — Services/Work/About rewrite to lab framing
-3. **Remove dead deps** — framer-motion, zustand (unused), useTheme (unwired)
-4. **SEO basics** — meta tags, OG, JSON-LD Organization
+### Core Engineering (Highest)
+1. **Profile Hermes system** — measure Pi resource usage (CPU, RAM, disk) during typical load. Baseline metrics.
+2. **Map the full stack** — document every running service, port, dependency. Architecture diagram.
+3. **Identify automation candidates** — what manual workflows exist that could be automated?
 
-### Phase 1: Lab Infrastructure
-5. **Static generation** — migrate to vite-ssg or Astro for crawlable content
-6. **Status page** — Hermes current objective, uptime, days running
-7. **Daily report feed** — markdown-driven, auto-generated from cron output
-8. **robots.txt + sitemap.xml**
+### Experiments (High)
+4. **WhatsApp bot latency benchmark** — measure end-to-end latency (message received → response sent). p50, p95, p99.
+5. **TICMI API caching experiment** — hypothesis: caching reduces response time >50%. Measure before/after.
+6. **Model cost/quality comparison** — does LM Studio local model match GLM for specific tasks? Measure.
 
-### Phase 2: Engineering Depth
-9. **Experiments section** — hypothesis/metrics/results structure per Vision
-10. **Architecture page** — document the Pi cluster, Hermes, WhatsApp bot, VPS
-11. **Engineering notes** — learnings, failure reports (transparency = credibility)
-12. **Metrics dashboard** — tasks completed, PRs, interventions, costs
+### Operations (High)
+7. **Dashboard reliability audit** — false positive rate of watchdog, uptime over 7 days.
+8. **Backup verification** — are WhatsApp session, Hermes config, TabacoID repo properly backed up?
 
-### Phase 3: Growth
-13. **Research library** — adopt/reject/experiment decisions
-14. **Open source projects** — link real repos
-15. **Weekly reviews** — synthesized from daily reports
+### Documentation (Medium)
+9. **ADR-001: Architecture evolution v0.3** — document the shift from website-bot to engineering-lab.
+10. **Engineering notes** — document Pi cluster setup, Tailscale topology, deployment pipeline.
+
+### Website Platform (Medium — only when engineering content exists to publish)
+11. **Status page** — display Hermes metrics (uptime, days running, current objective). Justified NOW because Core Engineering will produce metrics.
+12. **Daily report feed** — render docs/reports/*.md on-site.
+13. **Architecture page** — display the stack map from item 2.
+
+### Technical Debt (Medium)
+14. ~~Static generation~~ — deferred until pages have real content.
+15. ~~Phase 0 cleanup~~ ✓ done
+
+### Exploration (Low)
+16. Paper reading, prototype spikes, new tooling evaluation.

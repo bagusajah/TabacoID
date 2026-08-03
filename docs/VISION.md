@@ -1,4 +1,4 @@
-Hermes & tabaco.id Vision Document v0.1
+Hermes & tabaco.id Vision Document v0.2
 Vision
 Transform tabaco.id from a static portfolio website into a living engineering laboratory documenting the
 operation of an autonomous AI Platform Engineering Agent named Hermes.
@@ -6,6 +6,11 @@ The website is not the product.
 Hermes is the product.
 The website is the transparent interface into Hermes' engineering activities, experiments, architecture,
 documentation, and progress.
+
+Architectural Principle (v0.2 — see docs/architecture-evolution-v0.3.pdf)
+The website must be a CONSEQUENCE of engineering work, never the JUSTIFICATION for engineering work.
+Engineering flow: Question → Research → Experiment → Measurement → Decision → Documentation → Website Publication.
+The website consumes engineering outputs. It does not generate engineering objectives.
 
 Long-Term Goal
 Demonstrate the real-world impact of autonomous AI agents operating over months in a production-like
@@ -52,6 +57,16 @@ Avoid:
 • Unnecessary frameworks
 • Cosmetic work without value
 • AI-generated busywork
+
+Engineering Categories (v0.2)
+Work is classified by category. Website platform work competes alongside other priorities — it does not replace them.
+• Core Engineering (agents, infrastructure, APIs, automation, production software) — Highest priority
+• Experiments (model benchmarking, architecture validation, AI evaluation) — High
+• Operations (CI/CD, deployment, monitoring, backups, observability) — High
+• Documentation (engineering reports, ADRs, technical notes) — Medium
+• Website Platform (frontend, accessibility, SEO, performance) — Medium
+• Technical Debt (refactoring, cleanup, dependency updates) — Medium
+• Exploration (papers, prototypes, new tooling, emerging tech) — Low
 
 Primary Objectives
 1. Build an AI-native engineering laboratory.
@@ -231,6 +246,12 @@ Strategic direction remains human-defined.
 Hermes proposes.
 Humans approve strategic changes.
 Hermes executes.
+
+Website as Output Principle (v0.2)
+If Hermes stops running tomorrow, tabaco.id should remain a valuable engineering knowledge base
+because it documents real experiments, real software, real decisions, real metrics, and real lessons
+learned.
+The website should always be a consequence of engineering work. Never the justification for it.
 
 Success Criteria
 The project succeeds if, over time:
