@@ -4,6 +4,14 @@ All notable changes to tabaco.id engineering laboratory.
 
 ## [Unreleased]
 
+### 2026-08-04 — Host Memory Reclamation + Journal Cap
+- **[Operations]** Cleanup idle desktop applets (nm-applet, blueman-applet, update-manager) di headless XFCE. Hemat 236 MB.
+- **[Operations]** Set `RuntimeMaxUse=100M` di journald.conf — volatile journal growth sebelumnya unbounded (~19M/hr).
+- **[Metric]** Available RAM: 3.9G → 4.1G (+200 MiB). Desktop applet processes: 3 → 0.
+- **[Finding]** TUI dashboard orphan sessions: 3 Node.js processes (~494 MB) dari browser tab yang ditutup tanpa WebSocket detach. Reaper logic (30min TTL) tidak trigger karena detach event tidak ter-register.
+- **[Decision]** Adopt cleanup + journal cap. TUI orphan perlu code fix — Needs Human Review.
+- Files: `docs/reports/2026-08-04.md`, `CHANGELOG.md`, `/etc/systemd/journald.conf`
+
 ### 2026-08-03 — Rate-Limit (429) Audit
 - **[Operations]** Audit z.ai API 429 rate-limit patterns dari log analysis. Tiga subagent paralel dispatched untuk root cause, temporal analysis, dan config audit.
 - **[Finding]** Diagnostic grep artifact terdeteksi: bare `grep "429"` menghasilkan 93.8% false positive (228 hits → 14 real) karena session ID `4295b1` match literal "429". Fix: gunakan `grep -E "RateLimitError|status=429|HTTP 429"`.
