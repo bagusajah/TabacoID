@@ -4,6 +4,16 @@ All notable changes to tabaco.id engineering laboratory.
 
 ## [Unreleased]
 
+### 2026-08-04 — API Token Consumption Audit (7-day)
+- **[Core Engineering]** Analisis lengkap Hermes API usage dari `agent.log` — 2,413 calls, 168.5M input tokens, 660K output tokens dalam 7 hari.
+- **[Finding]** Cache hit rate 93.6% (2,143/2,404 calls ≥90%). Efektif.
+- **[Finding]** glm-5-turbo: p50=4.6s, p95=30.7s, **max=453.3s** (outlier). glm-5.2: p50=5.4s, p95=20.1s, max=60.6s (lebih stabil).
+- **[Finding]** 19% API calls melebihi 100K context window. Session compression triggered sekali (182K→101K tokens).
+- **[Finding]** 52 unique sessions; 13 sessions >5M tokens. Top session: 28M tokens (long-running WhatsApp agent).
+- **[Finding]** Rate limit: hanya 4 events/7 hari (0.17%), semua pada jam 19:00-21:00 WIB (concurrent overlap).
+- **[Decision]** Needs Human Review — data siap, perlu verifikasi billing ZAI dan keputusan model strategy.
+- Files: `docs/reports/2026-08-04.md`, `CHANGELOG.md`
+
 ### 2026-08-04 — Host Memory Reclamation + Journal Cap
 - **[Operations]** Cleanup idle desktop applets (nm-applet, blueman-applet, update-manager) di headless XFCE. Hemat 236 MB.
 - **[Operations]** Set `RuntimeMaxUse=100M` di journald.conf — volatile journal growth sebelumnya unbounded (~19M/hr).
