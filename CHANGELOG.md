@@ -4,6 +4,32 @@ All notable changes to tabaco.id engineering laboratory.
 
 ## [Unreleased]
 
+### 2026-08-05 — RK3588 iowait Forensics
+- **[Core Engineering / Host OS]** Investigasi iowait persisten ~12.3% di Orange Pi RK3588. Cross-check iowait% vs actual disk I/O — NVMe %util hanya 0.1-0.2% saat iowait 12.3%.
+- **[Finding]** Root cause: **kernel 6.1.43-rockchip-rk3588 idle accounting bug**. CPU0 melaporkan 98.83% iowait, sementara CPU1-7 normal (~0.01%). Kolom idle/iowait tertukar di akuntansi scheduler. Ini known issue di Rockchip BSP kernel.
+- **[Finding]** Docker reclaimable: 8.835 GB (76% images unused), 1 dangling image 845 MB.
+- **[Finding]** VPS `host.tabaco.id` NXDOMAIN — DNS resolve gagal saat ini.
+- **[Metric]** `iowait_actual_vs_reported`: 0.18% vs 12.3% (68x overestimate). `docker_reclaimable_GB`: 8.8. `nvme_temp_C`: 36.0 (normal).
+- **[Decision]** Adopt (informasi). iowait artifact, bukan disk bottleneck. Docker prune perlu user approval.
+- Files: `docs/reports/2026-08-05-iowait-forensics.md`
+
+### 2026-08-05 — Hermes Memory Consolidation (morning)
+- **[Hermes Self-Improvement]** Memory system gagal 38x dalam 6 hari (29 Jul–4 Aug). Root cause: cross-file duplication antara MEMORY.md dan USER.md menyebabkan kedua file mendekati/exceed limit.
+- **[Finding]** MEMORY.md: 2207 chars / 2200 limit (**over limit**). 9 entries termasuk 1 resolved debugging fact. USER.md: 1111 chars / 1375 limit (81%). 4 dari 7 entries USER.md duplikat persis dengan MEMORY.md.
+- **[Finding]** Contradiction: USER.md bilang "formal/polite", MEMORY.md bilang "casual". Resolved: MEMORY.md authoritative.
+- **[Action]** Konsolidasi MEMORY.md (2207→1991 chars) dan USER.md (1111→673 chars). Total: 654 chars freed (19.7%).
+- **[Metric]** `memory_errors_per_day`: 6.3 avg → expected ↓50%+. `memory_context_chars`: 3318 → 2664.
+- **[Decision]** Adopt. Monitor 3 hari; jika error tetap >2/day → naikkan `memory_char_limit: 3000`.
+- Files: `~/.hermes/memories/MEMORY.md`, `~/.hermes/memories/USER.md`, `docs/reports/2026-08-05-memory-consolidation.md`
+
+### 2026-08-04 — Website Data Accuracy Audit (evening)
+- **[Website Platform]** Homepage stats stale ("Day 1", "Phase 0") setelah 3 hari engineering work. Diupdate ke Day 3, Phase 1.
+- **[Website Platform]** Sitemap missing `/reports` route — ditambahkan sejak commit `8d968df` tapi tidak masuk sitemap. Fixed.
+- **[Operations]** Afternoon cron failed: HTTP 429 + idle timeout 603s. Consistent dengan rate limit pattern overlap.
+- **[Metric]** `stale_days_homepage`: 2 days. `sitemap_missing_routes`: 1. `bundle_size_gzip`: 70.21 kB (unchanged).
+- **[Decision]** Adopt homepage fix + sitemap update. Two files, data akurat.
+- Files: `src/data/site.ts`, `public/sitemap.xml`, `docs/reports/2026-08-04-evening.md`, `CHANGELOG.md`
+
 ### 2026-08-04 — API Token Consumption Audit (7-day)
 - **[Core Engineering]** Analisis lengkap Hermes API usage dari `agent.log` — 2,413 calls, 168.5M input tokens, 660K output tokens dalam 7 hari.
 - **[Finding]** Cache hit rate 93.6% (2,143/2,404 calls ≥90%). Efektif.

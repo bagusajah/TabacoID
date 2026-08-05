@@ -66,8 +66,8 @@ export const navItems: NavItem[] = [
 export const labStats: Stat[] = [
   {
     label: 'Days running',
-    value: 'Day 1',
-    detail: 'Engineering laboratory initialized 2026-08-02. Phase 0: foundation reframe.',
+    value: 'Day 3',
+    detail: 'Initialized 2026-08-02. 10 reports produced, multiple benchmarks completed.',
   },
   {
     label: 'Operating model',
@@ -76,8 +76,8 @@ export const labStats: Stat[] = [
   },
   {
     label: 'Current phase',
-    value: 'Phase 0 — Foundation',
-    detail: 'Reframing site from static portfolio to live engineering dashboard.',
+    value: 'Phase 1 — Lab Infrastructure',
+    detail: 'Reports feed, SEO basics done. Next: metrics dashboard, status page.',
   },
 ]
 
