@@ -65,11 +65,6 @@ export const navItems: NavItem[] = [
 
 export const labStats: Stat[] = [
   {
-    label: 'Days running',
-    value: 'Day 3',
-    detail: 'Initialized 2026-08-02. 10 reports produced, multiple benchmarks completed.',
-  },
-  {
     label: 'Operating model',
     value: 'Autonomous + human review',
     detail: 'Hermes executes one meaningful task per cycle. Human approves every change before deploy.',
@@ -80,6 +75,13 @@ export const labStats: Stat[] = [
     detail: 'Reports feed, SEO basics done. Next: metrics dashboard, status page.',
   },
 ]
+
+const INIT_DATE = '2026-08-02'
+
+export function computeDaysRunning(now: Date = new Date()): number {
+  const start = new Date(INIT_DATE + 'T00:00:00Z')
+  return Math.max(1, Math.ceil((now.getTime() - start.getTime()) / 86_400_000))
+}
 
 export const capabilities: Capability[] = [
   {

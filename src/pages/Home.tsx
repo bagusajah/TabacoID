@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -5,6 +6,7 @@ import SectionHeading from '@/components/SectionHeading'
 import {
   brandName,
   capabilities,
+  computeDaysRunning,
   experiments,
   labPrinciples,
   labStats,
@@ -12,6 +14,21 @@ import {
 } from '@/data/site'
 
 export default function HomePage() {
+  const [reportCount, setReportCount] = useState<number | null>(null)
+
+  useEffect(() => {
+    const modules = import.meta.glob('/docs/reports/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
+    Promise.all(Object.values(modules).map((fn) => fn())).then((all) => setReportCount(all.length))
+  }, [])
+
+  const daysStat = {
+    label: 'Days running',
+    value: `Day ${computeDaysRunning()}`,
+    detail: reportCount !== null
+      ? `${reportCount} reports produced since 2026-08-02.`
+      : 'Initialized 2026-08-02.',
+  }
+
   return (
     <div className="pb-20">
       <section className="relative overflow-hidden">
@@ -53,7 +70,7 @@ export default function HomePage() {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              {labStats.slice(0, 2).map((stat) => (
+              {[daysStat, labStats[0]].map((stat) => (
                 <article className="panel-soft space-y-2" key={stat.label}>
                   <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
                     {stat.label}
