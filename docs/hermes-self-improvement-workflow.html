@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hermes Self-Improvement Workflow</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: #020617;
+      min-height: 100vh;
+      padding: 2rem;
+      color: white;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header { margin-bottom: 2rem; }
+    .header-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+    .pulse-dot {
+      width: 12px; height: 12px; background: #22d3ee; border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.025em; }
+    .subtitle { color: #94a3b8; font-size: 0.875rem; margin-left: 1.75rem; }
+    .diagram-container {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 1rem; border: 1px solid #1e293b;
+      padding: 1.5rem; overflow-x: auto;
+    }
+    svg { width: 100%; min-width: 900px; display: block; }
+    .cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem; margin-top: 2rem;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 0.75rem; border: 1px solid #1e293b;
+      padding: 1.25rem;
+    }
+    .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .card-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .card-dot.cyan { background: #22d3ee; }
+    .card-dot.emerald { background: #34d399; }
+    .card-dot.violet { background: #a78bfa; }
+    .card-dot.amber { background: #fbbf24; }
+    .card-dot.rose { background: #fb7185; }
+    .card-dot.orange { background: #fb923c; }
+    .card h3 { font-size: 0.875rem; font-weight: 600; }
+    .card ul { list-style: none; color: #94a3b8; font-size: 0.75rem; }
+    .card li { margin-bottom: 0.375rem; }
+    .footer { text-align: center; margin-top: 1.5rem; color: #475569; font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-row">
+        <div class="pulse-dot"></div>
+        <h1>Hermes Self-Improvement Workflow</h1>
+      </div>
+      <p class="subtitle">Autonomous daily engineering cycle — question → research → measure → decide → publish</p>
+    </div>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 1060 780">
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+          </marker>
+          <marker id="arrowhead-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee" />
+          </marker>
+          <marker id="arrowhead-emerald" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#34d399" />
+          </marker>
+          <marker id="arrowhead-rose" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fb7185" />
+          </marker>
+          <marker id="arrowhead-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24" />
+          </marker>
+          <marker id="arrowhead-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fb923c" />
+          </marker>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+
+        <rect width="100%" height="100%" fill="url(#grid)" />
+
+        <!-- ==================== USER (External) ==================== -->
+        <rect x="20" y="340" width="110" height="55" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="75" y="363" fill="white" font-size="11" font-weight="600" text-anchor="middle">User</text>
+        <text x="75" y="380" fill="#94a3b8" font-size="9" text-anchor="middle">WhatsApp / CLI</text>
+
+        <!-- Arrow: User → Hermes -->
+        <line x1="130" y1="367" x2="168" y2="367" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+        <!-- ==================== HERMES AGENT (Core) ==================== -->
+        <rect x="170" y="270" width="150" height="195" rx="8" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.5"/>
+        <text x="245" y="293" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle">HERMES AGENT</text>
+        <text x="245" y="310" fill="white" font-size="9" text-anchor="middle">glm-5-turbo / zai</text>
+
+        <!-- Sub-components -->
+        <rect x="182" y="322" width="126" height="28" rx="4" fill="rgba(6, 78, 59, 0.5)" stroke="#34d399" stroke-width="1"/>
+        <text x="245" y="341" fill="white" font-size="9" font-weight="600" text-anchor="middle">Memory + Skills</text>
+
+        <rect x="182" y="358" width="126" height="28" rx="4" fill="rgba(6, 78, 59, 0.5)" stroke="#34d399" stroke-width="1"/>
+        <text x="245" y="377" fill="white" font-size="9" font-weight="600" text-anchor="middle">Tool Runner</text>
+
+        <rect x="182" y="394" width="126" height="28" rx="4" fill="rgba(6, 78, 59, 0.5)" stroke="#34d399" stroke-width="1"/>
+        <text x="245" y="413" fill="white" font-size="9" font-weight="600" text-anchor="middle">delegate_task</text>
+
+        <rect x="182" y="430" width="126" height="28" rx="4" fill="rgba(6, 78, 59, 0.5)" stroke="#34d399" stroke-width="1"/>
+        <text x="245" y="449" fill="white" font-size="9" font-weight="600" text-anchor="middle">Gateway :3000</text>
+
+        <!-- ==================== CRON SCHEDULER ==================== -->
+        <rect x="370" y="80" width="140" height="165" rx="8" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1.5"/>
+        <text x="440" y="103" fill="#fb923c" font-size="10" font-weight="700" text-anchor="middle">CRON SCHEDULER</text>
+
+        <!-- Cron jobs -->
+        <rect x="382" y="115" width="116" height="24" rx="4" fill="rgba(251, 146, 60, 0.25)" stroke="#fb923c" stroke-width="0.8"/>
+        <text x="440" y="132" fill="white" font-size="8" text-anchor="middle">Morning Infra 07:00</text>
+
+        <rect x="382" y="145" width="116" height="24" rx="4" fill="rgba(251, 146, 60, 0.25)" stroke="#fb923c" stroke-width="0.8"/>
+        <text x="440" y="162" fill="white" font-size="8" text-anchor="middle">Afternoon Core 12:00</text>
+
+        <rect x="382" y="175" width="116" height="24" rx="4" fill="rgba(251, 146, 60, 0.25)" stroke="#fb923c" stroke-width="0.8"/>
+        <text x="440" y="192" fill="white" font-size="8" text-anchor="middle">Evening Web 19:00</text>
+
+        <rect x="382" y="205" width="116" height="24" rx="4" fill="rgba(251, 146, 60, 0.25)" stroke="#fb923c" stroke-width="0.8"/>
+        <text x="440" y="222" fill="white" font-size="8" text-anchor="middle">IDX Insider 19:00</text>
+
+        <!-- Arrow: Cron → Hermes (spawns session) -->
+        <line x1="440" y1="245" x2="440" y2="290" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arrowhead-orange)"/>
+        <path d="M 440 290 Q 440 320 370 340 L 322 340" fill="none" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arrowhead-orange)"/>
+        <text x="455" y="275" fill="#fb923c" font-size="8">spawn session</text>
+
+        <!-- ==================== DAILY CYCLE (Engineering Loop) ==================== -->
+        <rect x="370" y="310" width="200" height="200" rx="8" fill="rgba(8, 51, 68, 0.2)" stroke="#22d3ee" stroke-width="1" stroke-dasharray="6,3"/>
+        <text x="470" y="332" fill="#22d3ee" font-size="10" font-weight="700" text-anchor="middle">DAILY ENGINEERING CYCLE</text>
+        <text x="470" y="346" fill="#94a3b8" font-size="8" text-anchor="middle">tabacoid-daily-improvement skill</text>
+
+        <!-- Steps inside cycle -->
+        <rect x="385" y="358" width="80" height="22" rx="4" fill="rgba(8, 51, 68, 0.5)" stroke="#22d3ee" stroke-width="0.8"/>
+        <text x="425" y="374" fill="white" font-size="8" text-anchor="middle">1. Review</text>
+
+        <rect x="475" y="358" width="80" height="22" rx="4" fill="rgba(8, 51, 68, 0.5)" stroke="#22d3ee" stroke-width="0.8"/>
+        <text x="515" y="374" fill="white" font-size="8" text-anchor="middle">2. Discover</text>
+
+        <rect x="385" y="388" width="80" height="22" rx="4" fill="rgba(8, 51, 68, 0.5)" stroke="#22d3ee" stroke-width="0.8"/>
+        <text x="425" y="404" fill="white" font-size="8" text-anchor="middle">3. Execute</text>
+
+        <rect x="475" y="388" width="80" height="22" rx="4" fill="rgba(8, 51, 68, 0.5)" stroke="#22d3ee" stroke-width="0.8"/>
+        <text x="515" y="404" fill="white" font-size="8" text-anchor="middle">4. Measure</text>
+
+        <rect x="385" y="418" width="80" height="22" rx="4" fill="rgba(8, 51, 68, 0.5)" stroke="#22d3ee" stroke-width="0.8"/>
+        <text x="425" y="434" fill="white" font-size="8" text-anchor="middle">5. Decide</text>
+
+        <rect x="475" y="418" width="80" height="22" rx="4" fill="rgba(8, 51, 68, 0.5)" stroke="#22d3ee" stroke-width="0.8"/>
+        <text x="515" y="434" fill="white" font-size="8" text-anchor="middle">6. Document</text>
+
+        <rect x="385" y="452" width="170" height="22" rx="4" fill="rgba(8, 51, 68, 0.5)" stroke="#22d3ee" stroke-width="0.8"/>
+        <text x="470" y="468" fill="white" font-size="8" text-anchor="middle">7. Publish → Website (IF output)</text>
+
+        <rect x="385" y="482" width="170" height="22" rx="4" fill="rgba(136, 19, 55, 0.3)" stroke="#fb7185" stroke-width="0.8"/>
+        <text x="470" y="498" fill="white" font-size="8" text-anchor="middle">8. Report → User (approval gate)</text>
+
+        <!-- Arrow: Hermes → Cycle -->
+        <line x1="320" y1="370" x2="383" y2="370" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrowhead-cyan)"/>
+
+        <!-- ==================== 7 SYSTEMS UNDER ENGINEERING ==================== -->
+        <rect x="620" y="60" width="420" height="370" rx="10" fill="rgba(120, 53, 15, 0.05)" stroke="#fbbf24" stroke-width="1" stroke-dasharray="8,4"/>
+        <text x="632" y="80" fill="#fbbf24" font-size="10" font-weight="700">7 SYSTEMS UNDER ENGINEERING</text>
+
+        <!-- System 1: TabacoID -->
+        <rect x="640" y="92" width="180" height="42" rx="5" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.2"/>
+        <text x="730" y="110" fill="white" font-size="10" font-weight="600" text-anchor="middle">TabacoID</text>
+        <text x="730" y="125" fill="#94a3b8" font-size="8" text-anchor="middle">React + Vite + TS → Vercel</text>
+
+        <!-- System 2: Webreader -->
+        <rect x="840" y="92" width="180" height="42" rx="5" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.2"/>
+        <text x="930" y="110" fill="white" font-size="10" font-weight="600" text-anchor="middle">Webreader</text>
+        <text x="930" y="125" fill="#94a3b8" font-size="8" text-anchor="middle">TICMI Proxy → Docker</text>
+
+        <!-- System 3: Hermes Infra -->
+        <rect x="640" y="146" width="180" height="42" rx="5" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.2"/>
+        <text x="730" y="164" fill="white" font-size="10" font-weight="600" text-anchor="middle">Hermes Infra</text>
+        <text x="730" y="179" fill="#94a3b8" font-size="8" text-anchor="middle">Dashboard :9119 / GW :3000</text>
+
+        <!-- System 4: Host OS -->
+        <rect x="840" y="146" width="180" height="42" rx="5" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.2"/>
+        <text x="930" y="164" fill="white" font-size="10" font-weight="600" text-anchor="middle">Host OS</text>
+        <text x="930" y="179" fill="#94a3b8" font-size="8" text-anchor="middle">Orange Pi RK3588 / Ubuntu</text>
+
+        <!-- System 5: VPS -->
+        <rect x="640" y="200" width="180" height="42" rx="5" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.2"/>
+        <text x="730" y="218" fill="white" font-size="10" font-weight="600" text-anchor="middle">VPS</text>
+        <text x="730" y="233" fill="#94a3b8" font-size="8" text-anchor="middle">nginx proxy → Pi (Tailscale)</text>
+
+        <!-- System 6: Hermes Self -->
+        <rect x="840" y="200" width="180" height="42" rx="5" fill="rgba(136, 19, 55, 0.3)" stroke="#fb7185" stroke-width="1.2"/>
+        <text x="930" y="218" fill="white" font-size="10" font-weight="600" text-anchor="middle">Hermes Self</text>
+        <text x="930" y="233" fill="#94a3b8" font-size="8" text-anchor="middle">Skills / Memory / Prompts</text>
+
+        <!-- System 7: CICD Console -->
+        <rect x="640" y="254" width="180" height="42" rx="5" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1.2"/>
+        <text x="730" y="272" fill="white" font-size="10" font-weight="600" text-anchor="middle">CICD Release Console</text>
+        <text x="730" y="287" fill="#94a3b8" font-size="8" text-anchor="middle">Node.js + React + Sequelize</text>
+
+        <!-- Arrow: Cycle → Systems -->
+        <line x1="570" y1="400" x2="638" y2="400" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrowhead-cyan)"/>
+        <text x="604" y="394" fill="#94a3b8" font-size="8" text-anchor="middle">picks 1</text>
+
+        <!-- ==================== INFRA (Bottom) ==================== -->
+        <!-- Pi -->
+        <rect x="170" y="540" width="140" height="65" rx="6" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.2"/>
+        <text x="240" y="560" fill="white" font-size="10" font-weight="600" text-anchor="middle">Orange Pi RK3588</text>
+        <text x="240" y="578" fill="#94a3b8" font-size="8" text-anchor="middle">100.72.213.56 (Tailscale)</text>
+        <text x="240" y="592" fill="#34d399" font-size="7" text-anchor="middle">Docker · systemd · Hermes</text>
+
+        <!-- VPS -->
+        <rect x="370" y="540" width="140" height="65" rx="6" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.2"/>
+        <text x="440" y="560" fill="white" font-size="10" font-weight="600" text-anchor="middle">VPS host.tabaco.id</text>
+        <text x="440" y="578" fill="#94a3b8" font-size="8" text-anchor="middle">100.65.68.15 · SSH 2222</text>
+        <text x="440" y="592" fill="#fbbf24" font-size="7" text-anchor="middle">nginx · HestiaCP · TLS</text>
+
+        <!-- Vercel -->
+        <rect x="570" y="540" width="140" height="65" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.2"/>
+        <text x="640" y="560" fill="white" font-size="10" font-weight="600" text-anchor="middle">Vercel (Hobby)</text>
+        <text x="640" y="578" fill="#94a3b8" font-size="8" text-anchor="middle">tabaco.id / www</text>
+        <text x="640" y="592" fill="#94a3b8" font-size="7" text-anchor="middle">auto-deploy on push</text>
+
+        <!-- Webreader Docker -->
+        <rect x="770" y="540" width="140" height="65" rx="6" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.2"/>
+        <text x="840" y="560" fill="white" font-size="10" font-weight="600" text-anchor="middle">Webreader Docker</text>
+        <text x="840" y="578" fill="#94a3b8" font-size="8" text-anchor="middle">api:8787 · nginx:8181</text>
+        <text x="840" y="592" fill="#22d3ee" font-size="7" text-anchor="middle">TICMI Proxy · Playwright</text>
+
+        <!-- Arrows infra -->
+        <line x1="240" y1="465" x2="240" y2="538" stroke="#34d399" stroke-width="1" marker-end="url(#arrowhead-emerald)"/>
+        <line x1="440" y1="510" x2="440" y2="538" stroke="#fbbf24" stroke-width="1" marker-end="url(#arrowhead-amber)"/>
+        <line x1="730" y1="296" x2="730" y2="538" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="745" y="420" fill="#94a3b8" font-size="7">git push</text>
+
+        <!-- Tailscale tunnel -->
+        <line x1="310" y1="572" x2="368" y2="572" stroke="#34d399" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowhead-emerald)"/>
+        <text x="339" y="565" fill="#94a3b8" font-size="7" text-anchor="middle">Tailscale</text>
+
+        <!-- VPS → hermes.tabaco.id proxy -->
+        <path d="M 440 540 L 440 530 Q 440 520 450 520 L 530 520 Q 540 520 540 510 L 540 505" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="555" y="515" fill="#fbbf24" font-size="7">proxy → :9119</text>
+
+        <!-- ==================== FEEDBACK LOOP ==================== -->
+        <rect x="170" y="660" width="770" height="50" rx="8" fill="rgba(136, 19, 55, 0.15)" stroke="#fb7185" stroke-width="1" stroke-dasharray="5,3"/>
+        <text x="555" y="682" fill="#fb7185" font-size="10" font-weight="700" text-anchor="middle">FEEDBACK LOOP</text>
+        <text x="555" y="700" fill="#94a3b8" font-size="8" text-anchor="middle">User reviews → Approves / Rejects / Adjusts → Memory updated → Next cycle improves</text>
+
+        <!-- Arrow: Report → Feedback -->
+        <line x1="470" y1="504" x2="470" y2="520 Q 470 530 470 540 L 470 600 Q 470 640 470 658" fill="none" stroke="#fb7185" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrowhead-rose)"/>
+
+        <!-- Arrow: Feedback → Memory (back to Hermes) -->
+        <path d="M 170 685 Q 140 685 140 500 L 140 367 Q 140 355 170 355" fill="none" stroke="#fb7185" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrowhead-rose)"/>
+        <text x="115" y="520" fill="#fb7185" font-size="8" text-anchor="middle" transform="rotate(-90, 115, 520)">memory update</text>
+
+        <!-- ==================== LEGEND ==================== -->
+        <rect x="850" y="316" width="170" height="130" rx="6" fill="rgba(15, 23, 42, 0.8)" stroke="#1e293b" stroke-width="1"/>
+        <text x="860" y="334" fill="white" font-size="10" font-weight="600">Legend</text>
+
+        <rect x="860" y="344" width="16" height="10" rx="2" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1"/>
+        <text x="882" y="353" fill="#94a3b8" font-size="8">Agent / Backend</text>
+
+        <rect x="860" y="362" width="16" height="10" rx="2" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1"/>
+        <text x="882" y="371" fill="#94a3b8" font-size="8">Frontend / Web</text>
+
+        <rect x="860" y="380" width="16" height="10" rx="2" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1"/>
+        <text x="882" y="389" fill="#94a3b8" font-size="8">Cloud / VPS</text>
+
+        <rect x="860" y="398" width="16" height="10" rx="2" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1"/>
+        <text x="882" y="407" fill="#94a3b8" font-size="8">Database / Console</text>
+
+        <rect x="860" y="416" width="16" height="10" rx="2" fill="rgba(251, 146, 60, 0.3)" stroke="#fb923c" stroke-width="1"/>
+        <text x="882" y="425" fill="#94a3b8" font-size="8">Cron / Scheduler</text>
+
+        <line x1="860" y1="438" x2="876" y2="438" stroke="#fb7185" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="882" y="441" fill="#94a3b8" font-size="8">Feedback / Auth</text>
+      </svg>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot orange"></div>
+          <h3>3x Daily Cron Cycles</h3>
+        </div>
+        <ul>
+          <li>• 07:00 — Infrastructure + Hermes health</li>
+          <li>• 12:00 — Core engineering + experiments</li>
+          <li>• 19:00 — Website + docs + IDX insider</li>
+          <li>• Dashboard watchdog every 5min</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot emerald"></div>
+          <h3>Engineering Principle</h3>
+        </div>
+        <ul>
+          <li>• Question → Research → Measure → Decide</li>
+          <li>• Website = output of engineering, not driver</li>
+          <li>• 1 task per cycle, evidence-based decisions</li>
+          <li>• Human approval gate before push</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot rose"></div>
+          <h3>Self-Improvement Scope</h3>
+        </div>
+        <ul>
+          <li>• Skills, memory, config, prompts</li>
+          <li>• Cannot: change goals, remove safeguards</li>
+          <li>• Feedback loop: user review → adjust → persist</li>
+          <li>• 7 systems covered, not just TabacoID</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer">
+      Hermes Self-Improvement Workflow • Generated 2026-08-05 • Orange Pi RK3588 Homelab
+    </p>
+  </div>
+</body>
+</html>
