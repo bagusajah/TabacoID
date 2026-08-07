@@ -2,17 +2,14 @@ import { Menu, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 
-import { brandName, contactEmail, navItems } from '@/data/site'
+import { brandName, contactEmail, githubUrl, navItems } from '@/data/site'
 
 export default function SiteLayout() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
 
   const activePath = useMemo(() => {
-    if (location.pathname === '/') {
-      return '/'
-    }
-
+    if (location.pathname === '/') return '/'
     return `/${location.pathname.split('/')[1]}`
   }, [location.pathname])
 
@@ -43,9 +40,12 @@ export default function SiteLayout() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link className="button-primary hidden md:inline-flex" to="/contact">
-              Start a project
-            </Link>
+            <a
+              className="hidden rounded-full border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] md:inline-flex"
+              href={githubUrl}
+            >
+              GitHub
+            </a>
             <button
               aria-expanded={mobileOpen}
               aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -76,13 +76,12 @@ export default function SiteLayout() {
                   {item.label}
                 </NavLink>
               ))}
-              <Link
+              <a
                 className="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface)] px-4 py-3 text-sm font-medium text-slate-700"
-                onClick={closeMobileMenu}
-                to="/contact"
+                href={githubUrl}
               >
-                {contactEmail}
-              </Link>
+                GitHub Repository
+              </a>
             </div>
           </div>
         ) : null}
@@ -97,15 +96,15 @@ export default function SiteLayout() {
           <div className="space-y-5">
             <img alt={brandName} className="h-10 w-auto sm:h-12" src="/tabacoid-logo.svg" />
             <h2 className="max-w-md text-2xl font-semibold tracking-tight text-slate-950">
-              An autonomous AI engineering laboratory — research, build, document, experiment.
+              An autonomous AI engineering laboratory.
             </h2>
             <p className="max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
               The transparent interface into Hermes' engineering activities: experiments, architecture,
-              daily reports, and measurable outcomes. Not a portfolio. Not a studio.
+              daily reports, and measurable outcomes.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link className="button-primary" to="/about">
-                Read the vision
+              <Link className="button-primary" to="/reports">
+                Read the reports
               </Link>
               <a className="button-secondary" href={`mailto:${contactEmail}`}>
                 {contactEmail}
@@ -115,7 +114,7 @@ export default function SiteLayout() {
 
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-              Navigation
+              Pages
             </p>
             <div className="grid gap-2 text-sm text-slate-600">
               {navItems.map((item) => (
@@ -123,6 +122,9 @@ export default function SiteLayout() {
                   {item.label}
                 </Link>
               ))}
+              <a className="transition hover:text-slate-950" href={githubUrl}>
+                GitHub
+              </a>
             </div>
           </div>
 
@@ -134,10 +136,7 @@ export default function SiteLayout() {
               {contactEmail}
             </a>
             <p className="text-sm leading-7 text-slate-600">
-              Available for focused redesigns, launch sprints, and ongoing product studio support.
-            </p>
-            <p className="text-sm leading-7 text-slate-500">
-              Async-first collaboration, structured weekly checkpoints, and direct senior execution.
+              Questions about the project or collaboration.
             </p>
           </div>
         </div>

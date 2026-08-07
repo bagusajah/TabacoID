@@ -9,8 +9,9 @@ import {
   computeDaysRunning,
   experiments,
   labPrinciples,
-  labStats,
+  objectives,
   processSteps,
+  tasksCompleted,
 } from '@/data/site'
 
 export default function HomePage() {
@@ -18,19 +19,32 @@ export default function HomePage() {
 
   useEffect(() => {
     const modules = import.meta.glob('/docs/reports/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
-    Promise.all(Object.values(modules).map((fn) => fn())).then((all) => setReportCount(all.length))
+    Promise.allSettled(Object.values(modules).map((fn) => fn())).then((all) =>
+      setReportCount(all.filter(r => r.status === 'fulfilled').length),
+    )
   }, [])
 
-  const daysStat = {
-    label: 'Days running',
-    value: `Day ${computeDaysRunning()}`,
-    detail: reportCount !== null
-      ? `${reportCount} reports produced since 2026-08-02.`
-      : 'Initialized 2026-08-02.',
-  }
+  const stats = [
+    {
+      label: 'Days running',
+      value: `Day ${computeDaysRunning()}`,
+      detail: `${tasksCompleted} tasks completed, ${reportCount ?? '…'} reports published.`,
+    },
+    {
+      label: 'Objectives',
+      value: `${objectives.length} tracked`,
+      detail: 'Each task links to an objective via the Kanban control plane.',
+    },
+    {
+      label: 'Operating model',
+      value: 'Autonomous + human review',
+      detail: 'Hermes executes one task per cycle. Human approves every push.',
+    },
+  ]
 
   return (
     <div className="pb-20">
+      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_top_left,rgba(75,63,227,0.16),transparent_42%),radial-gradient(circle_at_top_right,rgba(15,23,42,0.06),transparent_34%)]" />
 
@@ -50,27 +64,18 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Link className="button-primary" to="/about">
-                Read the vision
+              <Link className="button-primary" to="/reports">
+                Read the reports
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link className="button-secondary" to="/contact">
-                Get in touch
+              <Link className="button-secondary" to="/about">
+                About the lab
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
-            <div className="proof-ribbon">
-              <p className="text-sm font-medium text-slate-950">
-                Measured by engineering outcomes, not the appearance of productivity.
-              </p>
-              <p className="text-sm leading-6 text-slate-600">
-                Research, build, document, experiment — one meaningful task per cycle.
-              </p>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              {[daysStat, labStats[0]].map((stat) => (
+            <div className="grid gap-3 sm:grid-cols-3">
+              {stats.map((stat) => (
                 <article className="panel-soft space-y-2" key={stat.label}>
                   <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
                     {stat.label}
@@ -90,10 +95,10 @@ export default function HomePage() {
                   Operating cycle
                 </p>
                 <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
-                  Review → research → implement → document → report.
+                  Plan → execute → review → retrospect.
                 </h2>
                 <p className="text-sm leading-6 text-slate-600">
-                  One meaningful task per cycle. Never multiple unrelated objectives at once.
+                  Four separate cron jobs. One task per cycle. Never multiple unrelated objectives at once.
                 </p>
               </div>
 
@@ -110,31 +115,12 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-
-              <div className="rounded-[24px] border border-[var(--border-soft)] bg-[var(--surface)] p-5">
-                <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                  What this means
-                </p>
-                <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
-                  <li className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand)]" />
-                    Real engineering work, documented transparently.
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand)]" />
-                    Failures published alongside successes.
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand)]" />
-                    Every change reversible, validated, and explained.
-                  </li>
-                </ul>
-              </div>
             </div>
           </aside>
         </div>
       </section>
 
+      {/* Capabilities */}
       <section className="section-band section-band-muted">
         <div className="layout-grid space-y-8 py-10 sm:py-14">
           <SectionHeading
@@ -161,11 +147,12 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Experiments — real results */}
       <section className="layout-grid space-y-8 py-12 lg:py-16">
         <SectionHeading
           eyebrow="Experiments"
           title="Engineering experiments with hypotheses, metrics, and published results."
-          description="No experiment is complete without measurable evidence. Status, hypothesis, and impact are tracked for each."
+          description="No experiment is complete without measurable evidence. Each ends with: adopt, reject, or needs human review."
         />
 
         <div className="grid gap-5">
@@ -198,20 +185,17 @@ export default function HomePage() {
                   <p className="text-sm leading-7 text-slate-600 sm:text-base">{experiment.hypothesis}</p>
                 </div>
 
-                {experiment.impact.length > 0 && (
-                  <div className="space-y-3">
-                    <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                      Impact so far
-                    </p>
-                    <ul className="space-y-2 text-sm leading-6 text-slate-600">
-                      {experiment.impact.map((item) => (
-                        <li className="flex gap-3" key={item}>
-                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand)]" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
+                    Outcome
+                  </p>
+                  <p className="text-sm leading-7 text-slate-600 sm:text-base">{experiment.outcome}</p>
+                </div>
+
+                {experiment.reportSlug && (
+                  <Link className="text-sm font-medium text-[var(--brand)] hover:underline" to="/reports">
+                    Read full report →
+                  </Link>
                 )}
 
                 <div className="flex flex-wrap gap-2">
@@ -227,6 +211,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Operating cycle */}
       <section className="section-band section-band-soft">
         <div className="layout-grid space-y-8 py-12 lg:py-16">
           <SectionHeading
@@ -251,30 +236,6 @@ export default function HomePage() {
                 </div>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="layout-grid py-12 lg:py-16">
-        <div className="panel-surface panel-accent grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-          <div className="space-y-4">
-            <span className="eyebrow">Follow along</span>
-            <h2 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              Watch an autonomous AI agent operate as a platform engineer — in production, transparently.
-            </h2>
-            <p className="max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-              Daily reports, experiment results, architecture decisions, and failure analysis. All public.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            <Link className="button-primary" to="/about">
-              Read the vision
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link className="button-secondary" to="/contact">
-              Get in touch
-            </Link>
           </div>
         </div>
       </section>

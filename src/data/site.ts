@@ -1,11 +1,9 @@
 import {
   Activity,
-  BookOpen,
   Cpu,
   FlaskConical,
   GitBranch,
   ShieldCheck,
-  Target,
   Terminal,
   TrendingUp,
   type LucideIcon,
@@ -34,7 +32,8 @@ export type Experiment = {
   summary: string
   status: 'active' | 'completed' | 'planned'
   hypothesis: string
-  impact: string[]
+  outcome: string
+  reportSlug?: string
   tags: string[]
 }
 
@@ -44,37 +43,31 @@ export type Principle = {
   icon: LucideIcon
 }
 
-export type ContactMethod = {
+export type SystemEntry = {
+  name: string
+  stack: string
+  role: string
+}
+
+export type Objective = {
+  id: string
   title: string
-  detail: string
-  description: string
-  href?: string
-  icon: LucideIcon
+  success_metric: string
 }
 
 export const brandName = 'TabacoID'
 export const contactEmail = 'bagusmukmin@tabaco.id'
+export const githubUrl = 'https://github.com/bagusajah/TabacoID'
 
 export const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'Reports', path: '/reports' },
-  { label: 'Experiments', path: '/work' },
   { label: 'About', path: '/about' },
-  { label: 'Contact', path: '/contact' },
 ]
 
-export const labStats: Stat[] = [
-  {
-    label: 'Operating model',
-    value: 'Autonomous + human review',
-    detail: 'Hermes executes one meaningful task per cycle. Human approves every change before deploy.',
-  },
-  {
-    label: 'Current phase',
-    value: 'Phase 1 — Lab Infrastructure',
-    detail: 'Reports feed, SEO basics done. Next: metrics dashboard, status page.',
-  },
-]
+// Build-time constants — updated when site is rebuilt
+export const tasksCompleted = 121
+export const objectivesTracked = 5
 
 const INIT_DATE = '2026-08-02'
 
@@ -103,22 +96,43 @@ export const capabilities: Capability[] = [
 
 export const experiments: Experiment[] = [
   {
-    name: 'Daily self-improvement pipeline',
-    category: 'AI agent workflow',
-    summary: 'Hermes runs a daily cycle: review objectives, research, select one task, implement, validate, document, report.',
-    status: 'active',
-    hypothesis: 'An autonomous AI agent can produce measurable engineering value operating once per day within GLM Coding Plan limits.',
-    impact: ['Vision doc extracted and committed', 'Hero reframed to lab identity', 'SEO meta tags added', 'Build verified passing'],
-    tags: ['cron', 'GLM Coding Plan', 'Vercel hobby'],
+    name: 'RK3588 IOWait forensics',
+    category: 'Infrastructure',
+    summary: 'Load average of 4.2 on a 4-core board triggered investigation. Root cause: kernel accounting bug, not real I/O bottleneck.',
+    status: 'completed',
+    hypothesis: 'The reported high iowait is a kernel accounting artifact on RK3588, not a real I/O bottleneck.',
+    outcome: 'Adopt — confirmed kernel bug. IOWait reads ~12% are phantom. No hardware change needed.',
+    reportSlug: '2026-08-07-phantom-load-rk3588',
+    tags: ['rk3588', 'kernel', 'iowait'],
   },
   {
-    name: 'Hermes + opencode integration',
-    category: 'Tooling',
-    summary: 'Hermes orchestrates; opencode executes focused coding tasks inside the repo with project-specific instructions.',
-    status: 'planned',
-    hypothesis: 'Pairing an orchestrator agent with a coding-focused agent produces higher quality diffs than a single agent.',
-    impact: [],
-    tags: ['opencode', 'agent orchestration'],
+    name: 'Gateway memory leak investigation',
+    category: 'Infrastructure',
+    summary: 'Gateway RSS trending upward over days. Profiled with tracemalloc, identified scope stack imbalance in relay runtime.',
+    status: 'completed',
+    hypothesis: 'Gateway memory growth is caused by scope stack corruption in end_turn/close_session race.',
+    outcome: 'Adopt — root cause identified. gc.collect() deployed, monitoring 24-48h for stabilization.',
+    reportSlug: '2026-08-07-gateway-memory-trend',
+    tags: ['gateway', 'memory', 'debugging'],
+  },
+  {
+    name: 'zram vs NVMe swap evaluation',
+    category: 'Operations',
+    summary: 'Tested whether zram-heavy workload should migrate to NVMe swap file. Result: zram is optimal at current load.',
+    status: 'completed',
+    hypothesis: 'zram remains optimal for the current workload profile; NVMe swap migration is unnecessary.',
+    outcome: 'Reject — no migration. Swap utilization 2.9%, compression 2.98x, I/O negligible.',
+    reportSlug: '2026-08-07-swap-zram-vs-nvme',
+    tags: ['zram', 'nvme', 'swap'],
+  },
+  {
+    name: 'v0.4 Task Orchestration',
+    category: 'Architecture',
+    summary: 'Adopted Kanban as engineering control plane. Separated planner, executor, reviewer, and retrospective into distinct cron jobs.',
+    status: 'active',
+    hypothesis: 'A structured Kanban with objectives, experiments, and task traceability improves engineering governance over flat cron+markdown.',
+    outcome: 'In progress — objectives seeded, planner/executor split deployed, report review gate added.',
+    tags: ['kanban', 'cron', 'architecture'],
   },
 ]
 
@@ -126,17 +140,17 @@ export const processSteps: Principle[] = [
   {
     title: 'Review & assess',
     description: 'Check objectives, unfinished work, and project health (build status, open tasks).',
-    icon: Target,
+    icon: Terminal,
   },
   {
     title: 'Research & decide',
     description: 'Answer a specific engineering question. Output: adopt, reject, needs experiment, or human review.',
-    icon: BookOpen,
+    icon: GitBranch,
   },
   {
     title: 'Implement & validate',
     description: 'One task per cycle. Reason, risk, validation, rollback. Build must pass before reporting.',
-    icon: Terminal,
+    icon: Cpu,
   },
 ]
 
@@ -158,26 +172,20 @@ export const labPrinciples: Principle[] = [
   },
 ]
 
-export const contactMethods: ContactMethod[] = [
-  {
-    title: 'Email',
-    detail: contactEmail,
-    description: 'Questions about the project, collaboration, or engineering review.',
-    href: `mailto:${contactEmail}`,
-    icon: BookOpen,
-  },
-  {
-    title: 'GitHub',
-    detail: 'github.com/bagusajah',
-    description: 'Source code, experiments, and daily reports.',
-    href: 'https://github.com/bagusajah/TabacoID',
-    icon: GitBranch,
-  },
-  {
-    title: 'Live site',
-    detail: 'www.tabaco.id',
-    description: 'Deployed on Vercel hobby tier. Auto-deploys on push to main.',
-    href: 'https://www.tabaco.id',
-    icon: Activity,
-  },
+export const systems: SystemEntry[] = [
+  { name: 'TabacoID', stack: 'Vite + React 18 + TS + Tailwind 3', role: 'This website. Vercel hobby deploy.' },
+  { name: 'Hermes Agent', stack: 'Python, GLM-5.2, SQLite Kanban', role: 'The brain. Cron-driven engineering cycles.' },
+  { name: 'Webreader', stack: 'Docker (api:8787, nginx:8181)', role: 'TICMI proxy API for IDX market data.' },
+  { name: 'Dashboard', stack: 'systemd user service, :9119', role: 'Hermes status dashboard with 5-min watchdog.' },
+  { name: 'Host', stack: 'Orange Pi RK3588, 8GB RAM, Ubuntu', role: 'Runs everything. NVMe boot, zram swap.' },
+  { name: 'VPS', stack: 'nginx reverse proxy, TLS', role: 'Routes hermes.tabaco.id → Pi via Tailscale.' },
+  { name: 'CICD Console', stack: 'Node.js + React + Sequelize', role: 'CI/CD release orchestration for OCP/K8s.' },
+]
+
+export const objectives: Objective[] = [
+  { id: 'OBJ-001', title: 'Demonstrate autonomous engineering value', success_metric: 'measurable engineering outcomes over months' },
+  { id: 'OBJ-002', title: 'Maintain production-grade infrastructure', success_metric: 'uptime > 99%, incidents < 2/week' },
+  { id: 'OBJ-003', title: 'Validate AI engineering concepts', success_metric: '≥1 completed experiment/month with evidence' },
+  { id: 'OBJ-004', title: 'Keep operational costs sustainable', success_metric: 'monthly cost < $10, free tier first' },
+  { id: 'OBJ-005', title: 'Continuously improve workflows', success_metric: 'cycle time decreasing, quality improving' },
 ]

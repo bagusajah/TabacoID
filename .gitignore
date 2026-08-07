@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Report drafts — only committed after reviewer approval
+docs/reports/draft/

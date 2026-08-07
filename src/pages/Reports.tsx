@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { FileText, ArrowRight } from 'lucide-react'
-import SectionHeading from '@/components/SectionHeading'
+import { FileText, Filter } from 'lucide-react'
 
 interface Report {
   slug: string
@@ -17,61 +15,46 @@ interface Report {
 // Upgrade to marked/rehype if XSS or complex rendering becomes a real concern.
 function stripAndRender(md: string): string {
   return md
-    // sanitize: strip html tags
     .replace(/<[^>]*>/g, '')
-    // headings
+    .replace(/^---[\s\S]*?---\n?/m, '') // strip YAML frontmatter
     .replace(/^### (.+)$/gm, '<h4 class="text-base font-semibold text-slate-800 mt-5 mb-1">$1</h4>')
     .replace(/^## (.+)$/gm, '<h3 class="text-lg font-semibold text-slate-900 mt-6 mb-2">$1</h3>')
     .replace(/^# (.+)$/gm, '<h2 class="text-xl font-semibold text-slate-950 mt-6 mb-2">$1</h2>')
-    // bold/italic
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // inline code
     .replace(/`([^`]+)`/g, '<code class="rounded bg-slate-100 px-1.5 py-0.5 text-sm font-mono text-slate-700">$1</code>')
-    // code blocks
     .replace(/```[\s\S]*?```/g, (match) => {
       const code = match.replace(/```\w*\n?/, '').replace(/```$/, '')
       return `<pre class="rounded-lg bg-slate-900 p-4 text-sm text-slate-200 overflow-x-auto my-3"><code>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`
     })
-    // tables
     .replace(/^\|(.+)\|$/gm, (match) => {
       const cells = match.split('|').filter(c => c.trim())
       const tag = cells.every(c => /^[\s-:]+$/.test(c)) ? '' : 'tr'
       if (!tag) return ''
       return `<tr>${cells.map(c => `<td class="border-b border-slate-200 px-3 py-1.5 text-sm">${c.trim()}</td>`).join('')}</tr>`
     })
-    // wrap tables
     .replace(/((?:<tr>.*<\/tr>\s*)+)/g, '<table class="w-full my-3">$1</table>')
-    // unordered lists
     .replace(/^- (.+)$/gm, '<li class="ml-4 text-sm leading-7 text-slate-600 list-disc">$1</li>')
-    // ordered lists
     .replace(/^\d+\. (.+)$/gm, '<li class="ml-4 text-sm leading-7 text-slate-600 list-decimal">$1</li>')
-    // paragraphs (lines not already wrapped)
     .replace(/^(?!<[hprtluo])((?!<).+)$/gm, '<p class="text-sm leading-7 text-slate-600 my-1">$1</p>')
-    // horizontal rules
     .replace(/^---$/gm, '<hr class="my-6 border-slate-200" />')
 }
 
 function parseReport(slug: string, raw: string): Report {
   const titleMatch = raw.match(/^# (.+)$/m)
-  const dateMatch = raw.match(/\*\*Date:\*\*\s*(.+)/)
-  const catMatch = raw.match(/\*\*Category:\*\*\s*(.+)/)
-  const decMatch = raw.match(/\*\*Decision:\*\*\s*(.+)/)
+  const dateMatch = raw.match(/\b(\d{4}-\d{2}-\d{2})\b/)
+  const catMatch = raw.match(/Category:\s*(.+)/i)
+  const decMatch = raw.match(/Decision:\s*(.+)/i)
 
-  const title = titleMatch?.[1] || slug
-  const date = dateMatch?.[1] || slug.slice(0, 10)
-  const category = catMatch?.[1] || 'Engineering'
-  const decision = decMatch?.[1] || ''
-
-  // Render full body, skip the header lines
-  const body = raw
-    .replace(/^# .+$/m, '')
-    .replace(/\*\*Date:\*\*.+/, '')
-    .replace(/\*\*Category:\*\*.+/, '')
-    .replace(/\*\*Decision:\*\*.+/, '')
-    .trim()
-
-  return { slug, raw, title, date, category, decision, html: stripAndRender(body) }
+  return {
+    slug,
+    raw,
+    title: titleMatch?.[1]?.trim() || slug,
+    date: dateMatch?.[1] || slug.slice(0, 10),
+    category: catMatch?.[1]?.trim() || 'Engineering',
+    decision: decMatch?.[1]?.trim() || '',
+    html: stripAndRender(raw),
+  }
 }
 
 const decisionColors: Record<string, string> = {
@@ -81,42 +64,62 @@ const decisionColors: Record<string, string> = {
   'needs human review': 'bg-blue-100 text-blue-700',
 }
 
+const categories = ['All', 'Engineering', 'Operations', 'Infrastructure', 'Architecture']
+
 export default function ReportsPage() {
   const [reports, setReports] = useState<Report[]>([])
   const [expanded, setExpanded] = useState<string | null>(null)
+  const [filter, setFilter] = useState('All')
 
   useEffect(() => {
-    // Import all report markdown files via Vite's glob
     const modules = import.meta.glob('/docs/reports/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
 
-    Promise.all(
+    Promise.allSettled(
       Object.entries(modules).map(async ([path, loader]) => {
         const raw = await loader()
         const slug = path.split('/').pop()?.replace('.md', '') || path
         return parseReport(slug, raw)
       })
-    ).then((parsed) => {
-      // Sort newest first by date string
+    ).then((results) => {
+      const parsed = results
+        .filter((r): r is PromiseFulfilledResult<Report> => r.status === 'fulfilled')
+        .map(r => r.value)
       parsed.sort((a, b) => b.date.localeCompare(a.date))
       setReports(parsed)
     })
   }, [])
 
+  const filtered = filter === 'All' ? reports : reports.filter(r => r.category.toLowerCase().includes(filter.toLowerCase()))
+
   return (
     <div className="pb-20">
       <section className="relative overflow-hidden">
         <div className="layout-grid space-y-8 py-16 lg:py-24">
-          <SectionHeading
-            eyebrow="Engineering Reports"
-            title="Daily engineering reports with measurable evidence."
-            description="Every cycle produces a report: question, method, findings, decision, and metrics. No busywork — only real engineering work is documented here."
-          />
+          <div className="max-w-3xl space-y-4">
+            <span className="eyebrow">Engineering Reports</span>
+            <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+              Daily engineering reports with measurable evidence.
+            </h1>
+            <p className="text-lg leading-8 text-slate-600">
+              Every cycle produces a report: question, method, findings, decision, and metrics. No busywork — only real engineering work is documented here.
+            </p>
+          </div>
 
-          <div className="flex flex-wrap gap-3">
-            <Link className="button-primary" to="/">
-              Back to Home
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <Filter className="h-4 w-4 text-slate-400" />
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                  filter === cat
+                    ? 'bg-slate-950 text-white'
+                    : 'border border-[var(--border-soft)] bg-white text-slate-600 hover:border-[var(--border-strong)]'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
           </div>
 
           {reports.length === 0 && (
@@ -124,7 +127,7 @@ export default function ReportsPage() {
           )}
 
           <div className="space-y-4">
-            {reports.map((report) => (
+            {filtered.map((report) => (
               <article key={report.slug} className="panel-surface overflow-hidden">
                 <button
                   className="w-full text-left p-6 cursor-pointer hover:bg-slate-50/50 transition-colors"
@@ -167,7 +170,7 @@ export default function ReportsPage() {
           </div>
 
           <p className="text-sm text-slate-400">
-            {reports.length} reports from docs/reports/
+            {filtered.length} of {reports.length} reports from docs/reports/
           </p>
         </div>
       </section>
