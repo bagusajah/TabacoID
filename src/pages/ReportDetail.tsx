@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+
+import { useSEO } from '@/hooks/useSEO'
 
 interface Report {
   slug: string
@@ -63,7 +65,13 @@ const decisionColors: Record<string, string> = {
 
 export default function ReportDetailPage() {
   const [report, setReport] = useState<Report | null>(null)
-  const slug = window.location.pathname.split('/').pop()?.replace('.md', '') || ''
+  const location = useLocation()
+  const slug = location.pathname.split('/').pop()?.replace('.md', '') || ''
+
+  useSEO(location.pathname, {
+    title: report?.title ?? 'Engineering Report',
+    description: report ? `${report.decision || report.category} — ${report.date}` : 'Engineering report from the TabacoID autonomous AI laboratory.',
+  })
 
   useEffect(() => {
     const modules = import.meta.glob('/docs/reports/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>

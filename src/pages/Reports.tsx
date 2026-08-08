@@ -14,7 +14,7 @@ interface Report {
 
 function extractSummary(md: string): string {
   // Pull the first paragraph from the question/findings section
-  const q = md.match(/^##\s+(?:Engineering Question|Pertanyaan[^\n]*)\s*\n(.+?)(?:\n#|\n##|\Z)/ms)
+  const q = md.match(/^##\s+(?:Engineering Question|Pertanyaan[^\n]*)\s*\n(.+?)(?:\n#|\n##|Z)/ms)
   if (q) return q[1].trim().replace(/\n/g, ' ')
   // Fallback: first non-frontmatter, non-heading paragraph
   const stripped = md.replace(/^---[\s\S]*?---\n?/m, '').replace(/^#+\s.+$/gm, '').trim()

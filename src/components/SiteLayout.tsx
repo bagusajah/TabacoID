@@ -3,10 +3,34 @@ import { useMemo, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 
 import { brandName, contactEmail, githubUrl, navItems } from '@/data/site'
+import { useSEO } from '@/hooks/useSEO'
+
+const routeSEO: Record<string, { title: string; description: string }> = {
+  '/': {
+    title: 'TabacoID',
+    description: 'A living engineering laboratory documenting Hermes, an autonomous AI platform engineering agent operating in production.',
+  },
+  '/reports': {
+    title: 'Engineering Reports',
+    description: 'Daily engineering reports with measurable evidence: question, method, findings, decision, and metrics from autonomous AI cycles.',
+  },
+  '/about': {
+    title: 'About the Lab',
+    description: 'TabacoID is not a portfolio but an engineering laboratory. Seven systems, five objectives, transparent autonomous AI engineering.',
+  },
+}
+
+const fallbackSEO = {
+  title: 'Page Not Found',
+  description: 'This page does not exist. Return to TabacoID, an autonomous AI engineering laboratory.',
+}
 
 export default function SiteLayout() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+
+  const seo = routeSEO[location.pathname] ?? fallbackSEO
+  useSEO(location.pathname, seo)
 
   const activePath = useMemo(() => {
     if (location.pathname === '/') return '/'
