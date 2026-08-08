@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { FileText, Filter } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { ArrowRight, Filter } from 'lucide-react'
 
 interface Report {
   slug: string
@@ -8,36 +9,16 @@ interface Report {
   date: string
   category: string
   decision: string
-  html: string
+  summary: string
 }
 
-// ponytail: zero-dep markdown rendering — browser innerHTML with minimal sanitization.
-// Upgrade to marked/rehype if XSS or complex rendering becomes a real concern.
-function stripAndRender(md: string): string {
-  return md
-    .replace(/<[^>]*>/g, '')
-    .replace(/^---[\s\S]*?---\n?/m, '') // strip YAML frontmatter
-    .replace(/^### (.+)$/gm, '<h4 class="text-base font-semibold text-slate-800 mt-5 mb-1">$1</h4>')
-    .replace(/^## (.+)$/gm, '<h3 class="text-lg font-semibold text-slate-900 mt-6 mb-2">$1</h3>')
-    .replace(/^# (.+)$/gm, '<h2 class="text-xl font-semibold text-slate-950 mt-6 mb-2">$1</h2>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/`([^`]+)`/g, '<code class="rounded bg-slate-100 px-1.5 py-0.5 text-sm font-mono text-slate-700">$1</code>')
-    .replace(/```[\s\S]*?```/g, (match) => {
-      const code = match.replace(/```\w*\n?/, '').replace(/```$/, '')
-      return `<pre class="rounded-lg bg-slate-900 p-4 text-sm text-slate-200 overflow-x-auto my-3"><code>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`
-    })
-    .replace(/^\|(.+)\|$/gm, (match) => {
-      const cells = match.split('|').filter(c => c.trim())
-      const tag = cells.every(c => /^[\s-:]+$/.test(c)) ? '' : 'tr'
-      if (!tag) return ''
-      return `<tr>${cells.map(c => `<td class="border-b border-slate-200 px-3 py-1.5 text-sm">${c.trim()}</td>`).join('')}</tr>`
-    })
-    .replace(/((?:<tr>.*<\/tr>\s*)+)/g, '<table class="w-full my-3">$1</table>')
-    .replace(/^- (.+)$/gm, '<li class="ml-4 text-sm leading-7 text-slate-600 list-disc">$1</li>')
-    .replace(/^\d+\. (.+)$/gm, '<li class="ml-4 text-sm leading-7 text-slate-600 list-decimal">$1</li>')
-    .replace(/^(?!<[hprtluo])((?!<).+)$/gm, '<p class="text-sm leading-7 text-slate-600 my-1">$1</p>')
-    .replace(/^---$/gm, '<hr class="my-6 border-slate-200" />')
+function extractSummary(md: string): string {
+  // Pull the first paragraph from the question/findings section
+  const q = md.match(/^##\s+(?:Engineering Question|Pertanyaan[^\n]*)\s*\n(.+?)(?:\n#|\n##|\Z)/ms)
+  if (q) return q[1].trim().replace(/\n/g, ' ')
+  // Fallback: first non-frontmatter, non-heading paragraph
+  const stripped = md.replace(/^---[\s\S]*?---\n?/m, '').replace(/^#+\s.+$/gm, '').trim()
+  return stripped.split(/\n\n/)[0]?.replace(/\n/g, ' ') || ''
 }
 
 function parseReport(slug: string, raw: string): Report {
@@ -53,7 +34,7 @@ function parseReport(slug: string, raw: string): Report {
     date: dateMatch?.[1] || slug.slice(0, 10),
     category: catMatch?.[1]?.trim() || 'Engineering',
     decision: decMatch?.[1]?.trim() || '',
-    html: stripAndRender(raw),
+    summary: extractSummary(raw),
   }
 }
 
@@ -66,10 +47,12 @@ const decisionColors: Record<string, string> = {
 
 const categories = ['All', 'Engineering', 'Operations', 'Infrastructure', 'Architecture']
 
+const PAGE_SIZE = 10
+
 export default function ReportsPage() {
   const [reports, setReports] = useState<Report[]>([])
-  const [expanded, setExpanded] = useState<string | null>(null)
   const [filter, setFilter] = useState('All')
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     const modules = import.meta.glob('/docs/reports/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
@@ -91,6 +74,10 @@ export default function ReportsPage() {
 
   const filtered = filter === 'All' ? reports : reports.filter(r => r.category.toLowerCase().includes(filter.toLowerCase()))
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
+  const safePage = Math.min(page, totalPages)
+  const paginated = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE)
+
   return (
     <div className="pb-20">
       <section className="relative overflow-hidden">
@@ -110,7 +97,10 @@ export default function ReportsPage() {
             {categories.map(cat => (
               <button
                 key={cat}
-                onClick={() => setFilter(cat)}
+                onClick={() => {
+                  setFilter(cat)
+                  setPage(1)
+                }}
                 className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                   filter === cat
                     ? 'bg-slate-950 text-white'
@@ -127,51 +117,61 @@ export default function ReportsPage() {
           )}
 
           <div className="space-y-4">
-            {filtered.map((report) => (
-              <article key={report.slug} className="panel-surface overflow-hidden">
-                <button
-                  className="w-full text-left p-6 cursor-pointer hover:bg-slate-50/50 transition-colors"
-                  onClick={() => setExpanded(expanded === report.slug ? null : report.slug)}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1 space-y-2">
-                      <h3 className="text-lg font-semibold text-slate-950">{report.title}</h3>
-                      <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
-                        <span className="flex items-center gap-1.5">
-                          <FileText className="h-3.5 w-3.5" />
-                          {report.date}
+            {paginated.map((report) => (
+              <Link
+                key={report.slug}
+                to={`/reports/${report.slug}`}
+                className="block panel-surface p-6 hover:bg-slate-50/50 transition-colors group"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 space-y-2">
+                    <h3 className="text-lg font-semibold text-slate-950">{report.title}</h3>
+                    <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+                      <span>{report.date}</span>
+                      <span className="rounded bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+                        {report.category}
+                      </span>
+                      {report.decision && (
+                        <span className={`rounded px-2 py-0.5 text-xs font-medium ${decisionColors[report.decision.toLowerCase()] || 'bg-slate-100 text-slate-600'}`}>
+                          {report.decision}
                         </span>
-                        <span className="rounded bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
-                          {report.category}
-                        </span>
-                        {report.decision && (
-                          <span className={`rounded px-2 py-0.5 text-xs font-medium ${decisionColors[report.decision.toLowerCase()] || 'bg-slate-100 text-slate-600'}`}>
-                            {report.decision}
-                          </span>
-                        )}
-                      </div>
+                      )}
                     </div>
-                    <span className="text-xs text-slate-400 mt-1">
-                      {expanded === report.slug ? '▲ collapse' : '▼ expand'}
-                    </span>
+                    {report.summary && (
+                      <p className="text-sm leading-6 text-slate-500 line-clamp-2">{report.summary}</p>
+                    )}
                   </div>
-                </button>
-
-                {expanded === report.slug && (
-                  <div className="border-t border-slate-100 px-6 py-6">
-                    <div
-                      className="prose-report"
-                      dangerouslySetInnerHTML={{ __html: report.html }}
-                    />
-                  </div>
-                )}
-              </article>
+                  <ArrowRight className="h-5 w-5 text-slate-300 group-hover:text-slate-600 transition mt-1 flex-shrink-0" />
+                </div>
+              </Link>
             ))}
           </div>
 
           <p className="text-sm text-slate-400">
             {filtered.length} of {reports.length} reports from docs/reports/
           </p>
+
+          {totalPages > 1 && (
+            <nav className="flex items-center justify-between gap-4" aria-label="Pagination">
+              <button
+                onClick={() => setPage(p => Math.max(1, p - 1))}
+                disabled={safePage === 1}
+                className="rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                ← Previous
+              </button>
+              <span className="text-sm text-slate-500">
+                Page {safePage} of {totalPages}
+              </span>
+              <button
+                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                disabled={safePage === totalPages}
+                className="rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                Next →
+              </button>
+            </nav>
+          )}
         </div>
       </section>
     </div>
