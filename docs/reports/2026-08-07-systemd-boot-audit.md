@@ -17,7 +17,7 @@ Boot time Pi adalah 2 menit 7 detik. Service mana yang tidak perlu dan berapa po
 
 | Service | Waktu | Diperlukan? |
 |---------|-------|-------------|
-| `mnt-SHOWS.mount` | **1m 30s** | ❌ NFS server (192.168.0.214) unreachable |
+| `mnt-SHOWS.mount` | **1m 30s** | ❌ NFS server (192.168.x.x) unreachable |
 | `fstrim.service` | **33.2s** | ❌ NVMe handle discard natively |
 | `spamassassin.service` | **12.8s** | ❌ Tidak ada MTA yang pakai SpamAssassin |
 | `lightdm.service` | **1.8s** | ⚠️ Ada desktop session aktif |
@@ -33,10 +33,10 @@ Boot time Pi adalah 2 menit 7 detik. Service mana yang tidak perlu dan berapa po
 ### 2. NFS Mount /mnt/SHOWS — 90s Timeout
 
 ```
-/etc/fstab: 192.168.0.214:/nfs/SHOWS /mnt/SHOWS nfs defaults,_netdev,x-systemd.automount 0 0
+/etc/fstab: 192.168.x.x:/nfs/SHOWS /mnt/SHOWS nfs defaults,_netdev,x-systemd.automount 0 0
 ```
 
-- Server 192.168.0.214 **unreachable** (ping timeout, not in ARP table)
+- Server 192.168.x.x **unreachable** (ping timeout, not in ARP table)
 - Mount sudah di-mask tapi automount unit masih generated dari fstab
 - Setiap access ke `/mnt/SHOWS` triggers 90s mount timeout
 - **Fix:** Hapus baris dari `/etc/fstab` atau comment out

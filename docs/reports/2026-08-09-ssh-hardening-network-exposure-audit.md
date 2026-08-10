@@ -30,9 +30,9 @@ Audit konfigurasi SSH aktif (`sshd -T`), enumerate semua listening port beserta 
 Hanya **1 authorized_keys** entry untuk user orangepi — pubkey auth sudah aktif, jadi password auth tidak necessary.
 
 ### Network Topology:
-- **Local IP:** 192.168.10.236 (behind NAT router 192.168.10.1)
+- **Local IP:** 192.168.x.x (behind NAT router 192.168.x.x)
 - **External IP:** 36.69.183.209 (dynamic ISP, **not** static)
-- **Tailscale:** 100.72.213.56 (twihay) — admin mesh aktif
+- **Tailscale:** 100.x.x.x (device-x) — admin mesh aktif
 - **VPS:** node `host` (202.10.34.149) aktif, reverse-proxy hermes.tabaco.id → Pi
 
 **NAT insight:** Pi berada di belakang router rumah. Port 22 di 0.0.0.0 hanya exposed ke internet **if** router forward port 22. External IP dynamic → kemungkinan tidak di-forward, tapi **belum terverifikasi**.
@@ -90,7 +90,7 @@ Port 3000 (gateway) dan 5037 (ADB host) correctly bound ke 127.0.0.1.
 
 ## Risk
 
-- **Lockout risk:** Jika password auth di-disable tanpa verify key login via Tailscale, bisa lose akses SSH. Mitigasi: test `ssh -i ~/.ssh/id_rsa orangepi@100.72.213.56` dulu.
+- **Lockout risk:** Jika password auth di-disable tanpa verify key login via Tailscale, bisa lose akses SSH. Mitigasi: test `ssh -i ~/.ssh/id_rsa orangepi@100.x.x.x` dulu.
 - **Jellyfin exposure:** Port 8096 di 0.0.0.0 OK untuk LAN usage, tapi kalau router forward = media library exposed ke internet.
 
 ## Lessons Learned

@@ -86,7 +86,7 @@ Active listeners sekarang hanya: SSH (22), Docker proxy (8787, 8181), Hermes das
 - Boot time verification hanya meaningful dengan before/after comparison dari session yang sama
 
 ## Risk
-- **rpc-statd-notify**: tergantung rpcbind. Setelah reboot, nfs-client target mungkin warning tapi tidak fatal (NFS server 192.168.0.214 sudah unreachable).
+- **rpc-statd-notify**: tergantung rpcbind. Setelah reboot, nfs-client target mungkin warning tapi tidak fatal (NFS server 192.168.x.x sudah unreachable).
 - **blueman-mechanism disabled**: jika user plug Bluetooth dongle di future, perlu re-enable. Low risk — tidak ada BT hardware aktif.
 - **Pending reboot-required**: network-manager update butuh reboot untuk apply. Makin lama ditunda, makin risk.
 

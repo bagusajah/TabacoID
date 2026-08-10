@@ -51,7 +51,7 @@ Collected live system metrics via standard Linux tooling (`ps`, `free`, `df`, `s
 
 ### Other services
 - MySQL/MariaDB (:3306)
-- Tailscale (mesh VPN, 5 nodes: twihay, gamingpc, host, mbm-mp, thinkbook14g2itl)
+- Tailscale (mesh VPN, 5 nodes: device-x, device-x, host, device-x, device-x)
 - ADB daemon (:5037)
 - RDP server (:3389)
 - NFS/rpcbind (:111)

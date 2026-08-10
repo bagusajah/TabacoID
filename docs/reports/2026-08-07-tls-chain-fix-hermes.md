@@ -4,7 +4,7 @@
 Bagaimana memperbaiki TLS certificate chain yang tidak lengkap pada hermes.tabaco.id, dan apakah fix-nya survive HestiaCP rebuild?
 
 ## Metode
-1. SSH ke VPS via Tailscale (`ssh -p 2222 root@100.65.68.15`)
+1. SSH ke VPS via Tailscale (`ssh -p 2222 root@vps-internal`)
 2. Identifikasi file cert yang dipakai nginx (`ssl_certificate` directive)
 3. Bandingkan isi file: `.crt` (leaf), `.ca` (intermediate), `.pem` (fullchain)
 4. Fix live config: ganti `.crt` → `.pem`
@@ -49,7 +49,7 @@ Bagaimana memperbaiki TLS certificate chain yang tidak lengkap pada hermes.tabac
 ## Lessons Learned
 - HestiaCP memisahkan cert files: `.crt` (leaf), `.ca` (chain), `.pem` (fullchain). Template harus pakai `%ssl_pem%`, bukan `%ssl_crt%`.
 - Custom proxy template awal (`hestia-tailscale-proxy`) pakai `%ssl_crt%` — ini mewarisi pola dari HestiaCP default yang kurang tepat untuk Let's Encrypt. Template resmi HestiaCP (php-fpm) semua pakai `%ssl_pem%`.
-- SSH ke VPS: `ssh -p 2222 root@100.65.68.15` (port 2222, user root, via Tailscale).
+- SSH ke VPS: `ssh -p 2222 root@vps-internal` (port 2222, user root, via Tailscale).
 
 ## Prioritas Berikutnya
 - [ ] Audit semua subdomain di VPS untuk konsistensi SSL chain

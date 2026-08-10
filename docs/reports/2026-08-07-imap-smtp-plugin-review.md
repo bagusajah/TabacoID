@@ -51,7 +51,7 @@ File `~/.config/imap-smtp-email/.env` berisi 27 key IMAP/SMTP untuk 2 akun Gmail
 ### File berisi plaintext credentials untuk 2 akun Gmail
 
 - `goodtheclawbot@gmail.com` — app password `[REDACTED — credentials shredded]`
-- `bagusmukmin85@gmail.com` — app password `[REDACTED — credentials shredded]`
+- `[REDACTED_EMAIL]` — app password `[REDACTED — credentials shredded]`
 
 Kedua akun ini tidak digunakan oleh sistem apapun yang running. Credentials sudah di-shred dari `.env` file.
 

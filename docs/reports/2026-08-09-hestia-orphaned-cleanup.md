@@ -37,7 +37,7 @@ Setiap 2 menit, cron trigger → `sudo /usr/local/hestia/bin/v-update-sys-queue 
 - 0 CRON session entries untuk hestiaweb sejak 02:20
 - Cron cycle 02:22 seharusnya trigger error → confirmed silent
 
-**Kept:** User `hestiaweb` tidak di-remove karena masih own 2 backup files di `/backup/` (bagusmukmin + twihay, total 2.5MB, tanggal Jul 18). Removing user akan orphan files tersebut.
+**Kept:** User `hestiaweb` tidak di-remove karena masih own 2 backup files di `/backup/` (bagusmukmin + device-x, total 2.5MB, tanggal Jul 18). Removing user akan orphan files tersebut.
 
 ## Decision
 **Adopt.** Fix berhasil, error rate 607/24h → 0. Backup disimpan di `.hermes/backups/hestia-cleanup-2026-08-09/` untuk rollback.

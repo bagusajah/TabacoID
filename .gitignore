@@ -25,3 +25,5 @@ dist-ssr
 
 # Report drafts — only committed after reviewer approval
 docs/reports/draft/
+# Hermes internal (backups, plans, cache — not for public)
+.hermes/

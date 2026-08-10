@@ -44,7 +44,7 @@ Apa status hardening SSH di host Orange Pi setelah security audit 2026-08-09 men
 | `www.tabaco.id` | ✅ | 216.198.79.1 | Vercel — HTTP 200, 0.48s |
 | `hermes.tabaco.id` | ✅ | 202.10.34.149 | VPS — HTTP 302, 0.14s |
 | `mail.tabaco.id` | ✅ | 202.10.34.149 | VPS MX |
-| `host.tabaco.id` | ❌ | NXDOMAIN | Expected — VPS akses via Tailscale (100.65.68.15), bukan public DNS |
+| `host.tabaco.id` | ❌ | NXDOMAIN | Expected — VPS akses via Tailscale (100.x.x.x), bukan public DNS |
 | `api.tabaco.id` | ❌ | NXDOMAIN | Expected — tidak ada public API |
 | `grafana.tabaco.id` | ❌ | NXDOMAIN | Expected — tidak digunakan |
 | `docs.tabaco.id` | ❌ | NXDOMAIN | Expected — docs ada di www |
@@ -52,7 +52,7 @@ Apa status hardening SSH di host Orange Pi setelah security audit 2026-08-09 men
 | `git.tabaco.id` | ❌ | NXDOMAIN | Expected — tidak ada git server |
 | `ci.tabaco.id` | ❌ | NXDOMAIN | Expected — tidak ada CI publik |
 
-**Kesimpulan DNS:** Hanya 4 subdomain yang aktif (tabaco.id, www, hermes, mail). NXDOMAIN lainnya expected — tidak ada regresi. VPS (`host`) reachable via Tailscale IP `100.65.68.15` (HTTP 200, 0.018s).
+**Kesimpulan DNS:** Hanya 4 subdomain yang aktif (tabaco.id, www, hermes, mail). NXDOMAIN lainnya expected — tidak ada regresi. VPS (`host`) reachable via Tailscale IP `100.x.x.x` (HTTP 200, 0.018s).
 
 ### 3. TLS Chain — FIXED ✅
 

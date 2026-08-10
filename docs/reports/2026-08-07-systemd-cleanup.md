@@ -20,7 +20,7 @@ Apa systemd units yang tidak relevan di Orange Pi RK3588 ini, dan berapa dampakn
 | Boot time (userspace) | **2 min 3.8s** |
 | Boot blocker #1 | mnt-Movies.mount: **1m 30s** (NFS timeout) |
 | Boot blocker #2 | mnt-SHOWS.mount: **1m 30s** (NFS timeout) |
-| NFS server (192.168.0.214) | **Unreachable** (ping timeout) |
+| NFS server (192.168.x.x) | **Unreachable** (ping timeout) |
 | SpamAssassin RSS | **66 MB** (running tapi tidak ada mail server) |
 | Memory available | 4028 MB |
 
