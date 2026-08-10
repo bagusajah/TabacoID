@@ -67,7 +67,7 @@ export const navItems: NavItem[] = [
 ]
 
 // Build-time constants — updated when site is rebuilt
-export const tasksCompleted = 121
+export const tasksCompleted = 177
 export const objectivesTracked = 5
 
 const INIT_DATE = '2026-08-02'

@@ -4,7 +4,7 @@ import SectionHeading from '@/components/SectionHeading'
 // The four cron jobs that form the v0.4 cycle
 const cycle = [
   { phase: 'Planner', schedule: '2× daily', role: 'Scan system signals → create rich tasks → link to objectives', color: '#6366f1' },
-  { phase: 'Executor', schedule: 'every 30m', role: 'Claim ready task → execute → measure → draft report → complete/block', color: '#06b6d4' },
+  { phase: 'Executor', schedule: 'hourly (off-peak)', role: 'Claim ready task → execute → measure → draft report → complete/block', color: '#06b6d4' },
   { phase: 'Reviewer', schedule: 'daily', role: 'Validate draft reports → promote to published or send feedback', color: '#10b981' },
   { phase: 'Retrospective', schedule: 'weekly', role: 'Synthesize trends → flag bad decisions → create follow-ups', color: '#f59e0b' },
 ]
