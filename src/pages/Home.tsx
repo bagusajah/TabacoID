@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 import SectionHeading from '@/components/SectionHeading'
 import {
-  brandName,
   capabilities,
   computeDaysRunning,
   experiments,
@@ -13,9 +12,11 @@ import {
   processSteps,
   tasksCompleted,
 } from '@/data/site'
+import { useT } from '@/i18n'
 
 export default function HomePage() {
   const [reportCount, setReportCount] = useState<number | null>(null)
+  const t = useT()
 
   useEffect(() => {
     const modules = import.meta.glob('/docs/reports/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
@@ -26,19 +27,19 @@ export default function HomePage() {
 
   const stats = [
     {
-      label: 'Days running',
+      label: t['stat.days.label'],
       value: `Day ${computeDaysRunning()}`,
-      detail: `${tasksCompleted} tasks completed, ${reportCount ?? '…'} reports published.`,
+      detail: t['stat.days.detail'](tasksCompleted, reportCount ?? '…'),
     },
     {
-      label: 'Objectives',
+      label: t['stat.objectives.label'],
       value: `${objectives.length} tracked`,
-      detail: 'Each task links to an objective via the Kanban control plane.',
+      detail: t['stat.objectives.detail'],
     },
     {
-      label: 'Operating model',
-      value: 'Autonomous + human review',
-      detail: 'Hermes executes one task per cycle. Human approves every push.',
+      label: t['stat.model.label'],
+      value: t['stat.model.value'],
+      detail: t['stat.model.detail'],
     },
   ]
 
@@ -50,26 +51,24 @@ export default function HomePage() {
 
         <div className="layout-grid grid gap-8 py-16 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:py-24">
           <div className="space-y-7">
-            <span className="eyebrow">Autonomous AI engineering laboratory</span>
+            <span className="eyebrow">{t['hero.eyebrow']}</span>
 
             <div className="space-y-5">
               <h1 className="max-w-5xl text-balance text-5xl font-semibold tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
-                {brandName} is a living engineering lab documenting Hermes, an autonomous AI platform engineering agent.
+                {t['hero.title']}
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-slate-600">
-                This site is the transparent interface into Hermes' engineering activities — experiments,
-                architecture, daily reports, and measurable outcomes. Not a portfolio. Not a studio. An
-                engineering laboratory in production.
+                {t['hero.subtitle']}
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3">
               <Link className="button-primary" to="/reports">
-                Read the reports
+                {t['hero.cta.reports']}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link className="button-secondary" to="/about">
-                About the lab
+                {t['hero.cta.about']}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -92,13 +91,13 @@ export default function HomePage() {
             <div className="relative space-y-8">
               <div className="space-y-3">
                 <p className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
-                  Operating cycle
+                  {t['cycle.eyebrow']}
                 </p>
                 <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
-                  Plan → execute → review → retrospect.
+                  {t['cycle.title']}
                 </h2>
                 <p className="text-sm leading-6 text-slate-600">
-                  Four separate cron jobs. One task per cycle. Never multiple unrelated objectives at once.
+                  {t['cycle.desc']}
                 </p>
               </div>
 
@@ -124,9 +123,9 @@ export default function HomePage() {
       <section className="section-band section-band-muted">
         <div className="layout-grid space-y-8 py-10 sm:py-14">
           <SectionHeading
-            eyebrow="Capabilities"
-            title="What the laboratory actually does."
-            description="Hermes operates as a platform engineer: research, implementation, documentation, and experiments — producing measurable engineering value."
+            eyebrow={t['cap.eyebrow']}
+            title={t['cap.title']}
+            description={t['cap.desc']}
           />
 
           <div className="grid gap-5 lg:grid-cols-3">
@@ -150,9 +149,9 @@ export default function HomePage() {
       {/* Experiments — real results */}
       <section className="layout-grid space-y-8 py-12 lg:py-16">
         <SectionHeading
-          eyebrow="Experiments"
-          title="Engineering experiments with hypotheses, metrics, and published results."
-          description="No experiment is complete without measurable evidence. Each ends with: adopt, reject, or needs human review."
+          eyebrow={t['exp.eyebrow']}
+          title={t['exp.title']}
+          description={t['exp.desc']}
         />
 
         <div className="grid gap-5">
@@ -180,21 +179,21 @@ export default function HomePage() {
               <div className="space-y-6">
                 <div className="space-y-2">
                   <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                    Hypothesis
+                    {t['exp.hypothesis']}
                   </p>
                   <p className="text-sm leading-7 text-slate-600 sm:text-base">{experiment.hypothesis}</p>
                 </div>
 
                 <div className="space-y-2">
                   <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                    Outcome
+                    {t['exp.outcome']}
                   </p>
                   <p className="text-sm leading-7 text-slate-600 sm:text-base">{experiment.outcome}</p>
                 </div>
 
                 {experiment.reportSlug && (
                   <Link className="text-sm font-medium text-[var(--brand)] hover:underline" to="/reports">
-                    Read full report →
+                    {t['exp.readReport']}
                   </Link>
                 )}
 
@@ -215,9 +214,9 @@ export default function HomePage() {
       <section className="section-band section-band-soft">
         <div className="layout-grid space-y-8 py-12 lg:py-16">
           <SectionHeading
-            eyebrow="Operating cycle"
-            title="How Hermes works each cycle."
-            description="A disciplined loop: review, research, implement, document, report. Never multiple unrelated objectives in a single cycle."
+            eyebrow={t['proc.eyebrow']}
+            title={t['proc.title']}
+            description={t['proc.desc']}
             align="center"
           />
 

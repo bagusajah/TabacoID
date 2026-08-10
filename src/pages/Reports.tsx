@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Filter } from 'lucide-react'
 
+import { useT } from '@/i18n'
+
 interface Report {
   slug: string
   raw: string
@@ -53,6 +55,7 @@ export default function ReportsPage() {
   const [reports, setReports] = useState<Report[]>([])
   const [filter, setFilter] = useState('All')
   const [page, setPage] = useState(1)
+  const t = useT()
 
   useEffect(() => {
     const modules = import.meta.glob('/docs/reports/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
@@ -83,12 +86,12 @@ export default function ReportsPage() {
       <section className="relative overflow-hidden">
         <div className="layout-grid space-y-8 py-16 lg:py-24">
           <div className="max-w-3xl space-y-4">
-            <span className="eyebrow">Engineering Reports</span>
+            <span className="eyebrow">{t['rep.eyebrow']}</span>
             <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
-              Daily engineering reports with measurable evidence.
+              {t['rep.title']}
             </h1>
             <p className="text-lg leading-8 text-slate-600">
-              Every cycle produces a report: question, method, findings, decision, and metrics. No busywork — only real engineering work is documented here.
+              {t['rep.desc']}
             </p>
           </div>
 
@@ -113,7 +116,7 @@ export default function ReportsPage() {
           </div>
 
           {reports.length === 0 && (
-            <p className="text-slate-500">Loading reports...</p>
+            <p className="text-slate-500">{t['rep.loading']}</p>
           )}
 
           <div className="space-y-4">
@@ -148,7 +151,7 @@ export default function ReportsPage() {
           </div>
 
           <p className="text-sm text-slate-400">
-            {filtered.length} of {reports.length} reports from docs/reports/
+            {t['rep.count'](filtered.length, reports.length)}
           </p>
 
           {totalPages > 1 && (
@@ -158,17 +161,17 @@ export default function ReportsPage() {
                 disabled={safePage === 1}
                 className="rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                ← Previous
+                {t['rep.prev']}
               </button>
               <span className="text-sm text-slate-500">
-                Page {safePage} of {totalPages}
+                {t['rep.page'](safePage, totalPages)}
               </span>
               <button
                 onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                 disabled={safePage === totalPages}
                 className="rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Next →
+                {t['rep.next']}
               </button>
             </nav>
           )}

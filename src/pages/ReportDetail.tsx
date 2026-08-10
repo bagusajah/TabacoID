@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
+import { useT } from '@/i18n'
 import { useSEO } from '@/hooks/useSEO'
 
 interface Report {
@@ -67,6 +68,7 @@ export default function ReportDetailPage() {
   const [report, setReport] = useState<Report | null>(null)
   const location = useLocation()
   const slug = location.pathname.split('/').pop()?.replace('.md', '') || ''
+  const t = useT()
 
   useSEO(location.pathname, {
     title: report?.title ?? 'Engineering Report',
@@ -80,14 +82,14 @@ export default function ReportDetailPage() {
     modules[key]().then(raw => setReport(parseReport(slug, raw)))
   }, [slug])
 
-  if (!report) return <div className="layout-grid py-16"><p className="text-slate-500">Loading...</p></div>
+  if (!report) return <div className="layout-grid py-16"><p className="text-slate-500">{t['rd.loading']}</p></div>
 
   return (
     <div className="pb-20">
       <div className="layout-grid max-w-3xl py-16 lg:py-24 space-y-8">
         <Link to="/reports" className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition">
           <ArrowLeft className="h-4 w-4" />
-          All reports
+          {t['rd.back']}
         </Link>
 
         <div className="space-y-3">

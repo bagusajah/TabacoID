@@ -2,35 +2,27 @@ import { Menu, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 
+import LanguageToggle from '@/components/LanguageToggle'
 import { brandName, contactEmail, githubUrl, navItems } from '@/data/site'
+import { useT } from '@/i18n'
 import { useSEO } from '@/hooks/useSEO'
-
-const routeSEO: Record<string, { title: string; description: string }> = {
-  '/': {
-    title: 'TabacoID',
-    description: 'A living engineering laboratory documenting Hermes, an autonomous AI platform engineering agent operating in production.',
-  },
-  '/reports': {
-    title: 'Engineering Reports',
-    description: 'Daily engineering reports with measurable evidence: question, method, findings, decision, and metrics from autonomous AI cycles.',
-  },
-  '/about': {
-    title: 'About the Lab',
-    description: 'TabacoID is not a portfolio but an engineering laboratory. Seven systems, five objectives, transparent autonomous AI engineering.',
-  },
-}
-
-const fallbackSEO = {
-  title: 'Page Not Found',
-  description: 'This page does not exist. Return to TabacoID, an autonomous AI engineering laboratory.',
-}
 
 export default function SiteLayout() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+  const t = useT()
 
-  const seo = routeSEO[location.pathname] ?? fallbackSEO
-  useSEO(location.pathname, seo)
+  const seoData = useMemo(() => {
+    if (location.pathname === '/') return { title: 'TabacoID', description: t['seo.home.desc'] }
+    if (location.pathname.startsWith('/reports/') && location.pathname !== '/reports') {
+      return { title: 'Engineering Report', description: t['seo.reports.desc'] }
+    }
+    if (location.pathname === '/reports') return { title: t['rep.eyebrow'], description: t['seo.reports.desc'] }
+    if (location.pathname === '/about') return { title: t['about.eyebrow'], description: t['seo.about.desc'] }
+    return { title: 'Page Not Found', description: t['seo.about.desc'] }
+  }, [location.pathname, t])
+
+  useSEO(location.pathname, seoData)
 
   const activePath = useMemo(() => {
     if (location.pathname === '/') return '/'
@@ -58,12 +50,13 @@ export default function SiteLayout() {
                 }
                 to={item.path}
               >
-                {item.label}
+                {t[`nav.${item.label.toLowerCase()}`]}
               </NavLink>
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <LanguageToggle />
             <a
               className="hidden rounded-full border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] md:inline-flex"
               href={githubUrl}
@@ -97,7 +90,7 @@ export default function SiteLayout() {
                   onClick={closeMobileMenu}
                   to={item.path}
                 >
-                  {item.label}
+                  {t[`nav.${item.label.toLowerCase()}`]}
                 </NavLink>
               ))}
               <a
@@ -120,15 +113,14 @@ export default function SiteLayout() {
           <div className="space-y-5">
             <img alt={brandName} className="h-10 w-auto sm:h-12" src="/tabacoid-logo.svg" />
             <h2 className="max-w-md text-2xl font-semibold tracking-tight text-slate-950">
-              An autonomous AI engineering laboratory.
+              {t['footer.tagline']}
             </h2>
             <p className="max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
-              The transparent interface into Hermes' engineering activities: experiments, architecture,
-              daily reports, and measurable outcomes.
+              {t['footer.desc']}
             </p>
             <div className="flex flex-wrap gap-3">
               <Link className="button-primary" to="/reports">
-                Read the reports
+                {t['footer.readReports']}
               </Link>
               <a className="button-secondary" href={`mailto:${contactEmail}`}>
                 {contactEmail}
@@ -138,12 +130,12 @@ export default function SiteLayout() {
 
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-              Pages
+              {t['footer.pages']}
             </p>
             <div className="grid gap-2 text-sm text-slate-600">
               {navItems.map((item) => (
                 <Link className="transition hover:text-slate-950" key={item.path} to={item.path}>
-                  {item.label}
+                  {t[`nav.${item.label.toLowerCase()}`]}
                 </Link>
               ))}
               <a className="transition hover:text-slate-950" href={githubUrl}>
@@ -154,19 +146,19 @@ export default function SiteLayout() {
 
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-              Contact
+              {t['footer.contact']}
             </p>
             <a className="inline-flex text-sm text-slate-600 transition hover:text-slate-950" href={`mailto:${contactEmail}`}>
               {contactEmail}
             </a>
             <p className="text-sm leading-7 text-slate-600">
-              Questions about the project or collaboration.
+              {t['footer.contactDesc']}
             </p>
           </div>
         </div>
 
         <div className="layout-grid border-t border-[var(--border-soft)] py-5 text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} {brandName}. All rights reserved.</p>
+          <p>{t['footer.copyright'](new Date().getFullYear(), brandName)}</p>
         </div>
       </footer>
     </div>

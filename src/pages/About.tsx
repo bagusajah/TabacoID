@@ -2,14 +2,16 @@ import { Link } from 'react-router-dom'
 
 import SectionHeading from '@/components/SectionHeading'
 import {
-  brandName,
   githubUrl,
   labPrinciples,
   objectives,
   systems,
 } from '@/data/site'
+import { useT } from '@/i18n'
 
 export default function AboutPage() {
+  const t = useT()
+
   return (
     <div className="pb-20">
       <section className="relative overflow-hidden pt-10">
@@ -17,22 +19,22 @@ export default function AboutPage() {
 
         <div className="layout-grid gap-8 py-14 lg:py-20">
           <div className="space-y-6">
-            <span className="eyebrow">About</span>
+            <span className="eyebrow">{t['about.eyebrow']}</span>
             <h1 className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              Not a portfolio. An engineering laboratory documenting autonomous AI in production.
+              {t['about.title']}
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              {brandName} is a living engineering laboratory documenting Hermes, an autonomous AI platform engineering agent. The website is the transparent interface into its activities.
+              {t['about.subtitle']}
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a
                 className="button-primary"
                 href="https://github.com/bagusajah/TabacoID/blob/main/docs/VISION.md"
               >
-                Read the vision doc
+                {t['about.cta.vision']}
               </a>
               <Link className="button-secondary" to="/reports">
-                Read the reports
+                {t['about.cta.reports']}
               </Link>
             </div>
           </div>
@@ -44,18 +46,18 @@ export default function AboutPage() {
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(280px,0.9fr)]">
           <article className="panel-surface">
             <SectionHeading
-              eyebrow="The thesis"
-              title="The website is not the product. Hermes is the product."
-              description="This site exists to demonstrate the real-world impact of an autonomous AI agent operating over months in a production-like engineering environment. Instead of asking 'can AI write code?', the project asks 'can it continuously operate as a platform engineer while producing measurable value?'"
+              eyebrow={t['thesis.eyebrow']}
+              title={t['thesis.title']}
+              description={t['thesis.desc']}
             />
           </article>
 
           <article className="panel-soft space-y-4">
             <p className="text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-              Success metric
+              {t['thesis.metric.label']}
             </p>
             <p className="text-lg leading-8 text-slate-700">
-              Measurable engineering outcomes — not commits, file counts, or the appearance of productivity.
+              {t['thesis.metric.value']}
             </p>
           </article>
         </div>
@@ -64,9 +66,9 @@ export default function AboutPage() {
       {/* Systems */}
       <section className="layout-grid space-y-8 py-12 lg:py-16">
         <SectionHeading
-          eyebrow="Systems"
-          title="Seven systems under Hermes engineering."
-          description="Hermes operates across the full stack — from hardware to application. Each system is maintained, monitored, and improved through the engineering cycle."
+          eyebrow={t['sys.eyebrow']}
+          title={t['sys.title']}
+          description={t['sys.desc']}
         />
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -84,9 +86,9 @@ export default function AboutPage() {
       <section className="section-band section-band-muted">
         <div className="layout-grid space-y-8 py-12 lg:py-16">
           <SectionHeading
-            eyebrow="Objectives"
-            title="Five mission-level objectives tracked on the Kanban board."
-            description="Every task links to one of these objectives. Progress is measured by completed engineering outcomes, not activity."
+            eyebrow={t['obj.eyebrow']}
+            title={t['obj.title']}
+            description={t['obj.desc']}
           />
 
           <div className="grid gap-4">
@@ -97,7 +99,7 @@ export default function AboutPage() {
                 </span>
                 <div>
                   <h3 className="text-lg font-semibold text-slate-950">{obj.title}</h3>
-                  <p className="text-sm text-slate-500">Metric: {obj.success_metric}</p>
+                  <p className="text-sm text-slate-500">{t['obj.metric']}: {obj.success_metric}</p>
                 </div>
               </article>
             ))}
@@ -108,9 +110,9 @@ export default function AboutPage() {
       {/* Principles */}
       <section className="layout-grid space-y-8 py-12 lg:py-16">
         <SectionHeading
-          eyebrow="Principles"
-          title="The philosophy is intentionally restrained."
-          description="Prefer simplicity, reliability, automation, documentation. Avoid feature bloat, premature optimization, unnecessary frameworks, and AI-generated busywork."
+          eyebrow={t['prin.eyebrow']}
+          title={t['prin.title']}
+          description={t['prin.desc']}
         />
 
         <div className="grid gap-5 md:grid-cols-3">
@@ -131,12 +133,12 @@ export default function AboutPage() {
       {/* Source */}
       <section className="layout-grid py-12">
         <div className="panel-surface panel-accent flex flex-col items-start gap-4">
-          <span className="eyebrow">Open source</span>
+          <span className="eyebrow">{t['src.eyebrow']}</span>
           <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
-            Every report, every experiment, every failure — public on GitHub.
+            {t['src.title']}
           </h2>
           <a className="button-primary" href={githubUrl}>
-            View the repository
+            {t['src.cta']}
           </a>
         </div>
       </section>
