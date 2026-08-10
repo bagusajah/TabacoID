@@ -62,6 +62,7 @@ export const githubUrl = 'https://github.com/bagusajah/TabacoID'
 export const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'Reports', path: '/reports' },
+  { label: 'Workflow', path: '/workflow' },
   { label: 'About', path: '/about' },
 ]
 
