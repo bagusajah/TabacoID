@@ -3,6 +3,7 @@ task_id: t_b72ab31c
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Audit ZRAM Compression + NVMe SMART Health

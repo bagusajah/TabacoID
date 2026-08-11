@@ -3,6 +3,7 @@ task_id: t_c62994af
 objective: OBJ-005
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Fix: Executor Guard-Recognition Escape Pattern (Prompt Engineering)

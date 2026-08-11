@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Daily Report 2026-08-07 — Root Cause: Phantom Load Average pada RK3588
 
 ## Pertanyaan Engineering

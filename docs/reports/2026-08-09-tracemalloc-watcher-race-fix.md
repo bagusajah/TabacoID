@@ -3,6 +3,7 @@ task_id: t_ac75c250
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: approved
 ---
 
 # Fix Tracemalloc Watcher Race: Spawns Before _running=True

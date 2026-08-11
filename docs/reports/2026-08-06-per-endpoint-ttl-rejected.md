@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Daily Report — Per-Endpoint TTL Rejected
 
 Tanggal: 2026-08-06

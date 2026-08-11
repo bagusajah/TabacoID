@@ -3,6 +3,7 @@ task_id: t_5a1b7ff3
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Audit SSH Hardening Posture + Network Exposure

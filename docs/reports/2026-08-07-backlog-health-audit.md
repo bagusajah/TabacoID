@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Laporan Harian 2026-08-07 — Kanban Backlog Health Audit
 
 ## Pertanyaan Engineering

@@ -3,6 +3,7 @@ task_id: t_5b1a0e27
 objective: OBJ-002
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # Disable adbd:5555 Exposure di 0.0.0.0 (Security Follow-up)

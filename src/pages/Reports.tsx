@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Filter } from 'lucide-react'
 
-import { useT } from '@/i18n'
+import { useT, useLang } from '@/i18n'
 
 interface Report {
   slug: string
@@ -12,6 +12,7 @@ interface Report {
   category: string
   decision: string
   summary: string
+  humanReview: string
 }
 
 function extractSummary(md: string): string {
@@ -28,6 +29,7 @@ function parseReport(slug: string, raw: string): Report {
   const dateMatch = raw.match(/\b(\d{4}-\d{2}-\d{2})\b/)
   const catMatch = raw.match(/Category:\s*(.+)/i)
   const decMatch = raw.match(/Decision:\s*(.+)/i)
+  const reviewMatch = raw.match(/human_review:\s*(\S+)/)
 
   return {
     slug,
@@ -37,6 +39,7 @@ function parseReport(slug: string, raw: string): Report {
     category: catMatch?.[1]?.trim() || 'Engineering',
     decision: decMatch?.[1]?.trim() || '',
     summary: extractSummary(raw),
+    humanReview: reviewMatch?.[1]?.trim() || 'autonomous',
   }
 }
 
@@ -45,6 +48,12 @@ const decisionColors: Record<string, string> = {
   reject: 'bg-red-100 text-red-700',
   'needs experiment': 'bg-amber-100 text-amber-700',
   'needs human review': 'bg-blue-100 text-blue-700',
+}
+
+const reviewConfig: Record<string, { label: string; label_id: string; class: string }> = {
+  autonomous: { label: 'Autonomous', label_id: 'otonom', class: 'bg-slate-100 text-slate-600' },
+  approved: { label: 'Human-approved', label_id: 'Manusia approve', class: 'bg-blue-50 text-blue-600' },
+  rejected: { label: 'Human-rejected', label_id: 'Manusia tolak', class: 'bg-red-50 text-red-600' },
 }
 
 const categories = ['All', 'Engineering', 'Operations', 'Infrastructure', 'Architecture']
@@ -56,6 +65,7 @@ export default function ReportsPage() {
   const [filter, setFilter] = useState('All')
   const [page, setPage] = useState(1)
   const t = useT()
+  const { lang } = useLang()
 
   useEffect(() => {
     const modules = import.meta.glob('/docs/reports/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
@@ -137,6 +147,11 @@ export default function ReportsPage() {
                       {report.decision && (
                         <span className={`rounded px-2 py-0.5 text-xs font-medium ${decisionColors[report.decision.toLowerCase()] || 'bg-slate-100 text-slate-600'}`}>
                           {report.decision}
+                        </span>
+                      )}
+                      {reviewConfig[report.humanReview] && (
+                        <span className={`rounded px-2 py-0.5 text-xs font-medium ${reviewConfig[report.humanReview].class}`}>
+                          {lang === 'id' ? reviewConfig[report.humanReview].label_id : reviewConfig[report.humanReview].label}
                         </span>
                       )}
                     </div>

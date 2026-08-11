@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Daily Report 2026-08-07 — Audit Alert/Threshold Config: Load Average Trigger
 
 ## Pertanyaan Engineering

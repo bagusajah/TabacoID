@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Konsolidasi Harian — 2026-08-05
 
 Tiga engineering cycle hari ini. Ringkasan:

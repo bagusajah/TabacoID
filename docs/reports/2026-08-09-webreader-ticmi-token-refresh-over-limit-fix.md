@@ -3,6 +3,7 @@ task_id: t_5f6bbf1f
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Fix Webreader TICMI Token Refresh: Logout-Before-Login

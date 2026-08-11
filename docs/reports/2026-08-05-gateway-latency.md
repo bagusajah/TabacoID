@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Daily Report 2026-08-05 — Gateway Latency Profile
 
 ## Engineering Question

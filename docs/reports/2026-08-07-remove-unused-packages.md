@@ -3,6 +3,7 @@ task_id: t_50599F28
 objective: follow-up (OBJ-002 Maintain production-grade infrastructure)
 date: 2026-08-07
 status: draft
+human_review: approved
 ---
 
 # Purge Paket Tidak Terpakai (spamassassin, clamav, mariadb, bind9)

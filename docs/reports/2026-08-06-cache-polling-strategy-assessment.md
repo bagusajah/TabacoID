@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Daily Report — Cache Polling Strategy Assessment
 
 Tanggal: 2026-08-06

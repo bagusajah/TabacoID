@@ -3,6 +3,7 @@ task_id: t_e62621a9
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Enable Filesystem Auto-fsck + fstrim.timer untuk NVMe Safety Net

@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Engineering Report: Pi Cluster Resource Profile
 
 **Date:** 2026-08-03

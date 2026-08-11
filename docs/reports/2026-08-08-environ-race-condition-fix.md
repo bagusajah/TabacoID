@@ -3,6 +3,7 @@ task_id: t_89876697
 objective: OBJ-005
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Fix: Race Condition `os.environ` di `_make_run_env` (KeyError intermittent)

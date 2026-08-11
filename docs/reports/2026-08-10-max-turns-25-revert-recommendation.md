@@ -3,6 +3,7 @@ task_id: t_dec9cd98
 objective: OBJ-005
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # Root Cause: 10:32 max_turns=25 Fire — Bukan Guard-Block, Bukan Budget Terlalu Longgar

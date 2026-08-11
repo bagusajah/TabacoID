@@ -3,6 +3,7 @@ task_id: t_deb43389
 objective: OBJ-002
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # Investigasi Executor Cron TimeoutError: Idle 600s

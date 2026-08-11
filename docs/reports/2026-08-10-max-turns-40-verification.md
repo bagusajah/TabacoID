@@ -3,6 +3,7 @@ task_id: t_8f0ed8e9
 objective: OBJ-005
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # Verifikasi Efektivitas max_turns=40 Post-Revert

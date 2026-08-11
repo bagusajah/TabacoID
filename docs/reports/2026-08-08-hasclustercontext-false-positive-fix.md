@@ -3,6 +3,7 @@ task_id: t_c172d9fc
 objective: OBJ-005
 date: 2026-08-08
 status: draft
+human_review: approved
 ---
 
 # Fix hasClusterContext() false-positive — loadFromDefault silent fallback

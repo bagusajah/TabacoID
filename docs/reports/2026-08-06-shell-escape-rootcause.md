@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Laporan Harian 2026-08-06 — Root Cause `%s` Shell Escape di Cron Pipeline
 
 ## Pertanyaan Engineering

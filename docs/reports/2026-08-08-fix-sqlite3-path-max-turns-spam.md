@@ -3,6 +3,7 @@ task_id: t_6c563f5b
 objective: OBJ-005
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Fix sqlite3 CLI missing + max_turns config warning spam

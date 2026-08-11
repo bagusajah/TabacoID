@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Laporan Harian 2026-08-06 — Dispatcher Crash Impact Audit
 
 ## Pertanyaan Engineering

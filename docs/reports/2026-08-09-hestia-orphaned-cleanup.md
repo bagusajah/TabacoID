@@ -3,6 +3,7 @@ task_id: t_a9f67fc9
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Cleanup HestiaCP Orphaned Artifacts (Cron + Sudoers)

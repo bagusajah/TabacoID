@@ -3,6 +3,7 @@ task_id: t_bb3ad82e
 objective: OBJ-005
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Audit: Executor Gateway-Restart Guard Anti-Pattern

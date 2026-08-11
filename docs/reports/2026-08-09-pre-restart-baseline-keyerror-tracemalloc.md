@@ -3,6 +3,7 @@ task_id: executor-idle-scan
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Pre-Restart Baseline: KeyError Fix + Tracemalloc Activation Audit

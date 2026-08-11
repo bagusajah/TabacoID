@@ -4,6 +4,7 @@ objective: follow-up
 source_report: 2026-08-06-env-key-audit
 date: 2026-08-07
 status: draft
+human_review: approved
 ---
 
 # Review IMAP/SMTP Plugin Code — Konfirmasi Env Var Usage

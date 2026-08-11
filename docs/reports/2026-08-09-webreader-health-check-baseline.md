@@ -3,6 +3,7 @@ task_id: t_4dc98e9a
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Webreader Health Check & Baseline Metrik (30 jam uptime)

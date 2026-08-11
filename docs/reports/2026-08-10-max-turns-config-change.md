@@ -3,6 +3,7 @@ task_id: t_922a2eb1
 objective: OBJ-005
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # Config Change: agent.max_turns 40 → 25

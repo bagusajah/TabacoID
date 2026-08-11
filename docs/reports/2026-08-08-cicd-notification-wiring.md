@@ -3,6 +3,7 @@ task_id: t_fbb36674
 objective: OBJ-005
 date: 2026-08-08
 status: draft
+human_review: approved
 ---
 
 # CICD: Wire Notification Driver into Release Lifecycle

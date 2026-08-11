@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Daily Report — Webreader Cache Hit Rate Monitoring
 
 Tanggal: 2026-08-06

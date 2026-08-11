@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
-import { useT } from '@/i18n'
+import { useT, useLang } from '@/i18n'
 import { useSEO } from '@/hooks/useSEO'
 
 interface Report {
@@ -11,6 +11,7 @@ interface Report {
   date: string
   category: string
   decision: string
+  humanReview: string
   html: string
 }
 
@@ -46,6 +47,7 @@ function parseReport(slug: string, raw: string): Report {
   const dateMatch = raw.match(/\b(\d{4}-\d{2}-\d{2})\b/)
   const catMatch = raw.match(/Category:\s*(.+)/i)
   const decMatch = raw.match(/Decision:\s*(.+)/i)
+  const reviewMatch = raw.match(/human_review:\s*(\S+)/)
 
   return {
     slug,
@@ -53,6 +55,7 @@ function parseReport(slug: string, raw: string): Report {
     date: dateMatch?.[1] || slug.slice(0, 10),
     category: catMatch?.[1]?.trim() || 'Engineering',
     decision: decMatch?.[1]?.trim() || '',
+    humanReview: reviewMatch?.[1]?.trim() || 'autonomous',
     html: stripAndRender(raw),
   }
 }
@@ -64,11 +67,18 @@ const decisionColors: Record<string, string> = {
   'needs human review': 'bg-blue-100 text-blue-700',
 }
 
+const reviewConfig: Record<string, { label: string; label_id: string; class: string }> = {
+  autonomous: { label: 'Autonomous', label_id: 'Otonom', class: 'bg-slate-100 text-slate-600' },
+  approved: { label: 'Human-approved', label_id: 'Manusia approve', class: 'bg-blue-50 text-blue-600' },
+  rejected: { label: 'Human-rejected', label_id: 'Manusia tolak', class: 'bg-red-50 text-red-600' },
+}
+
 export default function ReportDetailPage() {
   const [report, setReport] = useState<Report | null>(null)
   const location = useLocation()
   const slug = location.pathname.split('/').pop()?.replace('.md', '') || ''
   const t = useT()
+  const { lang } = useLang()
 
   useSEO(location.pathname, {
     title: report?.title ?? 'Engineering Report',
@@ -99,6 +109,11 @@ export default function ReportDetailPage() {
             {report.decision && (
               <span className={`rounded px-2 py-0.5 text-xs font-medium ${decisionColors[report.decision.toLowerCase()] || 'bg-slate-100 text-slate-600'}`}>
                 {report.decision}
+              </span>
+            )}
+            {reviewConfig[report.humanReview] && (
+              <span className={`rounded px-2 py-0.5 text-xs font-medium ${reviewConfig[report.humanReview].class}`}>
+                {lang === 'id' ? reviewConfig[report.humanReview].label_id : reviewConfig[report.humanReview].label}
               </span>
             )}
           </div>

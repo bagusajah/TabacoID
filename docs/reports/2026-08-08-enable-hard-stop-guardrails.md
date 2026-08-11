@@ -3,6 +3,7 @@ task_id: t_87440710
 objective: OBJ-005
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Enable tool_loop_guardrails hard_stop to Prevent 40-Turn Waste Loops

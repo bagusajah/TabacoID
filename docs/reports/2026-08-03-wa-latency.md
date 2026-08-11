@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Engineering Report: WhatsApp Bot Latency Benchmark
 
 **Date:** 2026-08-03

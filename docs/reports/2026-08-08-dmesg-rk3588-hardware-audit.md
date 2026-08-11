@@ -3,6 +3,7 @@ task_id: t_b0ff371d
 objective: OBJ-002
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Audit Error dmesg Recurring: dwc3 USB, dma-pl330, rockchip-usb2phy OTG

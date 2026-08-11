@@ -3,6 +3,7 @@ task_id: t_87162a46
 objective: OBJ-005
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # Root Cause: Guard-Block Recurrence (24 fires, hard_stop failure, max_turns waste)

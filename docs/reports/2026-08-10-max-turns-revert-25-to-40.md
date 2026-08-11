@@ -3,6 +3,7 @@ task_id: t_39c4cb6f
 objective: OBJ-005
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # Revert max_turns 25 → 40 (Evidence-Based Rollback)

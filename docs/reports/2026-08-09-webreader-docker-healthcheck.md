@@ -3,6 +3,7 @@ task_id: t_w13_health
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Webreader: Docker HEALTHCHECK untuk api + nginx

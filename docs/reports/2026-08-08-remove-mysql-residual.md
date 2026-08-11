@@ -3,6 +3,7 @@ task_id: t_MYSQLRM01
 objective: OBJ-002
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Cleanup Residual /var/lib/mysql (146MB)

@@ -3,6 +3,7 @@ task_id: t_LDKERN01
 objective: OBJ-002
 date: 2026-08-07
 status: draft
+human_review: approved
 ---
 
 # Cek Kernel Update RK3588 untuk Fix Iowait Accounting Bug

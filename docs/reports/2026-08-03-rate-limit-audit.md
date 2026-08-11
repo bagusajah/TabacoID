@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Engineering Report: z.ai API Rate-Limit (429) Audit
 
 **Date:** 2026-08-03

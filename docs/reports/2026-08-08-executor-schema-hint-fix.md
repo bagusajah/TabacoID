@@ -3,6 +3,7 @@ task_id: t_f58f5898
 objective: OBJ-005
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Fix Executor parent_id SQL Hallucination — Schema Hints di Cron Prompt

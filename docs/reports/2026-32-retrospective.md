@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Weekly Retrospective — Week 32, 2026
 
 ## Summary

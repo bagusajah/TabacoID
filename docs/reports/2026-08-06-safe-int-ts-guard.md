@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Laporan Harian 2026-08-06 — Defensive Guard: _safe_int_ts di detect_stale_running & enforce_max_runtime
 
 ## Pertanyaan Engineering

@@ -3,6 +3,7 @@ task_id: t_9a32db3e
 objective: OBJ-005
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Eliminasi False-Positive Prompt-Injection WARNING Spam dari Skill Security Scanner

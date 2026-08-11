@@ -3,6 +3,7 @@ task_id: t_063dbcf3
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: approved
 ---
 
 # Wire start_memory_monitoring() ke Gateway Startup

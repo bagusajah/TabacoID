@@ -3,6 +3,7 @@ task_id: t_9c563d9d
 objective: OBJ-002
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Fix SQLite busy_timeout=0 menyebabkan "database is locked" pada cycle 1-menit

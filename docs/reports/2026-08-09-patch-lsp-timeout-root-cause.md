@@ -3,6 +3,7 @@ task_id: t_f417b8b0
 objective: OBJ-005
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Root-Cause: Patch Tool LSP Timeout pada File Besar (gateway/run.py)

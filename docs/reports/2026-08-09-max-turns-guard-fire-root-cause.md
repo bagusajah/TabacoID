@@ -3,6 +3,7 @@ task_id: t_99fa94bb
 objective: OBJ-005
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Root Cause: 2× max_turns Guard Fires (05:28 & 05:53 WIB)

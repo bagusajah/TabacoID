@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Engineering Report: TICMI API Response Time Baseline
 
 **Date:** 2026-08-03

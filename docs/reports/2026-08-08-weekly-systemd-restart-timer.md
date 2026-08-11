@@ -4,6 +4,7 @@ objective: OBJ-002
 experiment: null
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Weekly Systemd Restart Timer untuk Hermes Services

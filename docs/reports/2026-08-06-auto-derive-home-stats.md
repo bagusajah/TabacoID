@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Daily Report 2026-08-06 (Auto-derive Home Stats)
 
 **Date:** 2026-08-06

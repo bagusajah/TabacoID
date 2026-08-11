@@ -3,6 +3,7 @@ task_id: t_49b5dbdd
 objective: OBJ-002
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Gateway Memory Trend Analysis: Bukan Leak, tapi Page Cache

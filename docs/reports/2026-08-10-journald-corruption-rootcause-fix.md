@@ -3,6 +3,7 @@ task_id: t_ed47ec17
 objective: OBJ-002
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # Journald Corruption Root Cause: Persistent Journal on Journal-less ZRAM ext4

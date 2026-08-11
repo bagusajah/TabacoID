@@ -3,6 +3,7 @@ task_id: t_8436ffbe
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Infra Audit: SSH Hardening Status + DNS Subdomain Map + TLS Chain Verification

@@ -3,6 +3,7 @@ task_id: t_0fdd0707
 objective: OBJ-005
 date: 2026-08-08
 status: draft
+human_review: approved
 ---
 
 # CICD Phase 2 Client UI — Calendar Page Wired to API

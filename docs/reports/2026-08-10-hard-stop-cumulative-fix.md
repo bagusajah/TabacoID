@@ -3,6 +3,7 @@ task_id: t_00a3d7d5
 objective: OBJ-005
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # Fix: hard_stop Guardrail Cumulative Tracking

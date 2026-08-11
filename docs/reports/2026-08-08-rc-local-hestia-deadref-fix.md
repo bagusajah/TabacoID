@@ -3,6 +3,7 @@ task_id: t_de823f75
 objective: OBJ-002
 date: 2026-08-08
 status: draft
+human_review: autonomous
 ---
 
 # Fix rc-local.service Failure: Stale HestiaCP Reference

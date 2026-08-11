@@ -3,6 +3,7 @@ task_id: t_b8298912
 objective: OBJ-002
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # Copilot Auth Warning — Impact Investigation

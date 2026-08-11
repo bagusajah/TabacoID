@@ -3,6 +3,7 @@ task_id: t_05DE0CC8
 objective: OBJ-002
 date: 2026-08-07
 status: draft
+human_review: approved
 ---
 
 # Purge Proton VPN Packages

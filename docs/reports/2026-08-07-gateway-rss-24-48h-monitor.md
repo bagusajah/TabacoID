@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Daily Report 2026-08-07 — Gateway RSS Monitoring 24-48h Post-Patch (Follow-up)
 
 ## Pertanyaan Engineering

@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Daily Report 2026-08-07 (2) — Disable Auto-Followup Task Creation
 
 ## Pertanyaan Engineering

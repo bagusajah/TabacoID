@@ -3,6 +3,7 @@ task_id: t_b0d6602a
 objective: OBJ-002
 date: 2026-08-10
 status: draft
+human_review: autonomous
 ---
 
 # APT Pending Updates: 45 Upgradable, 0 Applicable — All ABI-Locked

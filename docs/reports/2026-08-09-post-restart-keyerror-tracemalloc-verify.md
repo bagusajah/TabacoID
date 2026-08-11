@@ -3,6 +3,7 @@ task_id: t_42e91f0c
 objective: OBJ-002
 date: 2026-08-09
 status: draft
+human_review: autonomous
 ---
 
 # Post-Restart Verification: KeyError=0 + Tracemalloc Active

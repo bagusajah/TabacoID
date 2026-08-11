@@ -3,6 +3,7 @@ task_id: t_21f21d58
 objective: OBJ-001
 date: 2026-08-08
 status: draft
+human_review: approved
 ---
 
 # Forward-Only Migration Runner Menggantikan `sync({alter:true})` — TD-8

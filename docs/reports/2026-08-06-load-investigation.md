@@ -1,3 +1,7 @@
+---
+human_review: autonomous
+---
+
 # Daily Report 2026-08-06 — Load Investigation: "RK3588 Overloaded?"
 
 ## Pertanyaan Engineering
