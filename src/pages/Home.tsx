@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
-import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 
 import SectionHeading from '@/components/SectionHeading'
 import {
@@ -8,6 +7,7 @@ import {
   computeDaysRunning,
   experiments,
   labPrinciples,
+  latestReportDate,
   objectives,
   processSteps,
   tasksCompleted,
@@ -15,21 +15,13 @@ import {
 import { useT } from '@/i18n'
 
 export default function HomePage() {
-  const [reportCount, setReportCount] = useState<number | null>(null)
   const t = useT()
-
-  useEffect(() => {
-    const modules = import.meta.glob('/docs/reports/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
-    Promise.allSettled(Object.values(modules).map((fn) => fn())).then((all) =>
-      setReportCount(all.filter(r => r.status === 'fulfilled').length),
-    )
-  }, [])
 
   const stats = [
     {
       label: t['stat.days.label'],
       value: `Day ${computeDaysRunning()}`,
-      detail: t['stat.days.detail'](tasksCompleted, reportCount ?? '…'),
+      detail: t['stat.days.detail'](tasksCompleted, tasksCompleted),
     },
     {
       label: t['stat.objectives.label'],
@@ -84,6 +76,16 @@ export default function HomePage() {
                 </article>
               ))}
             </div>
+
+            {latestReportDate && (
+              <p className="flex items-center gap-2 text-sm text-slate-500">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+                </span>
+                Last cycle: {latestReportDate} — <Link to="/reports" className="underline hover:text-slate-700">running</Link>
+              </p>
+            )}
           </div>
 
           <aside className="panel-surface relative overflow-hidden lg:mt-8">

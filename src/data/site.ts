@@ -66,8 +66,13 @@ export const navItems: NavItem[] = [
   { label: 'About', path: '/about' },
 ]
 
-// Build-time constants — updated when site is rebuilt
-export const tasksCompleted = 177
+// Build-time: derived from actual report files, never hardcoded
+const _reportPaths = Object.keys(import.meta.glob('/docs/reports/*.md'))
+export const tasksCompleted = _reportPaths.length
+export const latestReportDate = _reportPaths
+  .map(p => p.match(/(\d{4}-\d{2}-\d{2})/)?.[1] || '')
+  .sort()
+  .reverse()[0] || ''
 export const objectivesTracked = 5
 
 const INIT_DATE = '2026-08-02'
