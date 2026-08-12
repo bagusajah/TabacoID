@@ -56,7 +56,7 @@ const reviewConfig: Record<string, { label: string; label_id: string; class: str
   rejected: { label: 'Human-rejected', label_id: 'Manusia tolak', class: 'bg-red-50 text-red-600' },
 }
 
-const categories = ['All', 'Engineering', 'Operations', 'Infrastructure', 'Architecture']
+const categories = ['All', 'Engineering', 'Experiments', 'Operations', 'Infrastructure', 'Architecture']
 
 const PAGE_SIZE = 10
 
