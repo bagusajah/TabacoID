@@ -22,5 +22,6 @@ TOTAL=$((TRACKED_CHANGED + UNTRACKED))
 git add docs/reports/
 DATE=$(date -u +%Y-%m-%d)
 git commit -m "docs: auto-commit reports ${DATE} (${TOTAL} files)" -- docs/reports/
+git push origin main
 
-echo "Committed ${TOTAL} report file(s)"
+echo "Committed + pushed ${TOTAL} report file(s)"
