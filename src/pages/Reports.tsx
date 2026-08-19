@@ -24,6 +24,20 @@ function extractSummary(md: string): string {
   return stripped.split(/\n\n/)[0]?.replace(/\n/g, ' ') || ''
 }
 
+interface Metrics {
+  date: string
+  job: string
+  api_calls: number
+  input_tokens: number
+  output_tokens: number
+  reasoning_tokens: number
+  cache_tokens: number
+}
+
+function fmtK(n: number): string {
+  return n >= 1000 ? `${Math.round(n / 1000)}k` : String(n)
+}
+
 function parseReport(slug: string, raw: string): Report {
   const titleMatch = raw.match(/^# (.+)$/m)
   const dateMatch = raw.match(/\b(\d{4}-\d{2}-\d{2})\b/)
@@ -62,6 +76,7 @@ const PAGE_SIZE = 10
 
 export default function ReportsPage() {
   const [reports, setReports] = useState<Report[]>([])
+  const [metrics, setMetrics] = useState<Metrics[]>([])
   const [filter, setFilter] = useState('All')
   const [page, setPage] = useState(1)
   const t = useT()
@@ -83,7 +98,13 @@ export default function ReportsPage() {
       parsed.sort((a, b) => b.date.localeCompare(a.date))
       setReports(parsed)
     })
+
+    fetch('/metrics.json').then(r => r.ok ? r.json() : []).then(setMetrics).catch(() => setMetrics([]))
   }, [])
+
+  const dayTokens = (date: string) => metrics
+    .filter(m => m.date === date)
+    .reduce((a, m) => ({ in: a.in + m.input_tokens, out: a.out + m.output_tokens, calls: a.calls + m.api_calls }), { in: 0, out: 0, calls: 0 })
 
   const filtered = filter === 'All' ? reports : reports.filter(r => r.category.toLowerCase().includes(filter.toLowerCase()))
 
@@ -141,6 +162,17 @@ export default function ReportsPage() {
                     <h3 className="text-lg font-semibold text-slate-950">{report.title}</h3>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
                       <span>{report.date}</span>
+                      {(() => {
+                        const tk = dayTokens(report.date)
+                        return tk.calls > 0 && (
+                          <span
+                            className="rounded bg-violet-50 px-2 py-0.5 text-xs font-medium text-violet-600"
+                            title={`${tk.calls} API calls · ${tk.in.toLocaleString()} in / ${tk.out.toLocaleString()} out tokens (all agent runs that day)`}
+                          >
+                            {lang === 'id' ? 'token' : 'tokens'}: {fmtK(tk.in)}→{fmtK(tk.out)} · {tk.calls} {lang === 'id' ? 'panggilan' : 'calls'}
+                          </span>
+                        )
+                      })()}
                       <span className="rounded bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
                         {report.category}
                       </span>
