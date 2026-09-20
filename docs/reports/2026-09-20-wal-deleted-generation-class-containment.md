@@ -47,6 +47,14 @@ sendiri, lalu verifikasi kelayakan containment config di unit ini.
   `database.journal_mode` secara native (`wal` | `delete`, invalid → fail-safe
   ke `wal`). Tanpa WAL tidak ada sidecar, tanpa sidecar tidak ada deleted-
   generation guard yang bisa terpicu.
+- **Konversi butuh window tanpa writer:** SQLite box ini 3.53.1 (di luar rentang
+  WAL-reset bug 3.7.0–3.51.2), dan invariant `apply_wal_with_fallback`
+  *"never downgrade to DELETE if the on-disk header reports WAL"* berlaku di
+  semua cabang — config `delete` pada file yang sudah WAL **sengaja
+  di-override** dengan ERROR log (`_log_configured_delete_overridden_once`),
+  karena live-downgrade menghancurkan commit koneksi lain. Jadi penerapan
+  containment = config + konversi header **out-of-band** (`PRAGMA
+  journal_mode=DELETE`) di window semua service hermes mati, lalu start lagi.
 - **Guard saldo:** `apply_wal_with_fallback` punya invariant "never downgrade to
   DELETE if the on-disk header reports WAL… a live downgrade destroys their
   uncheckpointed commits" — flip mode hanya terjadi dari koneksi pertama yang
@@ -60,8 +68,10 @@ sendiri, lalu verifikasi kelayakan containment config di unit ini.
 2. Publish laporan ini + push dulu (sesi cron adalah child gateway — restart
    gateway membunuh sesi ini).
 3. Restart graceful TERJADWAL via `systemd-run --user` (unit transient yang
-   tidak mewarisi topologi cron): `write_planned_stop_marker(pid)` → sleep
-   -systemd restarts gateway → gateway baru membuka db dalam mode delete.
+   tidak mewarisi topologi cron): stop `hermes-gateway` + `hermes-dashboard`
+   (plus gateway profile emailmanager) → konversi header
+   `PRAGMA journal_mode=DELETE` (aman: semua writer sudah mati) → start
+   ulang service → gateway membuka db dalam mode delete, tanpa sidecar.
 4. Retensi: kedua snapshot `retired-wal-*` **tidak dihapus** — disimpan untuk
    inspeksi human. `database.journal_mode: delete` adalah containment operator
    yang bisa di-revert kapan saja (hapus 2 baris config → WAL kembali di
