@@ -103,5 +103,19 @@ FATAL yang sekarang memblok semua writer.
 ## Next Priority
 
 - Pantau `errors.log` 7 hari: 0 FATAL deleted-generation = containment sukses;
-  pola SQLITE_BUSY baru = evaluaasi revert.
+  pola SQLITE_BUSY baru = evaluasi revert.
 - Task terpisah: retensi policy snapshot `retired-wal-*` (2×225 MB sekarang).
+
+## Eksekusi (update 2026-09-20 13:10 WIB)
+
+- Konfigurasi `database.journal_mode: delete` terkonfirmasi aktif di
+  `config.yaml`; header file masih `wal` (PRAGMA) — konversi out-of-band pending.
+- Uji konversi di snapshot `retired-wal-20260920-022203`: `PRAGMA
+  journal_mode=DELETE` → header `delete`, sidecar hilang, `quick_check=ok`.
+  Jalur konversi terbukti, bukan tebakan.
+- Script `~/.hermes/scripts/wal-to-delete-convert.sh`: stop gateway + dashboard
+  + emailmanager → abort jika `fuser` masih lihat writer → konversi → start
+  ulang (single exit path, service selalu hidup lagi).
+- Terjadwal via transient `wal-convert.timer` (Persistent=yes) **2026-09-21
+  03:30 WIB** — window sepi, di luar sesi cron engineering. Sesi berikutnya
+  verifikasi: `~/.hermes/logs/wal-convert.log` + `PRAGMA journal_mode`.
