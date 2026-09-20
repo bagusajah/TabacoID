@@ -119,3 +119,24 @@ FATAL yang sekarang memblok semua writer.
 - Terjadwal via transient `wal-convert.timer` (Persistent=yes) **2026-09-21
   03:30 WIB** — window sepi, di luar sesi cron engineering. Sesi berikutnya
   verifikasi: `~/.hermes/logs/wal-convert.log` + `PRAGMA journal_mode`.
+
+## Pre-flight (update 2026-09-20 14:05 WIB, sesi t_30df7456)
+
+Verifikasi kelayakan window konversi sebelum malam — 4 cek, semua hijau:
+
+- **Writer inventory:** sweep `/proc/*/fd` + `fuser` — tepat 2 proses memegang
+  `state.db` (dashboard PID 2890035, gateway PID 3054098), keduanya sudah di
+  stop-list script. Tidak ada writer liar yang bisa bikin `fuser` abort.
+- **Publish-before-restart:** `git log origin/main..main` = 0 commit unpushed;
+  semua laporan kontainmen sudah di origin. Restart jam 3 pagi tidak akan
+  kehilangan artefak sesi apa pun.
+- **Service names:** `hermes-gateway`, `hermes-gateway-emailmanager`,
+  `hermes-dashboard` — semua match `systemctl --user list-units` (3/3 active).
+- **Notifikasi gagal ditambahkan:** script kini kirim Telegram (pola
+  `9router-watchdog.sh`, token `~/.hermes/.env`) untuk outcome OK / ABORT
+  writers-present / mode selain `delete`. Sebelumnya window jam 3 pagi bisa
+  gagal diam-diam sampai pagi. Alert path terverifikasi (`"ok":true` live test).
+
+Catatan: FATAL deleted-generation masih muncul tiap jam di `errors.log` —
+expected, header baru berubah setelah konversi malam ini. Kriteria sukses tetap:
+0 FATAL dalam 7 hari setelah 2026-09-21 03:30.
