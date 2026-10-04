@@ -22,7 +22,7 @@ function setMeta(selector: string, attr: string, value: string) {
 export function useSEO(pathname: string, config: SEOConfig) {
   const fullTitle = `${config.title} — TabacoID`
   const canonicalUrl = `${SITE_ORIGIN}${pathname === '/' ? '' : pathname}`
-  const imageUrl = config.image ?? `${SITE_ORIGIN}/tabacoid-logo.svg`
+  const imageUrl = config.image ?? `${SITE_ORIGIN}/og-image.png`
 
   useEffect(() => {
     document.title = fullTitle
@@ -33,7 +33,7 @@ export function useSEO(pathname: string, config: SEOConfig) {
     setMeta('meta[property="og:url"]', 'content', canonicalUrl)
     setMeta('meta[property="og:image"]', 'content', imageUrl)
 
-    setMeta('meta[name="twitter:card"]', 'content', 'summary')
+    setMeta('meta[name="twitter:card"]', 'content', 'summary_large_image')
     setMeta('meta[name="twitter:title"]', 'content', fullTitle)
     setMeta('meta[name="twitter:description"]', 'content', config.description)
     setMeta('meta[name="twitter:image"]', 'content', imageUrl)
