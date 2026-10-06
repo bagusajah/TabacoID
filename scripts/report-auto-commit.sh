@@ -22,9 +22,12 @@ TRACKED_CHANGED=$(git diff --name-only -- docs/reports/ | wc -l)
 UNTRACKED=$(git ls-files --others --exclude-standard -- docs/reports/ | wc -l)
 TOTAL=$((TRACKED_CHANGED + UNTRACKED))
 
-git add docs/reports/ public/metrics.json
+# Regenerate sitemap (includes new reports) so it ships in the same push
+python3 /home/orangepi/TabacoID/scripts/gen-sitemap.py
+
+git add docs/reports/ public/metrics.json public/sitemap.xml
 DATE=$(date -u +%Y-%m-%d)
-git commit -m "docs: auto-commit reports ${DATE} (${TOTAL} files)" -- docs/reports/ public/metrics.json
+git commit -m "docs: auto-commit reports ${DATE} (${TOTAL} files)" -- docs/reports/ public/metrics.json public/sitemap.xml
 git push origin main
 
 echo "Committed + pushed ${TOTAL} report file(s)"
