@@ -42,3 +42,24 @@ github.com/trending is JS-rendered (not scrapeable via plain HTTP). Use the
 Search API instead:
 
     curl -s "https://api.github.com/search/repositories?q=created:>YYYY-MM-DD+stars:>100&sort=stars&order=desc&per_page=10"
+
+
+## Gaya baku (berlaku mulai 10 Oktober 2026)
+
+- Paragraf pertama setelah H1 adalah ringkasan 1–3 kalimat. Tidak ada teks
+  sebelum H1 (sisa chat/pressalan proses dibuang sebelum commit).
+- Judul seksi bahasa Indonesia: `## GitHub Trending` (nama rubrik, boleh),
+  `## YouTube: AI dan kode`, `## Catatan` (bukan "Notes").
+- Angka: ribuan pakai titik (`14.927`), selisih selalu bertanda (`+14.927`),
+  spasi setelah `★` (`★ 47.660`). Jangan campur koma ribuan Inggris.
+- Skor di baris kedua bullet, dipisah dari kalimat "mengapa naik":
+
+  ```markdown
+  - [owner/repo](https://github.com/owner/repo) — satu kalimat mengapa naik.
+    +14.927 · total ★ 47.660 · TypeScript
+  ```
+
+- Nama hari di judul WAJIB dicek kalender (27 Sep 2026 = Minggu, bukan Sabtu).
+- Judul H1 title case normal, bukan kapital semua.
+- Jangan sertakan path lokal mesin (`/Users/...`, `file://`) atau sisa
+  percakapan proses dalam file publik.
