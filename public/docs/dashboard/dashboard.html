@@ -1,56 +1,1015 @@
 <!DOCTYPE html>
-<html lang="id"><head><meta charset="utf-8"><title>GitHub Trending 2026</title>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub Trending 2026 — Laporan ketahanan</title>
 <style>
-:root { color-scheme: light dark; }
-body { margin:0; font:13px/1.45 -apple-system,system-ui,sans-serif; color:var(--foreground,#1a1a1a); background:transparent; }
-a { color:var(--accent,#0969da); text-decoration:none; } a:hover { text-decoration:underline; }
-h1 { font-size:17px; margin:0 0 2px; } h2 { font-size:13px; margin:0 0 10px; color:var(--muted-foreground,#57606a); text-transform:uppercase; letter-spacing:.4px; }
-.sub { color:var(--muted-foreground,#57606a); font-size:12px; margin-bottom:14px; }
-.card { border:1px solid var(--border,#d0d7de); border-radius:10px; background:var(--card,#fff); padding:14px 16px; margin-bottom:14px; }
-.kpis { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
-.kpi { border:1px solid var(--border,#d0d7de); border-radius:10px; background:var(--card,#fff); padding:10px 14px; min-width:110px; }
-.kpi b { display:block; font-size:20px; } .kpi span { font-size:11px; color:var(--muted-foreground,#57606a); }
-.srow { display:flex; align-items:center; gap:10px; margin:7px 0; }
-.slabel { width:52px; color:var(--muted-foreground,#57606a); font-size:12px; }
-.sbar { display:flex; width:340px; height:16px; border-radius:4px; overflow:hidden; background:var(--border,#d0d7de); }
-.seg { height:100%; } .slegend { font-size:11px; color:var(--muted-foreground,#57606a); }
-.brow { display:flex; align-items:center; gap:10px; margin:6px 0; }
-.blabel { width:250px; font-size:12px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.btrack { flex:0 0 200px; height:12px; border-radius:6px; background:var(--border,#d0d7de); overflow:hidden; }
-.bfill { height:100%; background:var(--accent,#0969da); border-radius:6px; } .bfill.alt { background:#3dd68c; }
-.bval { font-size:11px; color:var(--muted-foreground,#57606a); white-space:nowrap; }
-table { border-collapse:collapse; width:100%; } td,th { padding:5px 8px; border-bottom:1px solid var(--border,#d0d7de); text-align:left; font-size:12px; }
-th { color:var(--muted-foreground,#57606a); font-weight:600; } .num { text-align:right; }
-.lgd { margin-right:12px; font-size:11px; color:var(--muted-foreground,#57606a); } .lgd i { display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:4px; }
-.cols { display:flex; gap:14px; flex-wrap:wrap; } .cols>.card { flex:1; min-width:300px; margin-bottom:0; }
-.donutwrap { display:flex; align-items:center; gap:16px; } .drow { font-size:12px; margin:3px 0; } .drow i { display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:6px; }
-.foot { font-size:11px; color:var(--muted-foreground,#57606a); margin-top:10px; }
-</style></head><body>
-<h1>📊 Dashboard GitHub Trending 2026</h1>
-<div class="sub">282 hari data (1 Jan – 2026-10-10): 260 hari backfill arsip komunitas + 22 hari kolektor terverifikasi · diperbarui 2026-10-10 20:23 WIB</div>
+:root {
+  --bg: #1c1714;
+  --ink: #f3ecdf;
+  --muted: #cbbba8;
+  --line: #3d342c;
+  --copper: #e2a15a;
+  --rose: #d16b5b;
+  --sage: #9aab78;
+  --cream: #efe4d2;
+  --taupe: #6b625a;
+  --paper: #241f1a;
+  --hover: #2c261f;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+::selection { background: var(--copper); color: var(--bg); }
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 3;
+  background: var(--copper);
+  color: var(--bg);
+  padding: 8px 12px;
+  text-decoration: none;
+}
+.skip:focus { top: 12px; }
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 40px 80px;
+  border-top: 3px solid var(--copper);
+}
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: rgba(226, 161, 90, 0.55);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color .2s ease, text-decoration-color .2s ease;
+}
+a:hover, a:focus-visible {
+  color: var(--copper);
+  text-decoration-color: var(--copper);
+}
+:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
 
-<div class="kpis">
-  <div class="kpi"><b>282</b><span>hari terlacak</span></div>
-  <div class="kpi"><b>2,465</b><span>repo unik trending</span></div>
-  <div class="kpi"><b>71%</b><span>baru bertahan ≤6 hari</span></div>
-  <div class="kpi"><b>132 hr</b><span>terkonsisten: <a href="https://github.com/pointfreeco/swift-composable-architecture">swift-composable-architecture</a></span></div>
-</div>
+.mast {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.brand em { font-style: italic; }
+.issue {
+  margin: 6px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.updated {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: right;
+}
+.provenance {
+  margin: 16px 0 0;
+  max-width: 68em;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
 
-<div class="cols">
-  <div class="card"><h2>Komposisi Bahasa per Bulan</h2><div class="srow"><div class="slabel">Jan 26</div><div class="sbar"><div class="seg" style="width:30%;background:#3dd68c" title="go 30%"></div><div class="seg" style="width:29%;background:#ff8f6b" title="swift 29%"></div><div class="seg" style="width:20%;background:#6ba7ff" title="python 20%"></div><div class="seg" style="width:21%;background:#ffd166" title="javascript 21%"></div></div><div class="slegend">go 30% · swift 29% · python 20% · javascript 21%</div></div><div class="srow"><div class="slabel">Feb 26</div><div class="sbar"><div class="seg" style="width:30%;background:#3dd68c" title="go 30%"></div><div class="seg" style="width:28%;background:#ff8f6b" title="swift 28%"></div><div class="seg" style="width:23%;background:#6ba7ff" title="python 23%"></div><div class="seg" style="width:19%;background:#ffd166" title="javascript 19%"></div></div><div class="slegend">go 30% · swift 28% · python 23% · javascript 19%</div></div><div class="srow"><div class="slabel">Mar 26</div><div class="sbar"><div class="seg" style="width:29%;background:#3dd68c" title="go 29%"></div><div class="seg" style="width:27%;background:#ff8f6b" title="swift 27%"></div><div class="seg" style="width:24%;background:#6ba7ff" title="python 24%"></div><div class="seg" style="width:20%;background:#ffd166" title="javascript 20%"></div></div><div class="slegend">go 29% · swift 27% · python 24% · javascript 20%</div></div><div class="srow"><div class="slabel">Apr 26</div><div class="sbar"><div class="seg" style="width:32%;background:#3dd68c" title="go 32%"></div><div class="seg" style="width:27%;background:#ff8f6b" title="swift 27%"></div><div class="seg" style="width:21%;background:#6ba7ff" title="python 21%"></div><div class="seg" style="width:21%;background:#ffd166" title="javascript 21%"></div></div><div class="slegend">go 32% · swift 27% · python 21% · javascript 21%</div></div><div class="srow"><div class="slabel">Mei 26</div><div class="sbar"><div class="seg" style="width:29%;background:#3dd68c" title="go 29%"></div><div class="seg" style="width:26%;background:#ff8f6b" title="swift 26%"></div><div class="seg" style="width:25%;background:#6ba7ff" title="python 25%"></div><div class="seg" style="width:19%;background:#ffd166" title="javascript 19%"></div></div><div class="slegend">go 29% · swift 26% · python 25% · javascript 19%</div></div><div class="srow"><div class="slabel">Jun 26</div><div class="sbar"><div class="seg" style="width:31%;background:#3dd68c" title="go 31%"></div><div class="seg" style="width:25%;background:#ff8f6b" title="swift 25%"></div><div class="seg" style="width:24%;background:#6ba7ff" title="python 24%"></div><div class="seg" style="width:20%;background:#ffd166" title="javascript 20%"></div></div><div class="slegend">go 31% · swift 25% · python 24% · javascript 20%</div></div><div class="srow"><div class="slabel">Jul 26</div><div class="sbar"><div class="seg" style="width:30%;background:#3dd68c" title="go 30%"></div><div class="seg" style="width:26%;background:#ff8f6b" title="swift 26%"></div><div class="seg" style="width:22%;background:#6ba7ff" title="python 22%"></div><div class="seg" style="width:23%;background:#ffd166" title="javascript 23%"></div></div><div class="slegend">go 30% · swift 26% · python 22% · javascript 23%</div></div><div class="srow"><div class="slabel">Agu 26</div><div class="sbar"><div class="seg" style="width:31%;background:#3dd68c" title="go 31%"></div><div class="seg" style="width:24%;background:#ff8f6b" title="swift 24%"></div><div class="seg" style="width:26%;background:#6ba7ff" title="python 26%"></div><div class="seg" style="width:19%;background:#ffd166" title="javascript 19%"></div></div><div class="slegend">go 31% · swift 24% · python 26% · javascript 19%</div></div><div class="srow"><div class="slabel">Sep 26</div><div class="sbar"><div class="seg" style="width:26%;background:#3dd68c" title="go 26%"></div><div class="seg" style="width:21%;background:#ff8f6b" title="swift 21%"></div><div class="seg" style="width:22%;background:#6ba7ff" title="python 22%"></div><div class="seg" style="width:19%;background:#ffd166" title="javascript 19%"></div><div class="seg" style="width:12%;background:#8a8f98" title="other 12%"></div></div><div class="slegend">go 26% · swift 21% · python 22% · javascript 19% · other 12%</div></div><div class="srow"><div class="slabel">Okt 26</div><div class="sbar"><div class="seg" style="width:100%;background:#8a8f98" title="other 100%"></div></div><div class="slegend">other 100%</div></div></div>
-  <div class="card"><h2>Siklus Hidup Repo Trending</h2>
-    <div class="donutwrap"><svg width="120" height="120"><circle r="46" cx="60" cy="60" fill="none" stroke="#8a8f98" stroke-width="16" stroke-dasharray="89.7 289.0" stroke-dashoffset="-0.0" transform="rotate(-90 60 60)"/><circle r="46" cx="60" cy="60" fill="none" stroke="#7c9cff" stroke-width="16" stroke-dasharray="114.3 289.0" stroke-dashoffset="-89.7" transform="rotate(-90 60 60)"/><circle r="46" cx="60" cy="60" fill="none" stroke="#ffd166" stroke-width="16" stroke-dasharray="74.8 289.0" stroke-dashoffset="-204.0" transform="rotate(-90 60 60)"/><circle r="46" cx="60" cy="60" fill="none" stroke="#3dd68c" stroke-width="16" stroke-dasharray="10.2 289.0" stroke-dashoffset="-278.8" transform="rotate(-90 60 60)"/></svg><div><div class="drow"><i style="background:#8a8f98"></i>1 hari: <b>765</b> repo (31%)</div><div class="drow"><i style="background:#7c9cff"></i>2–6 hari: <b>975</b> repo (40%)</div><div class="drow"><i style="background:#ffd166"></i>7–29 hari: <b>638</b> repo (26%)</div><div class="drow"><i style="background:#3dd68c"></i>≥30 hari: <b>87</b> repo (4%)</div></div></div>
-  </div>
+.hero {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px 36px;
+  align-items: end;
+  margin-top: 48px;
+}
+.hero-copy { grid-column: 1 / span 8; }
+.kicker {
+  margin: 0 0 14px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+.kicker::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin-bottom: 10px;
+  background: var(--copper);
+}
+h1 { margin: 0; font-weight: 400; }
+.figure {
+  display: block;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(96px, 14vw, 152px);
+  line-height: 0.78;
+  letter-spacing: -0.045em;
+  color: var(--copper);
+}
+.pct {
+  font-size: 0.42em;
+  letter-spacing: 0;
+  margin-left: 0.05em;
+  position: relative;
+  top: -0.42em;
+}
+.hed {
+  display: block;
+  max-width: 14em;
+  margin-top: 18px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-size: clamp(34px, 4vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.lede {
+  max-width: 38em;
+  margin: 20px 0 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.hero-rail {
+  grid-column: 9 / span 4;
+  border-left: 1px solid var(--line);
+  padding-left: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.rail-item + .rail-item { border-top: 1px solid var(--line); padding-top: 18px; }
+.rail-item b {
+  display: block;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.rail-item span {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.rail-item a:hover, .rail-item a:focus-visible { color: var(--copper); }
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 40px;
+  row-gap: 72px;
+  margin-top: 72px;
+}
+.span-8 { grid-column: span 8; }
+.span-7 { grid-column: span 7; }
+.span-5 { grid-column: span 5; }
+.span-4 { grid-column: span 4; }
+.span-12 { grid-column: span 12; }
+h2 {
+  margin: 0 0 8px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+.dek {
+  margin: 0 0 22px;
+  max-width: 46em;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.srow {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 0 14px;
+  align-items: center;
+  padding: 9px 8px;
+  margin: 0 -8px;
+  transition: background-color .2s ease;
+}
+.srow:hover { background: var(--hover); }
+.slabel {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 15px;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.sbar { display: flex; height: 32px; gap: 2px; }
+.seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  color: #1c1714;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  transition: filter .2s ease, opacity .2s ease;
+}
+.seg span { pointer-events: none; }
+.sbar:hover .seg:not(:hover) { filter: brightness(0.72); }
+.seg:hover { filter: brightness(1.08); }
+.seg.go { background: var(--copper); }
+.seg.swift { background: var(--rose); }
+.seg.py { background: var(--sage); }
+.seg.js { background: var(--cream); }
+.seg.other { background: var(--taupe); color: var(--ink); }
+.keys, .life { list-style: none; margin: 0; padding: 0; }
+.keys { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 14px; }
+.keys li, .life li { color: var(--muted); font-size: 13px; }
+.keys li { display: flex; align-items: center; gap: 7px; }
+.keys i, .life i {
+  width: 10px;
+  height: 10px;
+  display: block;
+  flex: none;
+}
+.keys i.go, .seg.go { background: var(--copper); }
+.keys i.swift { background: var(--rose); }
+.keys i.py { background: var(--sage); }
+.keys i.js { background: var(--cream); }
+.keys i.other { background: var(--taupe); }
+.langs:has(.keys .go:hover) .seg:not(.go),
+.langs:has(.keys .swift:hover) .seg:not(.swift),
+.langs:has(.keys .py:hover) .seg:not(.py),
+.langs:has(.keys .js:hover) .seg:not(.js),
+.langs:has(.keys .other:hover) .seg:not(.other) { opacity: 0.2; }
+.keys li { cursor: default; transition: color .2s ease; }
+.keys li:hover { color: var(--ink); }
+
+.donut-block { display: block; }
+.donut-svg { width: min(100%, 220px); height: auto; display: block; margin: 4px 0 18px; }
+.arc { transition: opacity .2s ease, stroke-width .2s ease; cursor: pointer; }
+.life li {
+  display: grid;
+  grid-template-columns: 12px 1fr auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 9px 6px;
+  border-top: 1px solid var(--line);
+  transition: background-color .2s ease, opacity .2s ease;
+}
+.life li:hover { background: var(--hover); }
+.life li:last-child, .rank li:last-child, .orgs li:last-child { border-bottom: 1px solid var(--line); }
+.life b { font-weight: 600; color: var(--ink); }
+.life em { font-style: normal; color: var(--muted); font-size: 12px; }
+.life i.d1 { background: var(--taupe); }
+.life i.d2 { background: var(--rose); }
+.life i.d3 { background: var(--sage); }
+.life i.d4 { background: var(--copper); }
+.donut-block:has(.d1:hover) .arc:not(.d1),
+.donut-block:has(.d2:hover) .arc:not(.d2),
+.donut-block:has(.d3:hover) .arc:not(.d3),
+.donut-block:has(.d4:hover) .arc:not(.d4) { opacity: 0.18; }
+.donut-block:has(.arc.d1:hover) .life li:not(.d1),
+.donut-block:has(.arc.d2:hover) .life li:not(.d2),
+.donut-block:has(.arc.d3:hover) .life li:not(.d3),
+.donut-block:has(.arc.d4:hover) .life li:not(.d4) { opacity: 0.35; }
+.donut-block:has(.d1:hover) .arc.d1,
+.donut-block:has(.d2:hover) .arc.d2,
+.donut-block:has(.d3:hover) .arc.d3,
+.donut-block:has(.d4:hover) .arc.d4 { stroke-width: 30; }
+
+.plate {
+  background: var(--paper);
+  padding: 20px 16px 12px;
+}
+.chart-scroll { overflow-x: auto; }
+.chart-scroll svg { display: block; width: 100%; min-width: 720px; height: auto; }
+svg text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.series { transition: opacity .25s ease; }
+.series .line {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  transition: stroke-width .2s ease;
+}
+.series .hit { fill: none; stroke: transparent; stroke-width: 14; cursor: pointer; }
+.series.ecc .line { stroke: var(--copper); stroke-width: 2.6; }
+.series.skills .line { stroke: var(--cream); stroke-width: 1.7; stroke-dasharray: 5 4; }
+.series.copilot .line { stroke: var(--sage); stroke-width: 1.7; }
+.series.sub2 .line { stroke: var(--sage); stroke-width: 1.7; stroke-dasharray: 5 4; }
+.series.swift .line { stroke: var(--rose); stroke-width: 2.6; }
+.series.alam .line { stroke: var(--rose); stroke-width: 1.7; stroke-dasharray: 5 4; }
+.series circle { stroke: var(--paper); stroke-width: 1; }
+.era:has(.series.ecc:hover) .series:not(.ecc),
+.era:has(.key.ecc:hover) .series:not(.ecc),
+.era:has(.series.skills:hover) .series:not(.skills),
+.era:has(.key.skills:hover) .series:not(.skills),
+.era:has(.series.copilot:hover) .series:not(.copilot),
+.era:has(.key.copilot:hover) .series:not(.copilot),
+.era:has(.series.sub2:hover) .series:not(.sub2),
+.era:has(.key.sub2:hover) .series:not(.sub2),
+.era:has(.series.swift:hover) .series:not(.swift),
+.era:has(.key.swift:hover) .series:not(.swift),
+.era:has(.series.alam:hover) .series:not(.alam),
+.era:has(.key.alam:hover) .series:not(.alam) { opacity: 0.14; }
+.era:has(.series.ecc:hover) .series.ecc .line,
+.era:has(.key.ecc:hover) .series.ecc .line,
+.era:has(.series.swift:hover) .series.swift .line,
+.era:has(.key.swift:hover) .series.swift .line { stroke-width: 3.6; }
+.keys .sw {
+  width: 22px;
+  height: 2px;
+  border: 0;
+  background: var(--muted);
+  box-sizing: content-box;
+}
+.keys .sw.ecc { height: 3px; background: var(--copper); }
+.keys .sw.skills { height: 0; background: none; border-top: 2px dashed var(--cream); }
+.keys .sw.copilot { background: var(--sage); }
+.keys .sw.sub2 { height: 0; background: none; border-top: 2px dashed var(--sage); }
+.keys .sw.swift { height: 3px; background: var(--rose); }
+.keys .sw.alam { height: 0; background: none; border-top: 2px dashed var(--rose); }
+.era .keys { margin: 14px 4px 0; }
+.era .keys li { cursor: pointer; }
+
+details { margin-top: 16px; }
+summary {
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted);
+  transition: color .2s ease;
+}
+summary:hover { color: var(--copper); }
+details table { margin-top: 12px; font-size: 12px; }
+
+.rank, .orgs { list-style: none; margin: 0; padding: 0; }
+.rank li, .orgs li {
+  padding: 12px 8px;
+  border-top: 1px solid var(--line);
+  transition: background-color .2s ease;
+}
+.rank li:hover, .orgs li:hover { background: var(--hover); }
+.rank li {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  row-gap: 6px;
+  align-items: center;
+}
+.rk {
+  grid-row: 1 / span 2;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--muted);
+}
+.rank li:first-child .rk { color: var(--copper); }
+.rank a, .orgs a { overflow-wrap: anywhere; }
+.val {
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.meter {
+  grid-column: 2 / span 2;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(var(--line), var(--line)) center / 100% 1px no-repeat;
+}
+.meter span {
+  display: block;
+  height: 2px;
+  background: var(--copper);
+  transition: height .2s ease, filter .2s ease;
+}
+.rank li:hover .meter span { height: 5px; filter: brightness(1.08); }
+.orgs li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 12px;
+  row-gap: 6px;
+  align-items: baseline;
+}
+.orgs .meter { grid-column: 1 / -1; }
+.orgs .meter span { background: var(--sage); }
+.orgs li:hover .meter span { height: 5px; filter: brightness(1.08); }
+
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 640px; }
+th {
+  padding: 0 12px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+td {
+  padding: 13px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: baseline;
+}
+.num { text-align: right; white-space: nowrap; }
+.when {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 20px;
+  white-space: nowrap;
+}
+tbody tr { transition: background-color .2s ease; }
+tbody tr:hover { background: var(--hover); }
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  vertical-align: 2px;
+}
+.dot.rose { background: var(--rose); }
+.dot.sage { background: var(--sage); }
+.dot.copper { background: var(--copper); }
+.dot.cream { background: var(--cream); }
+.note {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 62em;
+}
+.foot {
+  margin-top: 72px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  max-width: 68em;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+@media (max-width: 980px) {
+  .page { padding: 24px 20px 64px; }
+  .hero-copy, .hero-rail,
+  .span-8, .span-7, .span-5, .span-4, .span-12 { grid-column: 1 / -1; }
+  .hero { margin-top: 32px; gap: 28px; }
+  .hero-rail {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 22px 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .rail-item + .rail-item { border-top: 0; padding-top: 0; }
+  .board { row-gap: 48px; margin-top: 48px; }
+  .mast { flex-direction: column; align-items: flex-start; }
+  .updated { text-align: left; }
+  .donut-svg { max-width: 200px; }
+}
+@media (max-width: 640px) {
+  .hero-rail { grid-template-columns: 1fr; }
+  .rail-item + .rail-item { border-top: 1px solid var(--line); padding-top: 16px; }
+  .donut-block { grid-template-columns: 1fr; }
+  .donut-svg { max-width: 220px; }
+  .figure { font-size: 92px; }
+  .srow { grid-template-columns: 58px 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+  }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#isi">Langsung ke isi</a>
+<div class="page">
+  <header class="mast">
+    <div>
+      <p class="brand">GitHub <em>Trending</em></p>
+      <p class="issue">1 Januari – 10 Oktober 2026</p>
+    </div>
+    <p class="updated">Diperbarui 2026-10-10 20:23 WIB</p>
+  </header>
+  <p class="provenance">282 hari data (1 Jan – 2026-10-10): 260 hari backfill arsip komunitas + 22 hari kolektor terverifikasi · diperbarui 2026-10-10 20:23 WIB</p>
+
+  <main id="isi">
+    <section class="hero" aria-labelledby="thesis">
+      <div class="hero-copy">
+        <p class="kicker">Laporan ketahanan</p>
+        <h1 id="thesis">
+          <span class="figure">71<span class="pct">%</span></span>
+          <span class="hed">baru bertahan ≤6 hari.</span>
+        </h1>
+        <p class="lede">Yang naik ke trending jarang tinggal lama. Pengecualiannya 132 hari: satu repo yang tetap muncul, bulan demi bulan, sementara isi papan di paruh kedua tahun bergeser dari pustaka Swift ke perkakas agent.</p>
+      </div>
+      <div class="hero-rail">
+        <div class="rail-item">
+          <b>282</b>
+          <span>hari terlacak</span>
+        </div>
+        <div class="rail-item">
+          <b>2,465</b>
+          <span>repo unik trending</span>
+        </div>
+        <div class="rail-item">
+          <b>132 hr</b>
+          <span>terkonsisten: <a href="https://github.com/pointfreeco/swift-composable-architecture">swift-composable-architecture</a></span>
+        </div>
+      </div>
+    </section>
+
+    <div class="board">
+      <section class="span-8 langs" aria-labelledby="bahasa">
+        <p class="kicker">Bahasa</p>
+        <h2 id="bahasa">Komposisi bahasa per bulan</h2>
+        <p class="dek">Proporsi entri antar-seksi bahasa, indikatif bukan populasi penuh. Oktober, bulan berjalan, tercatat seluruhnya sebagai other.</p>
+        <ul class="keys">
+          <li class="go"><i class="go" aria-hidden="true"></i>go</li>
+          <li class="swift"><i class="swift" aria-hidden="true"></i>swift</li>
+          <li class="py"><i class="py" aria-hidden="true"></i>python</li>
+          <li class="js"><i class="js" aria-hidden="true"></i>javascript</li>
+          <li class="other"><i class="other" aria-hidden="true"></i>other</li>
+        </ul>
+        <div class="srow">
+          <div class="slabel">Jan 26</div>
+          <div class="sbar" role="img" aria-label="Jan 26: go 30%, swift 29%, python 20%, javascript 21%">
+            <div class="seg go" style="flex:30 1 0" title="go 30%"><span>30%</span></div>
+            <div class="seg swift" style="flex:29 1 0" title="swift 29%"><span>29%</span></div>
+            <div class="seg py" style="flex:20 1 0" title="python 20%"><span>20%</span></div>
+            <div class="seg js" style="flex:21 1 0" title="javascript 21%"><span>21%</span></div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="slabel">Feb 26</div>
+          <div class="sbar" role="img" aria-label="Feb 26: go 30%, swift 28%, python 23%, javascript 19%">
+            <div class="seg go" style="flex:30 1 0" title="go 30%"><span>30%</span></div>
+            <div class="seg swift" style="flex:28 1 0" title="swift 28%"><span>28%</span></div>
+            <div class="seg py" style="flex:23 1 0" title="python 23%"><span>23%</span></div>
+            <div class="seg js" style="flex:19 1 0" title="javascript 19%"><span>19%</span></div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="slabel">Mar 26</div>
+          <div class="sbar" role="img" aria-label="Mar 26: go 29%, swift 27%, python 24%, javascript 20%">
+            <div class="seg go" style="flex:29 1 0" title="go 29%"><span>29%</span></div>
+            <div class="seg swift" style="flex:27 1 0" title="swift 27%"><span>27%</span></div>
+            <div class="seg py" style="flex:24 1 0" title="python 24%"><span>24%</span></div>
+            <div class="seg js" style="flex:20 1 0" title="javascript 20%"><span>20%</span></div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="slabel">Apr 26</div>
+          <div class="sbar" role="img" aria-label="Apr 26: go 32%, swift 27%, python 21%, javascript 21%">
+            <div class="seg go" style="flex:32 1 0" title="go 32%"><span>32%</span></div>
+            <div class="seg swift" style="flex:27 1 0" title="swift 27%"><span>27%</span></div>
+            <div class="seg py" style="flex:21 1 0" title="python 21%"><span>21%</span></div>
+            <div class="seg js" style="flex:21 1 0" title="javascript 21%"><span>21%</span></div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="slabel">Mei 26</div>
+          <div class="sbar" role="img" aria-label="Mei 26: go 29%, swift 26%, python 25%, javascript 19%">
+            <div class="seg go" style="flex:29 1 0" title="go 29%"><span>29%</span></div>
+            <div class="seg swift" style="flex:26 1 0" title="swift 26%"><span>26%</span></div>
+            <div class="seg py" style="flex:25 1 0" title="python 25%"><span>25%</span></div>
+            <div class="seg js" style="flex:19 1 0" title="javascript 19%"><span>19%</span></div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="slabel">Jun 26</div>
+          <div class="sbar" role="img" aria-label="Jun 26: go 31%, swift 25%, python 24%, javascript 20%">
+            <div class="seg go" style="flex:31 1 0" title="go 31%"><span>31%</span></div>
+            <div class="seg swift" style="flex:25 1 0" title="swift 25%"><span>25%</span></div>
+            <div class="seg py" style="flex:24 1 0" title="python 24%"><span>24%</span></div>
+            <div class="seg js" style="flex:20 1 0" title="javascript 20%"><span>20%</span></div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="slabel">Jul 26</div>
+          <div class="sbar" role="img" aria-label="Jul 26: go 30%, swift 26%, python 22%, javascript 23%">
+            <div class="seg go" style="flex:30 1 0" title="go 30%"><span>30%</span></div>
+            <div class="seg swift" style="flex:26 1 0" title="swift 26%"><span>26%</span></div>
+            <div class="seg py" style="flex:22 1 0" title="python 22%"><span>22%</span></div>
+            <div class="seg js" style="flex:23 1 0" title="javascript 23%"><span>23%</span></div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="slabel">Agu 26</div>
+          <div class="sbar" role="img" aria-label="Agu 26: go 31%, swift 24%, python 26%, javascript 19%">
+            <div class="seg go" style="flex:31 1 0" title="go 31%"><span>31%</span></div>
+            <div class="seg swift" style="flex:24 1 0" title="swift 24%"><span>24%</span></div>
+            <div class="seg py" style="flex:26 1 0" title="python 26%"><span>26%</span></div>
+            <div class="seg js" style="flex:19 1 0" title="javascript 19%"><span>19%</span></div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="slabel">Sep 26</div>
+          <div class="sbar" role="img" aria-label="Sep 26: go 26%, swift 21%, python 22%, javascript 19%, other 12%">
+            <div class="seg go" style="flex:26 1 0" title="go 26%"><span>26%</span></div>
+            <div class="seg swift" style="flex:21 1 0" title="swift 21%"><span>21%</span></div>
+            <div class="seg py" style="flex:22 1 0" title="python 22%"><span>22%</span></div>
+            <div class="seg js" style="flex:19 1 0" title="javascript 19%"><span>19%</span></div>
+            <div class="seg other" style="flex:12 1 0" title="other 12%"><span>12%</span></div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="slabel">Okt 26</div>
+          <div class="sbar" role="img" aria-label="Okt 26: other 100%">
+            <div class="seg other" style="flex:100 1 0" title="other 100%"><span>100%</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="span-4" aria-labelledby="siklus">
+        <p class="kicker">Siklus hidup</p>
+        <h2 id="siklus">Siklus hidup repo trending</h2>
+        <p class="dek">Berapa lama sebuah repo unik sempat tinggal di papan. 765 + 975 = 71% yang tidak melewati enam hari.</p>
+        <div class="donut-block">
+          <svg class="donut-svg" viewBox="0 0 220 220" role="img" aria-labelledby="donut-title">
+            <title id="donut-title">Siklus hidup 2,465 repo: 765 sehari, 975 selama 2–6 hari, 638 selama 7–29 hari, 87 selama 30 hari atau lebih</title>
+            <circle class="arc d1" r="78" cx="110" cy="110" fill="none" stroke="#6b625a" stroke-width="22" stroke-dasharray="152.10 490.09" stroke-dashoffset="0" transform="rotate(-90 110 110)"><title>1 hari: 765 repo (31%)</title></circle>
+            <circle class="arc d2" r="78" cx="110" cy="110" fill="none" stroke="#d16b5b" stroke-width="22" stroke-dasharray="193.85 490.09" stroke-dashoffset="-152.10" transform="rotate(-90 110 110)"><title>2–6 hari: 975 repo (40%)</title></circle>
+            <circle class="arc d3" r="78" cx="110" cy="110" fill="none" stroke="#9aab78" stroke-width="22" stroke-dasharray="126.85 490.09" stroke-dashoffset="-345.95" transform="rotate(-90 110 110)"><title>7–29 hari: 638 repo (26%)</title></circle>
+            <circle class="arc d4" r="78" cx="110" cy="110" fill="none" stroke="#e2a15a" stroke-width="22" stroke-dasharray="17.30 490.09" stroke-dashoffset="-472.80" transform="rotate(-90 110 110)"><title>≥30 hari: 87 repo (4%)</title></circle>
+            <text x="110" y="106" text-anchor="middle" fill="#f3ecdf" font-family="Georgia, 'Times New Roman', Times, serif" font-size="32">2,465</text>
+            <text x="110" y="128" text-anchor="middle" fill="#cbbba8" font-size="12">repo</text>
+          </svg>
+          <ul class="life">
+            <li class="d1"><i class="d1" aria-hidden="true"></i><span>1 hari <em>31%</em></span><b>765</b></li>
+            <li class="d2"><i class="d2" aria-hidden="true"></i><span>2–6 hari <em>40%</em></span><b>975</b></li>
+            <li class="d3"><i class="d3" aria-hidden="true"></i><span>7–29 hari <em>26%</em></span><b>638</b></li>
+            <li class="d4"><i class="d4" aria-hidden="true"></i><span>≥30 hari <em>4%</em></span><b>87</b></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="span-12 era" aria-labelledby="era">
+        <p class="kicker">Pergeseran</p>
+        <h2 id="era">Era shift: hari di trending per bulan</h2>
+        <p class="dek">Enam repo terpilih. Garis utuh tebal: ECC naik sejak Mei, swift-composable-architecture turun setelah Agustus. Garis putus-putus adalah pasangan eranya — agent-skills di samping ECC, Alamofire di samping Swift. September sudah bergeser (Swift 3 hari, ECC 13). Oktober dipotong tanggal 10, jadi hitungan bulannya belum penuh.</p>
+        <div class="plate">
+          <div class="chart-scroll">
+            <svg viewBox="0 0 920 336" role="img" aria-labelledby="era-title era-desc">
+              <title id="era-title">Era shift, hari di trending per bulan</title>
+              <desc id="era-desc">ECC: 0, 0, 0, 0, 7, 9, 18, 18, 13, 1. agent-skills: 0, 0, 0, 0, 0, 0, 4, 14, 12, 3. awesome-copilot: 16, 8, 2, 3, 2, 0, 1, 2, 2, 0. sub2api: 0, 3, 14, 17, 10, 6, 9, 7, 6, 0. swift-composable-arch: 24, 17, 18, 16, 16, 13, 12, 13, 3, 0. Alamofire: 15, 13, 15, 14, 16, 14, 12, 14, 5, 0. Bulan Januari sampai Oktober.</desc>
+              <line x1="56" y1="24" x2="880" y2="24" stroke="#3d342c" stroke-width="1"/>
+              <line x1="56" y1="105.3" x2="880" y2="105.3" stroke="#3d342c" stroke-width="1"/>
+              <line x1="56" y1="186.7" x2="880" y2="186.7" stroke="#3d342c" stroke-width="1"/>
+              <line x1="56" y1="268" x2="880" y2="268" stroke="#6a5e54" stroke-width="1"/>
+              <text x="48" y="24" text-anchor="end" dominant-baseline="middle" fill="#cbbba8" font-size="11">30</text>
+              <text x="48" y="105.3" text-anchor="end" dominant-baseline="middle" fill="#cbbba8" font-size="11">20</text>
+              <text x="48" y="186.7" text-anchor="end" dominant-baseline="middle" fill="#cbbba8" font-size="11">10</text>
+              <text x="48" y="268" text-anchor="end" dominant-baseline="middle" fill="#cbbba8" font-size="11">0</text>
+              <text x="56" y="308" text-anchor="middle" fill="#cbbba8" font-size="12">Jan</text>
+              <text x="147.6" y="308" text-anchor="middle" fill="#cbbba8" font-size="12">Feb</text>
+              <text x="239.1" y="308" text-anchor="middle" fill="#cbbba8" font-size="12">Mar</text>
+              <text x="330.7" y="308" text-anchor="middle" fill="#cbbba8" font-size="12">Apr</text>
+              <text x="422.2" y="308" text-anchor="middle" fill="#cbbba8" font-size="12">Mei</text>
+              <text x="513.8" y="308" text-anchor="middle" fill="#cbbba8" font-size="12">Jun</text>
+              <text x="605.3" y="308" text-anchor="middle" fill="#cbbba8" font-size="12">Jul</text>
+              <text x="696.9" y="308" text-anchor="middle" fill="#cbbba8" font-size="12">Agu</text>
+              <text x="788.4" y="308" text-anchor="middle" fill="#cbbba8" font-size="12">Sep</text>
+              <text x="880" y="308" text-anchor="middle" fill="#cbbba8" font-size="12">Okt</text>
+              <polygon points="56,268 147.6,268 239.1,268 330.7,268 422.2,211.1 513.8,194.8 605.3,121.6 696.9,121.6 788.4,162.3 880,259.9 880,268" fill="#e2a15a" opacity="0.14"/>
+              <g class="series copilot">
+                <title>awesome-copilot: Jan 16, Feb 8, Mar 2, Apr 3, Mei 2, Jun 0, Jul 1, Agu 2, Sep 2, Okt 0</title>
+                <polyline class="hit" points="56,137.9 147.6,202.9 239.1,251.7 330.7,243.6 422.2,251.7 513.8,268 605.3,259.9 696.9,251.7 788.4,251.7 880,268"/>
+                <polyline class="line" points="56,137.9 147.6,202.9 239.1,251.7 330.7,243.6 422.2,251.7 513.8,268 605.3,259.9 696.9,251.7 788.4,251.7 880,268"/>
+                <circle cx="56" cy="137.9" r="2.4" fill="#9aab78"/>
+                <circle cx="147.6" cy="202.9" r="2.4" fill="#9aab78"/>
+                <circle cx="239.1" cy="251.7" r="2.4" fill="#9aab78"/>
+                <circle cx="330.7" cy="243.6" r="2.4" fill="#9aab78"/>
+                <circle cx="422.2" cy="251.7" r="2.4" fill="#9aab78"/>
+                <circle cx="605.3" cy="259.9" r="2.4" fill="#9aab78"/>
+                <circle cx="696.9" cy="251.7" r="2.4" fill="#9aab78"/>
+                <circle cx="788.4" cy="251.7" r="2.4" fill="#9aab78"/>
+              </g>
+              <g class="series alam">
+                <title>Alamofire: Jan 15, Feb 13, Mar 15, Apr 14, Mei 16, Jun 14, Jul 12, Agu 14, Sep 5, Okt 0</title>
+                <polyline class="hit" points="56,146 147.6,162.3 239.1,146 330.7,154.1 422.2,137.9 513.8,154.1 605.3,170.4 696.9,154.1 788.4,227.3 880,268"/>
+                <polyline class="line" points="56,146 147.6,162.3 239.1,146 330.7,154.1 422.2,137.9 513.8,154.1 605.3,170.4 696.9,154.1 788.4,227.3 880,268"/>
+                <circle cx="56" cy="146" r="2.4" fill="#d16b5b"/>
+                <circle cx="147.6" cy="162.3" r="2.4" fill="#d16b5b"/>
+                <circle cx="239.1" cy="146" r="2.4" fill="#d16b5b"/>
+                <circle cx="330.7" cy="154.1" r="2.4" fill="#d16b5b"/>
+                <circle cx="422.2" cy="137.9" r="2.4" fill="#d16b5b"/>
+                <circle cx="513.8" cy="154.1" r="2.4" fill="#d16b5b"/>
+                <circle cx="605.3" cy="170.4" r="2.4" fill="#d16b5b"/>
+                <circle cx="696.9" cy="154.1" r="2.4" fill="#d16b5b"/>
+                <circle cx="788.4" cy="227.3" r="2.4" fill="#d16b5b"/>
+              </g>
+              <g class="series sub2">
+                <title>sub2api: Jan 0, Feb 3, Mar 14, Apr 17, Mei 10, Jun 6, Jul 9, Agu 7, Sep 6, Okt 0</title>
+                <polyline class="hit" points="56,268 147.6,243.6 239.1,154.1 330.7,129.7 422.2,186.7 513.8,219.2 605.3,194.8 696.9,211.1 788.4,219.2 880,268"/>
+                <polyline class="line" points="56,268 147.6,243.6 239.1,154.1 330.7,129.7 422.2,186.7 513.8,219.2 605.3,194.8 696.9,211.1 788.4,219.2 880,268"/>
+                <circle cx="147.6" cy="243.6" r="2.4" fill="#9aab78"/>
+                <circle cx="239.1" cy="154.1" r="2.4" fill="#9aab78"/>
+                <circle cx="330.7" cy="129.7" r="2.4" fill="#9aab78"/>
+                <circle cx="422.2" cy="186.7" r="2.4" fill="#9aab78"/>
+                <circle cx="513.8" cy="219.2" r="2.4" fill="#9aab78"/>
+                <circle cx="605.3" cy="194.8" r="2.4" fill="#9aab78"/>
+                <circle cx="696.9" cy="211.1" r="2.4" fill="#9aab78"/>
+                <circle cx="788.4" cy="219.2" r="2.4" fill="#9aab78"/>
+              </g>
+              <g class="series skills">
+                <title>agent-skills: Jan 0, Feb 0, Mar 0, Apr 0, Mei 0, Jun 0, Jul 4, Agu 14, Sep 12, Okt 3</title>
+                <polyline class="hit" points="56,268 147.6,268 239.1,268 330.7,268 422.2,268 513.8,268 605.3,235.5 696.9,154.1 788.4,170.4 880,243.6"/>
+                <polyline class="line" points="56,268 147.6,268 239.1,268 330.7,268 422.2,268 513.8,268 605.3,235.5 696.9,154.1 788.4,170.4 880,243.6"/>
+                <circle cx="605.3" cy="235.5" r="2.6" fill="#efe4d2"/>
+                <circle cx="696.9" cy="154.1" r="2.6" fill="#efe4d2"/>
+                <circle cx="788.4" cy="170.4" r="2.6" fill="#efe4d2"/>
+                <circle cx="880" cy="243.6" r="2.6" fill="#efe4d2"/>
+              </g>
+              <g class="series swift">
+                <title>swift-composable-arch: Jan 24, Feb 17, Mar 18, Apr 16, Mei 16, Jun 13, Jul 12, Agu 13, Sep 3, Okt 0</title>
+                <polyline class="hit" points="56,72.8 147.6,129.7 239.1,121.6 330.7,137.9 422.2,137.9 513.8,162.3 605.3,170.4 696.9,162.3 788.4,243.6 880,268"/>
+                <polyline class="line" points="56,72.8 147.6,129.7 239.1,121.6 330.7,137.9 422.2,137.9 513.8,162.3 605.3,170.4 696.9,162.3 788.4,243.6 880,268"/>
+                <circle cx="56" cy="72.8" r="3.2" fill="#d16b5b"/>
+                <circle cx="147.6" cy="129.7" r="3.2" fill="#d16b5b"/>
+                <circle cx="239.1" cy="121.6" r="3.2" fill="#d16b5b"/>
+                <circle cx="330.7" cy="137.9" r="3.2" fill="#d16b5b"/>
+                <circle cx="422.2" cy="137.9" r="3.2" fill="#d16b5b"/>
+                <circle cx="513.8" cy="162.3" r="3.2" fill="#d16b5b"/>
+                <circle cx="605.3" cy="170.4" r="3.2" fill="#d16b5b"/>
+                <circle cx="696.9" cy="162.3" r="3.2" fill="#d16b5b"/>
+                <circle cx="788.4" cy="243.6" r="3.2" fill="#d16b5b"/>
+              </g>
+              <g class="series ecc">
+                <title>ECC (agent harness): Jan 0, Feb 0, Mar 0, Apr 0, Mei 7, Jun 9, Jul 18, Agu 18, Sep 13, Okt 1</title>
+                <polyline class="hit" points="56,268 147.6,268 239.1,268 330.7,268 422.2,211.1 513.8,194.8 605.3,121.6 696.9,121.6 788.4,162.3 880,259.9"/>
+                <polyline class="line" points="56,268 147.6,268 239.1,268 330.7,268 422.2,211.1 513.8,194.8 605.3,121.6 696.9,121.6 788.4,162.3 880,259.9"/>
+                <circle cx="422.2" cy="211.1" r="3.2" fill="#e2a15a"/>
+                <circle cx="513.8" cy="194.8" r="3.2" fill="#e2a15a"/>
+                <circle cx="605.3" cy="121.6" r="3.2" fill="#e2a15a"/>
+                <circle cx="696.9" cy="121.6" r="3.2" fill="#e2a15a"/>
+                <circle cx="788.4" cy="162.3" r="3.2" fill="#e2a15a"/>
+                <circle cx="880" cy="259.9" r="3.2" fill="#e2a15a"/>
+              </g>
+            </svg>
+          </div>
+          <ul class="keys">
+            <li class="key ecc"><i class="sw ecc" aria-hidden="true"></i>ECC (agent harness)</li>
+            <li class="key skills"><i class="sw skills" aria-hidden="true"></i>agent-skills</li>
+            <li class="key copilot"><i class="sw copilot" aria-hidden="true"></i>awesome-copilot</li>
+            <li class="key sub2"><i class="sw sub2" aria-hidden="true"></i>sub2api</li>
+            <li class="key swift"><i class="sw swift" aria-hidden="true"></i>swift-composable-arch</li>
+            <li class="key alam"><i class="sw alam" aria-hidden="true"></i>Alamofire</li>
+          </ul>
+        </div>
+        <details>
+          <summary>Angka di balik garis — hari per bulan</summary>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Repo</th><th class="num">Jan</th><th class="num">Feb</th><th class="num">Mar</th><th class="num">Apr</th><th class="num">Mei</th><th class="num">Jun</th><th class="num">Jul</th><th class="num">Agu</th><th class="num">Sep</th><th class="num">Okt</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>ECC (agent harness)</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">7</td><td class="num">9</td><td class="num">18</td><td class="num">18</td><td class="num">13</td><td class="num">1</td></tr>
+                <tr><td>agent-skills</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">4</td><td class="num">14</td><td class="num">12</td><td class="num">3</td></tr>
+                <tr><td>awesome-copilot</td><td class="num">16</td><td class="num">8</td><td class="num">2</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">1</td><td class="num">2</td><td class="num">2</td><td class="num">0</td></tr>
+                <tr><td>sub2api</td><td class="num">0</td><td class="num">3</td><td class="num">14</td><td class="num">17</td><td class="num">10</td><td class="num">6</td><td class="num">9</td><td class="num">7</td><td class="num">6</td><td class="num">0</td></tr>
+                <tr><td>swift-composable-arch</td><td class="num">24</td><td class="num">17</td><td class="num">18</td><td class="num">16</td><td class="num">16</td><td class="num">13</td><td class="num">12</td><td class="num">13</td><td class="num">3</td><td class="num">0</td></tr>
+                <tr><td>Alamofire</td><td class="num">15</td><td class="num">13</td><td class="num">15</td><td class="num">14</td><td class="num">16</td><td class="num">14</td><td class="num">12</td><td class="num">14</td><td class="num">5</td><td class="num">0</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+
+      <section class="span-7" aria-labelledby="konsisten">
+        <p class="kicker">Konsistensi</p>
+        <h2 id="konsisten">Paling konsisten sepanjang 2026</h2>
+        <p class="dek">Sepuluh repo dengan hari kehadiran terbanyak, masing-masing 9/9 bulan. Lebar batang dibanding 132 hari.</p>
+        <ol class="rank">
+          <li>
+            <span class="rk">01</span>
+            <a href="https://github.com/pointfreeco/swift-composable-architecture">pointfreeco/swift-composable-architecture</a>
+            <span class="val">132 hr · 9/9 bln</span>
+            <span class="meter" aria-hidden="true"><span style="width:100%"></span></span>
+          </li>
+          <li>
+            <span class="rk">02</span>
+            <a href="https://github.com/Alamofire/Alamofire">Alamofire/Alamofire</a>
+            <span class="val">118 hr · 9/9 bln</span>
+            <span class="meter" aria-hidden="true"><span style="width:89%"></span></span>
+          </li>
+          <li>
+            <span class="rk">03</span>
+            <a href="https://github.com/groue/GRDB.swift">groue/GRDB.swift</a>
+            <span class="val">97 hr · 9/9 bln</span>
+            <span class="meter" aria-hidden="true"><span style="width:73%"></span></span>
+          </li>
+          <li>
+            <span class="rk">04</span>
+            <a href="https://github.com/apple/container">apple/container</a>
+            <span class="val">88 hr · 9/9 bln</span>
+            <span class="meter" aria-hidden="true"><span style="width:66%"></span></span>
+          </li>
+          <li>
+            <span class="rk">05</span>
+            <a href="https://github.com/onevcat/Kingfisher">onevcat/Kingfisher</a>
+            <span class="val">82 hr · 9/9 bln</span>
+            <span class="meter" aria-hidden="true"><span style="width:62%"></span></span>
+          </li>
+          <li>
+            <span class="rk">06</span>
+            <a href="https://github.com/vapor/vapor">vapor/vapor</a>
+            <span class="val">82 hr · 9/9 bln</span>
+            <span class="meter" aria-hidden="true"><span style="width:62%"></span></span>
+          </li>
+          <li>
+            <span class="rk">07</span>
+            <a href="https://github.com/steipete/CodexBar">steipete/CodexBar</a>
+            <span class="val">78 hr · 9/9 bln</span>
+            <span class="meter" aria-hidden="true"><span style="width:59%"></span></span>
+          </li>
+          <li>
+            <span class="rk">08</span>
+            <a href="https://github.com/nikitabobko/AeroSpace">nikitabobko/AeroSpace</a>
+            <span class="val">76 hr · 9/9 bln</span>
+            <span class="meter" aria-hidden="true"><span style="width:57%"></span></span>
+          </li>
+          <li>
+            <span class="rk">09</span>
+            <a href="https://github.com/pointfreeco/swift-snapshot-testing">pointfreeco/swift-snapshot-testing</a>
+            <span class="val">75 hr · 9/9 bln</span>
+            <span class="meter" aria-hidden="true"><span style="width:56%"></span></span>
+          </li>
+          <li>
+            <span class="rk">10</span>
+            <a href="https://github.com/aquasecurity/trivy">aquasecurity/trivy</a>
+            <span class="val">73 hr · 9/9 bln</span>
+            <span class="meter" aria-hidden="true"><span style="width:55%"></span></span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="span-5" aria-labelledby="org">
+        <p class="kicker">Organisasi</p>
+        <h2 id="org">Kekuatan organisasi</h2>
+        <p class="dek">Hari-total seluruh repo di bawah satu akun. Batang dibanding 241 hari-total.</p>
+        <ul class="orgs">
+          <li>
+            <a href="https://github.com/pointfreeco">pointfreeco</a>
+            <span class="val">241 hr-total</span>
+            <span class="meter" aria-hidden="true"><span style="width:100%"></span></span>
+          </li>
+          <li>
+            <a href="https://github.com/apple">apple</a>
+            <span class="val">239 hr-total</span>
+            <span class="meter" aria-hidden="true"><span style="width:99%"></span></span>
+          </li>
+          <li>
+            <a href="https://github.com/microsoft">microsoft</a>
+            <span class="val">214 hr-total</span>
+            <span class="meter" aria-hidden="true"><span style="width:88%"></span></span>
+          </li>
+          <li>
+            <a href="https://github.com/github">github</a>
+            <span class="val">203 hr-total</span>
+            <span class="meter" aria-hidden="true"><span style="width:84%"></span></span>
+          </li>
+          <li>
+            <a href="https://github.com/anthropics">anthropics</a>
+            <span class="val">149 hr-total</span>
+            <span class="meter" aria-hidden="true"><span style="width:61%"></span></span>
+          </li>
+          <li>
+            <a href="https://github.com/steipete">steipete</a>
+            <span class="val">130 hr-total</span>
+            <span class="meter" aria-hidden="true"><span style="width:53%"></span></span>
+          </li>
+          <li>
+            <a href="https://github.com/Alamofire">Alamofire</a>
+            <span class="val">118 hr-total</span>
+            <span class="meter" aria-hidden="true"><span style="width:48%"></span></span>
+          </li>
+          <li>
+            <a href="https://github.com/google">google</a>
+            <span class="val">111 hr-total</span>
+            <span class="meter" aria-hidden="true"><span style="width:46%"></span></span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="span-12" aria-labelledby="juara">
+        <p class="kicker">Indeks bulanan</p>
+        <h2 id="juara">Juara trending per bulan</h2>
+        <p class="dek">Repo dengan hari terbanyak pada bulan itu, plus jumlah repo unik yang sempat masuk trending.</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Bulan</th>
+                <th>Juara</th>
+                <th class="num">Hari</th>
+                <th class="num">Repo unik</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="when"><i class="dot rose" aria-hidden="true"></i>Jan 26</td>
+                <td><a href="https://github.com/pointfreeco/swift-composable-architecture">pointfreeco/swift-composable-architecture</a></td>
+                <td class="num">24 hr</td>
+                <td class="num">816 repo</td>
+              </tr>
+              <tr>
+                <td class="when"><i class="dot rose" aria-hidden="true"></i>Feb 26</td>
+                <td><a href="https://github.com/pointfreeco/swift-composable-architecture">pointfreeco/swift-composable-architecture</a></td>
+                <td class="num">17 hr</td>
+                <td class="num">763 repo</td>
+              </tr>
+              <tr>
+                <td class="when"><i class="dot rose" aria-hidden="true"></i>Mar 26</td>
+                <td><a href="https://github.com/pointfreeco/swift-composable-architecture">pointfreeco/swift-composable-architecture</a></td>
+                <td class="num">18 hr</td>
+                <td class="num">720 repo</td>
+              </tr>
+              <tr>
+                <td class="when"><i class="dot sage" aria-hidden="true"></i>Apr 26</td>
+                <td><a href="https://github.com/Wei-Shaw/sub2api">Wei-Shaw/sub2api</a></td>
+                <td class="num">17 hr</td>
+                <td class="num">688 repo</td>
+              </tr>
+              <tr>
+                <td class="when"><i class="dot rose" aria-hidden="true"></i>Mei 26</td>
+                <td><a href="https://github.com/pointfreeco/swift-composable-architecture">pointfreeco/swift-composable-architecture</a></td>
+                <td class="num">16 hr</td>
+                <td class="num">756 repo</td>
+              </tr>
+              <tr>
+                <td class="when"><i class="dot rose" aria-hidden="true"></i>Jun 26</td>
+                <td><a href="https://github.com/Alamofire/Alamofire">Alamofire/Alamofire</a></td>
+                <td class="num">14 hr</td>
+                <td class="num">787 repo</td>
+              </tr>
+              <tr>
+                <td class="when"><i class="dot copper" aria-hidden="true"></i>Jul 26</td>
+                <td><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td>
+                <td class="num">18 hr</td>
+                <td class="num">804 repo</td>
+              </tr>
+              <tr>
+                <td class="when"><i class="dot copper" aria-hidden="true"></i>Agu 26</td>
+                <td><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td>
+                <td class="num">18 hr</td>
+                <td class="num">780 repo</td>
+              </tr>
+              <tr>
+                <td class="when"><i class="dot copper" aria-hidden="true"></i>Sep 26</td>
+                <td><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td>
+                <td class="num">13 hr</td>
+                <td class="num">596 repo</td>
+              </tr>
+              <tr>
+                <td class="when"><i class="dot cream" aria-hidden="true"></i>Okt 26</td>
+                <td><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></td>
+                <td class="num">8 hr</td>
+                <td class="num">63 repo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Titik warna mengikuti era di grafik garis: merah bata untuk juara Swift, hijau lumut untuk sub2api, tembaga untuk ECC, krem untuk skills. Oktober masih berjalan — 63 repo unik, juara 8 hari.</p>
+      </section>
+    </div>
+  </main>
+  <footer class="foot">Metodologi: kehadiran harian &amp; rank dari arsip trending (bonfy/github-trending, tanpa angka bintang historis) + kolektor resmi github.com/trending sejak 19 Sep (bintang terverifikasi API). Komposisi bahasa = proporsi entri antar-seksi bahasa, indikatif bukan populasi penuh. Dihasilkan otomatis oleh pipeline github-reporter.</footer>
 </div>
-<div style="height:14px"></div>
-<div class="card"><h2>Era Shift: Hari di Trending per Bulan (repo terpilih)</h2>
-  <svg width="640" height="220"><line x1="34" y1="198.0" x2="630" y2="198.0" stroke="var(--border)" stroke-width="1"/><text x="29" y="201.0" text-anchor="end" font-size="9" fill="var(--muted-foreground)">0</text><line x1="34" y1="136.7" x2="630" y2="136.7" stroke="var(--border)" stroke-width="1"/><text x="29" y="139.7" text-anchor="end" font-size="9" fill="var(--muted-foreground)">10</text><line x1="34" y1="75.4" x2="630" y2="75.4" stroke="var(--border)" stroke-width="1"/><text x="29" y="78.4" text-anchor="end" font-size="9" fill="var(--muted-foreground)">20</text><line x1="34" y1="14.1" x2="630" y2="14.1" stroke="var(--border)" stroke-width="1"/><text x="29" y="17.1" text-anchor="end" font-size="9" fill="var(--muted-foreground)">30</text><text x="34.0" y="214" text-anchor="middle" font-size="9" fill="var(--muted-foreground)">Jan</text><text x="100.2" y="214" text-anchor="middle" font-size="9" fill="var(--muted-foreground)">Feb</text><text x="166.4" y="214" text-anchor="middle" font-size="9" fill="var(--muted-foreground)">Mar</text><text x="232.7" y="214" text-anchor="middle" font-size="9" fill="var(--muted-foreground)">Apr</text><text x="298.9" y="214" text-anchor="middle" font-size="9" fill="var(--muted-foreground)">Mei</text><text x="365.1" y="214" text-anchor="middle" font-size="9" fill="var(--muted-foreground)">Jun</text><text x="431.3" y="214" text-anchor="middle" font-size="9" fill="var(--muted-foreground)">Jul</text><text x="497.6" y="214" text-anchor="middle" font-size="9" fill="var(--muted-foreground)">Agu</text><text x="563.8" y="214" text-anchor="middle" font-size="9" fill="var(--muted-foreground)">Sep</text><text x="630.0" y="214" text-anchor="middle" font-size="9" fill="var(--muted-foreground)">Okt</text><polyline points="34.0,198.0 100.2,198.0 166.4,198.0 232.7,198.0 298.9,155.1 365.1,142.8 431.3,87.7 497.6,87.7 563.8,118.3 630.0,191.9" fill="none" stroke="#ff6b9d" stroke-width="2" stroke-linejoin="round"/><polyline points="34.0,198.0 100.2,198.0 166.4,198.0 232.7,198.0 298.9,198.0 365.1,198.0 431.3,173.5 497.6,112.2 563.8,124.5 630.0,179.6" fill="none" stroke="#ffd166" stroke-width="2" stroke-linejoin="round"/><polyline points="34.0,99.9 100.2,149.0 166.4,185.7 232.7,179.6 298.9,185.7 365.1,198.0 431.3,191.9 497.6,185.7 563.8,185.7 630.0,198.0" fill="none" stroke="#7c9cff" stroke-width="2" stroke-linejoin="round"/><polyline points="34.0,198.0 100.2,179.6 166.4,112.2 232.7,93.8 298.9,136.7 365.1,161.2 431.3,142.8 497.6,155.1 563.8,161.2 630.0,198.0" fill="none" stroke="#3dd68c" stroke-width="2" stroke-linejoin="round"/><polyline points="34.0,50.9 100.2,93.8 166.4,87.7 232.7,99.9 298.9,99.9 365.1,118.3 431.3,124.5 497.6,118.3 563.8,179.6 630.0,198.0" fill="none" stroke="#ff8f6b" stroke-width="2" stroke-linejoin="round"/><polyline points="34.0,106.1 100.2,118.3 166.4,106.1 232.7,112.2 298.9,99.9 365.1,112.2 431.3,124.5 497.6,112.2 563.8,167.4 630.0,198.0" fill="none" stroke="#9b8cff" stroke-width="2" stroke-linejoin="round"/></svg>
-  <div><span class="lgd"><i style="background:#ff6b9d"></i>ECC (agent harness)</span><span class="lgd"><i style="background:#ffd166"></i>agent-skills</span><span class="lgd"><i style="background:#7c9cff"></i>awesome-copilot</span><span class="lgd"><i style="background:#3dd68c"></i>sub2api</span><span class="lgd"><i style="background:#ff8f6b"></i>swift-composable-arch</span><span class="lgd"><i style="background:#9b8cff"></i>Alamofire</span></div>
-</div>
-<div class="card"><h2>Paling Konsisten Sepanjang 2026</h2><div class="brow"><div class="blabel"><a href="https://github.com/pointfreeco/swift-composable-architecture">pointfreeco/swift-composable-architecture</a></div><div class="btrack"><div class="bfill" style="width:100%"></div></div><div class="bval">132 hr · 9/9 bln</div></div><div class="brow"><div class="blabel"><a href="https://github.com/Alamofire/Alamofire">Alamofire/Alamofire</a></div><div class="btrack"><div class="bfill" style="width:89%"></div></div><div class="bval">118 hr · 9/9 bln</div></div><div class="brow"><div class="blabel"><a href="https://github.com/groue/GRDB.swift">groue/GRDB.swift</a></div><div class="btrack"><div class="bfill" style="width:73%"></div></div><div class="bval">97 hr · 9/9 bln</div></div><div class="brow"><div class="blabel"><a href="https://github.com/apple/container">apple/container</a></div><div class="btrack"><div class="bfill" style="width:66%"></div></div><div class="bval">88 hr · 9/9 bln</div></div><div class="brow"><div class="blabel"><a href="https://github.com/onevcat/Kingfisher">onevcat/Kingfisher</a></div><div class="btrack"><div class="bfill" style="width:62%"></div></div><div class="bval">82 hr · 9/9 bln</div></div><div class="brow"><div class="blabel"><a href="https://github.com/vapor/vapor">vapor/vapor</a></div><div class="btrack"><div class="bfill" style="width:62%"></div></div><div class="bval">82 hr · 9/9 bln</div></div><div class="brow"><div class="blabel"><a href="https://github.com/steipete/CodexBar">steipete/CodexBar</a></div><div class="btrack"><div class="bfill" style="width:59%"></div></div><div class="bval">78 hr · 9/9 bln</div></div><div class="brow"><div class="blabel"><a href="https://github.com/nikitabobko/AeroSpace">nikitabobko/AeroSpace</a></div><div class="btrack"><div class="bfill" style="width:57%"></div></div><div class="bval">76 hr · 9/9 bln</div></div><div class="brow"><div class="blabel"><a href="https://github.com/pointfreeco/swift-snapshot-testing">pointfreeco/swift-snapshot-testing</a></div><div class="btrack"><div class="bfill" style="width:56%"></div></div><div class="bval">75 hr · 9/9 bln</div></div><div class="brow"><div class="blabel"><a href="https://github.com/aquasecurity/trivy">aquasecurity/trivy</a></div><div class="btrack"><div class="bfill" style="width:55%"></div></div><div class="bval">73 hr · 9/9 bln</div></div></div>
-<div class="cols">
-  <div class="card"><h2>Juara Trending per Bulan</h2><table><tr><th>Bulan</th><th>Juara</th><th>Hari</th><th>Repo unik</th></tr><tr><td>Jan 26</td><td><a href="https://github.com/pointfreeco/swift-composable-architecture">pointfreeco/swift-composable-architecture</a></td><td class="num">24 hr</td><td class="num">816 repo</td></tr><tr><td>Feb 26</td><td><a href="https://github.com/pointfreeco/swift-composable-architecture">pointfreeco/swift-composable-architecture</a></td><td class="num">17 hr</td><td class="num">763 repo</td></tr><tr><td>Mar 26</td><td><a href="https://github.com/pointfreeco/swift-composable-architecture">pointfreeco/swift-composable-architecture</a></td><td class="num">18 hr</td><td class="num">720 repo</td></tr><tr><td>Apr 26</td><td><a href="https://github.com/Wei-Shaw/sub2api">Wei-Shaw/sub2api</a></td><td class="num">17 hr</td><td class="num">688 repo</td></tr><tr><td>Mei 26</td><td><a href="https://github.com/pointfreeco/swift-composable-architecture">pointfreeco/swift-composable-architecture</a></td><td class="num">16 hr</td><td class="num">756 repo</td></tr><tr><td>Jun 26</td><td><a href="https://github.com/Alamofire/Alamofire">Alamofire/Alamofire</a></td><td class="num">14 hr</td><td class="num">787 repo</td></tr><tr><td>Jul 26</td><td><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td><td class="num">18 hr</td><td class="num">804 repo</td></tr><tr><td>Agu 26</td><td><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td><td class="num">18 hr</td><td class="num">780 repo</td></tr><tr><td>Sep 26</td><td><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></td><td class="num">13 hr</td><td class="num">596 repo</td></tr><tr><td>Okt 26</td><td><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></td><td class="num">8 hr</td><td class="num">63 repo</td></tr></table></div>
-  <div class="card"><h2>Kekuatan Organisasi (hari-total)</h2><div class="brow"><div class="blabel"><a href="https://github.com/pointfreeco">pointfreeco</a></div><div class="btrack"><div class="bfill alt" style="width:100%"></div></div><div class="bval">241 hr-total</div></div><div class="brow"><div class="blabel"><a href="https://github.com/apple">apple</a></div><div class="btrack"><div class="bfill alt" style="width:99%"></div></div><div class="bval">239 hr-total</div></div><div class="brow"><div class="blabel"><a href="https://github.com/microsoft">microsoft</a></div><div class="btrack"><div class="bfill alt" style="width:88%"></div></div><div class="bval">214 hr-total</div></div><div class="brow"><div class="blabel"><a href="https://github.com/github">github</a></div><div class="btrack"><div class="bfill alt" style="width:84%"></div></div><div class="bval">203 hr-total</div></div><div class="brow"><div class="blabel"><a href="https://github.com/anthropics">anthropics</a></div><div class="btrack"><div class="bfill alt" style="width:61%"></div></div><div class="bval">149 hr-total</div></div><div class="brow"><div class="blabel"><a href="https://github.com/steipete">steipete</a></div><div class="btrack"><div class="bfill alt" style="width:53%"></div></div><div class="bval">130 hr-total</div></div><div class="brow"><div class="blabel"><a href="https://github.com/Alamofire">Alamofire</a></div><div class="btrack"><div class="bfill alt" style="width:48%"></div></div><div class="bval">118 hr-total</div></div><div class="brow"><div class="blabel"><a href="https://github.com/google">google</a></div><div class="btrack"><div class="bfill alt" style="width:46%"></div></div><div class="bval">111 hr-total</div></div></div>
-</div>
-<div class="foot">Metodologi: kehadiran harian &amp; rank dari arsip trending (bonfy/github-trending, tanpa angka bintang historis) + kolektor resmi github.com/trending sejak 19 Sep (bintang terverifikasi API). Komposisi bahasa = proporsi entri antar-seksi bahasa, indikatif bukan populasi penuh. Dihasilkan otomatis oleh pipeline github-reporter.</div>
-</body></html>
+</body>
+</html>
