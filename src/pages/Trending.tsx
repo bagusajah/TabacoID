@@ -52,6 +52,11 @@ export default function TrendingPage() {
             <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
               {t['tr.title']}
             </h1>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a href="/trending/dashboard" className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+                📊 Dashboard Visual 282 hari
+              </a>
+            </div>
             <p className="text-lg leading-8 text-slate-600">
               {t['tr.desc']}
             </p>
