@@ -21,7 +21,11 @@ export default function ReportDetailPage({ source = 'reports' }: { source?: 'rep
 
   useEffect(() => {
     const modules = source === 'trending'
-      ? (import.meta.glob('/docs/trending/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>)
+      ? (() => {
+          const daily = import.meta.glob('/docs/trending/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
+          const monthly = import.meta.glob('/docs/trending/monthly/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
+          return { ...daily, ...monthly }
+        })()
       : (import.meta.glob('/docs/reports/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>)
     const key = Object.keys(modules).find(k => k.includes(slug))
     if (!key) return

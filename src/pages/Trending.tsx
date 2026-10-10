@@ -19,7 +19,9 @@ export default function TrendingPage() {
   })
 
   useEffect(() => {
-    const modules = import.meta.glob('/docs/trending/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
+    const daily = import.meta.glob('/docs/trending/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
+    const monthly = import.meta.glob('/docs/trending/monthly/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
+    const modules = { ...daily, ...monthly }
 
     Promise.allSettled(
       Object.entries(modules).map(async ([path, loader]) => {
