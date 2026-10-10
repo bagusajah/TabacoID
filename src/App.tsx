@@ -8,6 +8,7 @@ import NotFoundPage from '@/pages/NotFound'
 import ReportsPage from '@/pages/Reports'
 import ReportDetailPage from '@/pages/ReportDetail'
 import TrendingPage from '@/pages/Trending'
+import TrendingDashboard from '@/pages/TrendingDashboard'
 import WorkflowPage from '@/pages/Workflow'
 
 function ScrollToTop() {
@@ -30,6 +31,7 @@ export default function App() {
           <Route element={<ReportsPage />} path="reports" />
           <Route element={<ReportDetailPage />} path="reports/:slug" />
           <Route element={<TrendingPage />} path="trending" />
+          <Route element={<TrendingDashboard />} path="trending/dashboard" />
           <Route element={<ReportDetailPage source="trending" />} path="trending/:slug" />
           <Route element={<WorkflowPage />} path="workflow" />
           <Route element={<AboutPage />} path="about" />
