@@ -1,0 +1,69 @@
+# GitHub Trending — 2026-10
+
+Diperbarui: 2026-10-10 20:23 · Data dari 10 hari koleksi.
+
+| Repo | Hari di trending | Rank terbaik | Max ⭐/hari | ⭐ awal→akhir | Bahasa |
+|---|---:|---:|---:|---|---|
+| [mattpocock/skills](https://github.com/mattpocock/skills) | 8 | #2 | +1,774 | 273,031→283,712 | Shell |
+| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 6 | #2 | +670 | 95,605→98,518 | TypeScript |
+| [boykopovar/AnyPS5](https://github.com/boykopovar/AnyPS5) | 5 | #1 | +5,831 | 4,986→24,759 | C++ |
+| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | 5 | #1 | +1,894 | 149,230→154,932 | JavaScript |
+| [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | 5 | #2 | +1,171 | 73,704→77,724 | JavaScript |
+| [mksglu/context-mode](https://github.com/mksglu/context-mode) | 5 | #4 | +362 | 24,508→26,071 | TypeScript |
+| [morluto/rea](https://github.com/morluto/rea) | 4 | #1 | +25,784 | 9,634→62,040 | TypeScript |
+| [tester-army/e2e](https://github.com/tester-army/e2e) | 4 | #1 | +1,725 | 3,172→7,512 | TypeScript |
+| [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) | 4 | #1 | +1,696 | 88,698→91,919 | Python |
+| [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design) | 4 | #2 | +1,189 | 44,070→48,516 | HTML |
+| [NVIDIA/OpenShell](https://github.com/NVIDIA/OpenShell) | 3 | #1 | +2,456 | 12,760→14,447 | Rust |
+| [DuarteSantos8/openGym](https://github.com/DuarteSantos8/openGym) | 3 | #9 | +1,493 | 4,261→6,966 | JavaScript |
+| [mvschwarz/openrig](https://github.com/mvschwarz/openrig) | 3 | #3 | +683 | 3,049→4,335 | TypeScript |
+| [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | 3 | #6 | +677 | 100,857→102,849 | JavaScript |
+| [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) | 3 | #9 | +627 | 54,756→55,920 | TypeScript |
+| [earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad) | 3 | #3 | +619 | 16,887→18,011 | Python |
+| [obra/superpowers](https://github.com/obra/superpowers) | 3 | #3 | +577 | 293,990→294,924 | Shell |
+| [pingdotgg/t3code](https://github.com/pingdotgg/t3code) | 3 | #4 | +490 | 24,713→25,635 | TypeScript |
+| [getsentry/sentry](https://github.com/getsentry/sentry) | 3 | #7 | +214 | 45,038→45,394 | Python |
+| [storytold/artcraft](https://github.com/storytold/artcraft) | 2 | #3 | +3,217 | 8,118→13,053 | Rust |
+| [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) | 2 | #10 | +744 | 157,283→157,854 | Shell |
+| [calesthio/OpenMontage](https://github.com/calesthio/OpenMontage) | 2 | #7 | +742 | 63,249→64,074 | Python |
+| [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) | 2 | #7 | +626 | 27,627→28,605 | Python |
+| [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) | 2 | #4 | +619 | 54,435→55,158 | Python |
+| [caddyserver/caddy](https://github.com/caddyserver/caddy) | 2 | #8 | +515 | 76,583→77,146 | Go |
+| [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | 2 | #2 | +507 | 109,112→109,546 | Go |
+| [earendil-works/pi](https://github.com/earendil-works/pi) | 2 | #10 | +408 | 111,253→112,175 | TypeScript |
+| [EpicGames/raddebugger](https://github.com/EpicGames/raddebugger) | 2 | #6 | +279 | 7,875→8,129 | C |
+| [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) | 2 | #3 | +197 | 52,424→53,099 | JavaScript |
+| [cursor/plugins](https://github.com/cursor/plugins) | 2 | #6 | +163 | 9,327→9,506 | TypeScript |
+| [colbymchenry/codegraph](https://github.com/colbymchenry/codegraph) | 2 | #13 | +118 | 72,610→72,972 | C |
+| [firebase/firebase-ios-sdk](https://github.com/firebase/firebase-ios-sdk) | 2 | #4 | +112 | 6,773→6,865 | C++ |
+| [cloudflare/cloudflare-os](https://github.com/cloudflare/cloudflare-os) | 2 | #9 | +101 | 10,580→11,022 | TypeScript |
+| [debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio) | 1 | #2 | +3,483 | 50,498 | Python |
+| [t8y2/dbx](https://github.com/t8y2/dbx) | 1 | #15 | +1,138 | 23,220 | Rust |
+| [affaan-m/ECC](https://github.com/affaan-m/ECC) | 1 | #3 | +897 | 272,289 | JavaScript |
+| [byoungd/up](https://github.com/byoungd/up) | 1 | #13 | +743 | 66,408 | JavaScript |
+| [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | 1 | #11 | +576 | 26,080 | JavaScript |
+| [OpenCut-app/OpenCut](https://github.com/OpenCut-app/OpenCut) | 1 | #15 | +512 | 92,172 | TypeScript |
+| [harry0703/MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) | 1 | #6 | +431 | 127,586 | Python |
+| [liquidslr/system-design-notes](https://github.com/liquidslr/system-design-notes) | 1 | #9 | +393 | 24,675 | - |
+| [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) | 1 | #9 | +372 | 59,031 | Python |
+| [HunxByts/GhostTrack](https://github.com/HunxByts/GhostTrack) | 1 | #13 | +368 | 16,420 | Python |
+| [pablostanley/yoinks](https://github.com/pablostanley/yoinks) | 1 | #12 | +361 | 2,958 | TypeScript |
+| [Effect-TS/effect](https://github.com/Effect-TS/effect) | 1 | #4 | +302 | 16,832 | TypeScript |
+| [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) | 1 | #13 | +279 | 217,893 | - |
+| [michael-denyer/pstack-claude](https://github.com/michael-denyer/pstack-claude) | 1 | #11 | +232 | 1,154 | JavaScript |
+| [trycua/cua](https://github.com/trycua/cua) | 1 | #10 | +228 | 28,770 | Rust |
+| [Friedrich-M/UniMate](https://github.com/Friedrich-M/UniMate) | 1 | #15 | +217 | 1,086 | Python |
+| [deepseek-ai/DeepGEMM](https://github.com/deepseek-ai/DeepGEMM) | 1 | #9 | +199 | 8,725 | Cuda |
+| [M-Abozaid/esp32-c3-adblock](https://github.com/M-Abozaid/esp32-c3-adblock) | 1 | #13 | +196 | 1,368 | C++ |
+| [tile-ai/tilelang](https://github.com/tile-ai/tilelang) | 1 | #11 | +163 | 8,120 | Python |
+| [openclaw/openclaw](https://github.com/openclaw/openclaw) | 1 | #7 | +136 | 390,995 | TypeScript |
+| [garrytan/gstack](https://github.com/garrytan/gstack) | 1 | #14 | +125 | 135,173 | TypeScript |
+| [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) | 1 | #8 | +123 | 76,147 | Python |
+| [Stremio/stremio-web](https://github.com/Stremio/stremio-web) | 1 | #11 | +111 | 14,308 | JavaScript |
+| [huggingface/transformers](https://github.com/huggingface/transformers) | 1 | #11 | +94 | 167,015 | Python |
+| [pytorch/pytorch](https://github.com/pytorch/pytorch) | 1 | #10 | +81 | 104,041 | Python |
+| [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) | 1 | #12 | +50 | 90,824 | TypeScript |
+| [manaflow-ai/cmux](https://github.com/manaflow-ai/cmux) | 1 | #9 | +44 | 27,864 | Swift |
+| [flutter/flutter](https://github.com/flutter/flutter) | 1 | #7 | +39 | 179,304 | Dart |
+| [google/skills](https://github.com/google/skills) | 1 | #11 | +39 | 20,758 | Python |
+| [tensorflow/tensorflow](https://github.com/tensorflow/tensorflow) | 1 | #8 | +24 | 200,604 | C++ |
