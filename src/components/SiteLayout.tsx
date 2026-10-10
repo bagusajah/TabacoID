@@ -18,6 +18,10 @@ export default function SiteLayout() {
       return { title: 'Engineering Report', description: t['seo.reports.desc'] }
     }
     if (location.pathname === '/reports') return { title: t['rep.eyebrow'], description: t['seo.reports.desc'] }
+    if (location.pathname.startsWith('/trending/') && location.pathname !== '/trending') {
+      return { title: t['nav.trending'], description: t['tr.desc'] }
+    }
+    if (location.pathname === '/trending') return { title: t['tr.eyebrow'], description: t['tr.desc'] }
     if (location.pathname === '/about') return { title: t['about.eyebrow'], description: t['seo.about.desc'] }
     if (location.pathname === '/workflow') return { title: t['nav.workflow'], description: 'Four cron jobs, one Kanban board: the engineering cycle that drives every task Hermes executes.' }
     return { title: 'Page Not Found', description: t['seo.about.desc'] }

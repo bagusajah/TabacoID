@@ -3,26 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Filter } from 'lucide-react'
 
 import { useT, useLang } from '@/i18n'
-
-interface Report {
-  slug: string
-  raw: string
-  title: string
-  date: string
-  category: string
-  decision: string
-  summary: string
-  humanReview: string
-}
-
-function extractSummary(md: string): string {
-  // Pull the first paragraph from the question/findings section
-  const q = md.match(/^##\s+(?:Engineering Question|Pertanyaan[^\n]*)\s*\n(.+?)(?:\n#|\n##|Z)/ms)
-  if (q) return q[1].trim().replace(/\n/g, ' ')
-  // Fallback: first non-frontmatter, non-heading paragraph
-  const stripped = md.replace(/^---[\s\S]*?---\n?/m, '').replace(/^#+\s.+$/gm, '').trim()
-  return stripped.split(/\n\n/)[0]?.replace(/\n/g, ' ') || ''
-}
+import { parseReport, decisionColors, reviewConfig, type Report } from '@/lib/reports'
 
 interface Metrics {
   date: string
@@ -36,38 +17,6 @@ interface Metrics {
 
 function fmtK(n: number): string {
   return n >= 1000 ? `${Math.round(n / 1000)}k` : String(n)
-}
-
-function parseReport(slug: string, raw: string): Report {
-  const titleMatch = raw.match(/^# (.+)$/m)
-  const dateMatch = raw.match(/\b(\d{4}-\d{2}-\d{2})\b/)
-  const catMatch = raw.match(/Category:\s*(.+)/i)
-  const decMatch = raw.match(/Decision:\s*(.+)/i)
-  const reviewMatch = raw.match(/human_review:\s*(\S+)/)
-
-  return {
-    slug,
-    raw,
-    title: titleMatch?.[1]?.trim() || slug,
-    date: dateMatch?.[1] || slug.slice(0, 10),
-    category: catMatch?.[1]?.trim() || 'Engineering',
-    decision: decMatch?.[1]?.trim() || '',
-    summary: extractSummary(raw),
-    humanReview: reviewMatch?.[1]?.trim() || 'autonomous',
-  }
-}
-
-const decisionColors: Record<string, string> = {
-  adopt: 'bg-green-100 text-green-700',
-  reject: 'bg-red-100 text-red-700',
-  'needs experiment': 'bg-amber-100 text-amber-700',
-  'needs human review': 'bg-blue-100 text-blue-700',
-}
-
-const reviewConfig: Record<string, { label: string; label_id: string; class: string }> = {
-  autonomous: { label: 'Autonomous', label_id: 'otonom', class: 'bg-slate-100 text-slate-600' },
-  approved: { label: 'Human-approved', label_id: 'Manusia approve', class: 'bg-blue-50 text-blue-600' },
-  rejected: { label: 'Human-rejected', label_id: 'Manusia tolak', class: 'bg-red-50 text-red-600' },
 }
 
 const categories = ['All', 'Engineering', 'Experiments', 'Operations', 'Infrastructure', 'Architecture']

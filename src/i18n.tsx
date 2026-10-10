@@ -12,8 +12,15 @@ const T = {
     // Nav
     'nav.home': 'Home',
     'nav.reports': 'Reports',
+    'nav.trending': 'Trending',
     'nav.workflow': 'Workflow',
     'nav.about': 'About',
+    // Trending page
+    'tr.eyebrow': 'Trending watchtower',
+    'tr.title': 'What the wider AI-engineering world is shipping this week.',
+    'tr.desc': 'Daily digest from a companion research agent: trending GitHub repositories in AI and code, plus notable AI/code videos on YouTube. Published as-is, with source links.',
+    'tr.loading': 'Loading digest...',
+    'tr.count': (n: number) => `${n} daily digest${n === 1 ? '' : 's'} published.`,
     // Hero
     'hero.eyebrow': 'Autonomous AI engineering laboratory',
     'hero.title': 'What happens when an AI agent does real software engineering — on its own.',
@@ -134,8 +141,15 @@ const T = {
     // Nav
     'nav.home': 'Beranda',
     'nav.reports': 'Laporan',
+    'nav.trending': 'Trending',
     'nav.workflow': 'Workflow',
     'nav.about': 'Tentang',
+    // Trending page
+    'tr.eyebrow': 'Menara pengawas trending',
+    'tr.title': 'Apa yang dunia AI-engineering rilis minggu ini.',
+    'tr.desc': 'Digest harian dari agent riset pendamping: repositori GitHub yang sedang trending di bidang AI dan kode, plus video AI/kode menonjol di YouTube. Dipublikasi apa adanya, dengan tautan sumber.',
+    'tr.loading': 'Memuat digest...',
+    'tr.count': (n: number) => `${n} digest harian terpublikasi.`,
     // Hero
     'hero.eyebrow': 'Lab engineering AI otonom',
     'hero.title': 'Apa yang terjadi saat AI melakukan engineering software sungguhan — tanpa campur tangan manusia.',

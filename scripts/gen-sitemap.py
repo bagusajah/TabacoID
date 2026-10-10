@@ -12,6 +12,7 @@ ORIGIN = "https://www.tabaco.id"
 STATIC_ROUTES = [
     ("/", "1.0", "daily"),
     ("/reports", "0.9", "daily"),
+    ("/trending", "0.8", "daily"),
     ("/workflow", "0.8", "monthly"),
     ("/about", "0.7", "monthly"),
 ]
@@ -39,6 +40,8 @@ def main() -> None:
     urls = [(loc, pr, cf, today) for loc, pr, cf in STATIC_ROUTES]
     for report in sorted((ROOT / "docs" / "reports").glob("*.md")):
         urls.append((f"/reports/{report.stem}", "0.6", "monthly", filename_date(report)))
+    for digest in sorted((ROOT / "docs" / "trending").glob("*.md")):
+        urls.append((f"/trending/{digest.stem}", "0.6", "monthly", filename_date(digest)))
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
