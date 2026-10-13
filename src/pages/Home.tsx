@@ -12,7 +12,7 @@ import {
   objectives,
   processSteps,
   reportsPublished,
-  tasksCompleted,
+  reportsTotal,
 } from '@/data/site'
 import { useT } from '@/i18n'
 
@@ -24,7 +24,7 @@ export default function HomePage() {
     {
       label: t['stat.days.label'],
       value: t['stat.days.value'](computeDaysRunning()),
-      detail: t['stat.days.detail'](tasksCompleted, reportsPublished),
+      detail: t['stat.days.detail'](reportsTotal, reportsPublished),
     },
     {
       label: t['stat.objectives.label'],

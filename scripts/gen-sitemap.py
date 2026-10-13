@@ -35,10 +35,25 @@ def filename_date(path: pathlib.Path) -> str:
         return git_date(path)
 
 
+def is_published(report: pathlib.Path) -> bool:
+    """Drafts are not public URLs — exclude them (must match src/lib/reports.ts isPublished)."""
+    try:
+        fence = report.read_text(encoding="utf-8")[:2048]
+    except OSError:
+        return False
+    import re
+    m = re.match(r"^---\r?\n([\s\S]*?)\r?\n---", fence)
+    if not m:
+        return True  # no frontmatter (trending digests) = public
+    return bool(re.search(r"^status:\s*published\s*$", m.group(1), re.M))
+
+
 def main() -> None:
     today = datetime.date.today().isoformat()
     urls = [(loc, pr, cf, today) for loc, pr, cf in STATIC_ROUTES]
     for report in sorted((ROOT / "docs" / "reports").glob("*.md")):
+        if not is_published(report):
+            continue
         urls.append((f"/reports/{report.stem}", "0.6", "monthly", filename_date(report)))
     for digest in sorted((ROOT / "docs" / "trending").glob("*.md")):
         urls.append((f"/trending/{digest.stem}", "0.6", "monthly", filename_date(digest)))

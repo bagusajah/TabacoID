@@ -1,12 +1,12 @@
 import { useT } from '@/i18n'
 import SectionHeading from '@/components/SectionHeading'
 
-// The four cron jobs that form the v0.4 cycle
+// The three cron jobs that form the current weekend cycle (v0.4 planner/reviewer/
+// retrospective pipeline is paused since 2026-08-11 — kept in Hermes cron, disabled).
 const cycle = [
-  { phase: 'Planner', schedule: '2× daily', role: 'Scan system signals → create rich tasks → link to objectives', color: '#6366f1' },
-  { phase: 'Executor', schedule: 'hourly (off-peak)', role: 'Claim ready task → execute → measure → draft report → complete/block', color: '#06b6d4' },
-  { phase: 'Reviewer', schedule: 'daily', role: 'Validate draft reports → promote to published or send feedback', color: '#10b981' },
-  { phase: 'Retrospective', schedule: 'weekly', role: 'Synthesize trends → flag bad decisions → create follow-ups', color: '#f59e0b' },
+  { phase: 'Daily Focus', schedule: 'weekend, hourly slots', role: 'Pick highest-value task → recover debris → execute → measure → publish report', color: '#6366f1' },
+  { phase: 'CICD Builder', schedule: 'weekend, hourly slots', role: 'Drain ROADMAP → implement → test → commit → push', color: '#06b6d4' },
+  { phase: 'Auto-Publish', schedule: '30 min after each cycle', role: 'Commit & push new reports so evidence is public', color: '#10b981' },
 ]
 
 const systems = [
@@ -115,14 +115,12 @@ export default function WorkflowPage() {
 /* --- SVG diagrams: native, no libs --- */
 
 function CycleDiagram() {
-  // 4 nodes in a ring around a central Kanban node
+  // N nodes in a ring around a central Kanban node
   const cx = 400, cy = 250, r = 165
-  const nodes = [
-    { ...cycle[0], x: cx, y: cy - r },
-    { ...cycle[1], x: cx + r * 1.15, y: cy + r * 0.35 },
-    { ...cycle[2], x: cx - r * 0.6, y: cy + r * 1.05 },
-    { ...cycle[3], x: cx - r * 1.45, y: cy + r * 0.35 },
-  ]
+  const nodes = cycle.map((c, i) => {
+    const angle = -Math.PI / 2 + (2 * Math.PI * i) / cycle.length
+    return { ...c, x: cx + r * 1.15 * Math.sin(angle), y: cy - r * Math.cos(angle) }
+  })
 
   return (
     <svg viewBox="0 0 800 500" className="mx-auto w-full" role="img" aria-label="Engineering cycle topology">

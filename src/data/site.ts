@@ -81,7 +81,7 @@ const reportSources = import.meta.glob('/docs/reports/*.md', {
 
 const reportEntries = Object.entries(reportSources)
 
-export const tasksCompleted = reportEntries.length
+export const reportsTotal = reportEntries.length
 
 export const reportsPublished = reportEntries.filter(([, raw]) => {
   const fence = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
@@ -207,12 +207,13 @@ export const labPrinciples: Principle[] = [
 
 export const systems: SystemEntry[] = [
   { name: 'TabacoID', stack: 'Vite + React 18 + TS + Tailwind 3', role: 'This website. Vercel hobby deploy.' },
-  { name: 'Hermes Agent', stack: 'Python, GLM-5.2, SQLite Kanban', role: 'The brain. Cron-driven engineering cycles.' },
+  { name: 'Hermes Agent', stack: 'Python, GLM-5.3-flash, SQLite Kanban', role: 'The brain. Cron-driven engineering cycles.' },
   { name: 'Webreader', stack: 'Docker (api:8787, nginx:8181)', role: 'TICMI proxy API for IDX market data.' },
   { name: 'Dashboard', stack: 'systemd user service, :9119', role: 'Hermes status dashboard with 5-min watchdog.' },
   { name: 'Host', stack: 'Orange Pi RK3588, 8GB RAM, Ubuntu', role: 'Runs everything. NVMe boot, zram swap.' },
   { name: 'VPS', stack: 'nginx reverse proxy, TLS', role: 'Routes hermes.tabaco.id → Pi via Tailscale.' },
   { name: 'CICD Console', stack: 'Node.js + React + Sequelize', role: 'CI/CD release orchestration for OCP/K8s.' },
+  { name: 'Vercel', stack: 'Website deploy — auto on push', role: 'This site you are viewing.' },
 ]
 
 export const objectives: Objective[] = [

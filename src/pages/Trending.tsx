@@ -27,7 +27,8 @@ export default function TrendingPage() {
       const parsed = results
         .filter((r): r is PromiseFulfilledResult<Report> => r.status === 'fulfilled')
         .map(r => r.value)
-      parsed.sort((a, b) => b.date.localeCompare(a.date))
+      // Daily digests first; monthly archives only when no daily exists that recency.
+      parsed.sort((a, b) => b.date.localeCompare(a.date) || Number(b.slug.startsWith('monthly')) - Number(a.slug.startsWith('monthly')))
       setItems(parsed)
     }).finally(() => setLoaded(true))
   }, [])
