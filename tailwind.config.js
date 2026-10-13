@@ -7,7 +7,19 @@ export default {
     container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      colors: {
+        brand: {
+          DEFAULT: "#4B3FE3",
+          bright: "#5A4DFF",
+          ink: "#111827",
+          accent: "#5EEAD4",
+          mint: "#A7F3D0",
+          mist: "#C4B5FD",
+          paper: "#F8FAFC",
+        },
+      },
+    },
   },
   plugins: [],
 };

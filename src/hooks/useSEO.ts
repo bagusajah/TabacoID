@@ -19,23 +19,30 @@ function setMeta(selector: string, attr: string, value: string) {
   el.setAttribute(attr, value)
 }
 
-export function useSEO(pathname: string, config: SEOConfig) {
-  const fullTitle = `${config.title} — TabacoID`
-  const canonicalUrl = `${SITE_ORIGIN}${pathname === '/' ? '' : pathname}`
-  const imageUrl = config.image ?? `${SITE_ORIGIN}/og-image.png`
+// Single writer: pass null when another page already owns the title for this route.
+export function useSEO(pathname: string, config: SEOConfig | null) {
+  const title = config?.title
+  const description = config?.description
+  const image = config?.image
 
   useEffect(() => {
+    if (!title || description == null) return
+
+    const fullTitle = `${title} — TabacoID`
+    const canonicalUrl = `${SITE_ORIGIN}${pathname === '/' ? '' : pathname}`
+    const imageUrl = image ?? `${SITE_ORIGIN}/og-image.png`
+
     document.title = fullTitle
 
-    setMeta('meta[name="description"]', 'content', config.description)
+    setMeta('meta[name="description"]', 'content', description)
     setMeta('meta[property="og:title"]', 'content', fullTitle)
-    setMeta('meta[property="og:description"]', 'content', config.description)
+    setMeta('meta[property="og:description"]', 'content', description)
     setMeta('meta[property="og:url"]', 'content', canonicalUrl)
     setMeta('meta[property="og:image"]', 'content', imageUrl)
 
     setMeta('meta[name="twitter:card"]', 'content', 'summary_large_image')
     setMeta('meta[name="twitter:title"]', 'content', fullTitle)
-    setMeta('meta[name="twitter:description"]', 'content', config.description)
+    setMeta('meta[name="twitter:description"]', 'content', description)
     setMeta('meta[name="twitter:image"]', 'content', imageUrl)
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
@@ -45,5 +52,5 @@ export function useSEO(pathname: string, config: SEOConfig) {
       document.head.appendChild(canonical)
     }
     canonical.href = canonicalUrl
-  }, [fullTitle, config.description, canonicalUrl, imageUrl])
+  }, [title, description, image, pathname])
 }

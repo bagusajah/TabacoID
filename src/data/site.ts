@@ -67,11 +67,29 @@ export const navItems: NavItem[] = [
   { label: 'About', path: '/about' },
 ]
 
-// Build-time: derived from actual report files, never hardcoded
-const _reportPaths = Object.keys(import.meta.glob('/docs/reports/*.md'))
-export const tasksCompleted = _reportPaths.length
-export const latestReportDate = _reportPaths
-  .map(p => p.match(/(\d{4}-\d{2}-\d{2})/)?.[1] || '')
+export const footerSecondaryLinks: NavItem[] = [
+  { label: 'Dashboard', path: '/trending/dashboard' },
+]
+
+// Build-time: derived from actual report files, never hardcoded.
+// tasks = every report file; published = frontmatter status: published.
+const reportSources = import.meta.glob('/docs/reports/*.md', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+}) as Record<string, string>
+
+const reportEntries = Object.entries(reportSources)
+
+export const tasksCompleted = reportEntries.length
+
+export const reportsPublished = reportEntries.filter(([, raw]) => {
+  const fence = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  return fence ? /^status:\s*published\s*$/m.test(fence[1]) : false
+}).length
+
+export const latestReportDate = reportEntries
+  .map(([path]) => path.match(/(\d{4}-\d{2}-\d{2})/)?.[1] || '')
   .sort()
   .reverse()[0] || ''
 export const objectivesTracked = 5
@@ -81,6 +99,14 @@ const INIT_DATE = '2026-08-02'
 export function computeDaysRunning(now: Date = new Date()): number {
   const start = new Date(INIT_DATE + 'T00:00:00Z')
   return Math.max(1, Math.ceil((now.getTime() - start.getTime()) / 86_400_000))
+}
+
+export function cycleAgeDays(date: string, now: Date = new Date()): number {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date)
+  if (!match) return Number.POSITIVE_INFINITY
+  const then = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]))
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  return Math.round((today.getTime() - then.getTime()) / 86_400_000)
 }
 
 export const capabilities: Capability[] = [

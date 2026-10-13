@@ -2,21 +2,15 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 
-import { useT, useLang } from '@/i18n'
-import { useSEO } from '@/hooks/useSEO'
+import { useT } from '@/i18n'
 import { parseReport, type Report } from '@/lib/reports'
 
 const PAGE_SIZE = 15
 
 export default function TrendingPage() {
   const [items, setItems] = useState<Report[]>([])
+  const [loaded, setLoaded] = useState(false)
   const t = useT()
-  const { lang } = useLang()
-
-  useSEO('/trending', {
-    title: t['tr.eyebrow'],
-    description: t['tr.desc'],
-  })
 
   useEffect(() => {
     const daily = import.meta.glob('/docs/trending/*.md', { query: '?raw', import: 'default' }) as Record<string, () => Promise<string>>
@@ -35,7 +29,7 @@ export default function TrendingPage() {
         .map(r => r.value)
       parsed.sort((a, b) => b.date.localeCompare(a.date))
       setItems(parsed)
-    })
+    }).finally(() => setLoaded(true))
   }, [])
 
   const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE))
@@ -53,16 +47,17 @@ export default function TrendingPage() {
               {t['tr.title']}
             </h1>
             <div className="flex flex-wrap gap-3 pt-2">
-              <a href="/trending/dashboard" className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
-                📊 Dashboard Visual 282 hari
-              </a>
+              <Link to="/trending/dashboard" className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+                {t['tr.dashboard']}
+              </Link>
             </div>
             <p className="text-lg leading-8 text-slate-600">
               {t['tr.desc']}
             </p>
           </div>
 
-          {items.length === 0 && <p className="text-slate-500">{t['tr.loading']}</p>}
+          {!loaded && <p className="text-slate-600">{t['tr.loading']}</p>}
+          {loaded && items.length === 0 && <p className="text-slate-600">{t['tr.empty']}</p>}
 
           <div className="space-y-4">
             {paginated.map((item) => (
@@ -73,7 +68,7 @@ export default function TrendingPage() {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 space-y-2">
-                    <h3 className="text-lg font-semibold text-slate-950">{item.title}</h3>
+                    <h2 className="text-lg font-semibold text-slate-950">{item.title}</h2>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
                       <span>{item.date}</span>
                       <span className="rounded bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
@@ -90,11 +85,13 @@ export default function TrendingPage() {
             ))}
           </div>
 
-          <p className="text-sm text-slate-400">
-            {t['tr.count'](items.length)}
-          </p>
+          {loaded && items.length > 0 && (
+            <p className="text-sm text-slate-600">
+              {t['tr.count'](items.length)}
+            </p>
+          )}
 
-          {totalPages > 1 && (
+          {loaded && totalPages > 1 && (
             <nav className="flex items-center justify-between gap-4" aria-label="Pagination">
               <button
                 onClick={() => setPage(p => Math.max(1, p - 1))}

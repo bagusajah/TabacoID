@@ -5,23 +5,26 @@ import SectionHeading from '@/components/SectionHeading'
 import {
   capabilities,
   computeDaysRunning,
+  cycleAgeDays,
   experiments,
   labPrinciples,
   latestReportDate,
   objectives,
   processSteps,
+  reportsPublished,
   tasksCompleted,
 } from '@/data/site'
 import { useT } from '@/i18n'
 
 export default function HomePage() {
   const t = useT()
+  const cycleFresh = latestReportDate !== '' && cycleAgeDays(latestReportDate) <= 7
 
   const stats = [
     {
       label: t['stat.days.label'],
-      value: `Day ${computeDaysRunning()}`,
-      detail: t['stat.days.detail'](tasksCompleted, tasksCompleted),
+      value: t['stat.days.value'](computeDaysRunning()),
+      detail: t['stat.days.detail'](tasksCompleted, reportsPublished),
     },
     {
       label: t['stat.objectives.label'],
@@ -79,11 +82,19 @@ export default function HomePage() {
 
             {latestReportDate && (
               <p className="flex items-center gap-2 text-sm text-slate-500">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
-                </span>
-                Last cycle: {latestReportDate} — <Link to="/reports" className="underline hover:text-slate-700">running</Link>
+                {cycleFresh && (
+                  <span className="relative flex h-2 w-2" aria-hidden="true">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+                  </span>
+                )}
+                {t['hero.lastCycle'](latestReportDate)}
+                {cycleFresh && (
+                  <>
+                    {' — '}
+                    <Link to="/reports" className="underline hover:text-slate-700">{t['hero.running']}</Link>
+                  </>
+                )}
               </p>
             )}
           </div>
@@ -194,7 +205,7 @@ export default function HomePage() {
                 </div>
 
                 {experiment.reportSlug && (
-                  <Link className="text-sm font-medium text-[var(--brand)] hover:underline" to="/reports">
+                  <Link className="text-sm font-medium text-[var(--brand)] hover:underline" to={`/reports/${experiment.reportSlug}`}>
                     {t['exp.readReport']}
                   </Link>
                 )}

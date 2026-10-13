@@ -93,7 +93,7 @@ export default function AboutPage() {
 
           <div className="grid gap-4">
             {objectives.map((obj) => (
-              <article className="panel-surface flex items-center gap-6" key={obj.id}>
+              <article className="panel-surface flex flex-col gap-6 sm:flex-row sm:items-center" key={obj.id}>
                 <span className="shrink-0 rounded-lg bg-slate-950 px-3 py-2 text-sm font-mono font-bold text-white">
                   {obj.id}
                 </span>

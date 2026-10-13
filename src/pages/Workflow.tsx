@@ -58,7 +58,7 @@ export default function WorkflowPage() {
               <article className="panel-surface space-y-4" key={c.phase}>
                 <div className="flex items-center justify-between">
                   <span
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-xs font-bold text-white"
+                    className={`inline-flex h-9 w-9 items-center justify-center rounded-xl text-xs font-bold ${c.color === '#6366f1' ? 'text-white' : 'text-slate-950'}`}
                     style={{ backgroundColor: c.color }}
                   >
                     {i + 1}
@@ -125,7 +125,7 @@ function CycleDiagram() {
   ]
 
   return (
-    <svg viewBox="0 0 800 500" className="mx-auto w-full min-w-[600px]" role="img" aria-label="Engineering cycle topology">
+    <svg viewBox="0 0 800 500" className="mx-auto w-full" role="img" aria-label="Engineering cycle topology">
       {/* Arrows between nodes (clockwise) */}
       <defs>
         <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
@@ -194,7 +194,7 @@ function DecisionFlow() {
   ]
 
   return (
-    <svg viewBox="0 0 880 280" className="mx-auto w-full min-w-[700px]" role="img" aria-label="Task decision flow">
+    <svg viewBox="0 0 880 280" className="mx-auto w-full" role="img" aria-label="Task decision flow">
       <defs>
         <marker id="arrow2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
           <polygon points="0 0, 8 3, 0 6" fill="#94a3b8" />

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Filter } from 'lucide-react'
 
 import { useT, useLang } from '@/i18n'
-import { parseReport, decisionColors, reviewConfig, type Report } from '@/lib/reports'
+import { parseReport, isPublished, decisionColors, reviewConfig, type Report } from '@/lib/reports'
 
 interface Metrics {
   date: string
@@ -25,6 +25,7 @@ const PAGE_SIZE = 10
 
 export default function ReportsPage() {
   const [reports, setReports] = useState<Report[]>([])
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
   const [metrics, setMetrics] = useState<Metrics[]>([])
   const [filter, setFilter] = useState('All')
   const [page, setPage] = useState(1)
@@ -44,8 +45,10 @@ export default function ReportsPage() {
       const parsed = results
         .filter((r): r is PromiseFulfilledResult<Report> => r.status === 'fulfilled')
         .map(r => r.value)
+        .filter(isPublished)
       parsed.sort((a, b) => b.date.localeCompare(a.date))
       setReports(parsed)
+      setStatus(results.length > 0 && results.every(r => r.status === 'rejected') ? 'error' : 'ready')
     })
 
     fetch('/metrics.json').then(r => r.ok ? r.json() : []).then(setMetrics).catch(() => setMetrics([]))
@@ -76,15 +79,16 @@ export default function ReportsPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <Filter className="h-4 w-4 text-slate-400" />
+            <Filter className="h-4 w-4 text-slate-600" />
             {categories.map(cat => (
               <button
                 key={cat}
+                aria-pressed={filter === cat}
                 onClick={() => {
                   setFilter(cat)
                   setPage(1)
                 }}
-                className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                className={`inline-flex min-h-[44px] items-center rounded-full px-3 py-1 text-xs font-medium transition ${
                   filter === cat
                     ? 'bg-slate-950 text-white'
                     : 'border border-[var(--border-soft)] bg-white text-slate-600 hover:border-[var(--border-strong)]'
@@ -95,8 +99,28 @@ export default function ReportsPage() {
             ))}
           </div>
 
-          {reports.length === 0 && (
-            <p className="text-slate-500">{t['rep.loading']}</p>
+          {status === 'loading' && (
+            <p className="text-slate-600">{t['rep.loading']}</p>
+          )}
+
+          {status === 'error' && (
+            <div className="space-y-3" role="alert">
+              <p className="text-slate-600">
+                {lang === 'id' ? 'Gagal memuat laporan. Periksa koneksi lalu coba lagi.' : 'Failed to load reports. Check your connection and try again.'}
+              </p>
+              <button
+                onClick={() => window.location.reload()}
+                className="rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)]"
+              >
+                {lang === 'id' ? 'Muat ulang' : 'Reload'}
+              </button>
+            </div>
+          )}
+
+          {status === 'ready' && filtered.length === 0 && (
+            <p className="text-slate-600">
+              {lang === 'id' ? 'Tidak ada hasil untuk filter ini.' : 'No results for this filter.'}
+            </p>
           )}
 
           <div className="space-y-4">
@@ -108,7 +132,7 @@ export default function ReportsPage() {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 space-y-2">
-                    <h3 className="text-lg font-semibold text-slate-950">{report.title}</h3>
+                    <h2 className="text-lg font-semibold text-slate-950">{report.title}</h2>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
                       <span>{report.date}</span>
                       {(() => {
@@ -118,7 +142,7 @@ export default function ReportsPage() {
                             className="rounded bg-violet-50 px-2 py-0.5 text-xs font-medium text-violet-600"
                             title={`${tk.calls} API calls · ${tk.in.toLocaleString()} in / ${tk.out.toLocaleString()} out tokens (all agent runs that day)`}
                           >
-                            {lang === 'id' ? 'token' : 'tokens'}: {fmtK(tk.in)}→{fmtK(tk.out)} · {tk.calls} {lang === 'id' ? 'panggilan' : 'calls'}
+                            {lang === 'id' ? 'token per hari' : 'tokens per day'}: {fmtK(tk.in)}→{fmtK(tk.out)} · {tk.calls} {lang === 'id' ? 'panggilan' : 'calls'}
                           </span>
                         )
                       })()}
@@ -146,9 +170,11 @@ export default function ReportsPage() {
             ))}
           </div>
 
-          <p className="text-sm text-slate-400">
-            {t['rep.count'](filtered.length, reports.length)}
-          </p>
+          {status === 'ready' && (
+            <p className="text-sm text-slate-600">
+              {t['rep.count'](filtered.length, reports.length)}
+            </p>
+          )}
 
           {totalPages > 1 && (
             <nav className="flex items-center justify-between gap-4" aria-label="Pagination">

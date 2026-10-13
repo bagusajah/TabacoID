@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 
 import LanguageToggle from '@/components/LanguageToggle'
-import { brandName, contactEmail, githubUrl, navItems } from '@/data/site'
+import { brandName, contactEmail, footerSecondaryLinks, githubUrl, navItems } from '@/data/site'
 import { useT } from '@/i18n'
 import { useSEO } from '@/hooks/useSEO'
 
@@ -12,20 +12,20 @@ export default function SiteLayout() {
   const location = useLocation()
   const t = useT()
 
+  const pageOwnsSeo =
+    /^\/reports\/.+/.test(location.pathname) ||
+    (location.pathname.startsWith('/trending/') && location.pathname !== '/trending/dashboard')
+
   const seoData = useMemo(() => {
-    if (location.pathname === '/') return { title: 'TabacoID', description: t['seo.home.desc'] }
-    if (location.pathname.startsWith('/reports/') && location.pathname !== '/reports') {
-      return { title: 'Engineering Report', description: t['seo.reports.desc'] }
-    }
+    if (pageOwnsSeo) return null
+    if (location.pathname === '/') return { title: t['nav.home'], description: t['seo.home.desc'] }
     if (location.pathname === '/reports') return { title: t['rep.eyebrow'], description: t['seo.reports.desc'] }
-    if (location.pathname.startsWith('/trending/') && location.pathname !== '/trending') {
-      return { title: t['nav.trending'], description: t['tr.desc'] }
-    }
+    if (location.pathname === '/trending/dashboard') return { title: t['td.seoTitle'], description: t['td.seoDesc'] }
     if (location.pathname === '/trending') return { title: t['tr.eyebrow'], description: t['tr.desc'] }
     if (location.pathname === '/about') return { title: t['about.eyebrow'], description: t['seo.about.desc'] }
-    if (location.pathname === '/workflow') return { title: t['nav.workflow'], description: 'Four cron jobs, one Kanban board: the engineering cycle that drives every task Hermes executes.' }
-    return { title: 'Page Not Found', description: t['seo.about.desc'] }
-  }, [location.pathname, t])
+    if (location.pathname === '/workflow') return { title: t['nav.workflow'], description: t['seo.workflow'] }
+    return { title: t['seo.404'], description: t['seo.404.desc'] }
+  }, [location.pathname, pageOwnsSeo, t])
 
   useSEO(location.pathname, seoData)
 
@@ -69,8 +69,9 @@ export default function SiteLayout() {
               GitHub
             </a>
             <button
+              aria-controls="site-mobile-nav"
               aria-expanded={mobileOpen}
-              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-label={mobileOpen ? t['nav.menu.close'] : t['nav.menu.open']}
               className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--border-soft)] bg-white shadow-[var(--shadow-soft)] md:hidden"
               onClick={() => setMobileOpen((value) => !value)}
               type="button"
@@ -81,7 +82,7 @@ export default function SiteLayout() {
         </div>
 
         {mobileOpen ? (
-          <div className="border-t border-[var(--border-soft)] bg-white/95 md:hidden">
+          <div id="site-mobile-nav" className="border-t border-[var(--border-soft)] bg-white/95 md:hidden">
             <div className="layout-grid grid gap-2 py-4">
               {navItems.map((item) => (
                 <NavLink
@@ -141,6 +142,11 @@ export default function SiteLayout() {
               {navItems.map((item) => (
                 <Link className="transition hover:text-slate-950" key={item.path} to={item.path}>
                   {t[`nav.${item.label.toLowerCase()}`]}
+                </Link>
+              ))}
+              {footerSecondaryLinks.map((item) => (
+                <Link className="transition hover:text-slate-950" key={item.path} to={item.path}>
+                  {t['footer.dashboard']}
                 </Link>
               ))}
               <a className="transition hover:text-slate-950" href={githubUrl}>

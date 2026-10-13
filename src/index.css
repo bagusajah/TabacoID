@@ -67,6 +67,19 @@
     font: inherit;
   }
 
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  summary:focus-visible,
+  [role='button']:focus-visible,
+  [role='tab']:focus-visible,
+  [role='switch']:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+
   ::selection {
     background: rgba(75, 63, 227, 0.18);
     color: var(--text-primary);
@@ -199,13 +212,6 @@
     box-shadow: var(--shadow-soft);
   }
 
-  .button-primary:focus-visible,
-  .button-secondary:focus-visible,
-  .nav-pill:focus-visible {
-    outline: 2px solid rgba(75, 63, 227, 0.3);
-    outline-offset: 2px;
-  }
-
   .nav-pill {
     border-radius: var(--radius-pill);
     padding: 0.65rem 0.9rem;
@@ -238,6 +244,75 @@
     padding: 0.45rem 0.7rem;
     font-size: 0.82rem;
     font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .prose-report {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .prose-report h2 {
+    margin: 1.75rem 0 0.5rem;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .prose-report h3 {
+    margin: 1.5rem 0 0.4rem;
+    color: #0f172a;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  .prose-report code {
+    border-radius: 0.25rem;
+    background: #f1f5f9;
+    padding: 0.1rem 0.35rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.875em;
+    color: #334155;
+  }
+
+  .prose-report pre {
+    overflow-x: auto;
+    margin: 0.75rem 0;
+    border-radius: 0.5rem;
+    background: #0f172a;
+    padding: 1rem;
+    color: #e2e8f0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .prose-report pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .prose-report table {
+    width: 100%;
+    margin: 0.75rem 0;
+    border-collapse: collapse;
+  }
+
+  .prose-report th,
+  .prose-report td {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.12);
+    padding: 0.4rem 0.75rem;
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
+  .prose-report blockquote {
+    margin: 0.75rem 0;
+    border-left: 3px solid var(--brand);
+    padding-left: 1rem;
     color: var(--text-secondary);
   }
 

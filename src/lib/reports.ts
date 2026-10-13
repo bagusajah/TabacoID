@@ -8,12 +8,21 @@ export interface Report {
   decision: string
   summary: string
   humanReview: string
+  status: string
   html: string
+}
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
 }
 
 export function extractSummary(md: string): string {
   // Pull the first paragraph from the question/findings section
-  const q = md.match(/^##\s+(?:Engineering Question|Pertanyaan[^\n]*|Why[^\n]*)\s*\n(.+?)(?:\n#|\n##|Z)/ms)
+  const q = md.match(/^##\s+(?:Engineering Question|Pertanyaan[^\n]*|Why[^\n]*)\s*\n(.+?)(?:\n#|\n##|$(?![\s\S]))/ms)
   if (q) return q[1].trim().replace(/\n/g, ' ')
   // Fallback: first non-frontmatter, non-heading paragraph
   const stripped = md
@@ -26,8 +35,9 @@ export function extractSummary(md: string): string {
 }
 
 export function stripAndRender(md: string): string {
-  return md
-    .replace(/<[^>]*>/g, '')
+  // Escape first: every rule below only adds our own tags, so raw HTML in the markdown
+  // (prose or link URLs) can never reach dangerouslySetInnerHTML unescaped.
+  return escapeHtml(md)
     .replace(/^---[\s\S]*?---\n?/m, '')
     .replace(/^### (.+)$/gm, '<h4 class="text-base font-semibold text-slate-800 mt-5 mb-1">$1</h4>')
     .replace(/^## (.+)$/gm, '<h3 class="text-lg font-semibold text-slate-900 mt-6 mb-2">$1</h3>')
@@ -45,31 +55,52 @@ export function stripAndRender(md: string): string {
       if (!tag) return ''
       return `<tr>${cells.map(c => `<td class="border-b border-slate-200 px-3 py-1.5 text-sm">${c.trim()}</td>`).join('')}</tr>`
     })
-    .replace(/((?:<tr>.*<\/tr>\s*)+)/g, '<table class="w-full my-3">$1</table>')
+    .replace(/((?:<tr>.*<\/tr>\s*)+)/g, '<div class="overflow-x-auto"><table class="w-full my-3">$1</table></div>')
     .replace(/^- (.+)$/gm, '<li class="ml-4 text-sm leading-7 text-slate-600 list-disc">$1</li>')
     .replace(/^\d+\. (.+)$/gm, '<li class="ml-4 text-sm leading-7 text-slate-600 list-decimal">$1</li>')
-    .replace(/^(?!<[hprtluo])((?!<).+)$/gm, '<p class="text-sm leading-7 text-slate-600 my-1">$1</p>')
     .replace(/^---$/gm, '<hr class="my-6 border-slate-200" />')
+    .replace(/^(?!<[hprtluo])((?!<).+)$/gm, '<p class="text-sm leading-7 text-slate-600 my-1">$1</p>')
     .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a class="text-indigo-600 hover:underline break-all" href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
 }
 
+const decisionLabels: [RegExp, string][] = [
+  [/^adopt\b/i, 'Adopt'],
+  [/^reject\b/i, 'Reject'],
+  [/^needs experiment\b/i, 'Needs experiment'],
+  [/^needs human review\b/i, 'Needs human review'],
+]
+
+// Badge comes from the first non-empty line under "## Decision", reduced to a known label.
+function extractDecision(md: string): string {
+  const line = md.match(/^##\s+Decision[^\n]*\n+([^\n]+)/im)?.[1].replace(/^[\s*_>#-]+/, '') || ''
+  return decisionLabels.find(([re]) => re.test(line))?.[1] || ''
+}
+
 export function parseReport(slug: string, raw: string): Report {
+  const frontmatter = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] || ''
   const titleMatch = raw.match(/^# (.+)$/m)
-  const dateMatch = raw.match(/\b(\d{4}-\d{2}-\d{2})\b/)
+  const dateMatch = frontmatter.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})/m) || slug.match(/^(\d{4}-\d{2}-\d{2})/)
   const catMatch = raw.match(/Category:\s*(.+)/i)
-  const decMatch = raw.match(/Decision:\s*(.+)/i)
   const reviewMatch = raw.match(/human_review:\s*(\S+)/)
+  const statusMatch = frontmatter.match(/^status:\s*["']?([\w-]+)/m)
 
   return {
     slug,
     title: titleMatch?.[1]?.trim() || slug,
     date: dateMatch?.[1] || slug.slice(0, 10),
     category: catMatch?.[1]?.trim() || 'Engineering',
-    decision: decMatch?.[1]?.trim() || '',
+    decision: extractDecision(raw),
     summary: extractSummary(raw),
     humanReview: reviewMatch?.[1]?.trim() || 'autonomous',
+    status: statusMatch?.[1]?.toLowerCase() || '',
     html: stripAndRender(raw),
   }
+}
+
+// Only `status: published` is public. Files with no status line at all (trending digests,
+// reports that predate the field) count as published; any other value is hidden.
+export function isPublished(report: Report): boolean {
+  return report.status === '' || report.status === 'published'
 }
 
 export const decisionColors: Record<string, string> = {

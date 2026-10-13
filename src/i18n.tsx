@@ -15,11 +15,15 @@ const T = {
     'nav.trending': 'Trending',
     'nav.workflow': 'Workflow',
     'nav.about': 'About',
+    'nav.menu.open': 'Open navigation menu',
+    'nav.menu.close': 'Close navigation menu',
     // Trending page
     'tr.eyebrow': 'Trending watchtower',
     'tr.title': 'What the wider AI-engineering world is shipping this week.',
     'tr.desc': 'Daily digest from a companion research agent: trending GitHub repositories in AI and code, plus notable AI/code videos on YouTube. Published as-is, with source links.',
     'tr.loading': 'Loading digest...',
+    'tr.empty': 'No digests published yet.',
+    'tr.dashboard': 'Visual dashboard',
     'tr.count': (n: number) => `${n} daily digest${n === 1 ? '' : 's'} published.`,
     // Hero
     'hero.eyebrow': 'Autonomous AI engineering laboratory',
@@ -27,8 +31,11 @@ const T = {
     'hero.subtitle': 'An AI named Hermes fixes real bugs, runs real experiments, and maintains real servers. No demos, no toy projects. This site documents everything — every decision, every failure, every result.',
     'hero.cta.reports': 'Read the reports',
     'hero.cta.about': 'About the lab',
+    'hero.lastCycle': (date: string) => `Last cycle: ${date}`,
+    'hero.running': 'running',
     // Stats
     'stat.days.label': 'Days running',
+    'stat.days.value': (n: number) => `Day ${n}`,
     'stat.days.detail': (n: number, r: number | string) => `${n} tasks completed, ${r} reports published.`,
     'stat.objectives.label': 'Objectives',
     'stat.objectives.detail': 'Each task links to an objective via the Kanban control plane.',
@@ -108,10 +115,24 @@ const T = {
     'footer.contact': 'Contact',
     'footer.contactDesc': 'Questions about the project or collaboration.',
     'footer.copyright': (y: number, b: string) => `© ${y} ${b}. All rights reserved.`,
+    'footer.dashboard': 'Trending dashboard',
     // SEO
     'seo.home.desc': 'A lab where an AI agent named Hermes does real software engineering — fixing bugs, running experiments, maintaining servers. Fully documented, fully public.',
     'seo.reports.desc': 'Daily engineering reports with measurable evidence: question, method, findings, decision, and metrics from autonomous AI cycles.',
     'seo.about.desc': 'TabacoID is not a portfolio but an engineering laboratory. Seven systems, five objectives, transparent autonomous AI engineering.',
+    'seo.workflow': 'Four cron jobs, one Kanban board: the engineering cycle that drives every task Hermes executes.',
+    'seo.404': 'Page not found',
+    'seo.404.desc': 'This page does not exist on TabacoID.',
+    // Trending dashboard
+    'td.eyebrow': 'Dashboard',
+    'td.title': 'GitHub Trending 2026 — visual',
+    'td.desc': 'Language mix, repository lifespan, era shifts, consistency, and organization strength — built from the daily collector archive.',
+    'td.loading': 'Loading dashboard…',
+    'td.error': (msg: string) => `Failed to load dashboard: ${msg}`,
+    'td.iframe': 'GitHub Trending 2026 dashboard',
+    'td.back': 'Back to trending reports',
+    'td.seoTitle': 'Trending dashboard',
+    'td.seoDesc': 'Visual archive of GitHub Trending 2026: languages, eras, consistency, and organizations.',
     // Workflow page
     'wf.eyebrow': 'Engineering cycle',
     'wf.title': 'How the whole thing works.',
@@ -144,11 +165,15 @@ const T = {
     'nav.trending': 'Trending',
     'nav.workflow': 'Workflow',
     'nav.about': 'Tentang',
+    'nav.menu.open': 'Buka menu navigasi',
+    'nav.menu.close': 'Tutup menu navigasi',
     // Trending page
     'tr.eyebrow': 'Menara pengawas trending',
     'tr.title': 'Apa yang dunia AI-engineering rilis minggu ini.',
     'tr.desc': 'Digest harian dari agent riset pendamping: repositori GitHub yang sedang trending di bidang AI dan kode, plus video AI/kode menonjol di YouTube. Dipublikasi apa adanya, dengan tautan sumber.',
     'tr.loading': 'Memuat digest...',
+    'tr.empty': 'Belum ada digest yang dipublikasikan.',
+    'tr.dashboard': 'Dashboard visual',
     'tr.count': (n: number) => `${n} digest harian terpublikasi.`,
     // Hero
     'hero.eyebrow': 'Lab engineering AI otonom',
@@ -156,11 +181,14 @@ const T = {
     'hero.subtitle': 'Sebuah AI bernama Hermes memperbaiki bug asli, menjalankan eksperimen nyata, dan merawat server sungguhan. Bukan demo, bukan mainan. Situs ini mendokumentasikan semuanya — setiap keputusan, setiap kegagalan, setiap hasil.',
     'hero.cta.reports': 'Baca laporan',
     'hero.cta.about': 'Tentang lab',
+    'hero.lastCycle': (date: string) => `Siklus terakhir: ${date}`,
+    'hero.running': 'berjalan',
     // Stats
     'stat.days.label': 'Hari berjalan',
+    'stat.days.value': (n: number) => `Hari ke-${n}`,
     'stat.days.detail': (n: number, r: number | string) => `${n} task selesai, ${r} laporan dipublikasi.`,
     'stat.objectives.label': 'Objektif',
-    'stat.objectives.detail': 'Setiap task terhubung ke objektif melalui Kanban control plane.',
+    'stat.objectives.detail': 'Setiap task terhubung ke objektif melalui bidang kendali Kanban.',
     'stat.model.label': 'Model operasi',
     'stat.model.value': 'Otonom + review manusia',
     'stat.model.detail': 'Hermes mengerjakan satu task per cycle. Manusia approve setiap push.',
@@ -175,7 +203,7 @@ const T = {
     // Experiments
     'exp.eyebrow': 'Eksperimen',
     'exp.title': 'Eksperimen engineering dengan hipotesis, metrik, dan hasil yang dipublikasi.',
-    'exp.desc': 'Tidak ada eksperimen tanpa evidence terukur. Setiap eksperimen berakhir dengan: adopt, reject, atau needs human review.',
+    'exp.desc': 'Tidak ada eksperimen tanpa evidence terukur. Setiap eksperimen berakhir dengan: adopt, reject, atau perlu tinjauan manusia.',
     'exp.hypothesis': 'Hipotesis',
     'exp.outcome': 'Hasil',
     'exp.readReport': 'Baca laporan lengkap →',
@@ -197,7 +225,7 @@ const T = {
     'thesis.metric.value': 'Engineering outcomes yang terukur — bukan jumlah commit, file, atau kesan produktif.',
     // Systems
     'sys.eyebrow': 'Sistem',
-    'sys.title': 'Tujuh sistem under engineering Hermes.',
+    'sys.title': 'Tujuh sistem yang direkayasa Hermes.',
     'sys.desc': 'Hermes bekerja across the full stack — dari hardware sampai aplikasi. Setiap sistem di-maintain, di-monitor, dan ditingkatkan melalui engineering cycle.',
     // Objectives
     'obj.eyebrow': 'Objektif',
@@ -237,19 +265,33 @@ const T = {
     'footer.contact': 'Kontak',
     'footer.contactDesc': 'Pertanyaan tentang project atau kolaborasi.',
     'footer.copyright': (y: number, b: string) => `© ${y} ${b}. Hak cipta dilindungi.`,
+    'footer.dashboard': 'Dashboard trending',
     // SEO
     'seo.home.desc': 'Lab tempat AI agent bernama Hermes melakukan engineering software sungguhan — memperbaiki bug, menjalankan eksperimen, merawat server. Terdokumentasi penuh, publik.',
     'seo.reports.desc': 'Laporan engineering harian dengan evidence terukur: pertanyaan, metode, temuan, keputusan, dan metrik dari cycle AI otonom.',
     'seo.about.desc': 'TabacoID bukan portofolio tapi lab engineering. Tujuh sistem, lima objektif, engineering AI otonom yang transparan.',
+    'seo.workflow': 'Empat cron job, satu papan Kanban: siklus engineering yang menjalankan setiap task Hermes.',
+    'seo.404': 'Halaman tidak ditemukan',
+    'seo.404.desc': 'Halaman ini tidak ada di TabacoID.',
+    // Trending dashboard
+    'td.eyebrow': 'Dashboard',
+    'td.title': 'GitHub Trending 2026 — visual',
+    'td.desc': 'Komposisi bahasa, siklus hidup repo, pergeseran era, konsistensi, dan kekuatan organisasi — dibangun dari arsip kolektor harian.',
+    'td.loading': 'Memuat dashboard…',
+    'td.error': (msg: string) => `Gagal memuat dashboard: ${msg}`,
+    'td.iframe': 'Dashboard GitHub Trending 2026',
+    'td.back': 'Kembali ke laporan trending',
+    'td.seoTitle': 'Dashboard trending',
+    'td.seoDesc': 'Visualisasi arsip GitHub Trending 2026: bahasa, era, konsistensi, dan organisasi.',
     // Workflow page
     'wf.eyebrow': 'Siklus engineering',
     'wf.title': 'Bagaimana semuanya bekerja.',
     'wf.subtitle': 'Empat cron job, satu Kanban board, satu AI agent. Ini arsitektur v0.4 yang menjalankan setiap siklus engineering.',
     'wf.cycle.eyebrow': 'Siklus',
     'wf.cycle.title': 'Empat fase, satu task per siklus.',
-    'wf.cycle.desc': 'Setiap fase adalah scheduled job terpisah. Kanban board adalah control plane — task mengalir melaluinya, tidak pernah bypass.',
+    'wf.cycle.desc': 'Setiap fase adalah scheduled job terpisah. Kanban board adalah bidang kendali — task mengalir melaluinya, tidak pernah bypass.',
     'wf.sys.eyebrow': 'Sistem',
-    'wf.sys.title': 'Tujuh sistem, semua under engineering Hermes.',
+    'wf.sys.title': 'Tujuh sistem, semuanya direkayasa Hermes.',
     'wf.sys.desc': 'AI agent merawat semuanya, dari host OS sampai website ini. Setiap sistem nyata, running di production.',
     'wf.flow.eyebrow': 'Task lifecycle',
     'wf.flow.title': 'Dari ready sampai done — atau blocked.',
@@ -270,13 +312,21 @@ const T = {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(() => {
-    const saved = localStorage.getItem('tabacoid-lang')
-    return saved === 'id' ? 'id' : 'en'
+    try {
+      const saved = localStorage.getItem('tabacoid-lang')
+      return saved === 'id' ? 'id' : 'en'
+    } catch {
+      return 'en'
+    }
   })
 
   const setLang = (l: Lang) => {
     setLangState(l)
-    localStorage.setItem('tabacoid-lang', l)
+    try {
+      localStorage.setItem('tabacoid-lang', l)
+    } catch {
+      // Private mode can throw on storage access.
+    }
   }
 
   useEffect(() => {
