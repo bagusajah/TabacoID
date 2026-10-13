@@ -1,5 +1,6 @@
 import { useT } from '@/i18n'
 import SectionHeading from '@/components/SectionHeading'
+import { systems } from '@/data/site'
 
 // The three cron jobs that form the current weekend cycle (v0.4 planner/reviewer/
 // retrospective pipeline is paused since 2026-08-11 — kept in Hermes cron, disabled).
@@ -7,16 +8,6 @@ const cycle = [
   { phase: 'Daily Focus', schedule: 'weekend, hourly slots', role: 'Pick highest-value task → recover debris → execute → measure → publish report', color: '#6366f1' },
   { phase: 'CICD Builder', schedule: 'weekend, hourly slots', role: 'Drain ROADMAP → implement → test → commit → push', color: '#06b6d4' },
   { phase: 'Auto-Publish', schedule: '30 min after each cycle', role: 'Commit & push new reports so evidence is public', color: '#10b981' },
-]
-
-const systems = [
-  { name: 'Orange Pi RK3588', role: 'Host — 8GB RAM, NVMe, zram', stack: 'Ubuntu, Docker, systemd' },
-  { name: 'Hermes Agent', role: 'The brain — GLM-5.2, SQLite Kanban', stack: 'Python, cron-driven cycles' },
-  { name: 'Gateway + WhatsApp', role: 'Messaging bridge — :3000', stack: 'Node.js bridge, systemd' },
-  { name: 'Dashboard', role: 'Status page — :9119', stack: 'systemd user service' },
-  { name: 'Webreader', role: 'TICMI proxy — :8787 / :8181', stack: 'Docker (api + nginx)' },
-  { name: 'VPS', role: 'Reverse proxy — TLS termination', stack: 'nginx → Pi via Tailscale' },
-  { name: 'Vercel', role: 'Website deploy — auto on push', stack: 'This site you are viewing' },
 ]
 
 export default function WorkflowPage() {
@@ -115,7 +106,7 @@ export default function WorkflowPage() {
 /* --- SVG diagrams: native, no libs --- */
 
 function CycleDiagram() {
-  // N nodes in a ring around a central Kanban node
+  // N nodes in a ring around a central Backlog node
   const cx = 400, cy = 250, r = 165
   const nodes = cycle.map((c, i) => {
     const angle = -Math.PI / 2 + (2 * Math.PI * i) / cycle.length
@@ -131,10 +122,10 @@ function CycleDiagram() {
         </marker>
       </defs>
 
-      {/* Center node: Kanban */}
+      {/* Center node: Backlog */}
       <ellipse cx={cx} cy={cy} rx="75" ry="40" fill="#0f172a" stroke="#1e293b" strokeWidth="2" />
-      <text x={cx} y={cy - 4} textAnchor="middle" fill="white" fontSize="13" fontWeight="600">Kanban</text>
-      <text x={cx} y={cy + 14} textAnchor="middle" fill="#94a3b8" fontSize="10">SQLite control plane</text>
+      <text x={cx} y={cy - 4} textAnchor="middle" fill="white" fontSize="13" fontWeight="600">Backlog</text>
+      <text x={cx} y={cy + 14} textAnchor="middle" fill="#94a3b8" fontSize="10">ROADMAP · priority order</text>
 
       {/* Connectors center → each node */}
       {nodes.map((n) => (
@@ -177,17 +168,16 @@ function ArrowLine({ from, to }: { from: { x: number; y: number; r?: number }, t
 
 function DecisionFlow() {
   const labels = useT()
-  // Horizontal flow: Ready → Claimed → Execute → Measure → Report → [Done | Blocked]
+  // Horizontal flow: Pick → Execute → Measure → Report → [Published | Blocked]
   const steps = [
-    { label: labels['wf.s.ready'] || 'Ready', sub: 'Kanban', color: '#6366f1' },
-    { label: labels['wf.s.claim'] || 'Claim', sub: 'status=running', color: '#06b6d4' },
-    { label: labels['wf.s.execute'] || 'Execute', sub: labels['wf.s.execute.sub'] || '1 task / cycle', color: '#0891b2' },
+    { label: labels['wf.s.ready'] || 'Pick', sub: labels['wf.s.ready.sub'] || 'ROADMAP / backlog', color: '#6366f1' },
+    { label: labels['wf.s.execute'] || 'Execute', sub: labels['wf.s.execute.sub'] || '1 task / cycle', color: '#06b6d4' },
     { label: labels['wf.s.measure'] || 'Measure', sub: labels['wf.s.measure.sub'] || '≥1 metric', color: '#0d9488' },
-    { label: labels['wf.s.report'] || 'Draft Report', sub: labels['wf.s.report.sub'] || 'docs/reports/draft/', color: '#10b981' },
+    { label: labels['wf.s.report'] || 'Report', sub: labels['wf.s.report.sub'] || 'docs/reports/', color: '#10b981' },
   ]
   const w = 140, h = 60, gap = 20, startX = 30, y = 60
   const ends = [
-    { label: labels['wf.s.done'] || 'Done', sub: 'reviewer promotes', color: '#22c55e', x: 30, y: 200 },
+    { label: labels['wf.s.done'] || 'Published', sub: labels['wf.s.done.sub'] || 'auto-push to main', color: '#22c55e', x: 30, y: 200 },
     { label: labels['wf.s.blocked'] || 'Blocked', sub: labels['wf.s.blocked.sub'] || 'needs human', color: '#f43f5e', x: 190, y: 200 },
   ]
 
