@@ -10,7 +10,7 @@
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-15 | layout fixes /trending, AGENTS/BATON |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-15 | `docs/reports/2026-10-15-*.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
-| Ambience | ambience-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/ambience/luxury-hotel-lobby` |
+| Ambience | ambience-agent | mbm-mp | data-owner | idle | 2026-10-15 | `docs/ambience/2026-10-15-luxury-hotel-lobby.md` |
 
 ## CLAIMS
 
@@ -22,6 +22,7 @@
 
 (newest first — satu baris per handover)
 
+- 2026-10-15 23:40 | ambience | ambience-agent@mbm-mp | baca AGENTS.md+BATON; publish otomatis kini via zen-mind-cabin/.tabacoid_publish.sh (hooked ke produce.py, nol git manual) | entri berikut: spa_retreat dst otomatis
 - 2026-10-16 00:05 | repo | hermes@orangepi | ownership diperjelas di AGENTS.md: Hermes = owner repo/web/pipeline/Laporan; Trending & Ambience = data contributor | wajib dipatuhi semua agent
 
 - 2026-10-15 23:40 | code | hermes@orangepi | layout fixes /trending dari review cursor-agent; i18n tr.* diperbarui; live ✅ | next: review /ambience menyusul bila perlu
