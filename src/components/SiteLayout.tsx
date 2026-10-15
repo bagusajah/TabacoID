@@ -169,6 +169,7 @@ export default function SiteLayout() {
         </div>
 
         <div className="layout-grid border-t border-[var(--border-soft)] py-5 text-sm text-slate-500">
+          <p className="text-xs font-medium tracking-wide text-slate-500">TABACO DIGITAL TECHNOLOGY</p>
           <p>{t['footer.copyright'](new Date().getFullYear(), brandName)}</p>
         </div>
       </footer>

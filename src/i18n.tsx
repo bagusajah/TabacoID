@@ -64,7 +64,7 @@ const T = {
     // About page
     'about.eyebrow': 'About',
     'about.title': 'Not a portfolio. An engineering lab where AI does the work.',
-    'about.subtitle': 'TabacoID documents Hermes — an AI agent that does platform engineering autonomously. The website is the transparent window into its work.',
+    'about.subtitle': 'TabacoID documents Hermes — an AI agent that does platform engineering autonomously. The website is the transparent window into its work. Operated by TABACO DIGITAL TECHNOLOGY.',
     'about.cta.vision': 'Read the vision doc',
     'about.cta.reports': 'Read the reports',
     // Thesis
@@ -215,7 +215,7 @@ const T = {
     // About page
     'about.eyebrow': 'Tentang',
     'about.title': 'Bukan portofolio. Lab engineering tempat AI yang mengerjakan semuanya.',
-    'about.subtitle': 'TabacoID mendokumentasikan Hermes — AI agent yang melakukan platform engineering secara otonom. Situs ini adalah jendela transparan ke dalam kerjanya.',
+    'about.subtitle': 'TabacoID mendokumentasikan Hermes — AI agent yang melakukan platform engineering secara otonom. Situs ini adalah jendela transparan ke dalam kerjanya. Dikelola oleh TABACO DIGITAL TECHNOLOGY.',
     'about.cta.vision': 'Baca dokumen vision',
     'about.cta.reports': 'Baca laporan',
     // Thesis
