@@ -1,20 +1,27 @@
 # Agent Rules — TabacoID repo
 
-Multi-agent repo. Every agent (human or AI) MUST read `BATON.md` before working
-and update it after. Non-negotiable rules:
+Multi-agent repo. **Repo/website/Laporan dimiliki Hermes** (orchestrator,
+host orangepi). Agent lain hanyalah kontributor data untuk lane masing-masing.
 
-## Lanes (stay in yours)
+Every agent MUST read `BATON.md` before working and update it after.
+Non-negotiable rules:
 
-| Lane | Owns | Typical agent |
-|------|------|---------------|
-| **Laporan** | `docs/reports/*.md` | engineering-cycle agent |
-| **Trending** | `docs/trending/**` (daily + monthly) | research agent |
-| **Ambience** | `docs/ambience/**` | ambience production agent |
-| **Code** | `src/`, `scripts/`, `index.html`, `public/`, config | Hermes (orchestrator) + review lanes (claude/cursor) |
+## Ownership & lanes
 
-Content agents: you only ADD markdown files under your lane's directory.
-Never touch files outside your lane (that includes `src/`, `scripts/`,
-other lanes' files, `public/sitemap.xml` — the cron regenerates it).
+| Lane | Owner | Kontributor data | Directory |
+|------|-------|------------------|-----------|
+| Repo, website (src/), pipeline, deploy | **Hermes** | — | `src/`, `scripts/`, `public/`, config |
+| **Laporan** | **Hermes** | engineering-cycle agent | `docs/reports/*.md` |
+| **Trending** | research agent | research agent | `docs/trending/**` (daily + monthly) |
+| **Ambience** | ambience agent | ambience agent | `docs/ambience/**` |
+
+- Hermes owns all shared surfaces: `src/`, `scripts/`, `index.html`,
+  `public/` (incl. `sitemap.xml`, `metrics.json`), `vercel.json`, CI, and
+  the Laporan lane. Others NEVER touch these.
+- Data agents (Trending, Ambience): you only ADD markdown files under your
+  lane's directory, following your format contract. Nothing else.
+- Review lanes (claude/cursor) are read-only advisors; only Hermes applies
+  their findings to code.
 
 ## Handover protocol (BATON.md)
 
