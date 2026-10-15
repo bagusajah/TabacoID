@@ -24,14 +24,16 @@ export function extractSummary(md: string): string {
   // Pull the first paragraph from the question/findings section
   const q = md.match(/^##\s+(?:Engineering Question|Pertanyaan[^\n]*|Why[^\n]*)\s*\n(.+?)(?:\n#|\n##|$(?![\s\S]))/ms)
   if (q) return q[1].trim().replace(/\n/g, ' ')
-  // Fallback: first non-frontmatter, non-heading paragraph
+  // Fallback: first non-frontmatter, non-heading, non-table paragraph
+  // (daily digests open with a markdown table — never summarize that).
   const stripped = md
     .replace(/^---[\s\S]*?---\n?/m, '')
     .replace(/^#+\s.+$/gm, '')
+    .replace(/^\|.+$/gm, '')
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
     .trim()
-  return stripped.split(/\n\n/)[0]?.replace(/\n/g, ' ') || ''
+  return stripped.split(/\n\n/)[0]?.replace(/^>\s?/gm, '').replace(/\*\*/g, '').replace(/\n/g, ' ') || ''
 }
 
 export function stripAndRender(md: string): string {
@@ -88,6 +90,8 @@ export function parseReport(slug: string, raw: string): Report {
     slug,
     title: titleMatch?.[1]?.trim() || slug,
     date: dateMatch?.[1] || slug.slice(0, 10),
+    // ponytail: keeps legacy 'Engineering' default consumed by Reports filter tabs —
+    // Trending cards instead omit the category badge entirely (no fabricated labels).
     category: catMatch?.[1]?.trim() || 'Engineering',
     decision: extractDecision(raw),
     summary: extractSummary(raw),

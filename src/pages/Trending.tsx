@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { Archive, ArrowRight } from 'lucide-react'
 
 import { useT } from '@/i18n'
 import { parseReport, type Report } from '@/lib/reports'
@@ -10,6 +10,8 @@ const PAGE_SIZE = 15
 export default function TrendingPage() {
   const [items, setItems] = useState<Report[]>([])
   const [loaded, setLoaded] = useState(false)
+  const [failed, setFailed] = useState(false)
+  const [reloadKey, setReloadKey] = useState(0)
   const t = useT()
 
   useEffect(() => {
@@ -29,12 +31,18 @@ export default function TrendingPage() {
         .map(r => r.value)
       // Daily digests first; monthly archives only when no daily exists that recency.
       parsed.sort((a, b) => b.date.localeCompare(a.date) || Number(b.slug.startsWith('monthly')) - Number(a.slug.startsWith('monthly')))
+      // All-rejected is a load failure, not an empty archive — surface it as such.
+      if (parsed.length === 0 && results.some(r => r.status === 'rejected')) {
+        setFailed(true)
+        return
+      }
       setItems(parsed)
     }).finally(() => setLoaded(true))
-  }, [])
+  }, [reloadKey])
 
   const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE))
   const [page, setPage] = useState(1)
+  const listRef = useRef<HTMLDivElement>(null)
   const safePage = Math.min(page, totalPages)
   const paginated = items.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE)
 
@@ -58,33 +66,60 @@ export default function TrendingPage() {
           </div>
 
           {!loaded && <p className="panel-soft text-slate-600">{t['tr.loading']}</p>}
-          {loaded && items.length === 0 && <p className="panel-soft text-slate-600">{t['tr.empty']}</p>}
+          {loaded && failed && (
+            <div className="panel-soft flex flex-wrap items-center gap-4" role="alert">
+              <p className="flex-1 text-slate-600">{t['tr.error']}</p>
+              <button
+                onClick={() => { setFailed(false); setReloadKey(k => k + 1) }}
+                className="button-secondary"
+              >
+                {t['tr.retry']}
+              </button>
+            </div>
+          )}
+          {loaded && !failed && items.length === 0 && <p className="panel-soft text-slate-600">{t['tr.empty']}</p>}
 
           {paginated.length > 0 && (
-          <div className="space-y-4">
-            {paginated.map((item) => (
-              <Link
-                key={item.slug}
-                to={`/trending/${item.slug}`}
-                className="block panel-surface p-6 hover:bg-slate-50/50 transition-colors group"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1 space-y-2">
-                    <h2 className="text-lg font-semibold text-slate-950">{item.title}</h2>
-                    <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
-                      <span>{item.date}</span>
-                      <span className="rounded bg-[var(--surface-muted)] px-2 py-0.5 text-xs font-medium text-slate-600">
-                        {item.category}
-                      </span>
+          <div ref={listRef} className="scroll-mt-24 space-y-4">
+            {paginated.map((item) => {
+              const isMonthly = item.slug.startsWith('monthly')
+              return (
+                <Link
+                  key={item.slug}
+                  to={`/trending/${item.slug}`}
+                  className={
+                    isMonthly
+                      ? 'block rounded-2xl border border-dashed border-slate-300 bg-slate-50/60 p-6 transition-colors hover:border-slate-400 group'
+                      : 'block panel-surface p-6 hover:bg-slate-50/50 transition-colors group'
+                  }
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 space-y-2">
+                      <h2 className={`text-lg font-semibold text-slate-950 ${isMonthly ? 'text-slate-700' : ''}`}>
+                        {item.title}
+                      </h2>
+                      <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+                        <span>{item.date}</span>
+                        <span
+                          className={
+                            isMonthly
+                              ? 'inline-flex items-center gap-1 rounded border border-slate-300 bg-white px-2 py-0.5 text-xs font-medium text-slate-500'
+                              : 'rounded bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-600'
+                          }
+                        >
+                          {isMonthly && <Archive className="h-3 w-3" aria-hidden="true" />}
+                          {isMonthly ? t['tr.monthly'] : t['tr.daily']}
+                        </span>
+                      </div>
+                      {item.summary && (
+                        <p className="text-sm leading-6 text-slate-500 line-clamp-2">{item.summary}</p>
+                      )}
                     </div>
-                    {item.summary && (
-                      <p className="text-sm leading-6 text-slate-500 line-clamp-2">{item.summary}</p>
-                    )}
+                    <ArrowRight className="h-5 w-5 text-[var(--text-tertiary)] group-hover:text-slate-600 transition mt-1 flex-shrink-0" />
                   </div>
-                  <ArrowRight className="h-5 w-5 text-[var(--text-tertiary)] group-hover:text-slate-600 transition mt-1 flex-shrink-0" />
-                </div>
-              </Link>
-            ))}
+                </Link>
+              )
+            })}
           </div>
           )}
 
@@ -95,9 +130,9 @@ export default function TrendingPage() {
           )}
 
           {loaded && totalPages > 1 && (
-            <nav className="flex flex-wrap items-center justify-center gap-3" aria-label="Pagination">
+            <nav className="flex flex-wrap items-center justify-center gap-3" aria-label={t['rep.pagination']}>
               <button
-                onClick={() => setPage(p => Math.max(1, p - 1))}
+                onClick={() => { setPage(p => Math.max(1, p - 1)); listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
                 disabled={safePage === 1}
                 className="min-h-11 rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] disabled:opacity-40 disabled:cursor-not-allowed"
               >
@@ -107,7 +142,7 @@ export default function TrendingPage() {
                 {t['rep.page'](safePage, totalPages)}
               </span>
               <button
-                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                onClick={() => { setPage(p => Math.min(totalPages, p + 1)); listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
                 disabled={safePage === totalPages}
                 className="min-h-11 rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] disabled:opacity-40 disabled:cursor-not-allowed"
               >
