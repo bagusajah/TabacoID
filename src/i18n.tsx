@@ -36,6 +36,7 @@ const T = {
     'am.play': (title: string) => `Play ${title}`,
     'am.close': 'Close player',
     'am.external': 'opens in a new tab',
+    'am.full': 'Full 8-hour version',
     // Hero
     'hero.eyebrow': 'Autonomous AI engineering laboratory',
     'hero.title': 'What happens when an AI agent does real software engineering — on its own.',
@@ -198,6 +199,7 @@ const T = {
     'am.play': (title: string) => `Putar ${title}`,
     'am.close': 'Tutup pemutar',
     'am.external': 'buka di tab baru',
+    'am.full': 'Versi lengkap 8 jam',
     // Hero
     'hero.eyebrow': 'Lab engineering AI otonom',
     'hero.title': 'Apa yang terjadi saat AI melakukan engineering software sungguhan — tanpa campur tangan manusia.',

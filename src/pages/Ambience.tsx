@@ -12,6 +12,7 @@ function ytId(md: string): string {
 export default function AmbiencePage() {
   const [items, setItems] = useState<Report[]>([])
   const [ids, setIds] = useState<Record<string, string>>({})
+  const [fulls, setFulls] = useState<Record<string, boolean>>({})
   const [playing, setPlaying] = useState('')
   const [loaded, setLoaded] = useState(false)
   const frameRef = useRef<HTMLIFrameElement>(null)
@@ -26,13 +27,14 @@ export default function AmbiencePage() {
         const slug = path.split('/').pop()?.replace('.md', '') || path
         // ambience default category is "Ambience" (docs/AMBIENCE_FORMAT.md), not parseReport's "Engineering"
         const report = parseReport(slug, /Category:/i.test(raw) ? raw : `${raw}\nCategory: Ambience`)
-        return { report, id: ytId(raw) }
+        return { report, id: ytId(raw), full: /8 hours/i.test(raw) }
       })
     ).then((results) => {
       const ok = results
-        .filter((r): r is PromiseFulfilledResult<{ report: Report; id: string }> => r.status === 'fulfilled')
+        .filter((r): r is PromiseFulfilledResult<{ report: Report; id: string; full: boolean }> => r.status === 'fulfilled')
         .map(r => r.value)
       setIds(Object.fromEntries(ok.map(x => [x.report.slug, x.id])))
+      setFulls(Object.fromEntries(ok.map(x => [x.report.slug, x.full])))
       setItems(ok.map(x => x.report).filter(isPublished).sort((a, b) => b.date.localeCompare(a.date)))
     }).finally(() => setLoaded(true))
   }, [])
@@ -105,6 +107,11 @@ export default function AmbiencePage() {
                               <Play className="ml-1 h-6 w-6 text-slate-900" aria-hidden="true" />
                             </span>
                           </span>
+                          {fulls[item.slug] && (
+                            <span className="absolute left-3 top-3 rounded-full bg-slate-900/70 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                              {t['am.full']}
+                            </span>
+                          )}
                         </button>
                       )
                     )}
