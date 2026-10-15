@@ -29,7 +29,8 @@ other lanes' files, `public/sitemap.xml` — the cron regenerates it).
 
 ## Git rules
 
-- Only commit files from YOUR lane. `git add docs/<your-lane>/` — never `-A`.
+- Only commit files from YOUR lane plus the baton itself:
+  `git add docs/<your-lane>/ BATON.md` — never `git add -A`.
 - Push rejected → `git pull --rebase origin main` → verify no overlap with
   files you touched → push again. NEVER force-push.
 - Never push another lane's half-done work.
