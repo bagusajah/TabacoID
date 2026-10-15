@@ -10,6 +10,7 @@ import ReportsPage from '@/pages/Reports'
 import ReportDetailPage from '@/pages/ReportDetail'
 import TrendingPage from '@/pages/Trending'
 import TrendingDashboard from '@/pages/TrendingDashboard'
+import AmbiencePage from '@/pages/Ambience'
 import WorkflowPage from '@/pages/Workflow'
 
 function ScrollToTop() {
@@ -46,6 +47,7 @@ export default function App() {
             <Route element={<TrendingPage />} path="trending" />
             <Route element={<TrendingDashboard />} path="trending/dashboard" />
             <Route element={<ReportDetailPage source="trending" />} path="trending/:slug" />
+            <Route element={<AmbiencePage />} path="ambience" />
             <Route element={<WorkflowPage />} path="workflow" />
             <Route element={<AboutPage />} path="about" />
             <Route element={<NotFoundPage />} path="*" />

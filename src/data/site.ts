@@ -63,6 +63,7 @@ export const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'Reports', path: '/reports' },
   { label: 'Trending', path: '/trending' },
+  { label: 'Ambience', path: '/ambience' },
   { label: 'Workflow', path: '/workflow' },
   { label: 'About', path: '/about' },
 ]

@@ -18,17 +18,17 @@ elif git diff --quiet -- docs/ public/metrics.json; then
 fi
 
 # Count what we'll commit
-TRACKED_CHANGED=$(git diff --name-only -- docs/reports/ docs/trending/ | wc -l)
-UNTRACKED=$(git ls-files --others --exclude-standard -- docs/reports/ docs/trending/ | wc -l)
+TRACKED_CHANGED=$(git diff --name-only -- docs/reports/ docs/trending/ docs/ambience/ | wc -l)
+UNTRACKED=$(git ls-files --others --exclude-standard -- docs/reports/ docs/trending/ docs/ambience/ | wc -l)
 TOTAL=$((TRACKED_CHANGED + UNTRACKED))
 
 # Regenerate sitemap (includes new reports) so it ships in the same push
 python3 /home/orangepi/TabacoID/scripts/gen-sitemap.py
-mkdir -p docs/trending
+mkdir -p docs/trending docs/ambience
 
-git add docs/reports/ docs/trending/ public/metrics.json public/sitemap.xml
+git add docs/reports/ docs/trending/ docs/ambience/ public/metrics.json public/sitemap.xml
 DATE=$(date -u +%Y-%m-%d)
-git commit -m "docs: auto-commit reports ${DATE} (${TOTAL} files)" -- docs/reports/ docs/trending/ public/metrics.json public/sitemap.xml
+git commit -m "docs: auto-commit reports ${DATE} (${TOTAL} files)" -- docs/reports/ docs/trending/ docs/ambience/ public/metrics.json public/sitemap.xml
 git push origin main
 
 echo "Committed + pushed ${TOTAL} report file(s)"

@@ -22,6 +22,7 @@ export default function SiteLayout() {
     if (location.pathname === '/reports') return { title: t['rep.eyebrow'], description: t['seo.reports.desc'] }
     if (location.pathname === '/trending/dashboard') return { title: t['td.seoTitle'], description: t['td.seoDesc'] }
     if (location.pathname === '/trending') return { title: t['tr.eyebrow'], description: t['tr.desc'] }
+    if (location.pathname === '/ambience') return { title: t['am.eyebrow'], description: t['am.desc'] }
     if (location.pathname === '/about') return { title: t['about.eyebrow'], description: t['seo.about.desc'] }
     if (location.pathname === '/workflow') return { title: t['nav.workflow'], description: t['seo.workflow'] }
     return { title: t['seo.404'], description: t['seo.404.desc'] }
