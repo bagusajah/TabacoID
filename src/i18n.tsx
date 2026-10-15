@@ -33,6 +33,9 @@ const T = {
     'am.empty': 'No videos published yet.',
     'am.watch': 'Watch on YouTube',
     'am.count': (n: number) => `${n} video${n === 1 ? '' : 's'} published.`,
+    'am.play': (title: string) => `Play ${title}`,
+    'am.close': 'Close player',
+    'am.external': 'opens in a new tab',
     // Hero
     'hero.eyebrow': 'Autonomous AI engineering laboratory',
     'hero.title': 'What happens when an AI agent does real software engineering — on its own.',
@@ -192,6 +195,9 @@ const T = {
     'am.empty': 'Belum ada video yang dipublikasikan.',
     'am.watch': 'Tonton di YouTube',
     'am.count': (n: number) => `${n} video terpublikasi.`,
+    'am.play': (title: string) => `Putar ${title}`,
+    'am.close': 'Tutup pemutar',
+    'am.external': 'buka di tab baru',
     // Hero
     'hero.eyebrow': 'Lab engineering AI otonom',
     'hero.title': 'Apa yang terjadi saat AI melakukan engineering software sungguhan — tanpa campur tangan manusia.',
