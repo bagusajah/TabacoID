@@ -47,19 +47,20 @@ export default function TrendingPage() {
             <h1 className="text-balance text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
               {t['tr.title']}
             </h1>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Link to="/trending/dashboard" className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
-                {t['tr.dashboard']}
-              </Link>
-            </div>
             <p className="text-lg leading-8 text-slate-600">
               {t['tr.desc']}
             </p>
+            <div className="flex flex-wrap gap-3">
+              <Link to="/trending/dashboard" className="button-secondary">
+                {t['tr.dashboard']}
+              </Link>
+            </div>
           </div>
 
-          {!loaded && <p className="text-slate-600">{t['tr.loading']}</p>}
-          {loaded && items.length === 0 && <p className="text-slate-600">{t['tr.empty']}</p>}
+          {!loaded && <p className="panel-soft text-slate-600">{t['tr.loading']}</p>}
+          {loaded && items.length === 0 && <p className="panel-soft text-slate-600">{t['tr.empty']}</p>}
 
+          {paginated.length > 0 && (
           <div className="space-y-4">
             {paginated.map((item) => (
               <Link
@@ -72,7 +73,7 @@ export default function TrendingPage() {
                     <h2 className="text-lg font-semibold text-slate-950">{item.title}</h2>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
                       <span>{item.date}</span>
-                      <span className="rounded bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+                      <span className="rounded bg-[var(--surface-muted)] px-2 py-0.5 text-xs font-medium text-slate-600">
                         {item.category}
                       </span>
                     </div>
@@ -80,11 +81,12 @@ export default function TrendingPage() {
                       <p className="text-sm leading-6 text-slate-500 line-clamp-2">{item.summary}</p>
                     )}
                   </div>
-                  <ArrowRight className="h-5 w-5 text-slate-300 group-hover:text-slate-600 transition mt-1 flex-shrink-0" />
+                  <ArrowRight className="h-5 w-5 text-[var(--text-tertiary)] group-hover:text-slate-600 transition mt-1 flex-shrink-0" />
                 </div>
               </Link>
             ))}
           </div>
+          )}
 
           {loaded && items.length > 0 && (
             <p className="text-sm text-slate-600">
@@ -93,11 +95,11 @@ export default function TrendingPage() {
           )}
 
           {loaded && totalPages > 1 && (
-            <nav className="flex items-center justify-between gap-4" aria-label="Pagination">
+            <nav className="flex flex-wrap items-center justify-center gap-3" aria-label="Pagination">
               <button
                 onClick={() => setPage(p => Math.max(1, p - 1))}
                 disabled={safePage === 1}
-                className="rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] disabled:opacity-40 disabled:cursor-not-allowed"
+                className="min-h-11 rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 {t['rep.prev']}
               </button>
@@ -107,7 +109,7 @@ export default function TrendingPage() {
               <button
                 onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                 disabled={safePage === totalPages}
-                className="rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] disabled:opacity-40 disabled:cursor-not-allowed"
+                className="min-h-11 rounded-lg border border-[var(--border-soft)] bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-[var(--border-strong)] disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 {t['rep.next']}
               </button>
