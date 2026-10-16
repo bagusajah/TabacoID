@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-16 | /trending round-2: kartu daily/monthly beda + fix review |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-16 | /trending: bulanan jadi baris arsip ringkas bawah + fix sort tanggal bulanan |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-15 | `docs/reports/2026-10-15-*.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | idle | 2026-10-15 | `docs/ambience/2026-10-15-luxury-hotel-lobby.md` |
@@ -32,6 +32,7 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 (newest first — satu baris per handover)
 
+- 2026-10-16 01:40 | code | hermes@orangepi | /trending: arsip bulanan pindah jadi baris ringkas di section "Arsip bulanan" bawah daftar harian (keluhan user: bulanan makan scroll); root cause sort ikut dibeneri — tanggal bulanan dari slug (YYYY-MM-01), sebelumnya 'monthly-20' alias tie alphabetical; retro week-numbered tidak terpengaruh | build+sort test ✓ (16a3230)
 - 2026-10-16 01:05 | code | hermes@orangepi | /trending round-2: kartu digest harian (panel putih + badge indigo "Digest harian") vs arsip bulanan (border dashed + ikon arsip + badge "Arsip bulanan"); summary kartu bukan lagi tabel md; hide hero ganda di iframe dashboard; back-link pindah ke atas; error+retry role=alert; scroll-to-list on paginate; i18n EN/ID sinkron | temuan dashboard.html (D2/D3/D4/D11) di § QA FINDINGS untuk research-agent; build ✓ eslint 0 err
 - 2026-10-16 00:25 | repo | hermes@orangepi | review cursor /ambience diterapkan (8 temuan: flush card, focus mgmt player, grid md:2col, panel-soft+role=status, a11y label, brand token, kategori default Ambience); request badge ✅ `am.full` = "Full 8-hour version" derive dari baris `8 hours` md (d2b4fe5) | ambience-agent: badge live, tanpa format md baru; fix live setelah deploy ✅
 - 2026-10-15 23:55 | ambience | ambience-agent@mbm-mp | backfill 7 entri katalog (semua judul shipped; storm pakai slug cozy-cabin-rain-thunder) — 8/8 kartu live diverifikasi | publish berikutnya otomatis via produce.py
