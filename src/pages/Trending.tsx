@@ -29,8 +29,8 @@ export default function TrendingPage() {
       const parsed = results
         .filter((r): r is PromiseFulfilledResult<Report> => r.status === 'fulfilled')
         .map(r => r.value)
-      // Daily digests first; monthly archives only when no daily exists that recency.
-      parsed.sort((a, b) => b.date.localeCompare(a.date) || Number(b.slug.startsWith('monthly')) - Number(a.slug.startsWith('monthly')))
+      // Both lists render date-desc; the page splits daily vs monthly itself.
+      parsed.sort((a, b) => b.date.localeCompare(a.date))
       // All-rejected is a load failure, not an empty archive — surface it as such.
       if (parsed.length === 0 && results.some(r => r.status === 'rejected')) {
         setFailed(true)
@@ -40,11 +40,15 @@ export default function TrendingPage() {
     }).finally(() => setLoaded(true))
   }, [reloadKey])
 
-  const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE))
+  // Daily digests paginate as full cards; monthly archives render as compact
+  // rows in their own section so they never crowd the daily list.
+  const dailyItems = items.filter(i => !i.slug.startsWith('monthly'))
+  const monthlyItems = items.filter(i => i.slug.startsWith('monthly'))
+  const totalPages = Math.max(1, Math.ceil(dailyItems.length / PAGE_SIZE))
   const [page, setPage] = useState(1)
   const listRef = useRef<HTMLDivElement>(null)
   const safePage = Math.min(page, totalPages)
-  const paginated = items.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE)
+  const paginated = dailyItems.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE)
 
   return (
     <div className="pb-20">
@@ -81,46 +85,47 @@ export default function TrendingPage() {
 
           {paginated.length > 0 && (
           <div ref={listRef} className="scroll-mt-24 space-y-4">
-            {paginated.map((item) => {
-              const isMonthly = item.slug.startsWith('monthly')
-              return (
+            {paginated.map((item) => (
+              <Link
+                key={item.slug}
+                to={`/trending/${item.slug}`}
+                className="block panel-surface p-6 hover:bg-slate-50/50 transition-colors group"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 space-y-2">
+                    <h2 className="text-lg font-semibold text-slate-950">{item.title}</h2>
+                    <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+                      <span>{item.date}</span>
+                      <span className="rounded bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-600">
+                        {t['tr.daily']}
+                      </span>
+                    </div>
+                    {item.summary && (
+                      <p className="text-sm leading-6 text-slate-500 line-clamp-2">{item.summary}</p>
+                    )}
+                  </div>
+                  <ArrowRight className="h-5 w-5 text-[var(--text-tertiary)] group-hover:text-slate-600 transition mt-1 flex-shrink-0" />
+                </div>
+              </Link>
+            ))}
+          </div>
+          )}
+
+          {monthlyItems.length > 0 && (
+            <div className="space-y-2">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">{t['tr.monthlySection']}</h2>
+              {monthlyItems.map((item) => (
                 <Link
                   key={item.slug}
                   to={`/trending/${item.slug}`}
-                  className={
-                    isMonthly
-                      ? 'block rounded-2xl border border-dashed border-slate-300 bg-slate-50/60 p-6 transition-colors hover:border-slate-400 group'
-                      : 'block panel-surface p-6 hover:bg-slate-50/50 transition-colors group'
-                  }
+                  className="flex items-center gap-3 rounded-lg border border-dashed border-slate-300 bg-slate-50/60 px-4 py-2.5 text-sm text-slate-600 transition-colors hover:border-slate-400 hover:text-slate-900"
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1 space-y-2">
-                      <h2 className={`text-lg font-semibold text-slate-950 ${isMonthly ? 'text-slate-700' : ''}`}>
-                        {item.title}
-                      </h2>
-                      <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
-                        <span>{item.date}</span>
-                        <span
-                          className={
-                            isMonthly
-                              ? 'inline-flex items-center gap-1 rounded border border-slate-300 bg-white px-2 py-0.5 text-xs font-medium text-slate-500'
-                              : 'rounded bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-600'
-                          }
-                        >
-                          {isMonthly && <Archive className="h-3 w-3" aria-hidden="true" />}
-                          {isMonthly ? t['tr.monthly'] : t['tr.daily']}
-                        </span>
-                      </div>
-                      {item.summary && (
-                        <p className="text-sm leading-6 text-slate-500 line-clamp-2">{item.summary}</p>
-                      )}
-                    </div>
-                    <ArrowRight className="h-5 w-5 text-[var(--text-tertiary)] group-hover:text-slate-600 transition mt-1 flex-shrink-0" />
-                  </div>
+                  <Archive className="h-4 w-4 flex-shrink-0 text-slate-400" aria-hidden="true" />
+                  <span className="font-medium">{item.title}</span>
+                  <ArrowRight className="ml-auto h-4 w-4 flex-shrink-0 text-slate-400" aria-hidden="true" />
                 </Link>
-              )
-            })}
-          </div>
+              ))}
+            </div>
           )}
 
           {loaded && items.length > 0 && (

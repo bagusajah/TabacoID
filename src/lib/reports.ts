@@ -85,11 +85,16 @@ export function parseReport(slug: string, raw: string): Report {
   const catMatch = raw.match(/Category:\s*(.+)/i)
   const reviewMatch = raw.match(/human_review:\s*(\S+)/)
   const statusMatch = frontmatter.match(/^status:\s*["']?([\w-]+)/m)
+  // Monthly slugs (monthly-2026-09) never match the ^YYYY-MM-DD pattern and lack
+  // frontmatter dates — derive YYYY-MM-01 so archives sort chronologically.
+  // Week-numbered slugs (2026-32-retrospective) keep the legacy slice fallback.
+  const monthMatch = slug.startsWith('monthly-') ? slug.match(/(\d{4}-\d{2})/) : null
+  const dateIso = dateMatch?.[1] || (monthMatch ? `${monthMatch[1]}-01` : slug.slice(0, 10))
 
   return {
     slug,
     title: titleMatch?.[1]?.trim() || slug,
-    date: dateMatch?.[1] || slug.slice(0, 10),
+    date: dateIso,
     // ponytail: keeps legacy 'Engineering' default consumed by Reports filter tabs —
     // Trending cards instead omit the category badge entirely (no fabricated labels).
     category: catMatch?.[1]?.trim() || 'Engineering',
