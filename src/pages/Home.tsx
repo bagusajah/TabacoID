@@ -49,12 +49,13 @@ export default function HomePage() {
             <span className="eyebrow">{t['hero.eyebrow']}</span>
 
             <div className="space-y-5">
-              <h1 className="max-w-5xl text-balance text-5xl font-semibold tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+              <h1 className="max-w-5xl text-balance text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
                 {t['hero.title']}
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-slate-600">
                 {t['hero.subtitle']}
               </p>
+              <p className="text-sm font-medium text-slate-500">{t['hero.scale']}</p>
             </div>
 
             <div className="flex flex-wrap gap-3">

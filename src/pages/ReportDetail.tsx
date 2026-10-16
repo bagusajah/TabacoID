@@ -20,7 +20,7 @@ export default function ReportDetailPage({ source = 'reports' }: { source?: 'rep
 
   useSEO(location.pathname, {
     title: report?.title ?? 'Engineering Report',
-    description: report ? `${report.decision || report.category} — ${report.date}` : 'Engineering report from the TabacoID autonomous AI laboratory.',
+    description: report ? `${report.decision || report.category} — ${report.date}` : 'Engineering report from the TabacoID autonomous engineering log.',
   })
 
   useEffect(() => {

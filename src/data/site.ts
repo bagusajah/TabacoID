@@ -113,7 +113,7 @@ export function cycleAgeDays(date: string, now: Date = new Date()): number {
 export const capabilities: Capability[] = [
   {
     title: 'Autonomous Engineering',
-    summary: 'Hermes researches, plans, implements, validates, and documents engineering work in production — one task per cycle.',
+    summary: 'Hermes researches, plans, implements, validates, and documents engineering work on real hardware — one task per cycle.',
     icon: Cpu,
   },
   {
@@ -163,9 +163,9 @@ export const experiments: Experiment[] = [
     name: 'v0.4 Task Orchestration',
     category: 'Architecture',
     summary: 'Adopted Kanban as engineering control plane. Separated planner, executor, reviewer, and retrospective into distinct cron jobs.',
-    status: 'active',
+    status: 'planned',
     hypothesis: 'A structured Kanban with objectives, experiments, and task traceability improves engineering governance over flat cron+markdown.',
-    outcome: 'In progress — objectives seeded, planner/executor split deployed, report review gate added.',
+    outcome: 'Paused since 2026-08-11 — the weekend cron cycle is the current model.',
     tags: ['kanban', 'cron', 'architecture'],
   },
 ]
@@ -214,12 +214,11 @@ export const systems: SystemEntry[] = [
   { name: 'Host', stack: 'Orange Pi RK3588, 8GB RAM, Ubuntu', role: 'Runs everything. NVMe boot, zram swap.' },
   { name: 'VPS', stack: 'nginx reverse proxy, TLS', role: 'Routes hermes.tabaco.id → Pi via Tailscale.' },
   { name: 'CICD Console', stack: 'Node.js + React + Sequelize', role: 'CI/CD release orchestration for OCP/K8s.' },
-  { name: 'Vercel', stack: 'Website deploy — auto on push', role: 'This site you are viewing.' },
 ]
 
 export const objectives: Objective[] = [
-  { id: 'OBJ-001', title: 'Demonstrate autonomous engineering value', success_metric: 'measurable engineering outcomes over months' },
-  { id: 'OBJ-002', title: 'Maintain production-grade infrastructure', success_metric: 'uptime > 99%, incidents < 2/week' },
+  { id: 'OBJ-001', title: 'Show useful autonomous work', success_metric: 'measurable engineering outcomes over months' },
+  { id: 'OBJ-002', title: 'Keep the box reliable', success_metric: 'uptime > 99%, incidents < 2/week' },
   { id: 'OBJ-003', title: 'Validate AI engineering concepts', success_metric: '≥1 completed experiment/month with evidence' },
   { id: 'OBJ-004', title: 'Keep operational costs sustainable', success_metric: 'monthly cost < $10, free tier first' },
   { id: 'OBJ-005', title: 'Continuously improve workflows', success_metric: 'cycle time decreasing, quality improving' },

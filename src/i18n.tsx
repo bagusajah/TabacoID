@@ -42,13 +42,14 @@ const T = {
     'am.external': 'opens in a new tab',
     'am.full': 'Full 8-hour version',
     // Hero
-    'hero.eyebrow': 'Autonomous AI engineering laboratory',
+    'hero.eyebrow': 'Autonomous AI engineering — one Orange Pi',
     'hero.title': 'What happens when an AI agent does real software engineering — on its own.',
-    'hero.subtitle': 'An AI named Hermes fixes real bugs, runs real experiments, and maintains real servers. No demos, no toy projects. This site documents everything — every decision, every failure, every result.',
+    'hero.subtitle': 'Hermes — one AI agent on one Orange Pi — fixes real bugs, runs small experiments, and keeps a handful of services up. Cron-driven, one task per cycle, human review on every push. This site is the public log.',
     'hero.cta.reports': 'Read the reports',
     'hero.cta.about': 'About the lab',
     'hero.lastCycle': (date: string) => `Last cycle: ${date}`,
     'hero.running': 'fresh',
+    'hero.scale': '1 Orange Pi · <$10/month · one task per cycle · human review on every push',
     // Stats
     'stat.days.label': 'Days running',
     'stat.days.value': (n: number) => `Day ${n}`,
@@ -64,8 +65,8 @@ const T = {
     'cycle.desc': 'Three separate cron jobs. One task per cycle. Never multiple unrelated objectives at once.',
     // Capabilities
     'cap.eyebrow': 'Capabilities',
-    'cap.title': 'What the laboratory actually does.',
-    'cap.desc': 'Hermes operates as a platform engineer: research, implementation, documentation, and experiments — producing measurable engineering value.',
+    'cap.title': 'What Hermes actually does.',
+    'cap.desc': 'Hermes works like a junior platform engineer on a tiny estate: research, implement, document, experiment — and publish the evidence.',
     // Experiments
     'exp.eyebrow': 'Experiments',
     'exp.title': 'Engineering experiments with hypotheses, metrics, and published results.',
@@ -86,16 +87,16 @@ const T = {
     // Thesis
     'thesis.eyebrow': 'The thesis',
     'thesis.title': 'The website is not the product. Hermes is the product.',
-    'thesis.desc': 'This site exists to show whether an AI agent can continuously operate as a platform engineer and produce measurable value — not just write code, but run a real engineering operation.',
+    'thesis.desc': 'This site asks whether an AI agent can keep doing useful platform work on a single box — research, fix, measure, publish — for months, not just generate code once.',
     'thesis.metric.label': 'Success metric',
     'thesis.metric.value': 'Measurable engineering outcomes — not commits, file counts, or the appearance of productivity.',
     // Systems
     'sys.eyebrow': 'Systems',
-    'sys.title': 'Eight systems under Hermes engineering.',
-    'sys.desc': 'Hermes operates across the full stack — from hardware to application. Each system is maintained, monitored, and improved through the engineering cycle.',
+    'sys.title': 'Seven systems Hermes maintains.',
+    'sys.desc': 'Hermes maintains the host, a VPS hop, a few services, and the tooling around the cycle itself. Scope is intentionally small.',
     // Objectives
     'obj.eyebrow': 'Objectives',
-    'obj.title': 'Five mission-level objectives.',
+    'obj.title': 'Five standing objectives.',
     'obj.desc': 'Every task links to one of these objectives. Progress is measured by completed engineering outcomes, not activity.',
     'obj.metric': 'Metric',
     // Principles
@@ -104,7 +105,7 @@ const T = {
     'prin.desc': 'Prefer simplicity, reliability, automation, documentation. Avoid feature bloat, premature optimization, unnecessary frameworks, and AI-generated busywork.',
     // Source
     'src.eyebrow': 'Open source',
-    'src.title': 'Every report, every experiment, every failure — public on GitHub.',
+    'src.title': 'Reports, experiments, and failures — on GitHub when we have them.',
     'src.cta': 'View the repository',
     // Reports page
     'rep.eyebrow': 'Engineering Reports',
@@ -125,7 +126,7 @@ const T = {
     'nf.desc': 'The route may have changed as part of the new TabacoID site structure.',
     'nf.cta': 'Back to home',
     // Footer
-    'footer.tagline': 'An autonomous AI engineering laboratory.',
+    'footer.tagline': 'A public log of autonomous engineering on a single board.',
     'footer.desc': 'The transparent interface into Hermes\' engineering activities: experiments, architecture, daily reports, and measurable outcomes.',
     'footer.readReports': 'Read the reports',
     'footer.pages': 'Pages',
@@ -134,9 +135,9 @@ const T = {
     'footer.copyright': (y: number, b: string) => `© ${y} ${b}. All rights reserved.`,
     'footer.dashboard': 'Trending dashboard',
     // SEO
-    'seo.home.desc': 'A lab where an AI agent named Hermes does real software engineering — fixing bugs, running experiments, maintaining servers. Fully documented, fully public.',
+    'seo.home.desc': 'Public reports from a one-box autonomous engineering setup: an AI agent fixing bugs, running small experiments, keeping services up.',
     'seo.reports.desc': 'Daily engineering reports with measurable evidence: question, method, findings, decision, and metrics from autonomous AI cycles.',
-    'seo.about.desc': 'TabacoID is not a portfolio but an engineering laboratory. Eight systems, five objectives, transparent autonomous AI engineering.',
+    'seo.about.desc': 'TabacoID is not a portfolio but a public engineering log. Seven systems, five objectives, autonomous AI engineering with human review.',
     'seo.workflow': 'Three cron jobs, one ROADMAP backlog: the weekend engineering cycle that drives every task Hermes executes.',
     'seo.404': 'Page not found',
     'seo.404.desc': 'This page does not exist on TabacoID.',
@@ -159,8 +160,8 @@ const T = {
     'wf.cycle.title': 'Three jobs, one task per cycle.',
     'wf.cycle.desc': 'Each job is a separate cron, driven by the ROADMAP backlog in priority order. The earlier v0.4 pipeline (planner/reviewer/retrospective with its Kanban control plane) is paused.',
     'wf.sys.eyebrow': 'Systems',
-    'wf.sys.title': 'Eight systems, all under Hermes engineering.',
-    'wf.sys.desc': 'The agent maintains everything from the host OS to this website. Each system is real, running in production.',
+    'wf.sys.title': 'Seven systems on one Orange Pi — plus hosting.',
+    'wf.sys.desc': 'From the host OS to this website. Small stack, always on, under $10/month.',
     'wf.flow.eyebrow': 'Task lifecycle',
     'wf.flow.title': 'From backlog to published — or blocked.',
     'wf.flow.desc': 'Each cycle picks the highest-value item from the ROADMAP backlog, executes it with measurable evidence, and auto-publishes the report. If it needs human input, it gets blocked.',
@@ -211,11 +212,12 @@ const T = {
     'am.external': 'buka di tab baru',
     'am.full': 'Versi lengkap 8 jam',
     // Hero
-    'hero.eyebrow': 'Lab engineering AI otonom',
-    'hero.title': 'Apa yang terjadi saat AI melakukan engineering software sungguhan — tanpa campur tangan manusia.',
-    'hero.subtitle': 'Sebuah AI bernama Hermes memperbaiki bug asli, menjalankan eksperimen nyata, dan merawat server sungguhan. Bukan demo, bukan mainan. Situs ini mendokumentasikan semuanya — setiap keputusan, setiap kegagalan, setiap hasil.',
+    'hero.eyebrow': 'Engineering AI otonom — satu Orange Pi',
+    'hero.title': 'Apa yang terjadi saat AI mengerjakan engineering software sungguhan — hampir sendiri, dengan review manusia.',
+    'hero.subtitle': 'Hermes — satu AI agent di satu Orange Pi — memperbaiki bug sungguhan, menjalankan eksperimen kecil, dan menjaga segelintir servis tetap hidup. Satu task per siklus, review manusia di setiap push. Situs ini log publiknya.',
     'hero.cta.reports': 'Baca laporan',
     'hero.cta.about': 'Tentang lab',
+    'hero.scale': '1 Orange Pi · <$10/bulan · satu task per siklus · review manusia di setiap push',
     'hero.lastCycle': (date: string) => `Siklus terakhir: ${date}`,
     'hero.running': 'segar',
     // Stats
@@ -233,8 +235,8 @@ const T = {
     'cycle.desc': 'Tiga cron job terpisah. Satu task per cycle. Tidak pernah beberapa objektif sekaligus.',
     // Capabilities
     'cap.eyebrow': 'Kapabilitas',
-    'cap.title': 'Apa yang sebenarnya dikerjakan lab ini.',
-    'cap.desc': 'Hermes bekerja sebagai platform engineer: riset, implementasi, dokumentasi, dan eksperimen — menghasilkan engineering value yang terukur.',
+    'cap.title': 'Apa yang sebenarnya dikerjakan Hermes.',
+    'cap.desc': 'Hermes bekerja seperti platform engineer junior di estate kecil: riset, implementasi, dokumentasi, eksperimen — dan publikasi buktinya.',
     // Experiments
     'exp.eyebrow': 'Eksperimen',
     'exp.title': 'Eksperimen engineering dengan hipotesis, metrik, dan hasil yang dipublikasi.',
@@ -255,16 +257,16 @@ const T = {
     // Thesis
     'thesis.eyebrow': 'Tesis',
     'thesis.title': 'Website bukan produk. Hermes adalah produk.',
-    'thesis.desc': 'Situs ini ada untuk menunjukkan apakah AI agent bisa terus-menerus bekerja sebagai platform engineer dan menghasilkan value terukur — bukan sekadar menulis kode, tapi menjalankan operasi engineering nyata.',
+    'thesis.desc': 'Situs ini bertanya: bisakah AI agent terus melakukan kerja platform yang berguna di satu mesin — riset, perbaiki, ukur, publikasi — berbulan-bulan, bukan sekadar generate kode sekali.',
     'thesis.metric.label': 'Metrik sukses',
     'thesis.metric.value': 'Engineering outcomes yang terukur — bukan jumlah commit, file, atau kesan produktif.',
     // Systems
     'sys.eyebrow': 'Sistem',
-    'sys.title': 'Delapan sistem yang direkayasa Hermes.',
-    'sys.desc': 'Hermes bekerja across the full stack — dari hardware sampai aplikasi. Setiap sistem di-maintain, di-monitor, dan ditingkatkan melalui engineering cycle.',
+    'sys.title': 'Tujuh sistem yang dirawat Hermes.',
+    'sys.desc': 'Hermes merawat host, satu VPS, beberapa servis, dan tooling di sekitar siklusnya sendiri. Skala sengaja dibuat kecil.',
     // Objectives
     'obj.eyebrow': 'Objektif',
-    'obj.title': 'Lima objektif level misi.',
+    'obj.title': 'Lima objektif tetap.',
     'obj.desc': 'Setiap task terhubung ke salah satu objektif ini. Progress diukur dari engineering outcomes yang selesai, bukan aktivitas.',
     'obj.metric': 'Metrik',
     // Principles
@@ -273,7 +275,7 @@ const T = {
     'prin.desc': 'Utamakan kesederhanaan, reliability, automation, dokumentasi. Hindari feature bloat, premature optimization, framework yang tidak perlu, dan busywork buatan AI.',
     // Source
     'src.eyebrow': 'Open source',
-    'src.title': 'Setiap laporan, setiap eksperimen, setiap kegagalan — publik di GitHub.',
+    'src.title': 'Laporan, eksperimen, dan kegagalan — di GitHub saat ada.',
     'src.cta': 'Lihat repository',
     // Reports page
     'rep.eyebrow': 'Laporan Engineering',
@@ -294,7 +296,7 @@ const T = {
     'nf.desc': 'URL mungkin berubah sebagai bagian dari struktur situs TabacoID yang baru.',
     'nf.cta': 'Kembali ke beranda',
     // Footer
-    'footer.tagline': 'Lab engineering AI otonom.',
+    'footer.tagline': 'Log publik engineering otonom di satu board.',
     'footer.desc': 'Antarmuka transparan ke aktivitas engineering Hermes: eksperimen, arsitektur, laporan harian, dan outcomes yang terukur.',
     'footer.readReports': 'Baca laporan',
     'footer.pages': 'Halaman',
@@ -303,9 +305,9 @@ const T = {
     'footer.copyright': (y: number, b: string) => `© ${y} ${b}. Hak cipta dilindungi.`,
     'footer.dashboard': 'Dashboard trending',
     // SEO
-    'seo.home.desc': 'Lab tempat AI agent bernama Hermes melakukan engineering software sungguhan — memperbaiki bug, menjalankan eksperimen, merawat server. Terdokumentasi penuh, publik.',
+    'seo.home.desc': 'Laporan publik dari setup engineering otonom satu mesin: AI agent memperbaiki bug, menjalankan eksperimen kecil, menjaga servis tetap hidup.',
     'seo.reports.desc': 'Laporan engineering harian dengan evidence terukur: pertanyaan, metode, temuan, keputusan, dan metrik dari cycle AI otonom.',
-    'seo.about.desc': 'TabacoID bukan portofolio tapi lab engineering. Delapan sistem, lima objektif, engineering AI otonom yang transparan.',
+    'seo.about.desc': 'TabacoID bukan portofolio tapi log engineering publik. Tujuh sistem, lima objektif, engineering AI otonom dengan review manusia.',
     'seo.workflow': 'Tiga cron job, satu backlog ROADMAP: siklus engineering akhir pekan yang menjalankan setiap task Hermes.',
     'seo.404': 'Halaman tidak ditemukan',
     'seo.404.desc': 'Halaman ini tidak ada di TabacoID.',
@@ -328,8 +330,8 @@ const T = {
     'wf.cycle.title': 'Tiga job, satu task per siklus.',
     'wf.cycle.desc': 'Setiap job adalah cron terpisah, digerakkan oleh backlog ROADMAP sesuai prioritas. Pipeline v0.4 sebelumnya (planner/reviewer/retrospective dengan Kanban control plane) sedang dijeda.',
     'wf.sys.eyebrow': 'Sistem',
-    'wf.sys.title': 'Delapan sistem, semuanya di bawah engineering Hermes.',
-    'wf.sys.desc': 'AI agent merawat semuanya, dari host OS sampai website ini. Setiap sistem nyata, running di production.',
+    'wf.sys.title': 'Tujuh sistem di satu Orange Pi — plus hosting.',
+    'wf.sys.desc': 'Dari host OS sampai website ini. Stack kecil, selalu nyala, di bawah $10/bulan.',
     'wf.flow.eyebrow': 'Task lifecycle',
     'wf.flow.title': 'Dari backlog sampai terbit — atau blocked.',
     'wf.flow.desc': 'Setiap siklus memilih item bernilai tertinggi dari backlog ROADMAP, mengerjakannya dengan bukti terukur, lalu auto-publish laporannya. Kalau butuh input manusia, di-block.',
