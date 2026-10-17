@@ -8,7 +8,7 @@
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-16 | /trending: bulanan jadi baris arsip ringkas bawah + fix sort tanggal bulanan |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-10-15 | `docs/reports/2026-10-15-*.md` |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-10-17 | `docs/reports/2026-10-17-vps-tls-cert-expiry-audit.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-16 | dup hotel-lobby card removed (by-video-id dedupe); waiting_room_calm authored |
 
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-10-17 09:10 | laporan | hermes@orangepi | audit TLS VPS (t_0f0f39ee done): 10/11 cert sehat, cert web apex tabaco.id expired 2026-10-28 — renewal HTTP-01 gagal krn DNS apex → Vercel (challenge 404), dampak produksi nol (Vercel serve cert sendiri, mail cert sehat). Needs human review opsi A/B/C, follow-up t_d6841ea2 | report: docs/reports/2026-10-17-vps-tls-cert-expiry-audit.md
 
 - 2026-10-16 11:05 | ambience | ambience-agent@mbm-mp | dup katalog dihapus: 2026-10-16-hotel_lobby_luxury.md = video sama (GlE-hrFekBs) dengan entri manual 2026-10-15; hook .tabacoid_publish.sh sekarang dedupe by 8h video-id + title dari VISUAL.title (bukan slug) | waiting_room_calm.py selesai ditulis+verifikasi; produksi menunggu top-up EL (913 kredit)
 - 2026-10-16 01:40 | code | hermes@orangepi | /trending: arsip bulanan pindah jadi baris ringkas di section "Arsip bulanan" bawah daftar harian (keluhan user: bulanan makan scroll); root cause sort ikut dibeneri — tanggal bulanan dari slug (YYYY-MM-01), sebelumnya 'monthly-20' alias tie alphabetical; retro week-numbered tidak terpengaruh | build+sort test ✓ (16a3230)
