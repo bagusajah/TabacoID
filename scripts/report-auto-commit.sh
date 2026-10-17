@@ -9,11 +9,16 @@ bash "$HOME/.hermes/scripts/export-metrics.sh" >/dev/null 2>&1 || true
 
 cd /home/orangepi/TabacoID
 
-# Nothing to do if working tree clean for docs/ and metrics.json
-if git diff --quiet -- docs/ public/metrics.json && git ls-files --others --exclude-standard -- docs/ | grep -q .; then
-    : # has untracked files, fall through
-elif git diff --quiet -- docs/ public/metrics.json; then
-    echo "No changes in docs/ or metrics.json"
+# Regenerate sitemap on EVERY run (before the early-exit check) so sitemap
+# freshness does not depend on this script being the one that commits:
+# reports committed directly by the agent lane skip the commit path below,
+# which left 2026-10-17 reports out of sitemap.xml until the next day.
+python3 /home/orangepi/TabacoID/scripts/gen-sitemap.py || true
+
+# Nothing to do if no tracked diffs AND no untracked docs (new reports)
+if git diff --quiet -- docs/ public/metrics.json public/sitemap.xml && \
+   ! git ls-files --others --exclude-standard -- docs/ | grep -q .; then
+    echo "No changes in docs/, sitemap.xml, or metrics.json"
     exit 0
 fi
 
