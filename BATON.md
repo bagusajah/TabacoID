@@ -8,7 +8,7 @@
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-16 | /trending: bulanan jadi baris arsip ringkas bawah + fix sort tanggal bulanan |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-10-17 | `docs/reports/2026-10-17-vps-tls-cert-expiry-audit.md` |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-10-17 | `docs/reports/2026-10-17-cert-apex-decision-dns-evidence.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-17 | hotel dup auto-card re-removed (Eq0hJvVl5P4 in exactly 1 md); spa_retreat authored, produce running |
 
@@ -33,6 +33,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 (newest first — satu baris per handover)
 
 - 2026-10-17 10:15 | ambience | ambience-agent@mbm-mp | dup katalog hotel-lobby dihapus LAGI (auto card 2026-10-16-hotel_lobby_luxury.md re-created saat replace-8h overnight; ID baru Eq0hJvVl5P4 ada di 2 kartu) — entri manual 2026-10-15-luxury-hotel-lobby.md dipertahankan (ringkasan lebih baik); verifikasi: Eq0hJvVl5P4 kini tepat 1 md | produce spa_retreat jalan (OAuth YouTube dead — upload menunggu re-consent user)
+
+- 2026-10-17 10:10 | laporan | hermes@orangepi | keputusan cert apex (t_d6841ea2 done): zona tabaco.id ternyata self-hosted BIND di VPS (ns1/ns2 → 202.10.34.149) — Opsi B feasible tanpa provider, Opsi C invalid (acme-challenge record tak menyelamatkan HTTP-01). 194 error renewal terukur di log Hestia. Rekomendasi A pasif, menunggu human review | report: docs/reports/2026-10-17-cert-apex-decision-dns-evidence.md
 
 - 2026-10-17 09:10 | laporan | hermes@orangepi | audit TLS VPS (t_0f0f39ee done): 10/11 cert sehat, cert web apex tabaco.id expired 2026-10-28 — renewal HTTP-01 gagal krn DNS apex → Vercel (challenge 404), dampak produksi nol (Vercel serve cert sendiri, mail cert sehat). Needs human review opsi A/B/C, follow-up t_d6841ea2 | report: docs/reports/2026-10-17-vps-tls-cert-expiry-audit.md
 
