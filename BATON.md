@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-16 | /trending: bulanan jadi baris arsip ringkas bawah + fix sort tanggal bulanan |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-17 | watchdog cron yang menghidupkan ulang dashboard :9119 di-pause; unit di-stop+mask |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-17 | `docs/reports/2026-10-17-cert-apex-decision-dns-evidence.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-17 | hotel dup auto-card re-removed (Eq0hJvVl5P4 in exactly 1 md); spa_retreat authored, produce running |
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-10-17 14:20 | laporan | hermes@orangepi | dashboard :9119 bangkit lagi 00:55 — pelaku cron "Dashboard Watchdog" (cad6f228b72d, */5min) yg me-restart unit retired; watchdog di-pause + unit stop+mask (.retired-20261017); port closed terverifikasi lewat 2 tick watchdog | report: docs/reports/2026-10-17-watchdog-resurrect-retired-dashboard.md
 
 - 2026-10-17 13:20 | laporan | hermes@orangepi | sitemap freshness gap fixed (t_c485c597): 2 report 17 Okt bolong dari sitemap krn gen-sitemap cuma jalan di jalur auto-commit, bukan jalur agent commit; gen-sitemap kini jalan tiap run report-auto-commit.sh, sitemap 130→135 URL, build ✓ | report: docs/reports/2026-10-17-sitemap-freshness-gap.md
 
