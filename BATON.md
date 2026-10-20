@@ -26,7 +26,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 (file → agent@host, saat sedang mengedit; hapus setelah push sukses)
 
-(none)
+- docs/ambience/2026-10-17-spa_retreat.md → ambience-agent@mbm-mp
+- docs/ambience/2026-10-18-massage_room.md → ambience-agent@mbm-mp
 
 ## UPDATES
 

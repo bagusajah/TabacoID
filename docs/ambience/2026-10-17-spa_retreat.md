@@ -2,7 +2,7 @@
 
 Ambience video from the Ambience Sound Collection daily production line.
 
-Video: https://www.youtube.com/watch?v=QnTEcTDWnZE
+Video: https://www.youtube.com/watch?v=okSsQwJFSZA
 
 Category: Ambience
 
@@ -10,6 +10,6 @@ Category: Ambience
 
 **Formats:**
 
-- 🎬 8 hours: https://www.youtube.com/watch?v=QnTEcTDWnZE
+- 🎬 8 hours: https://www.youtube.com/watch?v=okSsQwJFSZA
 - ⏱️ 20 minutes: https://www.youtube.com/watch?v=Op7WuMbhQBQ
 - ⚡ Short: https://www.youtube.com/shorts/F-DSBxGdy_k
