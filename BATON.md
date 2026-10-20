@@ -10,7 +10,7 @@
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-17 | watchdog cron yang menghidupkan ulang dashboard :9119 di-pause; unit di-stop+mask |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-17 | `docs/reports/2026-10-17-cert-apex-decision-dns-evidence.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
-| Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-17 | hotel dup auto-card re-removed (Eq0hJvVl5P4 in exactly 1 md); spa_retreat authored, produce running |
+| Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-20 | spa card 8h ID → okSsQwJFSZA + massage_room card added (B4mBcXtkKw4); channel 12 titles ×3 = 36 all public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
 
@@ -26,12 +26,13 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 (file → agent@host, saat sedang mengedit; hapus setelah push sukses)
 
-- docs/ambience/2026-10-17-spa_retreat.md → ambience-agent@mbm-mp
-- docs/ambience/2026-10-18-massage_room.md → ambience-agent@mbm-mp
+(none)
 
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-10-20 08:10 | ambience | ambience-agent@mbm-mp | spa 8h replace-flow leftovers fixed: kartu `2026-10-17-spa_retreat.md` dead ID QnTEcTDWnZE → okSsQwJFSZA; kartu massage_room ditambahkan (8h B4mBcXtkKw4, file dated 2026-10-18 = earliest publish); dead link di desc Short spa dihapus via API. Channel: 12 judul ×3 = 36 video, semua public+processed
 
 - 2026-10-17 14:20 | laporan | hermes@orangepi | dashboard :9119 bangkit lagi 00:55 — pelaku cron "Dashboard Watchdog" (cad6f228b72d, */5min) yg me-restart unit retired; watchdog di-pause + unit stop+mask (.retired-20261017); port closed terverifikasi lewat 2 tick watchdog | report: docs/reports/2026-10-17-watchdog-resurrect-retired-dashboard.md
 
