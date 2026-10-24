@@ -31,17 +31,21 @@ Apakah konsolidasi bisa menurunkan usage di bawah 85% TANPA kehilangan fakta ope
 4. Kompresi kata (TICMI entry -80 char) tanpa mengubah satu pun instruksi operasional.
 5. Backup sebelum edit: `~/.hermes/cache/scratch/MEMORY.md.bak-20261024`.
 6. USER.md (81.6% kap) dibiarkan — masih ada headroom.
+7. Koreksi tengah-eksekusi: pointer skill `litellm-gateway`/`multi-agent-lanes` awalnya
+   kueduh mati karena cek flat-path (`ls ~/.hermes/skills/<name>`); cek recursive
+   (`find`) menemukan keduanya hidup di `skills/mlops/` dan `skills/autonomous-ai-agents/`.
+   Pointer dipulihkan ke memori sebelum close.
 
 ## Findings
 
-- `memory_chars: 2101 → 1795 char (95.5% → 81.6%)` — metode hitung sama dengan counter
-  sistem (baris `§` dan kosong di-strip). Byte mentah: 2181 → 1864.
+- `memory_chars: 2101 → 1868 char (95.5% → 84.9%)` — metode hitung sama dengan counter
+  sistem (baris `§` dan kosong di-strip). Byte mentah: 2181 → 1921.
 - `entries: 13 → 12` (1 dihapus karena redundan, 2 di-merge jadi 1).
 - Token integrity check otomatis: 13 token kunci (nomor HP, key ElevenLabs, hostname,
   path tools, flag prosedural) — semua ada di file hasil. Nol fakta operasional hilang.
-- Temuan sampingan: 2 skill yang dirujuk memori ternyata sudah tidak ada di profil manapun.
-  Memori menyimpan pointer ke skill yang sudah dihapus — pola kebocoran yang sama dengan
-  entry Providers: memori tidak ikut ter-cleanup saat sumbernya berubah.
+- Entry `Providers` ternyata duplikasi ke-2 dari pola yang sama yang ditemukan report
+  HE1 Okt-10 (entri yang duplikat USER.md/config): sisa entry providers lama masih
+  tertinggal di memori meski config.yaml adalah sumber kebenarannya.
 
 ## Decision
 
@@ -53,15 +57,17 @@ untuk diff review manual.
 - Nuansa wording yang terkompresi berpotensi menghilangkan konteks halus. Mitigasi: backup
   di scratch + diff bisa direview kapan pun; entri paling padat instruksi (TICMI, Content
   pipeline) hanya kehilangan kata sambung, bukan klausa perintah.
-- Kalau suatu saat skill litellm-gateway/multi-agent-lanes di-recreate, memori perlu
-  di-update lagi (pointer kini tidak tersimpan).
+- Kesalahan proses yang hampir terjadi: pointer skill nyaris dihapus dari memori karena
+  verifikasi flat-path. Aturan: sebelum menyatakan pointer mati, verifikasi recursive.
 
 ## Lessons Learned
 
 - Memori Hermes tidak punya mekanisme pruning otomatis saat sumber eksternalnya berubah
   (skill dihapus, config berubah) → audit periodik diperlukan, trigger alami: usage >90%.
 - Tiga sumber redundansi: (1) duplikat sumber kebenaran yang selalu termuat (config.yaml),
-  (2) pointer ke artefak yang sudah mati, (3) dua entri menutupi topik yang sama.
+  (2) pointer ke artefak lain tanpa verifikasi keberadaannya, (3) dua entri menutupi
+  topik yang sama. Verifikasi pointer harus recursive (find), bukan flat (ls) —
+  flat check menipu untuk skill yang hidup di subdirektori kategori.
 
 ## Next Priority
 
