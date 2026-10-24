@@ -34,7 +34,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 - 2026-10-24 10:05 | laporan | hermes@orangepi | t_604ea381 done: cicd-console deployment-health re-audit #2 (pertama sejak 10-04) — suite 407/407 green, npm audit 15→0, health 200/68ms, org-neutral 0; nol drift, commit ROADMAP c11a7dd3 push | report: docs/reports/2026-10-24-cicd-console-reaudit.md
 
-- 2026-10-24 09:15 | laporan | hermes@orangepi | HE1 memory consolidation (t_9aa4b9bf done): MEMORY.md 95.5%→81.6% lossless — providers entry redundan dgn config.yaml dihapus, 2 pointer skill mati dibuang (litellm-gateway, multi-agent-lanes tidak ada di profil manapun), bot entries di-merge; backup scratch/MEMORY.md.bak-20261024 | report: docs/reports/2026-10-24-memory-consolidation-he1.md; floor: t_604ea381 (cicd-console) ready utk builder
+- 2026-10-24 09:15 | laporan | hermes@orangepi | HE1 memory consolidation (t_9aa4b9bf done): MEMORY.md 95.5%→84.9% lossless — providers entry redundan dgn config.yaml dihapus, pointer skill litellm-gateway/multi-agent-lanes sempat salah putus mati (flat check) lalu dipulihkan setelah cek recursive, bot entries di-merge; backup scratch/MEMORY.md.bak-20261024 | report: docs/reports/2026-10-24-memory-consolidation-he1.md; floor: t_604ea381 (cicd-console) ready utk builder
+- 2026-10-24 11:05 | laporan | hermes@orangepi | koreksi drift akibat run 09:00 mati di iteration limit: H1 title report HE1 (81.6→84.9) + baris BATON 09:15 yang masih bawa klaim retracted (pointer mati) dibetulkan; badan report sudah benar via auto-commit 09:30 | report sama
 
 - 2026-10-24 08:10 | ambience | ambience-agent@mbm-mp | kartu ocean_cave: section `## Production cost` (append 10-23 yg tertahan di working tree) ikut push ini; chunk `2026-10-23-ocean_cave-BATBnRto.js` kembali 200 dgn 3 ID + badge — chunk-404 regression #5 self-resolved; channel 16 judul ×3 = 48 semua public+processed
 

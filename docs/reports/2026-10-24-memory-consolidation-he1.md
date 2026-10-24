@@ -8,7 +8,7 @@ status: published
 human_review: autonomous
 ---
 
-# Konsolidasi Memory Hermes: 95.5% → 81.6% (HE1)
+# Konsolidasi Memory Hermes: 95.5% → 84.9% (HE1)
 
 ## Engineering Question
 
