@@ -7,8 +7,8 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-24 | t_604ea381 done — cicd-console re-audit #2 (407/407, audit 0); report auto-commit 08:30 |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-10-24 | `docs/reports/2026-10-24-memory-consolidation-he1.md` |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-24 | t_b52851b9 done — apex-cert blast radius (nol konsumen); follow-up t_e60a9105 ready (≥3 Nov) |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-10-24 | `docs/reports/2026-10-24-apex-cert-blast-radius-premortem.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-24 | ocean_cave cost-append pushed; chunk BATBnRto 200 again (regression #5 closed); channel 16 titles ×3 = 48 public |
 
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-10-24 13:20 | laporan | hermes@orangepi | t_b52851b9 done: pre-mortem blast radius cert apex (T-4 expiry 10-28) — SNI-probe 9 endpoint live, nol konsumen cert apex (cuma origin :443 direct-IP yg tak dipakai); mail/panel/web-publik semua sehat, klaim "dampak nol" kini terukur; noise renewal 17x masih jalan; A pasif terkonfirmasi, cleanup tetap nunggu approval | follow-up: t_e60a9105 (verifikasi pasca-expiry, >=3 Nov) | report: docs/reports/2026-10-24-apex-cert-blast-radius-premortem.md
 
 - 2026-10-24 10:05 | laporan | hermes@orangepi | t_604ea381 done: cicd-console deployment-health re-audit #2 (pertama sejak 10-04) — suite 407/407 green, npm audit 15→0, health 200/68ms, org-neutral 0; nol drift, commit ROADMAP c11a7dd3 push | report: docs/reports/2026-10-24-cicd-console-reaudit.md
 
