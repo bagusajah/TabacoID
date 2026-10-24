@@ -16,7 +16,9 @@ cd /home/orangepi/TabacoID
 python3 /home/orangepi/TabacoID/scripts/gen-sitemap.py || true
 
 # Nothing to do if no tracked diffs AND no untracked docs (new reports)
-if git diff --quiet -- docs/ public/metrics.json public/sitemap.xml && \
+# BATON.md included: agents that finish without committing their baton update
+# (failed patch / iteration limit) strand it — observed 2x on 2026-10-24.
+if git diff --quiet -- docs/ public/metrics.json public/sitemap.xml BATON.md && \
    ! git ls-files --others --exclude-standard -- docs/ | grep -q .; then
     echo "No changes in docs/, sitemap.xml, or metrics.json"
     exit 0
@@ -31,9 +33,9 @@ TOTAL=$((TRACKED_CHANGED + UNTRACKED))
 python3 /home/orangepi/TabacoID/scripts/gen-sitemap.py
 mkdir -p docs/trending docs/ambience
 
-git add docs/reports/ docs/trending/ docs/ambience/ public/metrics.json public/sitemap.xml
+git add docs/reports/ docs/trending/ docs/ambience/ public/metrics.json public/sitemap.xml BATON.md
 DATE=$(date -u +%Y-%m-%d)
-git commit -m "docs: auto-commit reports ${DATE} (${TOTAL} files)" -- docs/reports/ docs/trending/ docs/ambience/ public/metrics.json public/sitemap.xml
+git commit -m "docs: auto-commit reports ${DATE} (${TOTAL} files)" -- docs/reports/ docs/trending/ docs/ambience/ public/metrics.json public/sitemap.xml BATON.md
 git push origin main
 
 echo "Committed + pushed ${TOTAL} report file(s)"
