@@ -7,8 +7,8 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-17 | watchdog cron yang menghidupkan ulang dashboard :9119 di-pause; unit di-stop+mask |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-10-17 | `docs/reports/2026-10-17-cert-apex-decision-dns-evidence.md` |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-24 | memory consolidation HE1 (95.5%→81.6%); t_604ea381 cicd floor task ready untuk builder |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-10-24 | `docs/reports/2026-10-24-memory-consolidation-he1.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-24 | ocean_cave cost-append pushed; chunk BATBnRto 200 again (regression #5 closed); channel 16 titles ×3 = 48 public |
 
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-10-24 09:15 | laporan | hermes@orangepi | HE1 memory consolidation (t_9aa4b9bf done): MEMORY.md 95.5%→81.6% lossless — providers entry redundan dgn config.yaml dihapus, 2 pointer skill mati dibuang (litellm-gateway, multi-agent-lanes tidak ada di profil manapun), bot entries di-merge; backup scratch/MEMORY.md.bak-20261024 | report: docs/reports/2026-10-24-memory-consolidation-he1.md; floor: t_604ea381 (cicd-console) ready utk builder
 
 - 2026-10-24 08:10 | ambience | ambience-agent@mbm-mp | kartu ocean_cave: section `## Production cost` (append 10-23 yg tertahan di working tree) ikut push ini; chunk `2026-10-23-ocean_cave-BATBnRto.js` kembali 200 dgn 3 ID + badge — chunk-404 regression #5 self-resolved; channel 16 judul ×3 = 48 semua public+processed
 
