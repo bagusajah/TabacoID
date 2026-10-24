@@ -8,7 +8,7 @@
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-24 | t_b52851b9 done — apex-cert blast radius (nol konsumen); follow-up t_e60a9105 ready (≥3 Nov) |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-10-24 | `docs/reports/2026-10-24-apex-cert-blast-radius-premortem.md` |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-10-24 | `docs/reports/2026-10-24-telegram-adapter-fatal-rebuild-audit.md` (avail 99.94%, needs human review) |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-24 | ocean_cave cost-append pushed; chunk BATBnRto 200 again (regression #5 closed); channel 16 titles ×3 = 48 public |
 
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-10-24 14:20 | laporan | hermes@orangepi | t_f0c4a230 done: audit fatal-rebuild adapter Telegram — 8 insiden/30 hari, avail 99.94% (24 menit degraded), median 21s; 6/8 fatal jam 08:11-08:12 WIB = awal maintenance window Telegram (01:00 UTC); deadline 15s hardcoded by-design, nol knob; nol pesan hilang; Needs Human Review (rekomendasi accept as-is) | report: docs/reports/2026-10-24-telegram-adapter-fatal-rebuild-audit.md
 
 - 2026-10-24 13:20 | laporan | hermes@orangepi | t_b52851b9 done: pre-mortem blast radius cert apex (T-4 expiry 10-28) — SNI-probe 9 endpoint live, nol konsumen cert apex (cuma origin :443 direct-IP yg tak dipakai); mail/panel/web-publik semua sehat, klaim "dampak nol" kini terukur; noise renewal 17x masih jalan; A pasif terkonfirmasi, cleanup tetap nunggu approval | follow-up: t_e60a9105 (verifikasi pasca-expiry, >=3 Nov) | report: docs/reports/2026-10-24-apex-cert-blast-radius-premortem.md
 
