@@ -649,6 +649,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.tabaco.id/reports/2026-10-24-baton-stranding-autocommit-fix</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.tabaco.id/reports/2026-10-24-cicd-console-reaudit</loc>
     <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -668,6 +674,12 @@
   </url>
   <url>
     <loc>https://www.tabaco.id/reports/2026-10-24-td16-8th-revisit-audit-drift</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tabaco.id/reports/2026-10-24-telegram-adapter-fatal-rebuild-audit</loc>
     <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
