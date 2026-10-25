@@ -73,7 +73,9 @@ def main():
     print(f"og: /trending -> {list_title}")
 
     # 2) /trending/<slug> — caption matches that day's report
-    for md in sorted(DOCS.glob("*.md")):
+    # /trending/<slug> is served from two dirs (daily root + monthly/), same as the
+    # import.meta.glob pair in Trending.tsx — prerender both or SPA rewrite wins.
+    for md in sorted(DOCS.glob("*.md")) + sorted((DOCS / "monthly").glob("*.md")):
         slug = md.stem
         title, desc = report_meta(md)
         if len(desc) > 300:

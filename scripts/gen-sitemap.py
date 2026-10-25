@@ -56,8 +56,11 @@ def main() -> None:
         if not is_published(report):
             continue
         urls.append((f"/reports/{report.stem}", "0.6", "monthly", filename_date(report)))
-    for digest in sorted((ROOT / "docs" / "trending").glob("*.md")):
-        urls.append((f"/trending/{digest.stem}", "0.6", "monthly", filename_date(digest)))
+    for md_dir in (ROOT / "docs" / "trending", ROOT / "docs" / "trending" / "monthly"):
+        for digest in sorted(md_dir.glob("*.md")):
+            if not is_published(digest):
+                continue
+            urls.append((f"/trending/{digest.stem}", "0.6", "monthly", filename_date(digest)))
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

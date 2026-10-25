@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-25 | sitemap live-URL audit: 151/151 200, nol leak; t_e60a9105 ready (≥3 Nov) |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-25 | t_1df5da20: sitemap+og trending filter published & tambah monthly (153→163 URL); t_e60a9105 ready (≥3 Nov) |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-sitemap-live-url-audit.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-24 | ocean_cave cost-append pushed; chunk BATBnRto 200 again (regression #5 closed); channel 16 titles ×3 = 48 public |
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-10-25 10:15 | laporan+repo | hermes@orangepi | t_1df5da20 done: fix gen-sitemap.py trending (filter is_published, parity dgn jalur reports — vektor leak dari audit 10-25 ditutup) + gap kedua ketemu: 10 arsip monthly tidak pernah masuk sitemap & tak di-prerender og; sitemap 153→163 URL (153 existing byte-identik), og prerender 37→47; build+lint+tsc ✓ | report: docs/reports/2026-10-25-trending-sitemap-monthly-fix.md
 
 - 2026-10-25 09:25 | laporan | hermes@orangepi | t_4a51765d done: live-URL audit sitemap pertama — 151/151 URL HTTP 200 (p95 0.52s), aritmetika source pas (6 static+109 reports+36 trending), nol draft leak dari 166 report non-published; og prerender trending benar; catatan: gen-sitemap.py tanpa filter isPublished utk trending (risiko laten, belum difix) | report: docs/reports/2026-10-25-sitemap-live-url-audit.md
 
