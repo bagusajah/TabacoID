@@ -685,7 +685,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.tabaco.id/reports/2026-10-25-apex-cert-t3-midprobe</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.tabaco.id/reports/2026-10-25-sitemap-live-url-audit</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tabaco.id/reports/2026-10-25-trending-sitemap-monthly-fix</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
