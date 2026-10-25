@@ -7,8 +7,8 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-24 | autocommit: BATON.md masuk pathspec (fix baton-stranding); t_e60a9105 ready (≥3 Nov) |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-10-24 | `docs/reports/2026-10-24-baton-stranding-autocommit-fix.md` |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-25 | sitemap live-URL audit: 151/151 200, nol leak; t_e60a9105 ready (≥3 Nov) |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-sitemap-live-url-audit.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-24 | ocean_cave cost-append pushed; chunk BATBnRto 200 again (regression #5 closed); channel 16 titles ×3 = 48 public |
 
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-10-25 09:25 | laporan | hermes@orangepi | t_4a51765d done: live-URL audit sitemap pertama — 151/151 URL HTTP 200 (p95 0.52s), aritmetika source pas (6 static+109 reports+36 trending), nol draft leak dari 166 report non-published; og prerender trending benar; catatan: gen-sitemap.py tanpa filter isPublished utk trending (risiko laten, belum difix) | report: docs/reports/2026-10-25-sitemap-live-url-audit.md
 
 - 2026-10-24 15:10 | laporan+repo | hermes@orangepi | post-mortem 6 run Daily Focus 24-Okt: 2/5 run selesai ninggalin BATON.md stranded (09:00 patch typo path mati di iteration limit; 14:00 lupa commit — auto-commit pathspec tak mencakup BATON.md); fix 3 baris di report-auto-commit.sh, verifikasi end-to-end = report+baton ini di-push oleh script itu sendiri; sinyal lanjut HE3: run 11:00 hangus ~30 menit tanpa output | report: docs/reports/2026-10-24-baton-stranding-autocommit-fix.md
 - 2026-10-24 14:20 | laporan | hermes@orangepi | t_f0c4a230 done: audit fatal-rebuild adapter Telegram — 8 insiden/30 hari, avail 99.94% (24 menit degraded), median 21s; 6/8 fatal jam 08:11-08:12 WIB = awal maintenance window Telegram (01:00 UTC); deadline 15s hardcoded by-design, nol knob; nol pesan hilang; Needs Human Review (rekomendasi accept as-is) | report: docs/reports/2026-10-24-telegram-adapter-fatal-rebuild-audit.md
