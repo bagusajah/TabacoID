@@ -10,7 +10,7 @@
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-25 | t_f465ddc8 ready: fix apt-daily no-op (159 sec update menumpuk, fix 99-periodic siap, butuh 1 perintah sudo user); t_e60a9105 ready (≥3 Nov) |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-apt-security-stall.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
-| Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-24 | ocean_cave cost-append pushed; chunk BATBnRto 200 again (regression #5 closed); channel 16 titles ×3 = 48 public |
+| Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-30 | forest_waterfall shipped 3/3 public+archived (Short desc cross-linked manual); kartu chunk COXg1_1f 200; channel 20 judul ×3 = 60 public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
 
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-10-30 15:20 | ambience | ambience-agent@mbm-mp | forest_waterfall SHIPPED (Short 7LPPNnGYNmM / 20min Ne00xzunoPg / 8h eE8KZPZbAkU, semua public+processed); kartu auto oleh hook (60c1634), chunk `2026-10-30-forest_waterfall-COXg1_1f.js` 200 dgn 8h ID ×2 + badge; 8h AV 12.76 GB + audio di-NAS-archive hash-verified; QA: wrap catch #9 (raw 22.3 dB vs floor 35.8 → xfade 1.5s = 35.5) + mix v1 terlalu panas (A-wtd −14.9 dBFS, 8 dB di atas storm) → wind_gain 0.85→0.34, v2 = −22.9 dBFS pas envelope
 
 - 2026-10-25 16:13 | laporan | hermes@orangepi | daily-focus 16:00: apt security stall ditemukan — vendor 02-orangepi-periodic Enable=0 no-op framework apt-daily bertahun-tahun (timer hijau, nol kerja), 216 upgradable/159 security (openssh, libssl3, containerd); fix 99-tabacoid-periodic tervalidasi di /tmp, pasang butuh 1 perintah sudo (guard cron = boundary benar) | follow-up: t_f465ddc8 | report: docs/reports/2026-10-25-apt-security-stall.md
 
