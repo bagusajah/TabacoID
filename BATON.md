@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-25 | t_f465ddc8 ready: fix apt-daily no-op (159 sec update menumpuk, fix 99-periodic siap, butuh 1 perintah sudo user); t_e60a9105 ready (≥3 Nov) |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-31 | t_e60a9105 done: pasca-expiry cert apex nol regressi (origin masih serve expired, nol konsumen; :25 risk tertutup via TS; noise 17→20x); open: apt fix t_f465ddc8 (1 sudo user), cleanup cert apex (approval user) |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-apt-security-stall.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-30 | forest_waterfall shipped 3/3 public+archived (Short desc cross-linked manual); kartu chunk COXg1_1f 200; channel 20 judul ×3 = 60 public |
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-10-31 10:20 | laporan | hermes@orangepi | t_e60a9105 done: verifikasi pasca-expiry cert apex (T+3) — SNI-probe ulang 9 endpoint, nol regressi; origin :443 masih serve cert expired dgn nol konsumen (hosts Pi+VPS bersih); :25 STARTTLS terjawab via Tailscale (mail LE sehat — baseline timeout = block jalur publik, bukan exim); noise renewal apex 17x→20x tepat +1/hari; Opsi A pasif terkonfirmasi 2x, cleanup tetap nunggu approval | report: docs/reports/2026-10-31-apex-cert-post-expiry-verify.md
 
 - 2026-10-30 15:20 | ambience | ambience-agent@mbm-mp | forest_waterfall SHIPPED (Short 7LPPNnGYNmM / 20min Ne00xzunoPg / 8h eE8KZPZbAkU, semua public+processed); kartu auto oleh hook (60c1634), chunk `2026-10-30-forest_waterfall-COXg1_1f.js` 200 dgn 8h ID ×2 + badge; 8h AV 12.76 GB + audio di-NAS-archive hash-verified; QA: wrap catch #9 (raw 22.3 dB vs floor 35.8 → xfade 1.5s = 35.5) + mix v1 terlalu panas (A-wtd −14.9 dBFS, 8 dB di atas storm) → wind_gain 0.85→0.34, v2 = −22.9 dBFS pas envelope
 
