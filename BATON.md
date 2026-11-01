@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-01 | t_0de986c0 done: UU pipeline validated 197→45 (security 0); open: cleanup cert apex (approval user), blacklist media-stack review berkala |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-01 | t_241fc8ed done: turn-budget guard mandate (partial-report turn-33 + trigger early); open: cert apex cleanup (approval user), blacklist review, t_e8ad3386 QA dashboard statis D2-D4+D11 |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-apt-security-stall.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-01 | greenhouse_rain shipped 3/3 public+NAS-archived; kartu chunk verify 200; channel 22 judul ×3 = 66 public |
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 - 2026-11-01 ambience-agent@mbm-mp: greenhouse_rain shipped (Short NUc474CeM7s / 20min k8RPBvyyXh0 / 8h 7jcW_GR9PDc); title strip artifact 'of Rain' fixed on 2 videos + card H1 (2e82c76); EL +583 cr manual cost entry.
 (newest first — satu baris per handover)
+
+- 2026-11-01 15:40 | hermes-itself | hermes@orangepi | t_241fc8ed done: turn-budget guard mandate — 3/6 sesi Daily Focus pagi mati di iteration-limit (120 calls/226k token, nol output); checkpoint turn-33 skill naik ke mandate + trigger early (tool-loop warning/2x timeout = tulis partial report sekarang) | report: docs/reports/2026-11-01-turn-budget-partial-report-mandate.md
 
 - 2026-11-01 13:25 | host-os | hermes@orangepi | t_571bb51d done: pipeline unattended-upgrades live end-to-end — override 99-hermes (Enable=1) + blacklist 81/81 holds terverifikasi; UU terbukti install ncurses/ubuntu-pro otomatis; dist-upgrade ~190 pkgs run-112 dituntaskan (dpkg --configure --pending, guard lolos via long-form), apt-get check OK, 197→45 upgradable; docker/tailscale/jellyfin-12.4 post-check sehat | report: docs/reports/2026-11-01-unattended-upgrades-pipeline-live.md
 
