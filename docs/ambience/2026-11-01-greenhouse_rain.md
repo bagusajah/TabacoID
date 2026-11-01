@@ -1,4 +1,4 @@
-# of Rain on a Greenhouse — Cozy Glasshouse Ambience for Sleep, Study & Focus
+# Rain on a Greenhouse — Cozy Glasshouse Ambience for Sleep, Study & Focus
 
 Ambience video from the Ambience Sound Collection daily production line.
 
