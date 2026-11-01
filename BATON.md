@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-01 | t_241fc8ed done: turn-budget guard mandate (partial-report turn-33 + trigger early); open: cert apex cleanup (approval user), blacklist review, t_e8ad3386 QA dashboard statis D2-D4+D11 |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-01 | t_e8ad3386: dashboard a11y fix D2-D4+D11 selesai di branch `qa/dashboard-a11y` (menunggu review push); open: cert apex cleanup (approval user), blacklist review |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-apt-security-stall.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-01 | greenhouse_rain shipped 3/3 public+NAS-archived; kartu chunk verify 200; channel 22 judul ×3 = 66 public |
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 
 ## UPDATES
+
+- 2026-11-01 16:10 | laporan+repo | hermes@orangepi | t_e8ad3386 done: QA dashboard statis D2-D4+D11 ditutup dgn kontras terukur — swift/js teks gelap 5.87/8.05:1, python #7c6fe8→#5b4fe0 (3.97→5.77), amber #ffd166→#b45309 (1.38→4.82), pink/periwinkle era ≥4.1:1, legend dedup + tablewrap mobile + lang/dir; fix di branch `qa/dashboard-a11y` (styling non-report = no auto-push) | report: docs/reports/2026-11-01-dashboard-static-qa-d2-d4-d11.md
 
 - 2026-11-01 ambience-agent@mbm-mp: greenhouse_rain shipped (Short NUc474CeM7s / 20min k8RPBvyyXh0 / 8h 7jcW_GR9PDc); title strip artifact 'of Rain' fixed on 2 videos + card H1 (2e82c76); EL +583 cr manual cost entry.
 (newest first — satu baris per handover)
