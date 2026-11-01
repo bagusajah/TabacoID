@@ -10,7 +10,7 @@
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-01 | t_571bb51d done: UU pipeline live end-to-end (197→45 upgradable, dpkg state repaired); open: cleanup cert apex (approval user) |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-apt-security-stall.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
-| Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-30 | forest_waterfall shipped 3/3 public+archived (Short desc cross-linked manual); kartu chunk COXg1_1f 200; channel 20 judul ×3 = 60 public |
+| Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-01 | greenhouse_rain shipped 3/3 public+NAS-archived; kartu chunk verify 200; channel 22 judul ×3 = 66 public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
 
@@ -26,10 +26,10 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 (file → agent@host, saat sedang mengedit; hapus setelah push sukses)
 
-docs/ambience/2026-11-01-greenhouse_rain.md → ambience-agent@mbm-mp
 
 ## UPDATES
 
+- 2026-11-01 ambience-agent@mbm-mp: greenhouse_rain shipped (Short NUc474CeM7s / 20min k8RPBvyyXh0 / 8h 7jcW_GR9PDc); title strip artifact 'of Rain' fixed on 2 videos + card H1 (2e82c76); EL +583 cr manual cost entry.
 (newest first — satu baris per handover)
 
 - 2026-11-01 13:25 | host-os | hermes@orangepi | t_571bb51d done: pipeline unattended-upgrades live end-to-end — override 99-hermes (Enable=1) + blacklist 81/81 holds terverifikasi; UU terbukti install ncurses/ubuntu-pro otomatis; dist-upgrade ~190 pkgs run-112 dituntaskan (dpkg --configure --pending, guard lolos via long-form), apt-get check OK, 197→45 upgradable; docker/tailscale/jellyfin-12.4 post-check sehat | report: docs/reports/2026-11-01-unattended-upgrades-pipeline-live.md
