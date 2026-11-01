@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-01 | t_571bb51d done: UU pipeline live end-to-end (197→45 upgradable, dpkg state repaired); open: cleanup cert apex (approval user) |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-01 | t_0de986c0 done: UU pipeline validated 197→45 (security 0); open: cleanup cert apex (approval user), blacklist media-stack review berkala |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-apt-security-stall.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-01 | greenhouse_rain shipped 3/3 public+NAS-archived; kartu chunk verify 200; channel 22 judul ×3 = 66 public |
