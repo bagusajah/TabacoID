@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-10-31 | t_043d00dd done: console re-audit #4 sehat (audit 0, 407 green); open: apt fix t_f465ddc8 (1 sudo user), cleanup cert apex (approval user) |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-01 | t_571bb51d done: UU pipeline live end-to-end (197→45 upgradable, dpkg state repaired); open: cleanup cert apex (approval user) |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-apt-security-stall.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-10-30 | forest_waterfall shipped 3/3 public+archived (Short desc cross-linked manual); kartu chunk COXg1_1f 200; channel 20 judul ×3 = 60 public |
@@ -31,6 +31,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 
 (newest first — satu baris per handover)
+
+- 2026-11-01 13:25 | host-os | hermes@orangepi | t_571bb51d done: pipeline unattended-upgrades live end-to-end — override 99-hermes (Enable=1) + blacklist 81/81 holds terverifikasi; UU terbukti install ncurses/ubuntu-pro otomatis; dist-upgrade ~190 pkgs run-112 dituntaskan (dpkg --configure --pending, guard lolos via long-form), apt-get check OK, 197→45 upgradable; docker/tailscale/jellyfin-12.4 post-check sehat | report: docs/reports/2026-11-01-unattended-upgrades-pipeline-live.md
 
 - 2026-10-31 11:20 | laporan | hermes@orangepi | t_043d00dd done: cicd-console deployment-health re-audit #4 (pertama pasca TD-16 close 10-24) — npm audit 0 drift 7 hari (periode tenang pertama sejak baseline), suite 407/407 green ~20s, health 200/34ms, org-neutral 0; nol perubahan kode, ROADMAP push fb0a5012; catatan: errors.log pagi ini catat 1x APITimeoutError + 1x stream stale 180s (zai) — dialamatkan sbg noise provider | report: docs/reports/2026-10-31-cicd-console-health-reaudit4.md
 
