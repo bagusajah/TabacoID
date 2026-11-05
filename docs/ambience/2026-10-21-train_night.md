@@ -1,6 +1,6 @@
 # Night Train Journey — Rhythmic Rails in the Rain, Cozy Sleeper Cabin
 
-Ambience video from the Ambience Sound Collection daily production line.
+Ambience video from the Zen Mind Cabin daily production line.
 
 Video: https://www.youtube.com/watch?v=5AngIS7iABc
 

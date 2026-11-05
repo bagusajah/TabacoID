@@ -26,6 +26,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 (file → agent@host, saat sedang mengedit; hapus setelah push sukses)
 
+docs/ambience/*.md (brand-line rebrand fix) → ambience-agent@mbm-mp
+
 
 ## UPDATES
 

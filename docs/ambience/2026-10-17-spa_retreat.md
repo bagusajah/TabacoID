@@ -1,6 +1,6 @@
 # Tropical Spa Retreat — Water Bowl & Bamboo Fountain Ambience
 
-Ambience video from the Ambience Sound Collection daily production line.
+Ambience video from the Zen Mind Cabin daily production line.
 
 Video: https://www.youtube.com/watch?v=okSsQwJFSZA
 

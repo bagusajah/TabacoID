@@ -14,4 +14,4 @@ Category: Hotel
 - ⏱️ 20 minutes: https://www.youtube.com/watch?v=-lSy2EEBDzI
 - ⚡ Short: https://www.youtube.com/shorts/kmcPLT1RFeE
 
-*Part of the [Ambience Sound Collection](https://www.youtube.com/@ambiencesoundcollection-c2t) — automated ambience factory, new title daily.*
+*Part of the [Zen Mind Cabin](https://www.youtube.com/@zenmindcabin) — automated ambience factory, new title daily.*

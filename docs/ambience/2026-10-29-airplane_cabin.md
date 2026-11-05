@@ -1,6 +1,6 @@
 # Night Flight — Deep Engine Hum & Cozy Airplane Cabin Ambience
 
-Ambience video from the Ambience Sound Collection daily production line.
+Ambience video from the Zen Mind Cabin daily production line.
 
 Video: https://www.youtube.com/watch?v=M6fuy6bnlok
 

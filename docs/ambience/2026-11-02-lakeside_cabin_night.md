@@ -1,6 +1,6 @@
 # Lakeside Cabin at Night — Calm Lake & Loon Ambience for Sleep, Study & Focus
 
-Ambience video from the Ambience Sound Collection daily production line.
+Ambience video from the Zen Mind Cabin daily production line.
 
 Video: https://www.youtube.com/watch?v=Dwnszp9jCqo
 

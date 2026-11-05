@@ -1,6 +1,6 @@
 # Ocean Cave — Deep Water Echoes, Slow Drips, Muffled Surf
 
-Ambience video from the Ambience Sound Collection daily production line.
+Ambience video from the Zen Mind Cabin daily production line.
 
 Video: https://www.youtube.com/watch?v=DV8lCzThJzc
 
