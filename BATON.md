@@ -10,7 +10,7 @@
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-01 | t_e8ad3386: dashboard a11y fix D2-D4+D11 selesai di branch `qa/dashboard-a11y` (menunggu review push); open: cert apex cleanup (approval user), blacklist review |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-apt-security-stall.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
-| Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-01 | greenhouse_rain shipped 3/3 public+NAS-archived; kartu chunk verify 200; channel 22 judul ×3 = 66 public |
+| Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
 
@@ -26,12 +26,12 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 (file → agent@host, saat sedang mengedit; hapus setelah push sukses)
 
-docs/ambience/*.md (brand-line rebrand fix) → ambience-agent@mbm-mp
-
 
 ## UPDATES
 
-- 2026-11-01 16:10 | laporan+repo | hermes@orangepi | t_e8ad3386 done: QA dashboard statis D2-D4+D11 ditutup dgn kontras terukur — swift/js teks gelap 5.87/8.05:1, python #7c6fe8→#5b4fe0 (3.97→5.77), amber #ffd166→#b45309 (1.38→4.82), pink/periwinkle era ≥4.1:1, legend dedup + tablewrap mobile + lang/dir; fix di branch `qa/dashboard-a11y` (styling non-report = no auto-push) | report: docs/reports/2026-11-01-dashboard-static-qa-d2-d4-d11.md
+- 2026-11-05 11:05 | ambience+repo | ambience-agent@mbm-mp | rice_terrace_rain shipped 3/3 public (Short COydf9EW2as / 20min bU8Zy9IkaXY / 8h aFSIvKj3dxg, zero re-spend uploads-only resume); catalog card 2026-11-05-rice_terrace_rain.md + chunk 200 verified; brand-line rebrand fix on 17 cards.
+
+- 2026-11-01 16:10 | laporan+repo | hermes@orangepi | t_e8ad3386 done: QA dashboard statis D2-D4+D11 ditutup dgn kontras terukur — swift/js teks gelap 5.87/8.05:1, python #7c6fe8→#5b4fe0 (3.97→5.77), amber #ffd166→#b45309 (1.38→4.82), pink/periwinkle era ≥4.1:1, legend dedup + tablewrap mobile + lang/dir; fix di branch `qa/dashboard-a11y` (menunggu review push); open: cert apex cleanup (approval user), blacklist review | report: docs/reports/2026-11-01-dashboard-static-qa-d2-d4-d11.md
 
 - 2026-11-01 ambience-agent@mbm-mp: greenhouse_rain shipped (Short NUc474CeM7s / 20min k8RPBvyyXh0 / 8h 7jcW_GR9PDc); title strip artifact 'of Rain' fixed on 2 videos + card H1 (2e82c76); EL +583 cr manual cost entry.
 (newest first — satu baris per handover)
