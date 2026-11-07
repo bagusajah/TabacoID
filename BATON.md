@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-07 | t_ed044cbe eksperimen vitest `isolate:false` di cicd-console → Reject (14/407 test fail); open (approval user): push branch `qa/dashboard-a11y`, cert apex cleanup |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-07 | t_c14a89f5 triage 51 update sisa: 38=vendor holds, 6 third-party (2 di-upgrade, docker defer), 45 kept-back=holds; live-restore fix |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-07 | `docs/reports/2026-11-07-skill-usage-census-prune.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 
 ## UPDATES
+
+- 2026-11-07 14:20 | host-os+laporan | hermes@orangepi | t_c14a89f5 done: triage 51 update sisa — 38 "security" = subset 78 vendor holds (RK3588 pins, bukan backlog), 45 kept-back = holds konsisten, 6 third-party patch (exposure 6d): tailscale 1.104.5 + jellyfin-ffmpeg 8.1.3-2 di-upgrade bersih, docker-ce defer (daemon.json +live-restore, efektif setelah restart maintenance window); backlog 51→49 | report: docs/reports/2026-11-07-apt-backlog-triage-third-party-policy.md
 
 - 2026-11-07 13:05 | cicd-console+laporan | hermes@orangepi | t_ed044cbe done: eksperimen vitest `isolate:false` di suite cicd-console — wall-clock 20.1s→11.2s (-44%) tapi 14/407 test fail (kontaminasi state antar file: sqlite model, plugin registry); Reject + rollback diverifikasi hijau 407/407 (20.40s), tree bersih | report: docs/reports/2026-11-07-vitest-isolation-experiment.md
 
@@ -84,15 +86,4 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 - 2026-10-16 11:05 | ambience | ambience-agent@mbm-mp | dup katalog dihapus: 2026-10-16-hotel_lobby_luxury.md = video sama (GlE-hrFekBs) dengan entri manual 2026-10-15; hook .tabacoid_publish.sh sekarang dedupe by 8h video-id + title dari VISUAL.title (bukan slug) | waiting_room_calm.py selesai ditulis+verifikasi; produksi menunggu top-up EL (913 kredit)
 - 2026-10-16 01:40 | code | hermes@orangepi | /trending: arsip bulanan pindah jadi baris ringkas di section "Arsip bulanan" bawah daftar harian (keluhan user: bulanan makan scroll); root cause sort ikut dibeneri — tanggal bulanan dari slug (YYYY-MM-01), sebelumnya 'monthly-20' alias tie alphabetical; retro week-numbered tidak terpengaruh | build+sort test ✓ (16a3230)
-- 2026-10-16 01:05 | code | hermes@orangepi | /trending round-2: kartu digest harian (panel putih + badge indigo "Digest harian") vs arsip bulanan (border dashed + ikon arsip + badge "Arsip bulanan"); summary kartu bukan lagi tabel md; hide hero ganda di iframe dashboard; back-link pindah ke atas; error+retry role=alert; scroll-to-list on paginate; i18n EN/ID sinkron | temuan dashboard.html (D2/D3/D4/D11) di § QA FINDINGS untuk research-agent; build ✓ eslint 0 err
-- 2026-10-16 00:25 | repo | hermes@orangepi | review cursor /ambience diterapkan (8 temuan: flush card, focus mgmt player, grid md:2col, panel-soft+role=status, a11y label, brand token, kategori default Ambience); request badge ✅ `am.full` = "Full 8-hour version" derive dari baris `8 hours` md (d2b4fe5) | ambience-agent: badge live, tanpa format md baru; fix live setelah deploy ✅
-- 2026-10-15 23:55 | ambience | ambience-agent@mbm-mp | backfill 7 entri katalog (semua judul shipped; storm pakai slug cozy-cabin-rain-thunder) — 8/8 kartu live diverifikasi | publish berikutnya otomatis via produce.py
-- 2026-10-15 23:40 | ambience | ambience-agent@mbm-mp | baca AGENTS.md+BATON; publish otomatis kini via zen-mind-cabin/.tabacoid_publish.sh (hooked ke produce.py, nol git manual) | entri berikut: spa_retreat dst otomatis
-- 2026-10-16 00:05 | repo | hermes@orangepi | ownership diperjelas di AGENTS.md: Hermes = owner repo/web/pipeline/Laporan; Trending & Ambience = data contributor | wajib dipatuhi semua agent
 
-- 2026-10-15 23:40 | code | hermes@orangepi | layout fixes /trending dari review cursor-agent; i18n tr.* diperbarui; live ✅ | next: review /ambience menyusul bila perlu
-- 2026-10-15 23:13 | ambience | ambience-agent@? | sample rain-cafe dihapus; hotel-lobby jadi entri pertama katalog | —
-- 2026-10-15 23:10 | ambience | ambience-agent@? | /ambience video catalog live (drop-file pattern seperti trending) | —
-- 2026-10-15 23:10 | laporan | auto-commit@orangepi | docs: auto-commit reports 2026-10-15 | —
-- 2026-10-15 | trending | research-agent@? | digest harian 2026-10-14 & 2026-10-15 + monthly archive dir | —
-- 2026-10-10 | code | hermes@orangepi | /trending page dibuat (contract: docs/TRENDING_FORMAT.md) | —

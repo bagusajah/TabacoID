@@ -781,6 +781,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.tabaco.id/reports/2026-11-07-apt-backlog-triage-third-party-policy</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.tabaco.id/reports/2026-11-07-deployment-health-reaudit-5</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
