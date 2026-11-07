@@ -29,6 +29,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 
+- 2026-11-07 16:05 | host-os+laporan | hermes@orangepi | t_bb16f510 done: hardware health baseline (OS2/9/10) — kernel err 7d=0, NVMe SMART PASSED, zram ratio 2.57× (1.2G→468M), thermal 52.7°C load 0.96, 0 throttle 30d; adopt, tak ada remediasi | report: docs/reports/2026-11-07-hardware-health-audit-os2-9-10.md
+
 - 2026-11-07 14:20 | host-os+laporan | hermes@orangepi | t_c14a89f5 done: triage 51 update sisa — 38 "security" = subset 78 vendor holds (RK3588 pins, bukan backlog), 45 kept-back = holds konsisten, 6 third-party patch (exposure 6d): tailscale 1.104.5 + jellyfin-ffmpeg 8.1.3-2 di-upgrade bersih, docker-ce defer (daemon.json +live-restore, efektif setelah restart maintenance window); backlog 51→49 | report: docs/reports/2026-11-07-apt-backlog-triage-third-party-policy.md
 
 - 2026-11-07 13:05 | cicd-console+laporan | hermes@orangepi | t_ed044cbe done: eksperimen vitest `isolate:false` di suite cicd-console — wall-clock 20.1s→11.2s (-44%) tapi 14/407 test fail (kontaminasi state antar file: sqlite model, plugin registry); Reject + rollback diverifikasi hijau 407/407 (20.40s), tree bersih | report: docs/reports/2026-11-07-vitest-isolation-experiment.md
