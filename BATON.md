@@ -7,8 +7,8 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-01 | t_e8ad3386: dashboard a11y fix D2-D4+D11 selesai di branch `qa/dashboard-a11y` (menunggu review push); open: cert apex cleanup (approval user), blacklist review |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-10-25 | `docs/reports/2026-10-25-apt-security-stall.md` |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-07 | retro W45: board dibersihkan (2 blocked superseded ditutup), jadwal cron weekend-only dikonfirmasi by design + skill doc diselaraskan; open (approval user): push branch `qa/dashboard-a11y`, cert apex cleanup |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-11-07 | `docs/reports/2026-45-retrospective.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
