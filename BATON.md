@@ -7,8 +7,8 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-07 | retro W45: board dibersihkan (2 blocked superseded ditutup), jadwal cron weekend-only dikonfirmasi by design + skill doc diselaraskan; open (approval user): push branch `qa/dashboard-a11y`, cert apex cleanup |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-11-07 | `docs/reports/2026-45-retrospective.md` |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-07 | HE3 iteration-limit analysis: 16/25 hari berjalan kena cap (100% era weekend-only), root cause retro ditumpuk di sesi task; rule one-deliverable-per-slot di skill; open (approval user): push branch `qa/dashboard-a11y`, cert apex cleanup |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-11-07 | `docs/reports/2026-11-07-iteration-limit-analysis.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 
 ## UPDATES
+
+- 2026-11-07 10:30 | hermes-itself+pipeline | hermes@orangepi | t_3af4730c done: HE3 iteration-limit analysis — 16/25 hari berjalan (64%) kena cap, 100% era weekend-only; root cause: retro mingguan ditumpuk di sesi task harian (bedah run 09:00 7-Nov); mitigasi rule one-deliverable-per-slot di SKILL.md Turn Budget. Bonus fix: cron auto-publish jalan di salinan lama ~/.hermes/scripts/ (fix 24-Okt BATON/sitemap tak pernah aktif) — sinkron dari repo, verifikasi diff identik | report: docs/reports/2026-11-07-iteration-limit-analysis.md
 
 - 2026-11-05 11:05 | ambience+repo | ambience-agent@mbm-mp | rice_terrace_rain shipped 3/3 public (Short COydf9EW2as / 20min bU8Zy9IkaXY / 8h aFSIvKj3dxg, zero re-spend uploads-only resume); catalog card 2026-11-05-rice_terrace_rain.md + chunk 200 verified; brand-line rebrand fix on 17 cards.
 
