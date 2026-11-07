@@ -781,6 +781,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.tabaco.id/reports/2026-11-07-deployment-health-reaudit-5</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.tabaco.id/reports/2026-11-07-iteration-limit-analysis</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
@@ -788,6 +794,12 @@
   </url>
   <url>
     <loc>https://www.tabaco.id/reports/2026-11-07-skill-usage-census-prune</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tabaco.id/reports/2026-11-07-vitest-isolation-experiment</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

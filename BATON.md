@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-07 | HE2 skill census: 25/52 skill never-used diarsipkan (register 53→28); 13 stale menunggu keputusan user; open (approval user): push branch `qa/dashboard-a11y`, cert apex cleanup |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-07 | t_ed044cbe eksperimen vitest `isolate:false` di cicd-console → Reject (14/407 test fail); open (approval user): push branch `qa/dashboard-a11y`, cert apex cleanup |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-07 | `docs/reports/2026-11-07-skill-usage-census-prune.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 
 ## UPDATES
+
+- 2026-11-07 13:05 | cicd-console+laporan | hermes@orangepi | t_ed044cbe done: eksperimen vitest `isolate:false` di suite cicd-console — wall-clock 20.1s→11.2s (-44%) tapi 14/407 test fail (kontaminasi state antar file: sqlite model, plugin registry); Reject + rollback diverifikasi hijau 407/407 (20.40s), tree bersih | report: docs/reports/2026-11-07-vitest-isolation-experiment.md
 
 - 2026-11-07 11:10 | hermes-itself+laporan | hermes@orangepi | t_dba842b9 done: HE2 skill usage census — 25/52 skill (48%) never-used sejak 4-Agu diarsipkan ke .archive (mv reversible, register 53→28), bodi mati 1.42× bodi aktif, deskripsi mati cuma ~0.35k token/turn; 13 stale dibiarkan (Needs Human Review); temuan sampingan: H3 TUI idle & OS5 :53 sudah tidak relevan | report: docs/reports/2026-11-07-skill-usage-census-prune.md
 
