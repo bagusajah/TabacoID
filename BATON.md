@@ -8,7 +8,7 @@
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-07 | t_c14a89f5 triage 51 update sisa: 38=vendor holds, 6 third-party (2 di-upgrade, docker defer), 45 kept-back=holds; live-restore fix |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-11-07 | `docs/reports/2026-11-07-skill-usage-census-prune.md` |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-11-08 | `docs/reports/2026-11-08-log-hygiene-audit-h4-os1.md` |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 
 ## UPDATES
+
+- 2026-11-08 13:15 | hermes-infra+laporan | hermes@orangepi | t_b4a678a4 done: log hygiene audit H4+OS1 — hermes logs sehat (rotator daily 00:06 sejak Sep-21, rotate 90, total 11MB, backlog H4 tertutup), docker capped 10m×3, journald volatile sesuai desain (RuntimeMaxUse=100M ter-enforce, osilasi 100–113M; temuan awal "cap 20M mati" terkoreksi setelah grep lebih luas nemu baris 29); fix: memory-baseline + gateway-exit-diag masuk logrotate-hermes.conf (weekly×8, dry-run valid); opsional human: RuntimeMaxUse 100M→20M hemat ~93MB RAM (retention 27j→5j) | report: docs/reports/2026-11-08-log-hygiene-audit-h4-os1.md
 
 - 2026-11-08 11:20 | hermes-infra+laporan | hermes@orangepi | t_c70b4327 done: fase-2 Telegram live — socat L4 relay VPS (100.65.68.15:443→149.154.166.110:443, bind tailscale0 only, unit tg-relay) + plugin fallback_ips native (platforms.telegram.extra) — tanpa /etc/hosts & tanpa DNAT; gateway sticky path via relay, connected attempt-1 (log 11:14), nol error; prereq SSH root key ternyata SUDAH beres (task body basi, yang gagal itu user tabacoweb); fase-1 pin TIDAK terbukti efek (4 episode ConnectTimeout lewat pasca-pin 10:23); verdict 24h: timeout <50/hari, sticky masih relay | report: docs/reports/2026-11-08-telegram-vps-relay-fase2.md
 
@@ -79,10 +81,6 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 - 2026-10-24 08:10 | ambience | ambience-agent@mbm-mp | kartu ocean_cave: section `## Production cost` (append 10-23 yg tertahan di working tree) ikut push ini; chunk `2026-10-23-ocean_cave-BATBnRto.js` kembali 200 dgn 3 ID + badge — chunk-404 regression #5 self-resolved; channel 16 judul ×3 = 48 semua public+processed
 
 - 2026-10-20 08:10 | ambience | ambience-agent@mbm-mp | spa 8h replace-flow leftovers fixed: kartu `2026-10-17-spa_retreat.md` dead ID QnTEcTDWnZE → okSsQwJFSZA; kartu massage_room ditambahkan (8h B4mBcXtkKw4, file dated 2026-10-18 = earliest publish); dead link di desc Short spa dihapus via API. Channel: 12 judul ×3 = 36 video, semua public+processed
-
-- 2026-10-17 14:20 | laporan | hermes@orangepi | dashboard :9119 bangkit lagi 00:55 — pelaku cron "Dashboard Watchdog" (cad6f228b72d, */5min) yg me-restart unit retired; watchdog di-pause + unit stop+mask (.retired-20261017); port closed terverifikasi lewat 2 tick watchdog | report: docs/reports/2026-10-17-watchdog-resurrect-retired-dashboard.md
-
-- 2026-10-17 13:20 | laporan | hermes@orangepi | sitemap freshness gap fixed (t_c485c597): 2 report 17 Okt bolong dari sitemap krn gen-sitemap cuma jalan di jalur auto-commit, bukan jalur agent commit; gen-sitemap kini jalan tiap run report-auto-commit.sh, sitemap 130→135 URL, build ✓ | report: docs/reports/2026-10-17-sitemap-freshness-gap.md
 
 - 2026-10-17 10:15 | ambience | ambience-agent@mbm-mp | dup katalog hotel-lobby dihapus LAGI (auto card 2026-10-16-hotel_lobby_luxury.md re-created saat replace-8h overnight; ID baru Eq0hJvVl5P4 ada di 2 kartu) — entri manual 2026-10-15-luxury-hotel-lobby.md dipertahankan (ringkasan lebih baik); verifikasi: Eq0hJvVl5P4 kini tepat 1 md | produce spa_retreat jalan (OAuth YouTube dead — upload menunggu re-consent user)
 
