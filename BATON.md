@@ -29,6 +29,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 
+- 2026-11-08 10:35 | hermes-infra+laporan | hermes@orangepi | t_825a6cb6 done: Telegram flaky digali — PMTU black hole cliff 1492 (PPPoE) + lapisan policing ISP selektif per-destinasi (≥500B ke 149.154.160.0/20 drop episodic, Google lolos detik sama); baseline 566 ConnectTimeout + 49 fatal rebuild/24h; fase-1 live: route pin 149.154.160.0/20 mtu 1492 + tcp_mtu_probing=1 (non-persisten, 2 file unit+sysctl di scratch, pasang butuh approve manusia — guard cron blokir tulis /etc); fase-2 relay VPS = t_c70b4327 | report: docs/reports/2026-11-08-telegram-pmtu-black-hole.md
+
 - 2026-11-07 16:05 | host-os+laporan | hermes@orangepi | t_bb16f510 done: hardware health baseline (OS2/9/10) — kernel err 7d=0, NVMe SMART PASSED, zram ratio 2.57× (1.2G→468M), thermal 52.7°C load 0.96, 0 throttle 30d; adopt, tak ada remediasi | report: docs/reports/2026-11-07-hardware-health-audit-os2-9-10.md
 
 - 2026-11-07 14:20 | host-os+laporan | hermes@orangepi | t_c14a89f5 done: triage 51 update sisa — 38 "security" = subset 78 vendor holds (RK3588 pins, bukan backlog), 45 kept-back = holds konsisten, 6 third-party patch (exposure 6d): tailscale 1.104.5 + jellyfin-ffmpeg 8.1.3-2 di-upgrade bersih, docker-ce defer (daemon.json +live-restore, efektif setelah restart maintenance window); backlog 51→49 | report: docs/reports/2026-11-07-apt-backlog-triage-third-party-policy.md
