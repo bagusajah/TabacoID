@@ -29,6 +29,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 
+- 2026-11-08 11:20 | hermes-infra+laporan | hermes@orangepi | t_c70b4327 done: fase-2 Telegram live — socat L4 relay VPS (100.65.68.15:443→149.154.166.110:443, bind tailscale0 only, unit tg-relay) + plugin fallback_ips native (platforms.telegram.extra) — tanpa /etc/hosts & tanpa DNAT; gateway sticky path via relay, connected attempt-1 (log 11:14), nol error; prereq SSH root key ternyata SUDAH beres (task body basi, yang gagal itu user tabacoweb); fase-1 pin TIDAK terbukti efek (4 episode ConnectTimeout lewat pasca-pin 10:23); verdict 24h: timeout <50/hari, sticky masih relay | report: docs/reports/2026-11-08-telegram-vps-relay-fase2.md
+
 - 2026-11-08 10:35 | hermes-infra+laporan | hermes@orangepi | t_825a6cb6 done: Telegram flaky digali — PMTU black hole cliff 1492 (PPPoE) + lapisan policing ISP selektif per-destinasi (≥500B ke 149.154.160.0/20 drop episodic, Google lolos detik sama); baseline 566 ConnectTimeout + 49 fatal rebuild/24h; fase-1 live: route pin 149.154.160.0/20 mtu 1492 + tcp_mtu_probing=1 (non-persisten, 2 file unit+sysctl di scratch, pasang butuh approve manusia — guard cron blokir tulis /etc); fase-2 relay VPS = t_c70b4327 | report: docs/reports/2026-11-08-telegram-pmtu-black-hole.md
 
 - 2026-11-07 16:05 | host-os+laporan | hermes@orangepi | t_bb16f510 done: hardware health baseline (OS2/9/10) — kernel err 7d=0, NVMe SMART PASSED, zram ratio 2.57× (1.2G→468M), thermal 52.7°C load 0.96, 0 throttle 30d; adopt, tak ada remediasi | report: docs/reports/2026-11-07-hardware-health-audit-os2-9-10.md
