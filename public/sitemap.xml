@@ -823,6 +823,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.tabaco.id/reports/2026-11-08-telegram-pmtu-black-hole</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.tabaco.id/reports/2026-45-retrospective</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
