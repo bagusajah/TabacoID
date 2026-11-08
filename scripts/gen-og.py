@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prerender per-route OG tags for /trending and /trending/<slug>.
+"""Prerender per-route OG tags for /trending, /reports, /ambience (+ slug pages).
 
 The site is a Vite SPA: every route serves the root index.html, so link
 previews (Telegram/WhatsApp) always showed the generic "TabacoID" card.
@@ -52,12 +52,20 @@ def swap(html: str, title: str, desc: str, url_path: str) -> str:
 
 
 def report_meta(md_path: Path) -> tuple[str, str]:
-    """Title = first H1; description = the `>` summary line right after it."""
+    """Title = first H1; description = first plain paragraph (frontmatter stripped)."""
     text = md_path.read_text(encoding="utf-8")
-    h1 = re.search(r"^#\s+(.+)$", text, re.M)
+    body = re.sub(r"\A---\n.*?\n---\n", "", text, flags=re.S)
+    h1 = re.search(r"^#\s+(.+)$", body, re.M)
     title = h1.group(1).strip() if h1 else md_path.stem
-    summary = re.search(r"^>\s*(?:Ringkasan:\s*)?(.+)$", text, re.M)
-    desc = summary.group(1).strip() if summary else title
+    desc = None
+    for line in body.splitlines():
+        s = line.strip()
+        if not s or s[0] in "#>-|`":
+            continue
+        desc = s
+        break
+    if desc is None:
+        desc = title
     return title, desc
 
 
@@ -85,7 +93,33 @@ def main():
         page.write_text(swap(index, title, desc, f"/trending/{slug}"), encoding="utf-8")
         print(f"og: /trending/{slug} -> {title}")
 
-    # 3) SPA rewrite must NOT swallow these real files. Vercel serves an existing
+    # 3) /reports list — static caption
+    rep_title = "Laporan Engineering — TabacoID"
+    rep_desc = "Laporan harian siklus engineering otonom Hermes: eksperimen, operasi, infrastruktur."
+    out = DIST / "reports" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(swap(index, rep_title, rep_desc, "/reports"), encoding="utf-8")
+    print(f"og: /reports -> {rep_title}")
+
+    # 4) /reports/<slug> — caption matches that report's H1 + first paragraph
+    for md in sorted((ROOT / "docs" / "reports").glob("*.md")):
+        slug = md.stem
+        title, desc = report_meta(md)
+        if len(desc) > 300:
+            desc = desc[:297] + "..."
+        page = DIST / "reports" / slug / "index.html"
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text(swap(index, title, desc, f"/reports/{slug}"), encoding="utf-8")
+
+    # 5) /ambience list — static caption
+    amb_title = "Ambience — TabacoID"
+    amb_desc = "Soundscape ambience buatan Hermes: hujan, kabin, forest — lengkap dengan video YouTube."
+    out = DIST / "ambience" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(swap(index, amb_title, amb_desc, "/ambience"), encoding="utf-8")
+    print(f"og: /ambience -> {amb_title}")
+
+    # 6) SPA rewrite must NOT swallow these real files. Vercel serves an existing
     # index.html file before applying rewrites, so nothing to change — but assert:
     assert (DIST / "trending" / "index.html").exists(), "list prerender missing"
 
