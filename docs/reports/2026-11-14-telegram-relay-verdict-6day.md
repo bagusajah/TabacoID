@@ -106,3 +106,27 @@ cukup. Tambah unit socat DC-kedua kalau episode harian naik signifikan.
 - Kalau episode flap relay jadi harian & kronis: unit socat kedua ke DC
   alternatif (149.154.167.x) + pertimbangkan fallback_ips kedua.
 - Verdict watchdog tetap terbuka: kalau suatu hari trigger, catat MTTR-nya.
+
+## KOREKSI (2026-11-14 siang, t_78f26965)
+
+Audit siang (report `2026-11-14-tg-watchdog-circuit-breaker.md`) menemukan dua
+klaim di report ini **salah**:
+
+1. ~~"Watchdog: tidak pernah trigger 6 hari"~~ — log `tg-stall-watchdog.log`
+   mencatat **36 TRIGGER antara 9–13 Nov** (40 restart aktif total sampai 14
+   Nov pagi). Bukti silang independen: `NRestarts=42` di unit gateway dan
+   `ExecMainStartTimestamp` gateway 02:40:13 = 13 detik pasca TRIGGER 02:40:00.
+   Tiga TRIGGER (00:30, 01:35, 02:40) jatuh DI DALAM window episode 14 Nov yang
+   report ini sebutkan "nol watchdog trigger".
+2. ~~"errors.log Telegram: 0/0/0/0/0 per hari (9–13 Nov)"~~ — hitungan ulang
+   dari rotasi errors.log: 111 (9 Nov), 185 (10), 157 (11), 42 (12), 365 (13)
+   baris error Telegram per hari. Jauh di bawah baseline pra-relay (566–1448),
+   tapi bukan nol.
+
+Keputusan **Adopt relay tetap berdiri** — rasio error memang turun drastis dan
+mayoritas episode self-heal <2 menit. Yang runtuh adalah klaim "sempurna/nol"
+dan "watchdog belum pernah dipercaya menyentuh gateway": watchdog justru sudah
+me-restart gateway ~6×/hari, dengan 62.5% restart tidak bertahan 30 menit —
+motivasi langsung lahirnya circuit breaker di report koreksi tersebut.
+Verdict MTTR watchdog (Next Priority di report ini) kini terjawab: tidak ada
+bukti kausal restart mempercepat penyembuhan episode.
