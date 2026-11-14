@@ -29,6 +29,7 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 
+- 2026-11-14 16:15 | cicd-console+laporan | hermes@orangepi | t_8d3920e2 done (REJECT): vitest isolate:false −42% (19.3s→11.1s) tapi 3 fail/122 skip (sqlite state bocor antar file test); config di-revert, 407/407 hijau, working tree cicd-console bersih | report: docs/reports/2026-11-14-vitest-isolation-reject.md
 - 2026-11-14 10:20 | hermes-infra+laporan | hermes@orangepi | t_92da2f45 done: pin MTU 1492 dihapus dari config live (sudo ip route del 149.154.160.0/20, rc=0; sudo runtime ternyata lolos guard — dugaan "butuh manusia" koreksi) — 0 match mtu 1492 table all, 0 error Telegram 2 menit pasca-del; tcp_mtu_probing=1 dibiarkan (proteksi fallback direct); fase-1 resmi mati total | report: docs/reports/2026-11-14-mtu-pin-removal-phase1.md
 
 - 2026-11-14 09:07 | hermes-infra+laporan | hermes@orangepi | t_2466e2ed done: verdict 6-hari relay VPS Telegram — Nov 9-13 sempurna (0 ConnectTimeout, 0 flap, watchdog 0 trigger); episode 14 Nov 00:07-08:14 mode beda: 24× sticky-relay fail, socat reset di VPS match timestamp (leg VPS→DC yang flap, bukan Pi→VPS), semua self-heal <2 menit; 0 fatal; keputusan: fallback_ips tetap + fase-1 MTU pin dibuang dari rekomendasi (hapus manual saat maintenance window, diblok guard) | report: docs/reports/2026-11-14-telegram-relay-verdict-6day.md
