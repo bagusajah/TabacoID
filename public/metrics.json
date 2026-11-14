@@ -1,4 +1,6 @@
-[{"date":"2026-11-08","job":"cicd-builder","api_calls":30,"input_tokens":126273,"output_tokens":6463,"reasoning_tokens":4492,"cache_tokens":291008},
+[{"date":"2026-11-14","job":"cicd-builder","api_calls":13,"input_tokens":23272,"output_tokens":4037,"reasoning_tokens":1447,"cache_tokens":212160},
+{"date":"2026-11-14","job":"daily-focus","api_calls":21,"input_tokens":58024,"output_tokens":20300,"reasoning_tokens":13216,"cache_tokens":611904},
+{"date":"2026-11-08","job":"cicd-builder","api_calls":30,"input_tokens":126273,"output_tokens":6463,"reasoning_tokens":4492,"cache_tokens":291008},
 {"date":"2026-11-08","job":"daily-focus","api_calls":212,"input_tokens":374791,"output_tokens":185916,"reasoning_tokens":132219,"cache_tokens":7174336},
 {"date":"2026-11-07","job":"cicd-builder","api_calls":38,"input_tokens":145010,"output_tokens":6722,"reasoning_tokens":3336,"cache_tokens":402240},
 {"date":"2026-11-07","job":"daily-focus","api_calls":201,"input_tokens":338345,"output_tokens":135481,"reasoning_tokens":91052,"cache_tokens":6296384},
@@ -39,6 +41,4 @@
 {"date":"2026-08-19","job":"cicd-builder","api_calls":17,"input_tokens":31882,"output_tokens":11557,"reasoning_tokens":7271,"cache_tokens":434368},
 {"date":"2026-08-18","job":"cicd-builder","api_calls":24,"input_tokens":49483,"output_tokens":8547,"reasoning_tokens":3838,"cache_tokens":498624},
 {"date":"2026-08-18","job":"daily-focus","api_calls":30,"input_tokens":31133,"output_tokens":20021,"reasoning_tokens":15265,"cache_tokens":701056},
-{"date":"2026-08-14","job":"cicd-builder","api_calls":5,"input_tokens":19327,"output_tokens":1300,"reasoning_tokens":752,"cache_tokens":67264},
-{"date":"2026-08-13","job":"daily-focus","api_calls":9,"input_tokens":23631,"output_tokens":4567,"reasoning_tokens":2683,"cache_tokens":185216},
-{"date":"2026-08-12","job":"daily-focus","api_calls":23,"input_tokens":23267,"output_tokens":7586,"reasoning_tokens":3236,"cache_tokens":457472}]
+{"date":"2026-08-14","job":"cicd-builder","api_calls":5,"input_tokens":19327,"output_tokens":1300,"reasoning_tokens":752,"cache_tokens":67264}]
