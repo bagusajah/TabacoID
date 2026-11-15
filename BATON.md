@@ -7,8 +7,8 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-15 | t_95c05741 offsite backup leg ON: rclone sftp vps:backups (Tailscale→VPS), SKIP 30 hari berakhir, SHA match, retention 14, guard remote-missing |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | `docs/reports/2026-11-15-watchdog-breaker-day1-verdict.md` — verdict hari-1 circuit breaker: cap 3 restart/6 jam ditegakkan, 17 restart diblok, no_heal 2/3; restart 03:00 = weekly timer bukan fault |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-15 | t_d88142d6 restore drill offsite PASS (SHA match, ekstrak utuh 306MB) + fix backup: cron 03:00→03:10, tar stderr ke log, snapshot sqlite .backup — jobs.json hilang & race state.db ditutup |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | `docs/reports/2026-11-15-offsite-restore-drill.md` — drill offsite lolos (SHA256 match, config/WA session/kanban utuh); 2 celah backup ketemu & difix: jobs.json kena race weekly-restart 03:00, state.db hot-DB race |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
