@@ -8,7 +8,7 @@
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-15 | t_d88142d6 restore drill offsite PASS (SHA match, ekstrak utuh 306MB) + fix backup: cron 03:00→03:10, tar stderr ke log, snapshot sqlite .backup — jobs.json hilang & race state.db ditutup |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | `docs/reports/2026-11-15-offsite-restore-drill.md` — drill offsite lolos (SHA256 match, config/WA session/kanban utuh); 2 celah backup ketemu & difix: jobs.json kena race weekly-restart 03:00, state.db hot-DB race |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | `docs/reports/2026-11-15-watchdog-self-heal-veto.md` — 2/2 trip watchdog hari ini (01:15, 13:50) terjadi pas episode Telegram sudah sembuh sendiri; guard-6 veto self-heal dipatch (parser logger asli, anti-echo-cron), 3 skenario sintetis + dry-run produksi lolos |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
@@ -29,6 +29,7 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 
+- 2026-11-15 15:15 | hermes-infra+laporan | hermes@orangepi | t_addd567f done: guard-6 veto self-heal di tg-stall-watchdog.sh — 2/2 trip hari ini (01:15, 13:50) terjadi pas episode Telegram sudah sembuh sendiri (recovery 224s/153s sebelum trip, restart tidak perlu); root cause guard-1 cuma cek umur marker terakhir, tak baca sinyal sukses; parser anti-echo-cron diverifikasi 3 skenario sintetis + dry-run produksi rc=0; koreksi klaim verdict pagi: episode 01:11 sembuh SEBELUM restart | report: docs/reports/2026-11-15-watchdog-self-heal-veto.md
 - 2026-11-15 11:12 | hermes-infra+laporan | hermes@orangepi | t_95c05741 done: offsite backup leg ON — rclone sftp `vps:backups` (Tailscale→host.tabaco.id:2222, dedicated key backups/offsite-ssh); SKIP diam 30 hari (17 Okt–15 Nov "no rclone remotes") berakhir; bug dedup lama (`rclone ls`+grep tak pernah match → re-upload harian) difix pakai lsf; retention 14 file (~1.7GB ceiling, disk VPS 63%); upload 120MB/34s, SHA-256 match dua sisi, idempotensi+prune+guard remote-missing (rc=1+alert) terverifikasi live | report: docs/reports/2026-11-15-offsite-backup-activation.md
 - 2026-11-15 09:20 | hermes-infra+laporan | hermes@orangepi | t_f14b9f42 done: verdict hari-1 circuit breaker watchdog — trip pertama 19:25 (17 restart diblok), TRIGGER 22:15:02 = 21600s+2s pasca 16:15 (window geser expired presisi, fail-open benar), cap 3 restart/6 jam terpenuhi pas di batas; no_heal post-patch 2/3 (konsisten restart-bukan-cure); restart gateway 03:00 = hermes-weekly-restart.timer, bukan fault | report: docs/reports/2026-11-15-watchdog-breaker-day1-verdict.md
 - 2026-11-14 16:15 | cicd-console+laporan | hermes@orangepi | t_8d3920e2 done (REJECT): vitest isolate:false −42% (19.3s→11.1s) tapi 3 fail/122 skip (sqlite state bocor antar file test); config di-revert, 407/407 hijau, working tree cicd-console bersih | report: docs/reports/2026-11-14-vitest-isolation-reject.md
