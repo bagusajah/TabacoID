@@ -8,7 +8,7 @@
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-07 | t_c14a89f5 triage 51 update sisa: 38=vendor holds, 6 third-party (2 di-upgrade, docker defer), 45 kept-back=holds; live-restore fix |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-11-14 | `docs/reports/2026-11-14-mtu-pin-removal-phase1.md` — pin MTU 1492 dihapus dari config live (fase-1 mati total); verdict relay 6-hari: 9-13 Nov nol error, episode 14 Nov = flap leg VPS→DC self-heal |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | `docs/reports/2026-11-15-watchdog-breaker-day1-verdict.md` — verdict hari-1 circuit breaker: cap 3 restart/6 jam ditegakkan, 17 restart diblok, no_heal 2/3; restart 03:00 = weekly timer bukan fault |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
@@ -29,6 +29,7 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 
+- 2026-11-15 09:20 | hermes-infra+laporan | hermes@orangepi | t_f14b9f42 done: verdict hari-1 circuit breaker watchdog — trip pertama 19:25 (17 restart diblok), TRIGGER 22:15:02 = 21600s+2s pasca 16:15 (window geser expired presisi, fail-open benar), cap 3 restart/6 jam terpenuhi pas di batas; no_heal post-patch 2/3 (konsisten restart-bukan-cure); restart gateway 03:00 = hermes-weekly-restart.timer, bukan fault | report: docs/reports/2026-11-15-watchdog-breaker-day1-verdict.md
 - 2026-11-14 16:15 | cicd-console+laporan | hermes@orangepi | t_8d3920e2 done (REJECT): vitest isolate:false −42% (19.3s→11.1s) tapi 3 fail/122 skip (sqlite state bocor antar file test); config di-revert, 407/407 hijau, working tree cicd-console bersih | report: docs/reports/2026-11-14-vitest-isolation-reject.md
 - 2026-11-14 10:20 | hermes-infra+laporan | hermes@orangepi | t_92da2f45 done: pin MTU 1492 dihapus dari config live (sudo ip route del 149.154.160.0/20, rc=0; sudo runtime ternyata lolos guard — dugaan "butuh manusia" koreksi) — 0 match mtu 1492 table all, 0 error Telegram 2 menit pasca-del; tcp_mtu_probing=1 dibiarkan (proteksi fallback direct); fase-1 resmi mati total | report: docs/reports/2026-11-14-mtu-pin-removal-phase1.md
 
