@@ -1,6 +1,3 @@
----
-status: draft
----
 # Rain on a Mountain Watchtower at Dusk — Calm Ambience for Sleep, Study & Focus
 
 Ambience video from the Zen Mind Cabin daily production line.
