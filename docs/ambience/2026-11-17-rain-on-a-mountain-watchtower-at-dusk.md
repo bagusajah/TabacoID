@@ -2,7 +2,7 @@
 
 Ambience video from the Zen Mind Cabin daily production line.
 
-Video: https://www.youtube.com/watch?v=Js9MVc0rtk4
+Video: https://www.youtube.com/watch?v=1HOl2RZAPLg
 
 Category: Ambience
 
@@ -10,6 +10,6 @@ Category: Ambience
 
 **Formats:**
 
-- 🎬 8 hours: https://www.youtube.com/watch?v=Js9MVc0rtk4
-- ⏱️ 20 minutes: https://www.youtube.com/watch?v=ITbPUOruPz8
-- ⚡ Short: https://www.youtube.com/watch?v=cvpU1SZWcI8
+- 🎬 8 hours: https://www.youtube.com/watch?v=1HOl2RZAPLg
+- ⏱️ 20 minutes: https://www.youtube.com/watch?v=C0aFb6ssVOI
+- ⚡ Short: https://www.youtube.com/watch?v=gxpoacxybNY
