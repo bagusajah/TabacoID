@@ -7,6 +7,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
+// GLM thinking models need 10-30s+; Hobby plan allows maxDuration up to 60s
+export const maxDuration = 60
+
 interface Report {
   slug: string
   date: string
