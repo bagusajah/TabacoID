@@ -3,8 +3,9 @@
  * Trending chatbot: repo recommendations grounded in the build-time report index.
  * LLM = ZAI GLM (OpenAI-compatible). Key lives in Vercel env, never in the bundle.
  */
+import fs from 'node:fs'
+import path from 'node:path'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import index from '../public/trending-index.json'
 
 interface Report {
   slug: string
@@ -15,7 +16,25 @@ interface Report {
   insights: { repo: string; note: string }[]
 }
 
-const REPORTS = index as Report[]
+// Load index at runtime (static JSON import broke the serverless invocation).
+// Vercel includes the whole project dir; cwd = project root. Read once per warm instance.
+let _reports: Report[] | null = null
+function loadReports(): Report[] {
+  if (_reports) return _reports
+  const candidates = [
+    path.join(process.cwd(), 'public', 'trending-index.json'),
+    path.join(process.cwd(), '..', 'public', 'trending-index.json'),
+    path.join(process.cwd(), 'dist', 'trending-index.json'),
+  ]
+  for (const p of candidates) {
+    try {
+      _reports = JSON.parse(fs.readFileSync(p, 'utf8')) as Report[]
+      return _reports
+    } catch { /* try next candidate */ }
+  }
+  return []
+}
+
 const RATE_LIMIT = 10
 const WINDOW_MS = 60_000
 const MAX_HISTORY = 6
@@ -52,6 +71,7 @@ function rateLimited(ip: string): boolean {
 }
 
 function pickReports(question: string): Report[] {
+  const REPORTS = loadReports()
   const q = question.toLowerCase()
   const scored = REPORTS.map(r => {
     let score = 0
