@@ -114,7 +114,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!question) return res.status(400).json({ error: 'question wajib' })
   const history = Array.isArray(req.body?.history) ? req.body.history.slice(-MAX_HISTORY) : []
 
-  const baseUrl = process.env.GLM_BASE_URL || 'https://hermes.tabaco.id/llm'  // VPS nginx proxy -> ZAI (Vercel egress is 429-throttled by ZAI)
+  // user-set GLM_BASE_URL env points at the expired coding-plan endpoint — ignore it,
+  // always route through the VPS /llm proxy (clean egress, key injected by nginx)
+  const baseUrl = 'https://hermes.tabaco.id/llm'
   const apiKey = process.env.GLM_API_KEY || 'proxy-injected'  // nginx replaces this header
 
   const reports = pickReports(question)
