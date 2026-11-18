@@ -153,7 +153,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const r = await fetch(`${baseUrl}/chat/completions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-4.6-flash', messages, max_tokens: 600, temperature: 0.4 }),
+      body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-4.5-flash', messages, max_tokens: 2000, temperature: 0.4 }),
     })
     if (!r.ok) {
       const body = await r.text()
