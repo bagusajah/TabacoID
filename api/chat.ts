@@ -157,8 +157,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // standard ZAI open endpoint, which has a separate quota pool.
   let r: globalThis.Response | null = null
   let lastStatus = 0
-  for (const base of [baseUrl]) {
-    r = await fetch(`${base}/chat/completions`, {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    if (attempt > 0) await new Promise(res => setTimeout(res, 3000 * attempt))
+    r = await fetch(`${baseUrl}/chat/completions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
       body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-4.5-flash', messages, max_tokens: 2000, temperature: 0.4 }),
