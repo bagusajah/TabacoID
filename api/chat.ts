@@ -114,8 +114,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!question) return res.status(400).json({ error: 'question wajib' })
   const history = Array.isArray(req.body?.history) ? req.body.history.slice(-MAX_HISTORY) : []
 
-  const baseUrl = process.env.GLM_BASE_URL || 'https://hermes.tabaco.id/llm'
-  // GLM key is injected by the VPS nginx proxy; no API key needed from Vercel env.
+  const baseUrl = process.env.GLM_BASE_URL || 'https://api.z.ai/api/paas/v4'
+  const apiKey = process.env.GLM_API_KEY
+  if (!apiKey) return res.status(502).json({ error: 'GLM_API_KEY env belum diset di Vercel' })
 
   const reports = pickReports(question)
   const context = buildContext(reports)
@@ -159,7 +160,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   for (const base of [baseUrl]) {
     r = await fetch(`${base}/chat/completions`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
       body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-4.5-flash', messages, max_tokens: 2000, temperature: 0.4 }),
     })
     lastStatus = r.status
