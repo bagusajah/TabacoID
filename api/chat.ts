@@ -161,7 +161,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     r = await fetch(`${baseUrl}/chat/completions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },  // nginx overrides with its own key
-      body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-4.5-flash', messages, max_tokens: 2000, temperature: 0.4 }),
+      body: JSON.stringify({ model: 'glm-4.5-flash'  // ponytail: env override removed — user-set GLM_MODEL=5.3-flash needs paid plan, messages, max_tokens: 2000, temperature: 0.4 }),
     })
     lastStatus = r.status
     if (r.ok) break
