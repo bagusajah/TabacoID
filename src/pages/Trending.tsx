@@ -4,6 +4,7 @@ import { Archive, ArrowRight } from 'lucide-react'
 
 import { useT } from '@/i18n'
 import { parseReport, type Report } from '@/lib/reports'
+import TrendingChat from '@/components/TrendingChat'
 
 const PAGE_SIZE = 15
 
@@ -52,6 +53,7 @@ export default function TrendingPage() {
 
   return (
     <div className="pb-20">
+      <TrendingChat />
       <section className="relative overflow-hidden">
         <div className="layout-grid space-y-8 py-16 lg:py-24">
           <div className="max-w-3xl space-y-4">
