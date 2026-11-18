@@ -162,7 +162,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     r = await fetch(`${base}/chat/completions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-4.5-flash', messages, max_tokens: 2000, temperature: 0.4 }),
+      body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-5.3-flash', messages, max_tokens: 2000, temperature: 0.4 }),
     })
     lastStatus = r.status
     if (r.ok) break
@@ -172,7 +172,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const body = r ? await r.text() : ''
       console.error('LLM error', lastStatus, body.slice(0, 300))
       const masked = baseUrl.replace(/\/\/[^@]+@/, '//***@')
-      return res.status(502).json({ error: `LLM gagal merespons (upstream ${lastStatus}, base: ${masked}, model: ${process.env.GLM_MODEL || 'glm-4.5-flash'})` })
+      return res.status(502).json({ error: `LLM gagal merespons (upstream ${lastStatus}, base: ${masked}, model: ${process.env.GLM_MODEL || 'glm-5.3-flash'})` })
     }
     const data = await r.json()
     const answer = data?.choices?.[0]?.message?.content
