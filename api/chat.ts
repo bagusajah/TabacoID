@@ -114,7 +114,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!question) return res.status(400).json({ error: 'question wajib' })
   const history = Array.isArray(req.body?.history) ? req.body.history.slice(-MAX_HISTORY) : []
 
-  const baseUrl = process.env.GLM_BASE_URL || 'https://api.z.ai/api/paas/v4'
+  const baseUrl = 'https://api.z.ai/api/paas/v4'  // ponytail: env override removed — coding-plan endpoint is expired; hardcode free paas endpoint
   const apiKey = process.env.GLM_API_KEY
   if (!apiKey) return res.status(502).json({ error: 'GLM_API_KEY env belum diset di Vercel' })
 
