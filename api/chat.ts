@@ -169,7 +169,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!r || !r.ok) {
       const body = r ? await r.text() : ''
       console.error('LLM error', lastStatus, body.slice(0, 300))
-      return res.status(502).json({ error: `LLM gagal merespons (upstream ${lastStatus})` })
+      return res.status(502).json({ error: `LLM gagal merespons (${lastStatus}: ${body.slice(0, 180)})` })
     }
     const data = await r.json()
     const answer = data?.choices?.[0]?.message?.content
