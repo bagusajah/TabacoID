@@ -161,7 +161,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!r.ok) {
       const body = await r.text()
       console.error('LLM error', r.status, body.slice(0, 300))
-      return res.status(502).json({ error: 'LLM gagal merespons' })
+      // temporary diagnostics: surface status + masked base URL to caller
+      const masked = baseUrl.replace(/\/\/[^@]+@/, '//***@')
+      return res.status(502).json({ error: `LLM gagal merespons (upstream ${r.status}, base: ${masked}, model: ${process.env.GLM_MODEL || 'glm-4.5-flash'})` })
     }
     const data = await r.json()
     const answer = data?.choices?.[0]?.message?.content
