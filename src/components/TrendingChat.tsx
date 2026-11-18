@@ -15,6 +15,7 @@ export default function TrendingChat() {
   const [open, setOpen] = useState(false)
   const [msgs, setMsgs] = useState<Msg[]>([])
   const [input, setInput] = useState('')
+  const [key, setKey] = useState(() => sessionStorage.getItem('tc_key') || '')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const listRef = useRef<HTMLDivElement>(null)
@@ -26,6 +27,7 @@ export default function TrendingChat() {
   async function ask() {
     const q = input.trim()
     if (!q || loading) return
+    if (!key.trim()) { setError(t['tc.needkey']); return }
     setInput('')
     setError('')
     const history = msgs.map(m => ({ role: m.role, content: m.content }))
@@ -34,11 +36,13 @@ export default function TrendingChat() {
     try {
       const r = await fetch('/api/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-chat-key': key.trim() },
         body: JSON.stringify({ question: q, history }),
       })
       const data = await r.json()
+      if (r.status === 401) { setError(t['tc.badkey']); setLoading(false); return }
       if (!r.ok) throw new Error(data.error || t['tc.error'])
+      sessionStorage.setItem('tc_key', key.trim())
       setMsgs(m => [...m, { role: 'assistant', content: data.answer, sources: data.sources }])
     } catch (e) {
       setError(e instanceof Error ? e.message : t['tc.error'])
@@ -87,6 +91,14 @@ export default function TrendingChat() {
             {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
           </div>
           <form className="flex gap-2 border-t border-[var(--surface-border)] p-3" onSubmit={e => { e.preventDefault(); ask() }}>
+            <input
+              aria-label={t['tc.key']}
+              className="w-28 rounded-lg border border-[var(--surface-border)] bg-white px-2 py-2 text-sm outline-none focus:border-[var(--brand)]"
+              maxLength={64}
+              onChange={e => setKey(e.target.value)}
+              placeholder={t['tc.key']}
+              value={key}
+            />
             <input
               className="min-w-0 flex-1 rounded-lg border border-[var(--surface-border)] bg-white px-3 py-2 text-sm outline-none focus:border-[var(--brand)]"
               maxLength={500}

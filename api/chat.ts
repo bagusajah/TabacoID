@@ -22,6 +22,26 @@ const MAX_HISTORY = 6
 
 const hits = new Map<string, number[]>()
 
+// Access gate: shared passphrase required on every chat request.
+// Set via Vercel env CHAT_PASSPHRASE. Empty/unset = chat disabled (fail closed).
+function accessKey(req: VercelRequest): string | null {
+  const header = req.headers['x-chat-key']
+  if (typeof header === 'string' && header.length > 0) return header.trim()
+  if (typeof req.body?.key === 'string' && req.body.key.length > 0) return req.body.key
+  return null
+}
+
+function authorized(req: VercelRequest): boolean {
+  const secret = process.env.CHAT_PASSPHRASE
+  if (!secret) return false // fail closed: no gate configured -> no chat
+  const provided = accessKey(req)
+  if (!provided || provided.length !== secret.length) return false
+  // constant-time compare to avoid timing leaks
+  let diff = 0
+  for (let i = 0; i < secret.length; i++) diff |= secret.charCodeAt(i) ^ provided.charCodeAt(i)
+  return diff === 0
+}
+
 function rateLimited(ip: string): boolean {
   const now = Date.now()
   const arr = (hits.get(ip) || []).filter(t => now - t < WINDOW_MS)
@@ -63,6 +83,7 @@ function buildContext(reports: Report[]): string {
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' })
+  if (!authorized(req)) return res.status(401).json({ error: 'Akses ditolak — kunci chat salah atau belum diset.' })
   const ip = String(req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown').split(',')[0].trim()
   if (rateLimited(ip)) return res.status(429).json({ error: 'Terlalu banyak pertanyaan — coba lagi sebentar.' })
 
