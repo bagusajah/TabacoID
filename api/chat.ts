@@ -153,17 +153,26 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   ]
 
   try {
-    const r = await fetch(`${baseUrl}/chat/completions`, {
+  // 429 on the coding endpoint is common (quota coefficient); retry once against the
+  // standard ZAI open endpoint, which has a separate quota pool.
+  const attempts = [baseUrl, 'https://api.z.ai/api/paas/v4']
+  let r: globalThis.Response | null = null
+  let lastStatus = 0
+  for (const base of attempts) {
+    r = await fetch(`${base}/chat/completions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
       body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-4.5-flash', messages, max_tokens: 2000, temperature: 0.4 }),
     })
-    if (!r.ok) {
-      const body = await r.text()
-      console.error('LLM error', r.status, body.slice(0, 300))
-      // temporary diagnostics: surface status + masked base URL to caller
+    lastStatus = r.status
+    if (r.ok) break
+    if (r.status !== 429) break
+  }
+  if (!r || !r.ok) {
+      const body = r ? await r.text() : ''
+      console.error('LLM error', lastStatus, body.slice(0, 300))
       const masked = baseUrl.replace(/\/\/[^@]+@/, '//***@')
-      return res.status(502).json({ error: `LLM gagal merespons (upstream ${r.status}, base: ${masked}, model: ${process.env.GLM_MODEL || 'glm-4.5-flash'})` })
+      return res.status(502).json({ error: `LLM gagal merespons (upstream ${lastStatus}, base: ${masked}, model: ${process.env.GLM_MODEL || 'glm-4.5-flash'})` })
     }
     const data = await r.json()
     const answer = data?.choices?.[0]?.message?.content
