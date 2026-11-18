@@ -114,9 +114,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!question) return res.status(400).json({ error: 'question wajib' })
   const history = Array.isArray(req.body?.history) ? req.body.history.slice(-MAX_HISTORY) : []
 
-  const baseUrl = 'https://api.z.ai/api/paas/v4'  // ponytail: env override removed — coding-plan endpoint is expired; hardcode free paas endpoint
-  const apiKey = process.env.GLM_API_KEY
-  if (!apiKey) return res.status(502).json({ error: 'GLM_API_KEY env belum diset di Vercel' })
+  const baseUrl = process.env.GLM_BASE_URL || 'https://hermes.tabaco.id/llm'  // VPS nginx proxy -> ZAI (Vercel egress is 429-throttled by ZAI)
+  const apiKey = process.env.GLM_API_KEY || 'proxy-injected'  // nginx replaces this header
 
   const reports = pickReports(question)
   const context = buildContext(reports)
@@ -161,7 +160,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (attempt > 0) await new Promise(res => setTimeout(res, 3000 * attempt))
     r = await fetch(`${baseUrl}/chat/completions`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },  // nginx overrides with its own key
       body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-4.5-flash', messages, max_tokens: 2000, temperature: 0.4 }),
     })
     lastStatus = r.status
