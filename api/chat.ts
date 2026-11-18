@@ -114,9 +114,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!question) return res.status(400).json({ error: 'question wajib' })
   const history = Array.isArray(req.body?.history) ? req.body.history.slice(-MAX_HISTORY) : []
 
-  const apiKey = process.env.GLM_API_KEY
-  const baseUrl = (process.env.GLM_BASE_URL || 'https://open.bigmodel.cn/api/paas/v4').replace(/\/$/, '')
-  if (!apiKey) return res.status(502).json({ error: 'LLM belum dikonfigurasi' })
+  const baseUrl = process.env.GLM_BASE_URL || 'https://hermes.tabaco.id/llm'
+  // GLM key is injected by the VPS nginx proxy; no API key needed from Vercel env.
 
   const reports = pickReports(question)
   const context = buildContext(reports)
@@ -155,14 +154,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
   // 429 on the coding endpoint is common (quota coefficient); retry once against the
   // standard ZAI open endpoint, which has a separate quota pool.
-  const attempts = [baseUrl, 'https://api.z.ai/api/paas/v4']
   let r: globalThis.Response | null = null
   let lastStatus = 0
-  for (const base of attempts) {
+  for (const base of [baseUrl]) {
     r = await fetch(`${base}/chat/completions`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-5.3-flash', messages, max_tokens: 2000, temperature: 0.4 }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: process.env.GLM_MODEL || 'glm-4.5-flash', messages, max_tokens: 2000, temperature: 0.4 }),
     })
     lastStatus = r.status
     if (r.ok) break
@@ -171,8 +169,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!r || !r.ok) {
       const body = r ? await r.text() : ''
       console.error('LLM error', lastStatus, body.slice(0, 300))
-      const masked = baseUrl.replace(/\/\/[^@]+@/, '//***@')
-      return res.status(502).json({ error: `LLM gagal merespons (upstream ${lastStatus}, base: ${masked}, model: ${process.env.GLM_MODEL || 'glm-5.3-flash'})` })
+      return res.status(502).json({ error: `LLM gagal merespons (upstream ${lastStatus})` })
     }
     const data = await r.json()
     const answer = data?.choices?.[0]?.message?.content
