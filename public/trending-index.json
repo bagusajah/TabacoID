@@ -2707,6 +2707,466 @@
   ]
  },
  {
+  "slug": "2026-11-14",
+  "date": "2026-11-14",
+  "title": "Laporan Harian GitHub Trending — Sabtu, 14 November 2026",
+  "summary": "Backfill: data dari arsip Wayback Machine github.com/trending, snapshot 2026-11-14 03:25:43 UTC; angka ★ hari ini mencakup periode hingga jam snapshot, bukan 24 jam penuh.",
+  "repos": [
+   {
+    "repo": "alibaba/open-code-review",
+    "stars_today": 215,
+    "lang": "Go",
+    "desc": "Alat code review hibrida — pipeline deterministik plus LLM Agent — yang aman, cepat, dan teruji di skala Alibaba",
+    "rank": 1
+   },
+   {
+    "repo": "GoogleChrome/modern-web-guidance-src",
+    "stars_today": 1925,
+    "lang": "TypeScript",
+    "desc": "Menjaga agen kodingmu tetap memakai praktik web terbaru",
+    "rank": 2
+   },
+   {
+    "repo": "openai/codex-security",
+    "stars_today": 751,
+    "lang": "TypeScript",
+    "desc": "CLI dan TypeScript SDK Codex Security dari OpenAI untuk menemukan, memvalidasi, dan memperbaiki kerentanan keamanan",
+    "rank": 3
+   },
+   {
+    "repo": "ZhuLinsen/daily_stock_analysis",
+    "stars_today": 256,
+    "lang": "Python",
+    "desc": "Sistem analisis saham multi-pasar berbasis LLM: data pasar multi-sumber, berita real-time, dashboard keputusan, dan push otomatis",
+    "rank": 4
+   },
+   {
+    "repo": "we-promise/sure",
+    "stars_today": 925,
+    "lang": "Ruby",
+    "desc": "Aplikasi keuangan pribadi untuk semua orang (dibuat oleh semua orang)",
+    "rank": 5
+   },
+   {
+    "repo": "backnotprop/plannotator",
+    "stars_today": 108,
+    "lang": "TypeScript",
+    "desc": "Ruang kerja untuk memantau dan mengendalikan agen: merencanakan, memutuskan, menganotasi, review kode, dan mengirim umpan balik ke agen dalam satu klik",
+    "rank": 6
+   },
+   {
+    "repo": "louislam/uptime-kuma",
+    "stars_today": 71,
+    "lang": "JavaScript",
+    "desc": "Alat monitoring self-hosted yang tampil menarik",
+    "rank": 7
+   },
+   {
+    "repo": "block/buzz",
+    "stars_today": 97,
+    "lang": "Rust",
+    "desc": "Platform komunikasi \"hive mind\"",
+    "rank": 8
+   },
+   {
+    "repo": "tradermonty/claude-trading-skills",
+    "stars_today": 69,
+    "lang": "Python",
+    "desc": "Kumpulan skill Claude Code untuk investor saham dan trader — analisis pasar, charting teknikal, kalender ekonomi, screener, dan strategi trading",
+    "rank": 9
+   },
+   {
+    "repo": "tailscale/tailcat",
+    "stars_today": 256,
+    "lang": "Go",
+    "desc": "Seperti netcat, tetapi lewat data plane Tailscale tanpa control plane-nya",
+    "rank": 10
+   }
+  ],
+  "insights": [
+   {
+    "repo": "alibaba/open-code-review",
+    "note": "Alat code review open-source dari Alibaba yang memadukan pipeline deterministik dengan agen LLM, lengkap dengan ruleset multi-bahasa (NPE, thread-safety, XSS, SQL injection)."
+   },
+   {
+    "repo": "GoogleChrome/modern-web-guidance-src",
+    "note": "Repo sumber panduan web modern dari tim Chrome yang dirancang agar bisa dibaca agen koding."
+   },
+   {
+    "repo": "openai/codex-security",
+    "note": "CLI dan TypeScript SDK resmi OpenAI untuk menemukan, memvalidasi, dan memperbaiki kerentanan keamanan, tersedia di npm sebagai @openai/codex-security."
+   }
+  ]
+ },
+ {
+  "slug": "2026-11-15",
+  "date": "2026-11-15",
+  "title": "Laporan Harian GitHub Trending — Minggu, 15 November 2026",
+  "summary": "Backfill: data dari arsip Wayback Machine github.com/trending, snapshot 2026-11-15 05:05:46 UTC; angka ★ hari ini mencakup periode hingga jam snapshot, bukan 24 jam penuh.",
+  "repos": [
+   {
+    "repo": "backnotprop/plannotator",
+    "stars_today": 408,
+    "lang": "TypeScript",
+    "desc": "Ruang kerja untuk memantau dan mengendalikan agen: merencanakan, memutuskan, menganotasi, review kode, dan mengirim umpan balik ke agen dalam satu klik",
+    "rank": 1
+   },
+   {
+    "repo": "GoogleChrome/modern-web-guidance-src",
+    "stars_today": 1231,
+    "lang": "TypeScript",
+    "desc": "Menjaga agen kodingmu tetap memakai praktik web terbaru",
+    "rank": 2
+   },
+   {
+    "repo": "tradermonty/claude-trading-skills",
+    "stars_today": 553,
+    "lang": "Python",
+    "desc": "Kumpulan skill Claude Code untuk investor saham dan trader — analisis pasar, charting teknikal, kalender ekonomi, screener, dan strategi trading",
+    "rank": 3
+   },
+   {
+    "repo": "ChromeDevTools/chrome-devtools-mcp",
+    "stars_today": 664,
+    "lang": "TypeScript",
+    "desc": "Chrome DevTools untuk agen koding",
+    "rank": 4
+   },
+   {
+    "repo": "alibaba/open-code-review",
+    "stars_today": 893,
+    "lang": "Go",
+    "desc": "Alat code review hibrida — pipeline deterministik plus LLM Agent — yang aman, cepat, dan teruji di skala Alibaba",
+    "rank": 5
+   },
+   {
+    "repo": "QwenLM/qwen-code",
+    "stars_today": 64,
+    "lang": "TypeScript",
+    "desc": "Agen koding AI open-source yang hidup di terminalmu",
+    "rank": 6
+   },
+   {
+    "repo": "dream-num/univer",
+    "stars_today": 495,
+    "lang": "TypeScript",
+    "desc": "Bangun AI office-mu sendiri dengan Univer Office SDK: editing, kalkulasi, kolaborasi, dan pemrosesan file untuk manusia dan agen AI",
+    "rank": 7
+   },
+   {
+    "repo": "ag-ui-protocol/ag-ui",
+    "stars_today": 9,
+    "lang": "TypeScript",
+    "desc": "AG-UI: protokol interaksi agen-pengguna untuk membawa agen ke aplikasi frontend",
+    "rank": 8
+   },
+   {
+    "repo": "ashhart/TensorFold",
+    "stars_today": 37,
+    "lang": "Zig",
+    "desc": "Mesin inferensi LLM untuk Metal, CUDA, dan Vulkan",
+    "rank": 9
+   },
+   {
+    "repo": "JuliusBrussee/caveman",
+    "stars_today": 227,
+    "lang": "Go",
+    "desc": "Skill dan proxy viral untuk agen koding yang memangkas 65% token dengan gaya bicara \"manusia gua\"",
+    "rank": 10
+   }
+  ],
+  "insights": [
+   {
+    "repo": "backnotprop/plannotator",
+    "note": "Workspace untuk \"stay in the loop\" dengan agen AI: merencanakan, menganotasi, review kode, dan mengirim umpan balik dalam satu klik."
+   },
+   {
+    "repo": "GoogleChrome/modern-web-guidance-src",
+    "note": "Kedua hari berturut-turut delta ribuan: +1.925 kemarin, kini +1.231, membawa total dari ★ 4.965 menjadi ★ 6.232 antar-snapshot."
+   },
+   {
+    "repo": "tradermonty/claude-trading-skills",
+    "note": "Lompatan besar dari peringkat 9 ke 3 (+553, total ★ 4.935): kumpulan skill Claude Code untuk analis pasar saham — charting teknikal, kalender ekonomi, screener, hingga pengembangan strategi."
+   }
+  ]
+ },
+ {
+  "slug": "2026-11-16",
+  "date": "2026-11-16",
+  "title": "Laporan Harian GitHub Trending — Senin, 16 November 2026",
+  "summary": "Backfill: data dari arsip Wayback Machine github.com/trending, snapshot 2026-11-16 00:09:00 UTC; angka ★ hari ini mencakup periode hingga jam snapshot, bukan 24 jam penuh.",
+  "repos": [
+   {
+    "repo": "dream-num/univer",
+    "stars_today": 988,
+    "lang": "TypeScript",
+    "desc": "Bangun AI office-mu sendiri dengan Univer Office SDK: editing, kalkulasi, kolaborasi, dan pemrosesan file untuk manusia dan agen AI",
+    "rank": 1
+   },
+   {
+    "repo": "ag-ui-protocol/ag-ui",
+    "stars_today": 355,
+    "lang": "TypeScript",
+    "desc": "AG-UI: protokol interaksi agen-pengguna untuk membawa agen ke aplikasi frontend",
+    "rank": 2
+   },
+   {
+    "repo": "google-labs-code/stitch-skills",
+    "stars_today": 247,
+    "lang": "TypeScript",
+    "desc": "Pustaka Agent Skills untuk Stitch MCP server — mengikuti standar terbuka Agent Skills agar kompatibel dengan Antigravity, Gemini CLI, Claude Code, dan Cursor",
+    "rank": 3
+   },
+   {
+    "repo": "backnotprop/plannotator",
+    "stars_today": 866,
+    "lang": "TypeScript",
+    "desc": "Ruang kerja untuk memantau dan mengendalikan agen: merencanakan, memutuskan, menganotasi, review kode, dan mengirim umpan balik ke agen dalam satu klik",
+    "rank": 4
+   },
+   {
+    "repo": "ChromeDevTools/chrome-devtools-mcp",
+    "stars_today": 717,
+    "lang": "TypeScript",
+    "desc": "Chrome DevTools untuk agen koding",
+    "rank": 5
+   },
+   {
+    "repo": "alibaba/open-code-review",
+    "stars_today": 691,
+    "lang": "Go",
+    "desc": "Alat code review hibrida — pipeline deterministik plus LLM Agent — yang aman, cepat, dan teruji di skala Alibaba",
+    "rank": 6
+   },
+   {
+    "repo": "Tencent/LoopForge",
+    "stars_today": 423,
+    "lang": "Go",
+    "desc": "Workflow self-hosted untuk delivery agen koding: orkestrasi CodeBuddy, Codex, dan Claude Code dengan skrip serta gerbang persetujuan manusia",
+    "rank": 7
+   },
+   {
+    "repo": "ggml-org/ggml",
+    "stars_today": 43,
+    "lang": "C++",
+    "desc": "Pustaka tensor untuk machine learning",
+    "rank": 8
+   },
+   {
+    "repo": "elementalsouls/Claude-BugHunter",
+    "stars_today": 98,
+    "lang": "Python",
+    "desc": "Bundel skill Claude Code untuk bug hunting dan red-team: 82 skill, 15 slash command, dan 681 pola laporan kerentanan di 24 kelas vuln",
+    "rank": 9
+   },
+   {
+    "repo": "GoogleChrome/modern-web-guidance-src",
+    "stars_today": 1219,
+    "lang": "TypeScript",
+    "desc": "Menjaga agen kodingmu tetap memakai praktik web terbaru",
+    "rank": 10
+   }
+  ],
+  "insights": [
+   {
+    "repo": "dream-num/univer",
+    "note": "Office SDK open-source (spreadsheet hingga dokumen) yang bisa disematkan ke produk apa pun dan dibaca agen AI."
+   },
+   {
+    "repo": "ag-ui-protocol/ag-ui",
+    "note": "Protokol terbuka untuk menyambungkan agen ke UI frontend; kurvanya menanjak konsisten: +9 (15 November), kini +355 dengan total ★ 17.839 di posisi dua."
+   },
+   {
+    "repo": "google-labs-code/stitch-skills",
+    "note": "Pustaka skill resmi Google Labs untuk Stitch MCP server; pertama kalinya masuk daftar, langsung di posisi tiga (+247, total ★ 9.279)."
+   }
+  ]
+ },
+ {
+  "slug": "2026-11-17",
+  "date": "2026-11-17",
+  "title": "Laporan Harian GitHub Trending — Selasa, 17 November 2026",
+  "summary": "Backfill: data dari arsip Wayback Machine github.com/trending, snapshot 2026-11-17 01:16:02 UTC; angka ★ hari ini mencakup periode hingga jam snapshot, bukan 24 jam penuh.",
+  "repos": [
+   {
+    "repo": "ag-ui-protocol/ag-ui",
+    "stars_today": 791,
+    "lang": "TypeScript",
+    "desc": "AG-UI: protokol interaksi agen-pengguna untuk membawa agen ke aplikasi frontend",
+    "rank": 1
+   },
+   {
+    "repo": "backnotprop/plannotator",
+    "stars_today": 696,
+    "lang": "TypeScript",
+    "desc": "Ruang kerja untuk memantau dan mengendalikan agen: merencanakan, memutuskan, menganotasi, review kode, dan mengirim umpan balik ke agen dalam satu klik",
+    "rank": 2
+   },
+   {
+    "repo": "dream-num/univer",
+    "stars_today": 1828,
+    "lang": "TypeScript",
+    "desc": "Bangun AI office-mu sendiri dengan Univer Office SDK: editing, kalkulasi, kolaborasi, dan pemrosesan file untuk manusia dan agen AI",
+    "rank": 3
+   },
+   {
+    "repo": "tradermonty/claude-trading-skills",
+    "stars_today": 837,
+    "lang": "Python",
+    "desc": "Kumpulan skill Claude Code untuk investor saham dan trader — analisis pasar, charting teknikal, kalender ekonomi, screener, dan strategi trading",
+    "rank": 4
+   },
+   {
+    "repo": "getarcaneapp/arcane",
+    "stars_today": 46,
+    "lang": "Go",
+    "desc": "Manajemen Docker modern yang dirancang untuk semua orang",
+    "rank": 5
+   },
+   {
+    "repo": "DeanChensj/jiangshan-map",
+    "stars_today": 288,
+    "lang": "JavaScript",
+    "desc": "Atlas historis Tiongkok interaktif (403 SM–kini): 18 dinasti, 198 snapshot wilayah, silsilah tempat kuno-modern, dan rute puisi klasik",
+    "rank": 6
+   },
+   {
+    "repo": "google-labs-code/stitch-skills",
+    "stars_today": 529,
+    "lang": "TypeScript",
+    "desc": "Pustaka Agent Skills untuk Stitch MCP server — mengikuti standar terbuka Agent Skills agar kompatibel dengan Antigravity, Gemini CLI, Claude Code, dan Cursor",
+    "rank": 7
+   },
+   {
+    "repo": "mvanhorn/last30days-skill",
+    "stars_today": 135,
+    "lang": "Python",
+    "desc": "Skill agen AI untuk riset topik lintas Reddit, X, YouTube, HN, Polymarket, dan web",
+    "rank": 8
+   },
+   {
+    "repo": "NVIDIA/SkillEvaluator",
+    "stars_today": 873,
+    "lang": "Python",
+    "desc": "Kerangka multi-tingkat untuk mengevaluasi skill dan plugin agen AI dengan quality gate, deteksi tumpang-tindih semantik, dan evaluasi agen langsung",
+    "rank": 9
+   },
+   {
+    "repo": "alibaba/open-code-review",
+    "stars_today": 951,
+    "lang": "Go",
+    "desc": "Alat code review hibrida — pipeline deterministik plus LLM Agent — yang aman, cepat, dan teruji di skala Alibaba",
+    "rank": 10
+   }
+  ],
+  "insights": [
+   {
+    "repo": "ag-ui-protocol/ag-ui",
+    "note": "Protokol terbuka Agent-User Interaction akhirnya memuncak di posisi satu: +791 hingga ★ 19.011, menyusul tanjakan +9 dan +355 pada dua snapshot sebelumnya."
+   },
+   {
+    "repo": "backnotprop/plannotator",
+    "note": "Bertahan di posisi dua hari ketiga beruntun di tiga besar (+696, total ★ 12.573)."
+   },
+   {
+    "repo": "dream-num/univer",
+    "note": "Delta terbesar hari ini: +1.828, membawa total ke ★ 27.796 sehari setelah [rilis v1.5.2](https://github.com/dream-num/univer/releases/tag/v1.5.2) (16 November 2026, 10:35 UTC) — pola klasik gelombang "
+   }
+  ]
+ },
+ {
+  "slug": "2026-11-18",
+  "date": "2026-11-18",
+  "title": "Laporan Harian GitHub Trending — Rabu, 18 November 2026",
+  "summary": "Backfill: data dari arsip Wayback Machine github.com/trending, snapshot 2026-11-18 00:01:19 UTC; angka ★ hari ini mencakup periode hingga jam snapshot, bukan 24 jam penuh.",
+  "repos": [
+   {
+    "repo": "elementalsouls/Claude-BugHunter",
+    "stars_today": 1005,
+    "lang": "Python",
+    "desc": "Bundel skill Claude Code untuk bug hunting dan red-team: 82 skill, 15 slash command, dan 681 pola laporan kerentanan di 24 kelas vuln",
+    "rank": 1
+   },
+   {
+    "repo": "mvanhorn/last30days-skill",
+    "stars_today": 696,
+    "lang": "Python",
+    "desc": "Skill agen AI untuk riset topik lintas Reddit, X, YouTube, HN, Polymarket, dan web",
+    "rank": 2
+   },
+   {
+    "repo": "alibaba/open-code-review",
+    "stars_today": 763,
+    "lang": "Go",
+    "desc": "Alat code review hibrida — pipeline deterministik plus LLM Agent — yang aman, cepat, dan teruji di skala Alibaba",
+    "rank": 3
+   },
+   {
+    "repo": "Tencent/LoopForge",
+    "stars_today": 591,
+    "lang": "Go",
+    "desc": "Workflow self-hosted untuk delivery agen koding: orkestrasi CodeBuddy, Codex, dan Claude Code dengan skrip serta gerbang persetujuan manusia",
+    "rank": 4
+   },
+   {
+    "repo": "dream-num/univer",
+    "stars_today": 1774,
+    "lang": "TypeScript",
+    "desc": "Bangun AI office-mu sendiri dengan Univer Office SDK: editing, kalkulasi, kolaborasi, dan pemrosesan file untuk manusia dan agen AI",
+    "rank": 5
+   },
+   {
+    "repo": "getarcaneapp/arcane",
+    "stars_today": 618,
+    "lang": "Go",
+    "desc": "Manajemen Docker modern yang dirancang untuk semua orang",
+    "rank": 6
+   },
+   {
+    "repo": "google-labs-code/stitch-skills",
+    "stars_today": 350,
+    "lang": "TypeScript",
+    "desc": "Pustaka Agent Skills untuk Stitch MCP server — mengikuti standar terbuka Agent Skills agar kompatibel dengan Antigravity, Gemini CLI, Claude Code, dan Cursor",
+    "rank": 7
+   },
+   {
+    "repo": "cursor/plugins",
+    "stars_today": 201,
+    "lang": "TypeScript",
+    "desc": "Spesifikasi plugin Cursor dan plugin resmi",
+    "rank": 8
+   },
+   {
+    "repo": "obra/superpowers",
+    "stars_today": 1917,
+    "lang": "Shell",
+    "desc": "Kerangka skill agenetik dan metodologi pengembangan perangkat lunak yang terbukti bekerja",
+    "rank": 9
+   },
+   {
+    "repo": "ag-ui-protocol/ag-ui",
+    "stars_today": 1445,
+    "lang": "TypeScript",
+    "desc": "AG-UI: protokol interaksi agen-pengguna untuk membawa agen ke aplikasi frontend",
+    "rank": 10
+   }
+  ],
+  "insights": [
+   {
+    "repo": "elementalsouls/Claude-BugHunter",
+    "note": "Bundel skill Claude Code untuk bug hunting dan red-team eksternal — 82 skill, 15 slash command, 681 pola laporan kerentanan yang dikurasi lintas 24 kelas vuln, plus matriks serangan identitas dan infr"
+   },
+   {
+    "repo": "mvanhorn/last30days-skill",
+    "note": "Skill riset untuk agen AI yang menelusuri satu topik lintas Reddit, X, YouTube, HN, Polymarket, dan web lalu menyusun ringkasan ter-ground; naik +696 hingga ★ 69.029."
+   },
+   {
+    "repo": "alibaba/open-code-review",
+    "note": "Satu-satunya repo yang hadir di kelima snapshot 14–18 November, kini di posisi tiga dengan +763 hingga ★ 53.710."
+   }
+  ]
+ },
+ {
   "slug": "2026-11-19",
   "date": "2026-11-19",
   "title": "Laporan Harian GitHub Trending — Kamis, 19 November 2026",
