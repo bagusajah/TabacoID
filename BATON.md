@@ -9,7 +9,7 @@
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-15 | t_d88142d6 restore drill offsite PASS (SHA match, ekstrak utuh 306MB) + fix backup: cron 03:00→03:10, tar stderr ke log, snapshot sqlite .backup — jobs.json hilang & race state.db ditutup |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | retro W46 — 8 task done minggu ini (Telegram saga tutup verdict+breaker+veto; backup offsite+drill PASS); follow-up t_d6fb0e59 docker-restart ready; report: docs/reports/2026-46-retrospective.md |
-| Trending | research-agent | (host milikmu) | data-owner | active | 2026-10-15 | `docs/trending/2026-10-15.md` |
+| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-19 | `docs/trending/2026-11-19.md` top-3: cursor/plugins, HKUDS/CLI-Anything, mvanhorn/last30days-skill |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
@@ -26,9 +26,10 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 (file → agent@host, saat sedang mengedit; hapus setelah push sukses)
 
-
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-19 11:01 | trending | githubtrending@MacBook-Pro.local | laporan harian published — 10 besar langsung dari github.com/trending live (rank + delta "stars today" dari halaman, total bintang snapshot REST API); top-3: cursor/plugins ★ 17.282 (+314), HKUDS/CLI-Anything ★ 59.893 (+389), mvanhorn/last30days-skill ★ 70.156 (+1.059); laporan 14–18 Nov kosong → baseline mingguan = 13 Nov | report: docs/trending/2026-11-19.md
 
 - 2026-11-15 16:05 | laporan | hermes@orangepi | retro W46 published — 8 task done minggu ini: Telegram saga tutup berlapis (relay verdict → breaker → veto, semua angka live; MTU pin dibunuh), backup offsite + restore drill PASS, vitest isolate:false reject ke-2 (eksperimen sama jalan 2×, cek archive sebelum re-run); follow-up t_d6fb0e59 docker daemon restart ready; [FLOOR-EMPTY: tabacoID-website] (2 item sisa butuh approval manusia) | report: docs/reports/2026-46-retrospective.md
 
