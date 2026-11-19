@@ -2705,5 +2705,97 @@
     "note": "Legenda manajemen versi Node.js ini masih relevan: total ★ 96.022 dengan +63 hari ini."
    }
   ]
+ },
+ {
+  "slug": "2026-11-19",
+  "date": "2026-11-19",
+  "title": "Laporan Harian GitHub Trending — Kamis, 19 November 2026",
+  "summary": "",
+  "repos": [
+   {
+    "repo": "cursor/plugins",
+    "stars_today": 314,
+    "lang": "TypeScript",
+    "desc": "Spesifikasi plugin Cursor dan koleksi plugin resmi pihak ketiga",
+    "rank": 1
+   },
+   {
+    "repo": "HKUDS/CLI-Anything",
+    "stars_today": 389,
+    "lang": "Python",
+    "desc": "Membuat semua perangkat lunak menjadi agent-native melalui CLI",
+    "rank": 2
+   },
+   {
+    "repo": "mvanhorn/last30days-skill",
+    "stars_today": 1059,
+    "lang": "Python",
+    "desc": "Skill agen AI untuk riset topik lintas Reddit, X, YouTube, HN, Polymarket, dan web",
+    "rank": 3
+   },
+   {
+    "repo": "getarcaneapp/arcane",
+    "stars_today": 547,
+    "lang": "Go",
+    "desc": "Manajemen Docker modern yang dirancang untuk semua orang",
+    "rank": 4
+   },
+   {
+    "repo": "NVIDIA/SkillEvaluator",
+    "stars_today": 312,
+    "lang": "Python",
+    "desc": "Kerangka multi-tingkat untuk mengevaluasi skill dan plugin agen AI",
+    "rank": 5
+   },
+   {
+    "repo": "nvm-sh/nvm",
+    "stars_today": 237,
+    "lang": "Shell",
+    "desc": "Node Version Manager untuk mengelola banyak versi Node.js aktif",
+    "rank": 6
+   },
+   {
+    "repo": "astral-sh/uv",
+    "stars_today": 258,
+    "lang": "Rust",
+    "desc": "Manajer paket dan proyek Python yang ekstrem cepat, ditulis dalam Rust",
+    "rank": 7
+   },
+   {
+    "repo": "google-research/paper-orchestra",
+    "stars_today": 1524,
+    "lang": "Python",
+    "desc": "Kerangka multi-agen untuk penulisan otomatis makalah riset AI",
+    "rank": 8
+   },
+   {
+    "repo": "google-labs-code/stitch-skills",
+    "stars_today": 365,
+    "lang": "TypeScript",
+    "desc": "Pustaka Agent Skills untuk Stitch MCP server dari Google Labs",
+    "rank": 9
+   },
+   {
+    "repo": "sveltejs/svelte",
+    "stars_today": 692,
+    "lang": "JavaScript",
+    "desc": "Framework web reaktif untuk \"sisanya dari kita\"",
+    "rank": 10
+   }
+  ],
+  "insights": [
+   {
+    "repo": "cursor/plugins",
+    "note": "Repo spesifikasi plugin dan koleksi plugin resmi untuk editor AI Cursor, hari ini memimpin daftar dengan +314 bintang hingga total ★ 17.282."
+   },
+   {
+    "repo": "HKUDS/CLI-Anything",
+    "note": "Proyek riset dari lab HKUDS berjuluk \"Making ALL Software Agent-Native\": membungkus perangkat lunak apa pun menjadi CLI yang bisa dipanggil agen, dengan direktori CLI-Hub di [clianything.cc](https://c"
+   },
+   {
+    "repo": "mvanhorn/last30days-skill",
+    "note": "Skill riset untuk agen AI yang menelusuri satu topik lintas Reddit, X, YouTube, HN, Polymarket, dan web, lalu menyusun ringkasan yang ter-ground; naik +1.059 bintang hingga ★ 70.156."
+   }
+  ]
  }
 ]
