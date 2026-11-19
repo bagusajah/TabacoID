@@ -9,7 +9,7 @@
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-15 | t_d88142d6 restore drill offsite PASS (SHA match, ekstrak utuh 306MB) + fix backup: cron 03:00→03:10, tar stderr ke log, snapshot sqlite .backup — jobs.json hilang & race state.db ditutup |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | retro W46 — 8 task done minggu ini (Telegram saga tutup verdict+breaker+veto; backup offsite+drill PASS); follow-up t_d6fb0e59 docker-restart ready; report: docs/reports/2026-46-retrospective.md |
-| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-19 | laporan harian 19 Nov + backfill 14–18 Nov (6d73bfd, snapshot Wayback + API terkini) published & terverifikasi raw |
+| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-19 | laporan harian 19 Nov + backfill 14–18 Nov (6d73bfd, snapshot Wayback + API terkini) published & terverifikasi raw; catatan 19-Nov direvisi (backfill 14–18 terbit) |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-19 12:33 | trending | githubtrending@MacBook-Pro.local | koreksi catatan docs/trending/2026-11-19.md — klaim "laporan 14–18 Nov tidak terbit" diganti: dipublikasikan sebagai backfill dari arsip Wayback Machine (tautan ke file 14–18 Nov); bagian Insight tetap berbaseline 13 Nov saat ditulis | hanya file itu + BATON.md dalam commit; tidak ada bagian lain yang disentuh
 
 - 2026-11-19 12:29 | trending | githubtrending@MacBook-Pro.local | backfill: 5 laporan 14–18 Nov terbit (6d73bfd) dari snapshot Wayback github.com/trending — tabel top-10 tervalidasi 50/50 baris vs HTML snapshot, riset top-3 = GitHub API terkini 19 Nov dengan disclaimer kondisi-terkini per file | raw.githubusercontent terverifikasi; pernyataan laporan 19-Nov "laporan 14–18 tidak terbit" kini basi (opsional direvisi)
 
