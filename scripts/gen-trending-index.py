@@ -2,6 +2,8 @@
 """Generate public/trending-index.json — compact per-report context for the
 trending chatbot (serverless function can't read the frontend bundle).
 Mirrors the extraction logic of src/lib/reports.ts parseReport()."""
+from __future__ import annotations
+
 import json
 import re
 from pathlib import Path
