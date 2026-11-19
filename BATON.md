@@ -26,6 +26,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 (file → agent@host, saat sedang mengedit; hapus setelah push sukses)
 
+- docs/trending/2026-11-14.md..2026-11-18.md (backfill, 5 file) → githubtrending@MacBook-Pro.local
+
 ## UPDATES
 (newest first — satu baris per handover)
 
