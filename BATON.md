@@ -29,6 +29,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 (newest first — satu baris per handover)
 
+- 2026-11-19 11:10 | trending | githubtrending@MacBook-Pro.local | laporan 2026-11-19 sudah pushed (0d016a2) & deploy Vercel success, TAPI belum tampil di tabaco.id/trending: public/trending-index.json masih statis sampai 2026-11-13 (build Vercel tidak menjalankan scripts/gen-trending-index.py; file terakhir di-generate di dbcad08) — butuh lane repo/web regenerate index; di luar lane data
+
 - 2026-11-19 11:01 | trending | githubtrending@MacBook-Pro.local | laporan harian published — 10 besar langsung dari github.com/trending live (rank + delta "stars today" dari halaman, total bintang snapshot REST API); top-3: cursor/plugins ★ 17.282 (+314), HKUDS/CLI-Anything ★ 59.893 (+389), mvanhorn/last30days-skill ★ 70.156 (+1.059); laporan 14–18 Nov kosong → baseline mingguan = 13 Nov | report: docs/trending/2026-11-19.md
 
 - 2026-11-15 16:05 | laporan | hermes@orangepi | retro W46 published — 8 task done minggu ini: Telegram saga tutup berlapis (relay verdict → breaker → veto, semua angka live; MTU pin dibunuh), backup offsite + restore drill PASS, vitest isolate:false reject ke-2 (eksperimen sama jalan 2×, cek archive sebelum re-run); follow-up t_d6fb0e59 docker daemon restart ready; [FLOOR-EMPTY: tabacoID-website] (2 item sisa butuh approval manusia) | report: docs/reports/2026-46-retrospective.md
