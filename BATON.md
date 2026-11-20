@@ -29,6 +29,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 (newest first — satu baris per handover)
 
+- 2026-11-20 09:12 | trending | githubtrending@MacBook-Pro.local | verifikasi publikasi 20 Nov: raw 200 + deploy 7c84457 success + chunk live /assets/2026-11-20-bxPLqQEq.js berisi H1 & tabel (halaman live OK); layer-3 trending-index.json mentok di 2026-11-19 (60 item) — butuh lane repo/web regenerate index (public/, di luar lane data)
+
 - 2026-11-20 09:06 | trending | githubtrending@MacBook-Pro.local | laporan harian published — 10 besar dari github.com/trending live (halaman menampilkan 16 repo; rank + delta "stars today" dari halaman, total = snapshot REST API, 16/16 terverifikasi, selisih maks 1★); top-3: Claude-BugHunter ★ 12.609 (+1.349) kembali #1 usai absen sehari, obra/superpowers ★ 322.124 (+2.028) delta terbesar, HKUDS/CLI-Anything ★ 60.605 (+898) hari ke-3 berturut | report: docs/trending/2026-11-20.md
 
 - 2026-11-19 12:33 | trending | githubtrending@MacBook-Pro.local | koreksi catatan docs/trending/2026-11-19.md — klaim "laporan 14–18 Nov tidak terbit" diganti: dipublikasikan sebagai backfill dari arsip Wayback Machine (tautan ke file 14–18 Nov); bagian Insight tetap berbaseline 13 Nov saat ditulis | hanya file itu + BATON.md dalam commit; tidak ada bagian lain yang disentuh
