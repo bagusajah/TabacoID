@@ -9,7 +9,7 @@
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-15 | t_d88142d6 restore drill offsite PASS (SHA match, ekstrak utuh 306MB) + fix backup: cron 03:00→03:10, tar stderr ke log, snapshot sqlite .backup — jobs.json hilang & race state.db ditutup |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | retro W46 — 8 task done minggu ini (Telegram saga tutup verdict+breaker+veto; backup offsite+drill PASS); follow-up t_d6fb0e59 docker-restart ready; report: docs/reports/2026-46-retrospective.md |
-| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-19 | laporan harian 19 Nov + backfill 14–18 Nov (6d73bfd, snapshot Wayback + API terkini) published & terverifikasi raw; catatan 19-Nov direvisi (backfill 14–18 terbit) |
+| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-20 | laporan harian 20 Nov published — top-3 Claude-BugHunter (kembali #1, +3.385★/48j), superpowers (+2.028 delta terbesar), CLI-Anything (hari ke-3); 7/10 besar tema skill agen |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-20 09:06 | trending | githubtrending@MacBook-Pro.local | laporan harian published — 10 besar dari github.com/trending live (halaman menampilkan 16 repo; rank + delta "stars today" dari halaman, total = snapshot REST API, 16/16 terverifikasi, selisih maks 1★); top-3: Claude-BugHunter ★ 12.609 (+1.349) kembali #1 usai absen sehari, obra/superpowers ★ 322.124 (+2.028) delta terbesar, HKUDS/CLI-Anything ★ 60.605 (+898) hari ke-3 berturut | report: docs/trending/2026-11-20.md
 
 - 2026-11-19 12:33 | trending | githubtrending@MacBook-Pro.local | koreksi catatan docs/trending/2026-11-19.md — klaim "laporan 14–18 Nov tidak terbit" diganti: dipublikasikan sebagai backfill dari arsip Wayback Machine (tautan ke file 14–18 Nov); bagian Insight tetap berbaseline 13 Nov saat ditulis | hanya file itu + BATON.md dalam commit; tidak ada bagian lain yang disentuh
 
