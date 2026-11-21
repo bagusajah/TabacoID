@@ -13,6 +13,7 @@ STATIC_ROUTES = [
     ("/", "1.0", "daily"),
     ("/reports", "0.9", "daily"),
     ('/trending', "0.8", "daily"),
+    ("/trending/dashboard", "0.8", "daily"),
     ("/ambience", "0.8", "daily"),
     ("/workflow", "0.8", "monthly"),
     ("/about", "0.7", "monthly"),

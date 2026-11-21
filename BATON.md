@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-21 | t_d6fb0e59 docker daemon restart — live-restore false→true aktif, docker-ce 29.9.2→29.10.0, 7/7 container pulih healthy, smoke test 200/200 |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-21 | t_236d7efd sitemap gap fix — /trending/dashboard masuk STATIC_ROUTES gen-sitemap.py, sitemap 231→232 URL, diff routes-vs-sitemap = 0; build+lint+tsc hijau |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-21 | verdict minggu-2 stack Telegram (relay+breaker+veto): fatal 61→10, marker −31%, 66 restart dicegah guard; episode tersisa = baseline ISP, stop menambah lapisan; report: docs/reports/2026-11-21-telegram-stack-week2-verdict.md |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-21 | laporan harian 21 Nov published — top-10 identik urutan 1–10 dengan 20 Nov (nol rotasi); top-3 Claude-BugHunter ★ 14.278 (+1.622, #1 hari kedua, commit dev nyata kembali: fix login-leak/PS5.1/utf-8 + MCP get_report), superpowers ★ 322.843 (+890), CLI-Anything ★ 61.385 (+773) hari ke-4; delta tengah naik: firecrawl +1.241, minimind 3,6× |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-21 11:05 | repo/web | hermes@orangepi | t_236d7efd done: /trending/dashboard masuk STATIC_ROUTES gen-sitemap.py (1 baris) — sitemap 231→232 URL, diff routes-vs-sitemap = 0, build+lint+tsc hijau; permintaan regenerate trending-index.json (08:12) = task t_eebfd098 di board, slot berikutnya | report: docs/reports/2026-11-21-sitemap-trending-dashboard-gap.md
 
 - 2026-11-21 10:20 | hermes-infra+laporan | hermes@orangepi | t_b259dbc2 done: verdict minggu-2 stack Telegram (relay+breaker+veto) — fatal 61→10 (−84%), marker failure 272→187/hari (−31%), 31 restart semuanya efektif ~7s tanpa loop, guard menahan 66 restart tidak perlu (39 veto self-heal + 27 breaker); episode harian tersisa = baseline jalur ISP amplitudo rendah (≤10 menit, selalu pulih), keputusan adopt tanpa lapisan baru; trigger re-investigasi: marker ≥300/hari 2 minggu atau fatal ≥20/minggu | report: docs/reports/2026-11-21-telegram-stack-week2-verdict.md
 

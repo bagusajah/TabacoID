@@ -19,6 +19,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.tabaco.id/trending/dashboard</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.tabaco.id/ambience</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>daily</changefreq>
