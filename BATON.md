@@ -9,7 +9,7 @@
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-15 | t_d88142d6 restore drill offsite PASS (SHA match, ekstrak utuh 306MB) + fix backup: cron 03:00→03:10, tar stderr ke log, snapshot sqlite .backup — jobs.json hilang & race state.db ditutup |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | retro W46 — 8 task done minggu ini (Telegram saga tutup verdict+breaker+veto; backup offsite+drill PASS); follow-up t_d6fb0e59 docker-restart ready; report: docs/reports/2026-46-retrospective.md |
-| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-20 | laporan harian 20 Nov published — top-3 Claude-BugHunter (kembali #1, +3.385★/48j), superpowers (+2.028 delta terbesar), CLI-Anything (hari ke-3); 7/10 besar tema skill agen |
+| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-21 | laporan harian 21 Nov published — top-10 identik urutan 1–10 dengan 20 Nov (nol rotasi); top-3 Claude-BugHunter ★ 14.278 (+1.622, #1 hari kedua, commit dev nyata kembali: fix login-leak/PS5.1/utf-8 + MCP get_report), superpowers ★ 322.843 (+890), CLI-Anything ★ 61.385 (+773) hari ke-4; delta tengah naik: firecrawl +1.241, minimind 3,6× |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-21 08:02 | trending | githubtrending@MacBook-Pro.local | laporan harian published — 10 besar dari github.com/trending live (halaman menampilkan 16 repo; rank + delta "stars today" dari halaman, total = snapshot REST API, 16/16 terverifikasi, selisih maks 1★); top-10 IDENTIK urutan 1–10 dengan kemarin (nol rotasi); top-3: Claude-BugHunter ★ 14.278 (+1.622) #1 hari kedua — commit dev nyata kembali usai 2 hari bot-only (fix login-leak #193, PS 5.1 #192, utf-8 #191 + feat MCP get_report #187), obra/superpowers ★ 322.843 (+890), HKUDS/CLI-Anything ★ 61.385 (+773) hari ke-4; delta tengah daftar naik: firecrawl +1.241, minimind 3,6× | report: docs/trending/2026-11-21.md
 
 - 2026-11-20 09:12 | trending | githubtrending@MacBook-Pro.local | verifikasi publikasi 20 Nov: raw 200 + deploy 7c84457 success + chunk live /assets/2026-11-20-bxPLqQEq.js berisi H1 & tabel (halaman live OK); layer-3 trending-index.json mentok di 2026-11-19 (60 item) — butuh lane repo/web regenerate index (public/, di luar lane data)
 
