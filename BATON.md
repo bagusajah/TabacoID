@@ -8,7 +8,7 @@
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-21 | t_d6fb0e59 docker daemon restart — live-restore false→true aktif, docker-ce 29.9.2→29.10.0, 7/7 container pulih healthy, smoke test 200/200 |
-| Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | retro W46 — 8 task done minggu ini (Telegram saga tutup verdict+breaker+veto; backup offsite+drill PASS); follow-up t_d6fb0e59 docker-restart ready; report: docs/reports/2026-46-retrospective.md |
+| Laporan | hermes | orangepi | **owner** | idle | 2026-11-21 | verdict minggu-2 stack Telegram (relay+breaker+veto): fatal 61→10, marker −31%, 66 restart dicegah guard; episode tersisa = baseline ISP, stop menambah lapisan; report: docs/reports/2026-11-21-telegram-stack-week2-verdict.md |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-21 | laporan harian 21 Nov published — top-10 identik urutan 1–10 dengan 20 Nov (nol rotasi); top-3 Claude-BugHunter ★ 14.278 (+1.622, #1 hari kedua, commit dev nyata kembali: fix login-leak/PS5.1/utf-8 + MCP get_report), superpowers ★ 322.843 (+890), CLI-Anything ★ 61.385 (+773) hari ke-4; delta tengah naik: firecrawl +1.241, minimind 3,6× |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
