@@ -1,5 +1,5 @@
-[{"date":"2026-11-21","job":"cicd-builder","api_calls":36,"input_tokens":109757,"output_tokens":8542,"reasoning_tokens":5225,"cache_tokens":497216},
-{"date":"2026-11-21","job":"daily-focus","api_calls":125,"input_tokens":260923,"output_tokens":93961,"reasoning_tokens":66091,"cache_tokens":3670720},
+[{"date":"2026-11-21","job":"cicd-builder","api_calls":42,"input_tokens":129348,"output_tokens":9468,"reasoning_tokens":5808,"cache_tokens":564160},
+{"date":"2026-11-21","job":"daily-focus","api_calls":142,"input_tokens":291951,"output_tokens":112051,"reasoning_tokens":79502,"cache_tokens":4063360},
 {"date":"2026-11-15","job":"cicd-builder","api_calls":29,"input_tokens":121169,"output_tokens":4857,"reasoning_tokens":3287,"cache_tokens":256192},
 {"date":"2026-11-15","job":"daily-focus","api_calls":184,"input_tokens":358063,"output_tokens":147621,"reasoning_tokens":104595,"cache_tokens":5890176},
 {"date":"2026-11-14","job":"cicd-builder","api_calls":37,"input_tokens":150054,"output_tokens":9608,"reasoning_tokens":5575,"cache_tokens":396928},
