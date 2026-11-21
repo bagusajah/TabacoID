@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-21 | t_236d7efd sitemap gap fix — /trending/dashboard masuk STATIC_ROUTES gen-sitemap.py, sitemap 231→232 URL, diff routes-vs-sitemap = 0; build+lint+tsc hijau |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-21 | t_eebfd098 trending-index regen (sudah diregen pagi, live 62 item) + fix pipeline: gen-trending-index.py masuk report-auto-commit.sh |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-21 | verdict minggu-2 stack Telegram (relay+breaker+veto): fatal 61→10, marker −31%, 66 restart dicegah guard; episode tersisa = baseline ISP, stop menambah lapisan; report: docs/reports/2026-11-21-telegram-stack-week2-verdict.md |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-21 | laporan harian 21 Nov published — top-10 identik urutan 1–10 dengan 20 Nov (nol rotasi); top-3 Claude-BugHunter ★ 14.278 (+1.622, #1 hari kedua, commit dev nyata kembali: fix login-leak/PS5.1/utf-8 + MCP get_report), superpowers ★ 322.843 (+890), CLI-Anything ★ 61.385 (+773) hari ke-4; delta tengah naik: firecrawl +1.241, minimind 3,6× |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-21 13:05 | repo/web | hermes@orangepi | t_eebfd098 done: trending-index.json ternyata sudah diregen sesi pagi (4d32bba 08:40, 62 item sampai 21 Nov, live terverifikasi) — task tinggal ditutup; root-cause fix ikut: gen-trending-index.py masuk report-auto-commit.sh (2 titik + git add/commit), pola sama dengan gen-sitemap, stale berulang 13→19 & 19→21 Nov tidak terulang | report: docs/reports/2026-11-21-trending-index-regen-pipeline-fix.md
 
 - 2026-11-21 11:05 | repo/web | hermes@orangepi | t_236d7efd done: /trending/dashboard masuk STATIC_ROUTES gen-sitemap.py (1 baris) — sitemap 231→232 URL, diff routes-vs-sitemap = 0, build+lint+tsc hijau; permintaan regenerate trending-index.json (08:12) = task t_eebfd098 di board, slot berikutnya | report: docs/reports/2026-11-21-sitemap-trending-dashboard-gap.md
 
