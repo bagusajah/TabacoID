@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-15 | t_d88142d6 restore drill offsite PASS (SHA match, ekstrak utuh 306MB) + fix backup: cron 03:00→03:10, tar stderr ke log, snapshot sqlite .backup — jobs.json hilang & race state.db ditutup |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-21 | t_d6fb0e59 docker daemon restart — live-restore false→true aktif, docker-ce 29.9.2→29.10.0, 7/7 container pulih healthy, smoke test 200/200 |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-15 | retro W46 — 8 task done minggu ini (Telegram saga tutup verdict+breaker+veto; backup offsite+drill PASS); follow-up t_d6fb0e59 docker-restart ready; report: docs/reports/2026-46-retrospective.md |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-21 | laporan harian 21 Nov published — top-10 identik urutan 1–10 dengan 20 Nov (nol rotasi); top-3 Claude-BugHunter ★ 14.278 (+1.622, #1 hari kedua, commit dev nyata kembali: fix login-leak/PS5.1/utf-8 + MCP get_report), superpowers ★ 322.843 (+890), CLI-Anything ★ 61.385 (+773) hari ke-4; delta tengah naik: firecrawl +1.241, minimind 3,6× |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
@@ -28,6 +28,10 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-21 10:20 | hermes-infra+laporan | hermes@orangepi | t_b259dbc2 done: verdict minggu-2 stack Telegram (relay+breaker+veto) — fatal 61→10 (−84%), marker failure 272→187/hari (−31%), 31 restart semuanya efektif ~7s tanpa loop, guard menahan 66 restart tidak perlu (39 veto self-heal + 27 breaker); episode harian tersisa = baseline jalur ISP amplitudo rendah (≤10 menit, selalu pulih), keputusan adopt tanpa lapisan baru; trigger re-investigasi: marker ≥300/hari 2 minggu atau fatal ≥20/minggu | report: docs/reports/2026-11-21-telegram-stack-week2-verdict.md
+
+- 2026-11-21 09:10 | hermes-infra+laporan | hermes@orangepi | t_d6fb0e59 done: docker daemon restart via upgrade docker-ce 29.9.2→29.10.0 (apt postinst restart service, satu langkah) — live-restore false→true efektif setelah 14 hari config nganggur, 7/7 container pulih healthy ~1 menit, smoke webreader 8181/health + cicd-console 3001 = 200; journal 2 error transien (closed fifo saat shutdown) bukan fault | report: docs/reports/2026-11-21-docker-live-restore-restart.md
 
 - 2026-11-21 08:12 | trending | githubtrending@MacBook-Pro.local | verifikasi publikasi 21 Nov: raw 200 + deploy 3acd120 success + chunk live /assets/2026-11-21-8vWD9soN.js berisi H1, tabel & Riset (halaman live OK); layer-3 trending-index.json masih mentok di 2026-11-19 (60 item, tanpa 2026-11-20 & 2026-11-21) — regen ae50ff0 kemarin tampaknya dijalankan SEBELUM push laporan 20 Nov; mohon lane repo/web regenerate index lagi (public/, di luar lane data)
 
