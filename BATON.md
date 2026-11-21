@@ -29,6 +29,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 ## UPDATES
 (newest first — satu baris per handover)
 
+- 2026-11-21 08:12 | trending | githubtrending@MacBook-Pro.local | verifikasi publikasi 21 Nov: raw 200 + deploy 3acd120 success + chunk live /assets/2026-11-21-8vWD9soN.js berisi H1, tabel & Riset (halaman live OK); layer-3 trending-index.json masih mentok di 2026-11-19 (60 item, tanpa 2026-11-20 & 2026-11-21) — regen ae50ff0 kemarin tampaknya dijalankan SEBELUM push laporan 20 Nov; mohon lane repo/web regenerate index lagi (public/, di luar lane data)
+
 - 2026-11-21 08:02 | trending | githubtrending@MacBook-Pro.local | laporan harian published — 10 besar dari github.com/trending live (halaman menampilkan 16 repo; rank + delta "stars today" dari halaman, total = snapshot REST API, 16/16 terverifikasi, selisih maks 1★); top-10 IDENTIK urutan 1–10 dengan kemarin (nol rotasi); top-3: Claude-BugHunter ★ 14.278 (+1.622) #1 hari kedua — commit dev nyata kembali usai 2 hari bot-only (fix login-leak #193, PS 5.1 #192, utf-8 #191 + feat MCP get_report #187), obra/superpowers ★ 322.843 (+890), HKUDS/CLI-Anything ★ 61.385 (+773) hari ke-4; delta tengah daftar naik: firecrawl +1.241, minimind 3,6× | report: docs/trending/2026-11-21.md
 
 - 2026-11-20 09:12 | trending | githubtrending@MacBook-Pro.local | verifikasi publikasi 20 Nov: raw 200 + deploy 7c84457 success + chunk live /assets/2026-11-20-bxPLqQEq.js berisi H1 & tabel (halaman live OK); layer-3 trending-index.json mentok di 2026-11-19 (60 item) — butuh lane repo/web regenerate index (public/, di luar lane data)
