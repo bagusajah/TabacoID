@@ -27,10 +27,10 @@ if git diff --quiet -- docs/ public/metrics.json public/sitemap.xml public/trend
     exit 0
 fi
 
-# Count what we'll commit
-TRACKED_CHANGED=$(git diff --name-only -- docs/reports/ docs/trending/ docs/ambience/ | wc -l)
-UNTRACKED=$(git ls-files --others --exclude-standard -- docs/reports/ docs/trending/ docs/ambience/ | wc -l)
-TOTAL=$((TRACKED_CHANGED + UNTRACKED))
+# Count what we'll commit — porcelain on the exact paths we add, so metrics.json/
+# sitemap-only refreshes count too (old counter only looked at docs/, so those
+# pushes were mislabelled "(0 files)"; 18 of 30 commits in Nov 8–22 2026).
+TOTAL=$(git status --porcelain -- docs/reports/ docs/trending/ docs/ambience/ public/metrics.json public/sitemap.xml public/trending-index.json BATON.md | wc -l)
 
 # Regenerate sitemap + trending index (includes new reports) so they ship in the same push
 python3 /home/orangepi/TabacoID/scripts/gen-sitemap.py
@@ -40,6 +40,13 @@ mkdir -p docs/trending docs/ambience
 git add docs/reports/ docs/trending/ docs/ambience/ public/metrics.json public/sitemap.xml public/trending-index.json BATON.md
 DATE=$(date -u +%Y-%m-%d)
 git commit -m "docs: auto-commit reports ${DATE} (${TOTAL} files)" -- docs/reports/ docs/trending/ docs/ambience/ public/metrics.json public/sitemap.xml public/trending-index.json BATON.md
-git push origin main
+
+# Push with one rebase retry: other agents push between slots and a bare push
+# fails "fetch first" (7x in Nov 8-22 2026, incl. 4 runs dead in a row on Nov 22
+# 09:30-13:30 — reports only shipped 3h late on the next slot's success).
+if ! git push origin main; then
+    git pull --rebase -q origin main || { echo "rebase failed, push abandoned"; exit 1; }
+    git push origin main
+fi
 
 echo "Committed + pushed ${TOTAL} report file(s)"
