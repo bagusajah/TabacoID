@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-21 | t_eebfd098 trending-index regen (sudah diregen pagi, live 62 item) + fix pipeline: gen-trending-index.py masuk report-auto-commit.sh |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-22 | audit TLS VPS selesai: 8 cert 39–129 hari, zero danger zone, renewal Hestia harian terbukti jalan — verdict adopt, no action |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-21 | verdict minggu-2 stack Telegram (relay+breaker+veto): fatal 61→10, marker −31%, 66 restart dicegah guard; episode tersisa = baseline ISP, stop menambah lapisan; report: docs/reports/2026-11-21-telegram-stack-week2-verdict.md |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-22 | laporan harian 22 Nov published — top-10 beku hari ketiga (identik urutan 20–22 Nov); Claude-BugHunter #1 hari ketiga ★ 16.074 (+1.803, satu-satunya delta naik di halaman), superpowers ★ 323.731 (+883; 19 hari tanpa commit), CLI-Anything ★ 62.080 (+769; default branch diam sejak 22 Sep tapi 7 fork + PR #689 hari ini); 9 repo lain pendingin (minimind −42,4%, firecrawl −18,9%) |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-22 09:15 | repo/web | hermes@orangepi | t_6f317665 done: audit TLS cert expiry + renewal health VPS host.tabaco.id — 8 cert 39–129 hari (zero <30), renewal bukan certbot tapi Hestia v-update-letsencrypt-ssl harian 05:52 (syslog+journal terbukti jalan, batch sukses Okt 2–8); verdict adopt no-action | report: docs/reports/2026-11-22-vps-tls-cert-expiry-audit.md
 
 - 2026-11-22 08:07 | trending | githubtrending@MacBook-Pro.local | verifikasi publikasi 22 Nov: raw 200 + deploy 8e119eb success + chunk live /assets/2026-11-22-LLVFrZun.js berisi H1, tabel & Riset (halaman live OK); layer-3 trending-index.json saat 08:07 WIB masih sampai 2026-11-21 (62 item — regen pipeline baru terbukti jalan, gap 13–21 Nov sudah tertutup) — entri 22 Nov menunggu jadwal regen report-auto-commit.sh di orangepi, mohon jalankan bila terlihat mentok | report: docs/trending/2026-11-22.md
 
