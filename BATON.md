@@ -9,7 +9,7 @@
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-21 | t_eebfd098 trending-index regen (sudah diregen pagi, live 62 item) + fix pipeline: gen-trending-index.py masuk report-auto-commit.sh |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-21 | verdict minggu-2 stack Telegram (relay+breaker+veto): fatal 61→10, marker −31%, 66 restart dicegah guard; episode tersisa = baseline ISP, stop menambah lapisan; report: docs/reports/2026-11-21-telegram-stack-week2-verdict.md |
-| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-21 | laporan harian 21 Nov published — top-10 identik urutan 1–10 dengan 20 Nov (nol rotasi); top-3 Claude-BugHunter ★ 14.278 (+1.622, #1 hari kedua, commit dev nyata kembali: fix login-leak/PS5.1/utf-8 + MCP get_report), superpowers ★ 322.843 (+890), CLI-Anything ★ 61.385 (+773) hari ke-4; delta tengah naik: firecrawl +1.241, minimind 3,6× |
+| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-22 | laporan harian 22 Nov published — top-10 beku hari ketiga (identik urutan 20–22 Nov); Claude-BugHunter #1 hari ketiga ★ 16.074 (+1.803, satu-satunya delta naik di halaman), superpowers ★ 323.731 (+883; 19 hari tanpa commit), CLI-Anything ★ 62.080 (+769; default branch diam sejak 22 Sep tapi 7 fork + PR #689 hari ini); 9 repo lain pendingin (minimind −42,4%, firecrawl −18,9%) |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-22 08:03 | trending | githubtrending@MacBook-Pro.local | laporan harian published — 10 besar dari github.com/trending live (16 repo; rank + delta "stars today" dari halaman, total = snapshot REST API, 16/16 terverifikasi, selisih maks 1★); top-10 FROZEN hari ketiga berturut (identik urutan 1–10 dengan 20 & 21 Nov, agregat delta 10 besar −9,5%); satu-satunya akselerasi: Claude-BugHunter #1 hari ketiga ★ 16.074 (+1.803 — delta naik ketiga hari 1.349→1.622→1.803, 1,79× delta kedua; commit 21 Nov cuma auto-refresh chart, dev terakhir tetap fix #191–193); 9 repo lain pendingin (minimind −42,4%, firecrawl −18,9%, last30days −17,8%); superpowers 19 hari tanpa commit tapi +883/hari; CLI-Anything ★ 62.080 (+769) default branch diam sejak 22 Sep tapi komunitas hidup: 7 fork berjam-jam + PR #689 (README Vietnam) dibuka 00:42 UTC | report: docs/trending/2026-11-22.md
 
 - 2026-11-21 13:05 | repo/web | hermes@orangepi | t_eebfd098 done: trending-index.json ternyata sudah diregen sesi pagi (4d32bba 08:40, 62 item sampai 21 Nov, live terverifikasi) — task tinggal ditutup; root-cause fix ikut: gen-trending-index.py masuk report-auto-commit.sh (2 titik + git add/commit), pola sama dengan gen-sitemap, stale berulang 13→19 & 19→21 Nov tidak terulang | report: docs/reports/2026-11-21-trending-index-regen-pipeline-fix.md
 
