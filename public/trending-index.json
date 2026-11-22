@@ -3441,5 +3441,97 @@
     "note": "Proyek riset lab HKUDS berjuluk \"Making ALL Software Agent-Native\" membungkus perangkat lunak apa pun menjadi CLI yang bisa dipanggil agen, dengan direktori CLI-Hub di [clianything.cc](https://clianyt"
    }
   ]
+ },
+ {
+  "slug": "2026-11-22",
+  "date": "2026-11-22",
+  "title": "Laporan Harian GitHub Trending — Minggu, 22 November 2026",
+  "summary": "",
+  "repos": [
+   {
+    "repo": "elementalsouls/Claude-BugHunter",
+    "stars_today": 1803,
+    "lang": "Python",
+    "desc": "Bundel skill Claude Code untuk bug hunting dan red-team eksternal: 82 skill, 15 slash command, dan 681 pola laporan kerentanan dalam 24 kelas vuln, plus matriks",
+    "rank": 1
+   },
+   {
+    "repo": "obra/superpowers",
+    "stars_today": 883,
+    "lang": "Shell",
+    "desc": "Kerangka skill agenetik dan metodologi pengembangan perangkat lunak yang terbukti bekerja",
+    "rank": 2
+   },
+   {
+    "repo": "HKUDS/CLI-Anything",
+    "stars_today": 769,
+    "lang": "Python",
+    "desc": "Membuat semua perangkat lunak menjadi agent-native melalui CLI dengan direktori CLI-Hub",
+    "rank": 3
+   },
+   {
+    "repo": "jingyaogong/minimind",
+    "stars_today": 488,
+    "lang": "Python",
+    "desc": "Melatih LLM 64M milikmu sendiri dari nol hanya dalam dua jam",
+    "rank": 4
+   },
+   {
+    "repo": "cursor/plugins",
+    "stars_today": 260,
+    "lang": "TypeScript",
+    "desc": "Spesifikasi plugin Cursor dan koleksi plugin resmi pihak ketiga",
+    "rank": 5
+   },
+   {
+    "repo": "firecrawl/firecrawl",
+    "stars_today": 1006,
+    "lang": "TypeScript",
+    "desc": "Infrastruktur pengetahuan untuk agen: pencarian, scraping, dan 550+ penyedia data lewat satu API",
+    "rank": 6
+   },
+   {
+    "repo": "nginx/nginx",
+    "stars_today": 189,
+    "lang": "C",
+    "desc": "Repositori resmi NGINX Open Source",
+    "rank": 7
+   },
+   {
+    "repo": "openvinotoolkit/openvino",
+    "stars_today": 200,
+    "lang": "C++",
+    "desc": "Toolkit sumber terbuka untuk mengoptimasi dan men-deploy inferensi AI",
+    "rank": 8
+   },
+   {
+    "repo": "cathrynlavery/diagram-design",
+    "stars_today": 583,
+    "lang": "HTML",
+    "desc": "Desain diagram bergaya editorial untuk Claude Code, Codex, Copilot, dan Cursor — 45 tipe diagram, HTML + SVG mandiri tanpa Mermaid",
+    "rank": 9
+   },
+   {
+    "repo": "mvanhorn/last30days-skill",
+    "stars_today": 560,
+    "lang": "Python",
+    "desc": "Skill agen AI untuk riset topik lintas Reddit, X, YouTube, HN, Polymarket, dan web",
+    "rank": 10
+   }
+  ],
+  "insights": [
+   {
+    "repo": "elementalsouls/Claude-BugHunter",
+    "note": "Bundel skill Claude Code untuk bug hunting dan red-team eksternal ini kini #1 untuk hari ketiga berturut-turut, dan satu-satunya repo di seluruh halaman yang deltanya justru menguat: +1.349 (20 Novemb"
+   },
+   {
+    "repo": "obra/superpowers",
+    "note": "Kerangka skill agenetik dari Jesse Vincent bertahan di #2 dengan ★ 323.731 dan delta +883 — nyaris persis +890 kemarin, stabilitas yang mencolok untuk repositori yang [belum disentuh sejak commit rili"
+   },
+   {
+    "repo": "HKUDS/CLI-Anything",
+    "note": "Proyek lab HKUDS berjuluk \"Making ALL Software Agent-Native\" kembali di #3 dengan ★ 62.080 (+769) — empat hari berturut-turut terkonfirmasi di tiga besar (19–22 November)."
+   }
+  ]
  }
 ]
