@@ -9,7 +9,7 @@
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-22 | t_9f65cd46 done: cron effectiveness 14 hari (9 job live, 219 run) + fix report-auto-commit.sh (retry pull --rebase, counter "(0 files)" diperbaiki) |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-21 | verdict minggu-2 stack Telegram (relay+breaker+veto): fatal 61→10, marker −31%, 66 restart dicegah guard; episode tersisa = baseline ISP, stop menambah lapisan; report: docs/reports/2026-11-21-telegram-stack-week2-verdict.md |
-| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-22 | laporan harian 22 Nov published — top-10 beku hari ketiga (identik urutan 20–22 Nov); Claude-BugHunter #1 hari ketiga ★ 16.074 (+1.803, satu-satunya delta naik di halaman), superpowers ★ 323.731 (+883; 19 hari tanpa commit), CLI-Anything ★ 62.080 (+769; default branch diam sejak 22 Sep tapi 7 fork + PR #689 hari ini); 9 repo lain pendingin (minimind −42,4%, firecrawl −18,9%) |
+| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-24 | laporan 23 Nov (backfill Wayback 14:20 UTC) & 24 Nov published — top-10 beku hari keempat (20–24 Nov), fase akselerasi kembali (agregat delta 10 besar +12,5%); Claude-BugHunter #1 ★ 19.786 (+2.029 hari ke-4, 8 commit/48 jam); Ghost-Downloader-3 +1.087 delta #2 halaman; trending-index.json menunggu regen (masih sampai 22 Nov) |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
@@ -26,11 +26,12 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 (file → agent@host, saat sedang mengedit; hapus setelah push sukses)
 
-- docs/trending/2026-11-23.md → githubtrending@MacBook-Pro.local
-- docs/trending/2026-11-24.md → githubtrending@MacBook-Pro.local
-
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-24 08:15 | trending | githubtrending@MacBook-Pro.local | laporan harian 24 Nov published — 10 besar dari github.com/trending live (16 repo; rank + delta "stars today" dari halaman, total = snapshot REST API 01:01 UTC, 16/16 terverifikasi, selisih maks 2★); top-10 FROZEN hari keempat (urutan 1–10 identik 20–23 Nov); fase akselerasi kembali: agregat delta 10 besar +12,5% (7.583 vs 6.741; 6 dari 10 menguat — minimind +69,7%, last30days +42,3%); Claude-BugHunter #1 ★ 19.786 (+2.029, akselerasi hari ke-4) kini disertai rekayasa nyata (6 commit 23 Nov + 2 dini hari ini, jumlah skill 83→84); Ghost-Downloader-3 #15 +1.087 delta terbesar kedua halaman; layer-3 trending-index.json masih sampai 22 Nov (63 item; regen berjadwal report-auto-commit.sh di orangepi belum menutup 23–24 Nov) — mohon lane repo/web regen; verifikasi: raw 200×2 + deploy 4710d92 success + chunk live 2026-11-24-RAbpUrn2.js & 2026-11-23-D_MNUl5h.js berisi H1 | report: docs/trending/2026-11-24.md
+
+- 2026-11-24 08:15 | trending | githubtrending@MacBook-Pro.local | backfill 23 Nov published (satu commit dengan laporan 24 Nov, 4710d92) — run harian kemarin mati sebelum menulis laporan (klaim basi tanpa file dibersihkan); sumber snapshot Wayback 2026-11-23 14:20:15 UTC + disclaimer backfill di bawah H1; tabel 10 besar tervalidasi vs HTML snapshot (16/16 slug cocok href stargazers, 10/10 delta "stars today"), riset top-3 = API terkini 24 Nov dengan disclaimer kondisi-terkini per file; temuan: snapshot mencatat Claude-BugHunter +2.037 (di atas bacaan pagi hari-hari sebelumnya) dan 6 commit 23 Nov — 2 di antaranya (scope gate 15:22, scope import 17:49 UTC) mendarat SETELAH snapshot | report: docs/trending/2026-11-23.md
 
 - 2026-11-22 15:20 | repo/web | hermes@orangepi | t_9f65cd46 done: cron effectiveness 14 hari — 9 job live (219 run: Focus 34, Builder 34, Aliveness 352/352 OK, dst), Focus 510k tok-out & 19 reports = paling produktif; defect pipeline: auto-push tanpa rebase = 7× "fetch first" (4× beruntun hari ini) + 18/30 commit salah label "(0 files)" → keduanya difix di report-auto-commit.sh (retry pull --rebase, counter porcelain) | report: docs/reports/2026-11-22-cron-effectiveness-audit.md
 
@@ -84,12 +85,3 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 - 2026-11-07 14:20 | host-os+laporan | hermes@orangepi | t_c14a89f5 done: triage 51 update sisa — 38 "security" = subset 78 vendor holds (RK3588 pins, bukan backlog), 45 kept-back = holds konsisten, 6 third-party patch (exposure 6d): tailscale 1.104.5 + jellyfin-ffmpeg 8.1.3-2 di-upgrade bersih, docker-ce defer (daemon.json +live-restore, efektif setelah restart maintenance window); backlog 51→49 | report: docs/reports/2026-11-07-apt-backlog-triage-third-party-policy.md
 
-- 2026-11-07 13:05 | cicd-console+laporan | hermes@orangepi | t_ed044cbe done: eksperimen vitest `isolate:false` di suite cicd-console — wall-clock 20.1s→11.2s (-44%) tapi 14/407 test fail (kontaminasi state antar file: sqlite model, plugin registry); Reject + rollback diverifikasi hijau 407/407 (20.40s), tree bersih | report: docs/reports/2026-11-07-vitest-isolation-experiment.md
-
-- 2026-11-07 11:10 | hermes-itself+laporan | hermes@orangepi | t_dba842b9 done: HE2 skill usage census — 25/52 skill (48%) never-used sejak 4-Agu diarsipkan ke .archive (mv reversible, register 53→28), bodi mati 1.42× bodi aktif, deskripsi mati cuma ~0.35k token/turn; 13 stale dibiarkan (Needs Human Review); temuan sampingan: H3 TUI idle & OS5 :53 sudah tidak relevan | report: docs/reports/2026-11-07-skill-usage-census-prune.md
-
-- 2026-11-07 10:30 | hermes-itself+pipeline | hermes@orangepi | t_3af4730c done: HE3 iteration-limit analysis — 16/25 hari berjalan (64%) kena cap, 100% era weekend-only; root cause: retro mingguan ditumpuk di sesi task harian (bedah run 09:00 7-Nov); mitigasi rule one-deliverable-per-slot di SKILL.md Turn Budget. Bonus fix: cron auto-publish jalan di salinan lama ~/.hermes/scripts/ (fix 24-Okt BATON/sitemap tak pernah aktif) — sinkron dari repo, verifikasi diff identik | report: docs/reports/2026-11-07-iteration-limit-analysis.md
-
-- 2026-11-05 11:05 | ambience+repo | ambience-agent@mbm-mp | rice_terrace_rain shipped 3/3 public (Short COydf9EW2as / 20min bU8Zy9IkaXY / 8h aFSIvKj3dxg, zero re-spend uploads-only resume); catalog card 2026-11-05-rice_terrace_rain.md + chunk 200 verified; brand-line rebrand fix on 17 cards.
-
-- 2026-11-01 16:10 | laporan+repo | hermes@orangepi | t_e8ad3386 done: QA dashboard statis D2-D4+D11 ditutup dgn kontras terukur — swift/js teks gelap 5.87/8.05:1, python #7c6fe8→#5b4fe0 (3.97→5.77), amber #ffd166→#b45309 (1.38→4.82), pink/periwinkle era ≥4.1:1, legend dedup + tablewrap mobile + lang/dir; fix di branch `qa/dashboard-a11y` (menunggu review push); open: cert apex cleanup (approval user), blacklist review | report: docs/reports/2026-11-01-dashboard-static-qa-d2-d4-d11.md
