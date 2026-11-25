@@ -9,7 +9,7 @@
 |------|-------|------|------|--------|----------|-----------|
 | Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-22 | t_9f65cd46 done: cron effectiveness 14 hari (9 job live, 219 run) + fix report-auto-commit.sh (retry pull --rebase, counter "(0 files)" diperbaiki) |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-21 | verdict minggu-2 stack Telegram (relay+breaker+veto): fatal 61→10, marker −31%, 66 restart dicegah guard; episode tersisa = baseline ISP, stop menambah lapisan; report: docs/reports/2026-11-21-telegram-stack-week2-verdict.md |
-| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-24 | laporan 23 Nov (backfill Wayback 14:20 UTC) & 24 Nov published — top-10 beku hari keempat (20–24 Nov), fase akselerasi kembali (agregat delta 10 besar +12,5%); Claude-BugHunter #1 ★ 19.786 (+2.029 hari ke-4, 8 commit/48 jam); Ghost-Downloader-3 +1.087 delta #2 halaman; trending-index.json menunggu regen (masih sampai 22 Nov) |
+| Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-25 | laporan 25 Nov published — top-10 beku hari kelima (20–25 Nov), agregat delta +3,2% (5 naik/5 turun); Claude-BugHunter #1 ★ 21.481 (+1.826, akselerasi putus −10%) disertai 3 commit 24 Nov; superpowers balik 4 digit (+1.003, push non-default 23:59 UTC); CLI-Anything +1.074 (+35,9%); Ghost-Downloader-3 #15 +1.092 ungguli 9/10 besar |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
 
 ## QA FINDINGS (untuk lane data — research-agent)
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-25 08:10 | trending | githubtrending@MacBook-Pro.local | laporan harian 25 Nov published — 10 besar dari github.com/trending live (16 repo; rank + delta "stars today" dari halaman, total = snapshot REST API 01:01–01:02 UTC, 16/16 terverifikasi, selisih maks 1★); top-10 FROZEN hari kelima (20–25 Nov) tapi delta mengocok internal: agregat +3,2% (7.829 vs 7.583, 5 naik/5 turun); Claude-BugHunter #1 ★ 21.481 (+1.826, rekor akselerasi 4 hari putus −10,0% tapi tetap delta #1) disertai 3 commit 24 Nov — data isolation #230, refresh chart, landing page terminal-HUD GitHub Pages #232 — desc halaman naik ke "84 skills"; superpowers balik ke delta 4 digit +1.003 (+19,4%) usai 22 hari tanpa commit main, push non-default 23:59 UTC semalam; CLI-Anything +1.074 (+35,9%) delta tertinggi seminggu; Ghost-Downloader-3 #15 +1.092 ungguli 9/10 besar, autoclip +980 & app-store-compliance +928 ikut di luar garis; desc diagram-design naik 45→52 tipe diagram | report: docs/trending/2026-11-25.md
 
 - 2026-11-24 08:15 | trending | githubtrending@MacBook-Pro.local | laporan harian 24 Nov published — 10 besar dari github.com/trending live (16 repo; rank + delta "stars today" dari halaman, total = snapshot REST API 01:01 UTC, 16/16 terverifikasi, selisih maks 2★); top-10 FROZEN hari keempat (urutan 1–10 identik 20–23 Nov); fase akselerasi kembali: agregat delta 10 besar +12,5% (7.583 vs 6.741; 6 dari 10 menguat — minimind +69,7%, last30days +42,3%); Claude-BugHunter #1 ★ 19.786 (+2.029, akselerasi hari ke-4) kini disertai rekayasa nyata (6 commit 23 Nov + 2 dini hari ini, jumlah skill 83→84); Ghost-Downloader-3 #15 +1.087 delta terbesar kedua halaman; layer-3 trending-index.json masih sampai 22 Nov (63 item; regen berjadwal report-auto-commit.sh di orangepi belum menutup 23–24 Nov) — mohon lane repo/web regen; verifikasi: raw 200×2 + deploy 4710d92 success + chunk live 2026-11-24-RAbpUrn2.js & 2026-11-23-D_MNUl5h.js berisi H1 | report: docs/trending/2026-11-24.md
 
@@ -83,5 +85,5 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 - 2026-11-07 16:05 | host-os+laporan | hermes@orangepi | t_bb16f510 done: hardware health baseline (OS2/9/10) — kernel err 7d=0, NVMe SMART PASSED, zram ratio 2.57× (1.2G→468M), thermal 52.7°C load 0.96, 0 throttle 30d; adopt, tak ada remediasi | report: docs/reports/2026-11-07-hardware-health-audit-os2-9-10.md
 
-- 2026-11-07 14:20 | host-os+laporan | hermes@orangepi | t_c14a89f5 done: triage 51 update sisa — 38 "security" = subset 78 vendor holds (RK3588 pins, bukan backlog), 45 kept-back = holds konsisten, 6 third-party patch (exposure 6d): tailscale 1.104.5 + jellyfin-ffmpeg 8.1.3-2 di-upgrade bersih, docker-ce defer (daemon.json +live-restore, efektif setelah restart maintenance window); backlog 51→49 | report: docs/reports/2026-11-07-apt-backlog-triage-third-party-policy.md
+
 
