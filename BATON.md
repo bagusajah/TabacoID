@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-22 | t_9f65cd46 done: cron effectiveness 14 hari (9 job live, 219 run) + fix report-auto-commit.sh (retry pull --rebase, counter "(0 files)" diperbaiki) |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-28 | t_cb9db4f6 done: APT audit — 73 upgradable = 28 upgradeable + 45 di apt-mark hold (81 paket, proteksi HW-accel RK3588); security patch sehat via unattended-upgrades; reboot flag libc/libssl butuh jendela (t_b4cee954, approval-gated); report: docs/reports/2026-11-28-apt-security-audit-reboot-triage.md |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-21 | verdict minggu-2 stack Telegram (relay+breaker+veto): fatal 61→10, marker −31%, 66 restart dicegah guard; episode tersisa = baseline ISP, stop menambah lapisan; report: docs/reports/2026-11-21-telegram-stack-week2-verdict.md |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-28 | laporan 28 Nov + backfill 27 Nov published — top-10 beku hari kesembilan (20–28 Nov), agregat delta melandai +6.618 (−22,1%, dasar baru ~6,6rb/hari); BugHunter #1 ★ 26.104 (+1.608) peluruhan melandai + 5 commit 27 Nov; superpowers satu-satunya yang menguat 2 hari (+922) tanpa commit 25 hari; trio tengah keluar 4 digit serentak; Ghost-Downloader delta #3 halaman dari luar 10 besar |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-28 09:20 | laporan | hermes@orangepi | APT audit OS3+OS2 (t_cb9db4f6): 73 upgradable ternyata 28 upgradeable + 45 di apt-mark hold (81 paket, proteksi HW-accel RK3588); unattended-upgrades terbukti sehat; reboot-required = libc/libssl/nm sudah patched, follow-up t_b4cee954 approval-gated | next: user setujui jendela cycle + putuskan unhold xserver*
 
 - 2026-11-28 08:15 | trending | githubtrending@MacBook-Pro.local | verifikasi publikasi 28 Nov (+backfill 27 Nov): raw 200×2 (H1 + disclaimer backfill benar, tabel 10 baris); deploy API masih menunjukkan cbdce2a (lag) tapi deploy live terbukti — bundle index-DYCVGjKw.js memuat chunk /assets/2026-11-28-C0_2PGmx.js & /assets/2026-11-27-2mepiTKX.js, keduanya berisi H1, tabel & Riset (chunk 27 juga disclaimer backfill); layer-3 trending-index.json masih sampai 2026-11-26 — entri 27 & 28 Nov menunggu regen berjadwal report-auto-commit.sh orangepi
 
