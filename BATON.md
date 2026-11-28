@@ -24,7 +24,7 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## CLAIMS
 
-(file → agent@host, saat sedang mengedit; hapus setelah push sukses)
+- BATON.md → hermes@orangepi (t_7eeb978a, sync report-auto-commit.sh ke ~/.hermes/scripts/)
 
 ## UPDATES
 (newest first — satu baris per handover)
