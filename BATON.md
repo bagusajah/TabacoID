@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-28 | t_ee4ab66f done: hardening retry push report-auto-commit.sh — `pull --rebase --autostash` (tree kotor: exit 128 → 0, sandbox-tested; kena live 10:06 pagi); smoke run push sukses fdcf1b9; report: docs/reports/2026-11-28-autostash-push-retry-hardening.md |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-28 | t_7eeb978a done: dual-copy script drift — cron ddf39ff8872d jalanin `~/.hermes/scripts/report-auto-commit.sh` (40 baris beda dari repo copy), semua fix 22+28 Nov (counter "(0 files)", trending-index regen, autostash) tidak pernah dieksekusi cron; disinkron cp+diff, e2e: commit 9ca0dfc "(2 files)" label benar + push sukses exit 0 | report: docs/reports/2026-11-28-dual-copy-script-drift.md |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-28 | verdict minggu-3 stack Telegram: trigger re-investigasi TIDAK kena (markers 758/mgg avg 108/hari <300, fatal 8 <20, watchdog 0 restart); temuan baru: sticky relay path success 40% pasca tg-relay crash 2x di VPS 27 Nov (clock step?), ditutup dual-path recovery, outage=0 — tetap adopt stop-menambah-lapisan; report: docs/reports/2026-11-28-telegram-stack-week3-verdict.md |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-28 | laporan 28 Nov + backfill 27 Nov published — top-10 beku hari kesembilan (20–28 Nov), agregat delta melandai +6.618 (−22,1%, dasar baru ~6,6rb/hari); BugHunter #1 ★ 26.104 (+1.608) peluruhan melandai + 5 commit 27 Nov; superpowers satu-satunya yang menguat 2 hari (+922) tanpa commit 25 hari; trio tengah keluar 4 digit serentak; Ghost-Downloader delta #3 halaman dari luar 10 besar |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
@@ -24,10 +24,12 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## CLAIMS
 
-- BATON.md → hermes@orangepi (t_7eeb978a, sync report-auto-commit.sh ke ~/.hermes/scripts/)
+(file → agent@host, saat sedang mengedit; hapus setelah push sukses)
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-28 15:05 | repo/pipeline | hermes@orangepi | t_7eeb978a done: dual-copy script drift — cron Report Auto-Publish jalanin `~/.hermes/scripts/report-auto-commit.sh`, bukan salinan repo; salinan home masih lama (40 baris beda): counter "(0 files)" salah (2x hari ini), tanpa regen trending-index, tanpa autostash retry — fix 22+28 Nov ke repo copy nggak pernah dieksekusi cron; fix: cp+diff sync, e2e commit 9ca0dfc "(2 files)" label benar + push exit 0 | report: docs/reports/2026-11-28-dual-copy-script-drift.md
 
 - 2026-11-28 13:20 | hermes-infra+laporan | hermes@orangepi | t_822d1de7 done: shellcheck 0.8.0 terpasang (LSP bash diagnostics kosong berulang) — 17 script TabacoID/scripts + ~/.hermes/scripts discan: 0 error, 4 warning (2× SC2034, 2× SC2010) semua di wal-containment.sh, diperbaiki (for _ + readlink fd glob), 17/17 clean + bash -n OK; keputusan adopt: script shell baru lulus -S warning | report: docs/reports/2026-11-28-shellcheck-lsp-diagnostics.md
 - 2026-11-28 11:10 | repo/pipeline | hermes@orangepi | t_ee4ab66f done: hardening retry push report-auto-commit.sh — `git pull --rebase --autostash` di line 48 (tree kotor: exit 128 → exit 0, teruji sandbox; kegagalan live 2026-11-28 10:06, preseden Nov 22 4 run mati beruntun); smoke run script exit 0, push fdcf1b9 sukses; trending-index.json 27–28 Nov terkonfirmasi origin & live (khawatir trending agent 08:15 tertutup regen 09:30) | report: docs/reports/2026-11-28-autostash-push-retry-hardening.md
