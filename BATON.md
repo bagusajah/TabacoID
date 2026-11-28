@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-28 | t_7eeb978a done: dual-copy script drift — cron ddf39ff8872d jalanin `~/.hermes/scripts/report-auto-commit.sh` (40 baris beda dari repo copy), semua fix 22+28 Nov (counter "(0 files)", trending-index regen, autostash) tidak pernah dieksekusi cron; disinkron cp+diff, e2e: commit 9ca0dfc "(2 files)" label benar + push sukses exit 0 | report: docs/reports/2026-11-28-dual-copy-script-drift.md |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-28 | t_a0b12798 done: W2 baseline TICMI token refresh (webreader) — 19/21 sukses 90.5%, self-heal terbukti, 13 upstream_error/7 hari episodic; lane webreader pertama minggu ini | report: docs/reports/2026-11-28-ticmi-token-refresh-baseline-w2.md |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-28 | verdict minggu-3 stack Telegram: trigger re-investigasi TIDAK kena (markers 758/mgg avg 108/hari <300, fatal 8 <20, watchdog 0 restart); temuan baru: sticky relay path success 40% pasca tg-relay crash 2x di VPS 27 Nov (clock step?), ditutup dual-path recovery, outage=0 — tetap adopt stop-menambah-lapisan; report: docs/reports/2026-11-28-telegram-stack-week3-verdict.md |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-28 | laporan 28 Nov + backfill 27 Nov published — top-10 beku hari kesembilan (20–28 Nov), agregat delta melandai +6.618 (−22,1%, dasar baru ~6,6rb/hari); BugHunter #1 ★ 26.104 (+1.608) peluruhan melandai + 5 commit 27 Nov; superpowers satu-satunya yang menguat 2 hari (+922) tanpa commit 25 hari; trio tengah keluar 4 digit serentak; Ghost-Downloader delta #3 halaman dari luar 10 besar |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-28 16:10 | webreader | hermes@orangepi | t_a0b12798 done: W2 baseline token refresh TICMI — 19/21 sukses (90.5%), interval 8h, episode gagal 22 Nov (2 slot, login_failed) self-heal 8 jam tanpa intervensi; container up 7d8h restarts=0; W3 terjawab sebagian: 13 upstream_error / 7 hari, semua burst 403 WAF 23 Nov, 0 sejak itu — token manager sehat, tidak perlu tuning | report: docs/reports/2026-11-28-ticmi-token-refresh-baseline-w2.md
 
 - 2026-11-28 15:05 | repo/pipeline | hermes@orangepi | t_7eeb978a done: dual-copy script drift — cron Report Auto-Publish jalanin `~/.hermes/scripts/report-auto-commit.sh`, bukan salinan repo; salinan home masih lama (40 baris beda): counter "(0 files)" salah (2x hari ini), tanpa regen trending-index, tanpa autostash retry — fix 22+28 Nov ke repo copy nggak pernah dieksekusi cron; fix: cp+diff sync, e2e commit 9ca0dfc "(2 files)" label benar + push exit 0 | report: docs/reports/2026-11-28-dual-copy-script-drift.md
 
