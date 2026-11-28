@@ -1015,6 +1015,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.tabaco.id/reports/2026-11-28-shellcheck-lsp-diagnostics</loc>
+    <lastmod>2026-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.tabaco.id/reports/2026-11-28-telegram-stack-week3-verdict</loc>
     <lastmod>2026-11-28</lastmod>
     <changefreq>monthly</changefreq>
