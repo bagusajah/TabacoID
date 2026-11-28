@@ -3901,5 +3901,189 @@
     "note": "Hari ketujuh di tiga besar dengan ★ 65.678, dan delta tetap empat digit hari kedua beruntun: +1.106 (+3,0% dari +1.074)."
    }
   ]
+ },
+ {
+  "slug": "2026-11-27",
+  "date": "2026-11-27",
+  "title": "Laporan Harian GitHub Trending — Jumat, 27 November 2026",
+  "summary": "Backfill: data dari arsip Wayback Machine github.com/trending, snapshot 2026-11-27 23:52:38 UTC; angka ★ hari ini mencakup periode hingga jam snapshot, bukan 24 jam penuh.",
+  "repos": [
+   {
+    "repo": "elementalsouls/Claude-BugHunter",
+    "stars_today": 1615,
+    "lang": "Python",
+    "desc": "Bundel skill Claude Code untuk bug hunting dan red-team eksternal: 85 skill, 16 slash command, dan 681 pola laporan kerentanan dalam 24 kelas vuln inti, plus ma",
+    "rank": 1
+   },
+   {
+    "repo": "obra/superpowers",
+    "stars_today": 916,
+    "lang": "Shell",
+    "desc": "Kerangka skill agenik dan metodologi pengembangan perangkat lunak yang terbukti bekerja",
+    "rank": 2
+   },
+   {
+    "repo": "HKUDS/CLI-Anything",
+    "stars_today": 668,
+    "lang": "Python",
+    "desc": "Menjadikan semua perangkat lunak agent-native melalui CLI dengan direktori CLI-Hub",
+    "rank": 3
+   },
+   {
+    "repo": "jingyaogong/minimind",
+    "stars_today": 667,
+    "lang": "Python",
+    "desc": "Melatih LLM 64M milikmu sendiri dari nol hanya dalam dua jam",
+    "rank": 4
+   },
+   {
+    "repo": "cursor/plugins",
+    "stars_today": 242,
+    "lang": "TypeScript",
+    "desc": "Spesifikasi plugin Cursor dan koleksi plugin resmi pihak ketiga",
+    "rank": 5
+   },
+   {
+    "repo": "firecrawl/firecrawl",
+    "stars_today": 833,
+    "lang": "TypeScript",
+    "desc": "Infrastruktur pengetahuan untuk agen: pencarian, scraping, dan 550+ penyedia data lewat satu API",
+    "rank": 6
+   },
+   {
+    "repo": "nginx/nginx",
+    "stars_today": 148,
+    "lang": "C",
+    "desc": "Repositori resmi NGINX Open Source",
+    "rank": 7
+   },
+   {
+    "repo": "openvinotoolkit/openvino",
+    "stars_today": 152,
+    "lang": "C++",
+    "desc": "Toolkit sumber terbuka untuk mengoptimasi dan men-deploy inferensi AI",
+    "rank": 8
+   },
+   {
+    "repo": "cathrynlavery/diagram-design",
+    "stars_today": 731,
+    "lang": "HTML",
+    "desc": "Desain diagram bergaya editorial untuk Claude Code, Codex, Copilot, Cursor, Factory Droid, Qoder, dan Pi — 52 tipe diagram, HTML + SVG mandiri tanpa Mermaid",
+    "rank": 9
+   },
+   {
+    "repo": "mvanhorn/last30days-skill",
+    "stars_today": 664,
+    "lang": "Python",
+    "desc": "Skill agen AI untuk riset topik lintas Reddit, X, YouTube, HN, Polymarket, dan web",
+    "rank": 10
+   }
+  ],
+  "insights": [
+   {
+    "repo": "elementalsouls/Claude-BugHunter",
+    "note": "Hari kedelapan beruntun di puncak, dengan delta +1.615 pada snapshot — peluruhan hari keempat dari +1.652 di [laporan 26 November](https://github.com/bagusajah/TabacoID/blob/main/docs/trending/2026-11"
+   },
+   {
+    "repo": "obra/superpowers",
+    "note": "Tetap #2 dengan ★ 328.287 pada snapshot, dan delta malah menghangat tipis: +916 (+1,4% dari +903) — kejadian langka di hari ketika hampir seluruh papan mendingin."
+   },
+   {
+    "repo": "HKUDS/CLI-Anything",
+    "note": "Hari kedelapan di tiga besar dengan ★ 66.988, tapi inilah hari pendinginan terdalam bagi delta-nya: +668, anjlok 39,6% dari puncak +1.106 ([laporan 26 November](https://github.com/bagusajah/TabacoID/b"
+   }
+  ]
+ },
+ {
+  "slug": "2026-11-28",
+  "date": "2026-11-28",
+  "title": "Laporan Harian GitHub Trending — Sabtu, 28 November 2026",
+  "summary": "",
+  "repos": [
+   {
+    "repo": "elementalsouls/Claude-BugHunter",
+    "stars_today": 1608,
+    "lang": "Python",
+    "desc": "Bundel skill Claude Code untuk bug hunting dan red-team eksternal: 85 skill, 16 slash command, dan 681 pola laporan kerentanan dalam 24 kelas vuln inti, plus ma",
+    "rank": 1
+   },
+   {
+    "repo": "obra/superpowers",
+    "stars_today": 922,
+    "lang": "Shell",
+    "desc": "Kerangka skill agenik dan metodologi pengembangan perangkat lunak yang terbukti bekerja",
+    "rank": 2
+   },
+   {
+    "repo": "HKUDS/CLI-Anything",
+    "stars_today": 666,
+    "lang": "Python",
+    "desc": "Menjadikan semua perangkat lunak agent-native melalui CLI dengan direktori CLI-Hub",
+    "rank": 3
+   },
+   {
+    "repo": "jingyaogong/minimind",
+    "stars_today": 660,
+    "lang": "Python",
+    "desc": "Melatih LLM 64M milikmu sendiri dari nol hanya dalam dua jam",
+    "rank": 4
+   },
+   {
+    "repo": "cursor/plugins",
+    "stars_today": 243,
+    "lang": "TypeScript",
+    "desc": "Spesifikasi plugin Cursor dan koleksi plugin resmi pihak ketiga",
+    "rank": 5
+   },
+   {
+    "repo": "firecrawl/firecrawl",
+    "stars_today": 822,
+    "lang": "TypeScript",
+    "desc": "Infrastruktur pengetahuan untuk agen: pencarian, scraping, dan 550+ penyedia data lewat satu API",
+    "rank": 6
+   },
+   {
+    "repo": "nginx/nginx",
+    "stars_today": 146,
+    "lang": "C",
+    "desc": "Repositori resmi NGINX Open Source",
+    "rank": 7
+   },
+   {
+    "repo": "openvinotoolkit/openvino",
+    "stars_today": 151,
+    "lang": "C++",
+    "desc": "Toolkit sumber terbuka untuk mengoptimasi dan men-deploy inferensi AI",
+    "rank": 8
+   },
+   {
+    "repo": "cathrynlavery/diagram-design",
+    "stars_today": 725,
+    "lang": "HTML",
+    "desc": "Desain diagram bergaya editorial untuk Claude Code, Codex, Copilot, Cursor, Factory Droid, Qoder, dan Pi — 52 tipe diagram, HTML + SVG mandiri tanpa Mermaid",
+    "rank": 9
+   },
+   {
+    "repo": "mvanhorn/last30days-skill",
+    "stars_today": 675,
+    "lang": "Python",
+    "desc": "Skill agen AI untuk riset topik lintas Reddit, X, YouTube, HN, Polymarket, dan web",
+    "rank": 10
+   }
+  ],
+  "insights": [
+   {
+    "repo": "elementalsouls/Claude-BugHunter",
+    "note": "Hari kesembilan beruntun memuncaki halaman (streak #1 berjalan sejak [laporan 20 November](https://github.com/bagusajah/TabacoID/blob/main/docs/trending/2026-11-20.md)), dan peluruhan deltanya tampak "
+   },
+   {
+    "repo": "obra/superpowers",
+    "note": "Tetap #2 dengan ★ 328.321, tapi delta justru menguat dua bacaan beruntun: +903 → +916 → +922 (+0,7% dari bacaan backfill kemarin) — di papan yang hampir seluruhnya mendingin, framework ini dan [last30"
+   },
+   {
+    "repo": "HKUDS/CLI-Anything",
+    "note": "Hari kesembilan di tiga besar dengan ★ 67.008 (+1.330 sejak snapshot REST 26 November), tapi delta kini jauh dari zona empat digit: +666, melorot 39,6% dari puncak +1.106 (26 November) dan hanya berub"
+   }
+  ]
  }
 ]
