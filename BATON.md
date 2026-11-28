@@ -7,7 +7,7 @@
 
 | Lane | Agent | Host | Role | Status | Last run | Last item |
 |------|-------|------|------|--------|----------|-----------|
-| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-28 | t_cb9db4f6 done: APT audit — 73 upgradable = 28 upgradeable + 45 di apt-mark hold (81 paket, proteksi HW-accel RK3588); security patch sehat via unattended-upgrades; reboot flag libc/libssl butuh jendela (t_b4cee954, approval-gated); report: docs/reports/2026-11-28-apt-security-audit-reboot-triage.md |
+| Repo/web/pipeline | hermes | orangepi | **owner** | idle | 2026-11-28 | t_ee4ab66f done: hardening retry push report-auto-commit.sh — `pull --rebase --autostash` (tree kotor: exit 128 → 0, sandbox-tested; kena live 10:06 pagi); smoke run push sukses fdcf1b9; report: docs/reports/2026-11-28-autostash-push-retry-hardening.md |
 | Laporan | hermes | orangepi | **owner** | idle | 2026-11-28 | verdict minggu-3 stack Telegram: trigger re-investigasi TIDAK kena (markers 758/mgg avg 108/hari <300, fatal 8 <20, watchdog 0 restart); temuan baru: sticky relay path success 40% pasca tg-relay crash 2x di VPS 27 Nov (clock step?), ditutup dual-path recovery, outage=0 — tetap adopt stop-menambah-lapisan; report: docs/reports/2026-11-28-telegram-stack-week3-verdict.md |
 | Trending | research-agent | (host milikmu) | data-owner | active | 2026-11-28 | laporan 28 Nov + backfill 27 Nov published — top-10 beku hari kesembilan (20–28 Nov), agregat delta melandai +6.618 (−22,1%, dasar baru ~6,6rb/hari); BugHunter #1 ★ 26.104 (+1.608) peluruhan melandai + 5 commit 27 Nov; superpowers satu-satunya yang menguat 2 hari (+922) tanpa commit 25 hari; trio tengah keluar 4 digit serentak; Ghost-Downloader delta #3 halaman dari luar 10 besar |
 | Ambience | ambience-agent | mbm-mp | data-owner | active | 2026-11-05 | rice_terrace_rain shipped 3/3 public (uploads-only resume); kartu chunk 200 + rebrand line fix 17 cards; channel 23 judul ×3 = 69 public |
@@ -28,6 +28,8 @@ Review cursor-agent round-2 (2026-10-16) menemukan masalah di `public/docs/dashb
 
 ## UPDATES
 (newest first — satu baris per handover)
+
+- 2026-11-28 11:10 | repo/pipeline | hermes@orangepi | t_ee4ab66f done: hardening retry push report-auto-commit.sh — `git pull --rebase --autostash` di line 48 (tree kotor: exit 128 → exit 0, teruji sandbox; kegagalan live 2026-11-28 10:06, preseden Nov 22 4 run mati beruntun); smoke run script exit 0, push fdcf1b9 sukses; trending-index.json 27–28 Nov terkonfirmasi origin & live (khawatir trending agent 08:15 tertutup regen 09:30) | report: docs/reports/2026-11-28-autostash-push-retry-hardening.md
 
 - 2026-11-28 10:35 | laporan+hermes-infra | hermes@orangepi | t_24092455 done: verdict minggu-3 stack Telegram — trigger re-investigasi TIDAK kena (markers 758/mgg avg 108/hari vs ambang 300, fatal 8 vs 20, watchdog 0 TRIGGER/0 restart); fenomena baru: sticky relay path 100.65.68.15 success rate anjlok ke 40% (167/412) sejak tg-relay crash 2× di VPS 27 Nov 01:10 (bareng clock step-back ~7h journal VPS), outage tetap 0 via dual-path recovery (140× direct + 106× relay); keputusan: pertahankan stack, trigger tambahan = tg-relay crash berulang / clock VPS melompat lagi | report: docs/reports/2026-11-28-telegram-stack-week3-verdict.md
 

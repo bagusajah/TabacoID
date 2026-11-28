@@ -44,8 +44,11 @@ git commit -m "docs: auto-commit reports ${DATE} (${TOTAL} files)" -- docs/repor
 # Push with one rebase retry: other agents push between slots and a bare push
 # fails "fetch first" (7x in Nov 8-22 2026, incl. 4 runs dead in a row on Nov 22
 # 09:30-13:30 — reports only shipped 3h late on the next slot's success).
+# Bare rebase also dies on ANY unstaged change in the tree (exit 128 "cannot
+# pull with rebase") — hit again 2026-11-28 10:06 from a Focus-run probe.
+# --autostash rides through both; worst case = old behavior (git >= 2.34).
 if ! git push origin main; then
-    git pull --rebase -q origin main || { echo "rebase failed, push abandoned"; exit 1; }
+    git pull --rebase --autostash -q origin main || { echo "rebase failed, push abandoned"; exit 1; }
     git push origin main
 fi
 
